@@ -14,7 +14,7 @@
     </div>   
 </form>
 
-hola Manu
+hola Manu hola soy andrea
 <?php
 ?>
 
