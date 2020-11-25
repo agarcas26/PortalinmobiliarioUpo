@@ -11,7 +11,7 @@
     </div> 
     <div class="entrar">
         <input type="submit" name="entrar" value="entrar" />
-    </div>  
+    </div>   
 </form>
 <?php
 ?>
