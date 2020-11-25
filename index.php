@@ -18,23 +18,35 @@ and open the template in the editor.
 
                 <a href="login.php">¿Ya tienes cuenta?Inicia sesión</a>  
             </div>
-            
+
             <a href="anunciate.php">Pon tu anuncio</a>
         </header>
         <nav id="buscador">
-            <ul id="filtros">
-                <li>Compra</li>
-                <li>Alquiler</li>
-                <li>Vacacional</li>
-                <li>Apartamento</li>
-                <li>Casa</li>
-            </ul>
-            <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
+            <form action="index.php" method="POST">
+                <select multiple id="filtros">
+                    <option>Compra</option>
+                    <option>Alquiler</option>
+                    <option>Vacacional</option>
+                    <option>Apartamento</option>
+                    <option>option</option>
+                </select>
+                <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
+                <input type="submit" id="realizar_busqueda" name="realizar_busqueda" value="Buscar" />
+            </form>
         </nav>
         <aside id="ultimas_busquedas">
             <!-- Insertar galería de fotos de las últimas búsquedas -->
         </aside>
-        <?php
-        ?>
+        <article>
+            <?php
+            if (isset($_POST['realizar_busqueda'])) {
+                
+            }
+            ?>
+        </article>
+
     </body>
+
+    <?php ?>
+</body>
 </html>
