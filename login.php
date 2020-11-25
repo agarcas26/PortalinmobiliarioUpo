@@ -13,6 +13,8 @@
         <input type="submit" name="entrar" value="entrar" />
     </div>  
 </form>
+
+hola Manu
 <?php
 ?>
 
