@@ -9,12 +9,14 @@
         <label class="label" for="fijo">Contraseña:  </label>
         <input type="password" id="contraseña" name="contraseña">
     </div> 
-    <div class="entrar">
+      <div class="entrar">
         <input type="submit" name="entrar" value="entrar" />
-    </div>   
+    </div> 
+    <div class="registro">
+        <input type="submit" name="registro" value="registro" />
+    </div>
 </form>
 
-hola Manu hola soy andrea
 <?php
 ?>
 
