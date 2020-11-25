@@ -40,9 +40,15 @@ if (isset($_POST['registro'])) {
     if (!$result) {
         die('Error: ' . mysql_error($con));
     } else {
-        if (mysqli_num_rows($result) != 0)
+        if (mysqli_num_rows($result) != 0) {
             echo '<h1>Acceso permitido</h1>';
-        else
+
+            if (getTipoUsusario($entradas[user]) = "Particualar")
+                header('Location: profesionales.php');
+
+            if (getTipoUsusario($entradas[user]) = "Particualar")
+                header('Location: particular.php');
+        } else
             echo '<h1>Acceso denegado</h1>';
     }
     mysqli_close($con);
