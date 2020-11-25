@@ -40,7 +40,13 @@ and open the template in the editor.
         <article>
             <?php
             if (isset($_POST['realizar_busqueda'])) {
+                $palabras_clave = split(' ', $_POST['barra_buscador']);
                 
+                foreach($_POST['filtros'] as $filtro){
+                    $palabras_clave .= $filtro;
+                }
+                
+                //Buscamos en la bbdd aquellos inmuebles que contentan las palabras clave
             }
             ?>
         </article>
