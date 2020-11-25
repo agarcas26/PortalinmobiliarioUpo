@@ -21,6 +21,19 @@ and open the template in the editor.
             
             <a href="anunciate.php">Pon tu anuncio</a>
         </header>
+        <nav id="buscador">
+            <ul id="filtros">
+                <li>Compra</li>
+                <li>Alquiler</li>
+                <li>Vacacional</li>
+                <li>Apartamento</li>
+                <li>Casa</li>
+            </ul>
+            <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
+        </nav>
+        <aside id="ultimas_busquedas">
+            <!-- Insertar galería de fotos de las últimas búsquedas -->
+        </aside>
         <?php
         ?>
     </body>
