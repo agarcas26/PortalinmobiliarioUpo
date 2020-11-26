@@ -39,13 +39,34 @@ and open the template in the editor.
             $usuario = $_POST['usuario'];
             //Comprobar que no haya usuarios repetidos ni correos repetidos en la bbdd
 
-            $contrasena = $_POST['contrasena'];
-            $conf_contrasena = $_POST['conf_contrasena'];
+            $filtros = Array(
+                'nombre_usuario' => FILTER_SANITIZE_STRING,
+                'email' => FILTER_SANITIZE_STRING,
+                'usuario' => FILTER_SANITIZE_STRING,
+                'contrasena' => FILTER_SANITIZE_STRING,
+                'conf_contrasena' => FILTER_SANITIZE_STRING
+            );
 
-            if ($contrasena === $conf_contrasena) {
-                //Insertamos los datos en la bbdd
+            $con = mysqli_connect("localhost", "root", "", "PortalinmoviliariaUpo");
+            if (!$con) {
+                die(' No puedo conectar: ' . mysqli_error($con));
+            }
+
+            $entradas = filter_input_array(INPUT_POST, $filtros);
+            $sql = "INSERT INTO person (nombre, email, user, pass) VALUES ('$entradas[nombre_usuario]','$entradas[email]','$entradas[usuario]','$entradas[contrasena]')";
+            
+            if ($entradas[contrasena] === $entradas[conf_contrasena]) {
+                $result = mysqli_query($con, $sql);
+            }
+            
+            if (!$result) {
+                die('Error: ' . mysql_error($con));
+            } else {
+                if (mysqli_num_rows($result) != 0) {
+                    echo '<h1>Registrado correctamente</h1>';
+                }
             }
         }
-        ?>
+                ?>
     </body>
 </html>

@@ -22,12 +22,9 @@
 if (isset($_POST['registro'])) {
     header('Location: registro.php');
 } elseif (isset($_POST['entrar'])) {
-    $con = mysqli_connect("localhost", "root", "", "p3epd5");
+    $con = mysqli_connect("localhost", "root", "", "PortalinmoviliariaUpo");
     if (!$con) {
         die(' No puedo conectar: ' . mysqli_error($con));
-    }
-    foreach ($cat as $key) {
-        $cadena = $cadena . ";" . $key;
     }
 
     $filtros = Array(
