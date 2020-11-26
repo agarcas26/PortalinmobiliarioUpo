@@ -19,6 +19,29 @@
 
 
 <?php
+
+function getusuario($nombre_usuario) {
+      $linea=array("","","");
+   $con = mysqli_connect("localhost", "root", "", "PortalinmoviliariaUpo");
+    if (!$con) {
+        die(' No puedo conectar: ' . mysqli_error($con));
+    }
+
+    $sql = "SELECT * FROM `usuarios` WHERE user='" . $nombre_usuario . "'";
+    $result = mysqli_query($con, $sql);
+    if (!$result) {
+        die('Error: ' . mysql_error($con));
+    } else {
+        while ($row = mysqli_fetch_array($result)) {
+            $linea[0] = $row['user'];
+            $linea[1] = $row['pass'];
+            $linea[2] = $row['particular_profesional'];
+        }        
+    }
+    mysqli_close($con);
+    return array('user' => $linea[0], 'pass' => $linea[1], 'particular_profesional' => $linea[2]);
+}
+
 if (isset($_POST['registro'])) {
     header('Location: registro.php');
 } elseif (isset($_POST['entrar'])) {
@@ -39,13 +62,13 @@ if (isset($_POST['registro'])) {
     } else {
         if (mysqli_num_rows($result) != 0) {
             echo '<h1>Acceso permitido</h1>';
-/*
-            if (getTipoUsusario($entradas[user]) = "Profesional")
-                header('Location: profesionales.php');
+            /*
+              if (getTipoUsusario($entradas[user]) = "Profesional")
+              header('Location: profesionales.php');
 
-            if (getTipoUsusario($entradas[user]) = "Particular")
-                header('Location: particular.php');
-            */
+              if (getTipoUsusario($entradas[user]) = "Particular")
+              header('Location: particular.php');
+             */
         } else
             echo '<h1>Acceso denegado</h1>';
     }
