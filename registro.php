@@ -25,9 +25,21 @@ and open the template in the editor.
             ?>
             <form action="registro.php" method="POST">
                 Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
+                <br>
                 Email: <input type="text" id="email" name="email" value="" />
+                <br>
                 Usuario: <input type="text" id="usuario" name="usuario" value="" />
+                <br>
+                Tipo de usuario:
+                <br>
+                <input required type="radio" name="tipo" id="profesional" value="profesional">
+                <label for="profesional">Profesional</label>
+                <br>
+                <input type="radio" name="tipo" id="particular" value="particular">
+                <label for="particular">Particular</label>
+                <br>
                 Contraseña: <input type="password" id="contrasena" name="contrasena" value="" />
+                <br>
                 Confirmar contraseña: <input type="password" id="conf_contrasena" name="conf_contrasena" value="" />
 
                 <input type="submit" id="enviar" name="enviar" value="Confirmar registro" />
@@ -43,6 +55,7 @@ and open the template in the editor.
                 'nombre_usuario' => FILTER_SANITIZE_STRING,
                 'email' => FILTER_SANITIZE_STRING,
                 'usuario' => FILTER_SANITIZE_STRING,
+                'tipo' => FILTER_SANITIZE_STRING,
                 'contrasena' => FILTER_SANITIZE_STRING,
                 'conf_contrasena' => FILTER_SANITIZE_STRING
             );
@@ -53,7 +66,7 @@ and open the template in the editor.
             }
 
             $entradas = filter_input_array(INPUT_POST, $filtros);
-            $sql = "INSERT INTO person (nombre, email, user, pass) VALUES ('$entradas[nombre_usuario]','$entradas[email]','$entradas[usuario]','$entradas[contrasena]')";
+            $sql = "INSERT INTO person (nombre, email, user, particular_profesional, pass) VALUES ('$entradas[nombre_usuario]','$entradas[email]','$entradas[usuario]','$entradas[tipo]','$entradas[contrasena]')";
 
             if ($entradas[contrasena] === $entradas[conf_contrasena]) {
                 $result = mysqli_query($con, $sql);
@@ -67,12 +80,12 @@ and open the template in the editor.
                     <h1>Registrado correctamente</h1>
                     <br>
                     <form action="registro.php" method="POST">
-                         <input type="submit" id="enviar" name="aceptar" value="De acuerdo" />
+                        <input type="submit" id="enviar" name="aceptar" value="De acuerdo" />
                     </form>
                     <?php
                     mysqli_close($con);
-                     if (isset($_POST['aceptar']))
-                         header('Location: login.php');
+                    if (isset($_POST['aceptar']))
+                        header('Location: login.php');
                 }
             }
         }
