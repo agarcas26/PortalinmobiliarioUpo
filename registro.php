@@ -70,7 +70,8 @@ and open the template in the editor.
                          <input type="submit" id="enviar" name="aceptar" value="De acuerdo" />
                     </form>
                     <?php
-                     if (!isset($_POST['aceptar']))
+                    mysqli_close($con);
+                     if (isset($_POST['aceptar']))
                          header('Location: login.php');
                 }
             }
