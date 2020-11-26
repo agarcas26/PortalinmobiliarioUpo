@@ -54,19 +54,27 @@ and open the template in the editor.
 
             $entradas = filter_input_array(INPUT_POST, $filtros);
             $sql = "INSERT INTO person (nombre, email, user, pass) VALUES ('$entradas[nombre_usuario]','$entradas[email]','$entradas[usuario]','$entradas[contrasena]')";
-            
+
             if ($entradas[contrasena] === $entradas[conf_contrasena]) {
                 $result = mysqli_query($con, $sql);
             }
-            
+
             if (!$result) {
                 die('Error: ' . mysql_error($con));
             } else {
                 if (mysqli_num_rows($result) != 0) {
-                    echo '<h1>Registrado correctamente</h1>';
+                    ?>
+                    <h1>Registrado correctamente</h1>
+                    <br>
+                    <form action="registro.php" method="POST">
+                         <input type="submit" id="enviar" name="aceptar" value="De acuerdo" />
+                    </form>
+                    <?php
+                     if (!isset($_POST['aceptar']))
+                         header('Location: login.php');
                 }
             }
         }
-                ?>
+        ?>
     </body>
 </html>
