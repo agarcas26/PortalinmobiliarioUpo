@@ -62,13 +62,15 @@ if (isset($_POST['registro'])) {
     } else {
         if (mysqli_num_rows($result) != 0) {
             echo '<h1>Acceso permitido</h1>';
-            /*
-              if (getTipoUsusario($entradas[user]) = "Profesional")
-              header('Location: profesionales.php');
-
-              if (getTipoUsusario($entradas[user]) = "Particular")
-              header('Location: particular.php');
-             */
+            
+              session_start();
+            if (!isset($_SESSION['user']))
+                $_SESSION['user']=$entradas[user];
+            else
+                $_SESSION['views'] = $entradas[user];
+            
+            header('Location: profesionales.php');
+             
         } else
             echo '<h1>Acceso denegado</h1>';
     }
