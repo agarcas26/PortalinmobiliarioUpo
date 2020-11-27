@@ -6,7 +6,7 @@
     </head>
     <body>
         <header>
-            <div id="encabezadoParticular">
+            <div id="encabezado">
                 <h1>Hola <?php $_SESSION['user'] ?> !Bienvenido a tu area de gestión</h1>
                 <form action="particular.php" method="POST">
                     <input type="submit" id="logout" name="logout" value="Desconectar" />

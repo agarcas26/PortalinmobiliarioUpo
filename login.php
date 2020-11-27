@@ -45,29 +45,22 @@ function getusuario($nombre_usuario) {
 if (isset($_POST['registro'])) {
     header('Location: registro.php');
 } elseif (isset($_POST['entrar'])) {
-    $con = mysqli_connect("localhost", "root", "", "PortalinmoviliariaUpo");
-    if (!$con) {
-        die(' No puedo conectar: ' . mysqli_error($con));
-    }
 
     $filtros = Array(
         'user' => FILTER_SANITIZE_STRING,
         'pass' => FILTER_SANITIZE_STRING
     );
     $entradas = filter_input_array(INPUT_POST, $filtros);
-    $sql = "SELECT * FROM usuarios WHERE user='$entradas[user]' AND pass='$entradas[pass]'";
-    $result = mysqli_query($con, $sql);
-    if (!$result) {
-        die('Error: ' . mysql_error($con));
-    } else {
-        if (mysqli_num_rows($result) != 0) {
+    $result = getusuario($entradas[user]);
+    
+        if ($entradas[user] == $result[0] && $entradas[pass] == $result[1]) {
             echo '<h1>Acceso permitido</h1>';
             
             session_start();
             if (!isset($_SESSION['user']))
                 $_SESSION['user']=$entradas[user];
             else
-                $_SESSION['views'] = $entradas[user];
+                $_SESSION['user'] = $entradas[user];
             
               if (getTipoUsusario($entradas[user]) = "Profesional")
               header('Location: profesionales.php');
@@ -78,8 +71,6 @@ if (isset($_POST['registro'])) {
               
         } else
             echo '<h1>Acceso denegado</h1>';
-    }
-    mysqli_close($con);
 }
 ?>
 
