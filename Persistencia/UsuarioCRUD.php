@@ -16,6 +16,16 @@
             
             return mysqli_fetch_array($result);
         }
+        
+        function crear_usuario($nombre_usuario, $contrasenya){
+            $sentence = "INSERT INTO `usuarios` (`usuario`,`contrasenya`) VALUES ()";
+            $result = mysqli_query($conexion, $sentence);
+        }
+        
+        function eliminar_usuario($nombre_usuario, $contrasenya){
+            $sentence = "DELETE FROM `usuarios` (`usuario`,`contrasenya`) VALUES ()";
+            $result = mysqli_query($conexion, $sentence);
+        }
         ?>
     </body>
 </html>
