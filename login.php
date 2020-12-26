@@ -31,7 +31,9 @@
             <?php
         } else {
             if (isset($_POST['entrar'])) {
-                echo loginController($_POST['user'], $_POST['pass']);
+                if (loginController($_POST['user'], $_POST['pass']) == true) {
+                    header("Location: index.php");
+                }
             }
 
             if (isset($_POST['registro'])) {
