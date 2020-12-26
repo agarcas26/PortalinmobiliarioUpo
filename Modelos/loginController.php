@@ -5,6 +5,9 @@
     </head>
     <body>
         <?php
+        function controllerInicioSesion (){
+            modeloInicioSesion();
+        }
         ?>
     </body>
 </html>
