@@ -31,7 +31,7 @@
             <?php
         } else {
             if (isset($_POST['entrar'])) {
-                loginController($_POST['user'], $_POST['pass']);
+                echo loginController($_POST['user'], $_POST['pass']);
             }
 
             if (isset($_POST['registro'])) {
