@@ -12,45 +12,39 @@
  * @author agarc
  */
 class anuncios {
+
     //put your code here
-  
-    private $idSubject;
-    private $idCourse;
+
+    private $idAnuncio;
     private $name;
-    private $idTypeSubjects;
+    private $idTypeAnuncio;
+
     function __construct() {
         
     }
-    function getIdTypeSubjects() {
-        return $this->idTypeSubjects;
-    }
 
-    function setIdTypeSubjects($idTypeSubjects) {
-        $this->idTypeSubjects = $idTypeSubjects;
-    }
-
-        function getIdSubject() {
-        return $this->idSubject;
-    }
-
-    function getIdCourse() {
-        return $this->idCourse;
+    function getIdAnuncio() {
+        return $this->idAnuncio;
     }
 
     function getName() {
         return $this->name;
     }
 
-    function setIdSubject($idSubject) {
-        $this->idSubject = $idSubject;
+    function getIdTypeAnuncio() {
+        return $this->idTypeAnuncio;
     }
 
-    function setIdCourse($idCourse) {
-        $this->idCourse = $idCourse;
+    function setIdAnuncio($idAnuncio) {
+        $this->idAnuncio = $idAnuncio;
     }
 
     function setName($name) {
         $this->name = $name;
+    }
+
+    function setIdTypeAnuncio($idTypeAnuncio) {
+        $this->idTypeAnuncio = $idTypeAnuncio;
     }
 
     public function __toString() {
@@ -58,4 +52,3 @@ class anuncios {
     }
 
 }
-

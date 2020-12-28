@@ -24,6 +24,9 @@ class daoanuncios{
     
     public function insertar($objAnuncio){
         //paso del objeto anuncio a las variables individuales
+        $idAnuncio = $objAnuncio->getIdAnuncio();
+        $idTypeAnuncio = $objAnuncio->getIdTypeAnuncio();
+        $name = $objAnuncio->getName();
         
         
     }
