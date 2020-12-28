@@ -14,10 +14,10 @@
             $sentence = "SELECT * FROM `usuarios`";
             $result = mysqli_query($conexion, $sentence);
             
-            return mysqli_fetch_array($result);
+            return $result;
         }
         
-        function crear_usuario($nombre_usuario, $contrasenya){
+        function crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, $moroso, $particular_profesional){
             $sentence = "INSERT INTO `usuarios` (`usuario`,`contrasenya`) VALUES ()";
             $result = mysqli_query($conexion, $sentence);
         }

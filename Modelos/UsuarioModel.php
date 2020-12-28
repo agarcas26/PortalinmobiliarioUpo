@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
     <head>
-
+        <?php
+        include_once '../DAO/UsuarioCRUD.php';
+        ?>
     </head>
     <body>
         <?php
+
         class Usuario {
 
             private $usuario_pk;
@@ -53,6 +56,21 @@
                 return $this->moroso;
             }
 
+            function getUsuario_usuario($usuario) {                
+                var $listado_usuarios = leer_usuarios();
+                var $enc = false;
+                while (!$enc && mysqli_fetch_array($listado_usuarios)) {
+                    if($listado_usuarios[0] == $usuario){
+                        $enc = true;
+                    }
+                }
+                
+                return $enc;
+            }
+            
+            function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo){
+                crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
+            }
         }
         ?>
     </body>

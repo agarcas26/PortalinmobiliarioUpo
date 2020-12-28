@@ -9,16 +9,17 @@
     <body>
         <?php
 
-        function registroController($nombre_usuario, $email, $usuario, $pass) {
+        function registroController($nombre_usuario, $email, $usuario, $pass, $tipo) {
 
-            if (preg_match($nombre_usuario, "^(?!.* (?: |$))[A-Z][a-z ]+$") && preg_match($email, "/^[\w]+@{1}[\w]+\.[a-z]{2,3}$/") && preg_match($usuario, "^@?(\w){1,15}") && preg_match($pass, "^(?![a-z]*$)(?![A-Z]*$)(?!\d*$)(?")) {
+            if (preg_match($nombre_usuario, "^(?!.* (?: |$))[A-Z][a-z ]+$") && preg_match($email, "/^[\w]+@{1}[\w]+\.[a-z]{2,3}$/") && preg_match($usuario, "^@?(\w){1,15}") && preg_match($pass, "^(?![a-z]*$)(?![A-Z]*$)(?!\d*$)(?") && preg_match($tipo, "^(?!.* (?: |$))[A-Z][a-z ]+$")) {
                 filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
                 filter_var($email, FILTER_SANITIZE_EMAIL);
                 filter_var($usuario, FILTER_SANITIZE_MAGIC_QUOTES);
                 filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
+                filter_var($tipo, FILTER_SANITIZE_STRING);
                 
                 if(registroGetUsuario($usuario) == NULL){
-                    registroModel_nuevoUsuario($nombre_usuario, $email, $usuario, $pass);
+                    registroNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
                 }
                 return true;
             }else{

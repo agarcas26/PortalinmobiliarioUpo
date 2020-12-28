@@ -13,8 +13,8 @@
             return getUsuarioByUsuario($usuario);            
         }
         
-        function registroModel_nuevoUsuario($nombre_usuario, $email, $usuario, $pass){
-            
+        function registroNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo){
+            nuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
         }
         
         ?>
