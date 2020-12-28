@@ -33,6 +33,8 @@
             if (isset($_POST['entrar'])) {
                 if (loginController($_POST['user'], $_POST['pass']) == true) {
                     header("Location: index.php");
+                }else{
+                    echo loginController($_POST['user'], $_POST['pass']);
                 }
             }
 

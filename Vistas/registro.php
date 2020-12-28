@@ -45,9 +45,11 @@ and open the template in the editor.
             $pass = $_POST['conf_contrasena'];
             //Comprobar que no haya usuarios repetidos ni correos repetidos en la bbdd
 
-            registroController($nombre_usuario, $email, $usuario, $pass);
-
-            
+            if (registroController($nombre_usuario, $email, $usuario, $pass)) {
+                header("Location: index.php");
+            } else {
+                echo registroController($nombre_usuario, $email, $usuario, $pass);
+            }
         }
         ?>
     </body>
