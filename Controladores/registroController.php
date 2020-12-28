@@ -16,8 +16,11 @@
                 filter_var($email, FILTER_SANITIZE_EMAIL);
                 filter_var($usuario, FILTER_SANITIZE_MAGIC_QUOTES);
                 filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
-
-                return registroModel($nombre_usuario, $email, $usuario, $pass);
+                
+                if(registroGetUsuario($usuario) == NULL){
+                    registroModel_nuevoUsuario($nombre_usuario, $email, $usuario, $pass);
+                }
+                return true;
             }else{
                 return "Los datos introducidos no son válidos";
             }
