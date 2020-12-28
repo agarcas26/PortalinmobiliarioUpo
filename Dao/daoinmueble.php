@@ -10,3 +10,55 @@ require_once '../Persistencia/Conexion.php';
 require_once '../Modelos/anuncios.php';
 require_once '../Modelos/usuario.php';
 
+class daoinmueble{
+  public $conObj;
+  public $conn;
+  public $inmueble;
+  
+  function __construct() {
+      $this->conObj= new conn();
+      $this->conn= $this->conObj->establecer_conexion();
+      
+  }
+  
+  public function insertar($objInmueble){
+      
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
