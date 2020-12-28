@@ -72,7 +72,13 @@ class daoanuncios {
         $idTypeAnuncio = $objAnuncio->getIdTypeAnuncio();
         $name = $objAnuncio->getname();
         
-        $sql = "UPDATE anuncio SET idAnuncio=''"
+        $sql = "UPDATE anuncio SET'$idTypeAnuncio',name='$name' WHERE idAnuncio='$idAnuncio'";
+         if(!$this->conn->query($sql)){
+             return false;
+         }else{
+             return true;
+         }
+         mysqli_close($this->conn);
     }
 
 }
