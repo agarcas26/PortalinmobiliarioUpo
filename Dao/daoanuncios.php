@@ -80,5 +80,16 @@ class daoanuncios {
          }
          mysqli_close($this->conn);
     }
+    public function listar(){
+        $sql = "SELECT * FROM anuncios";
+        $resultado = $this->conn->query($sql);
+        
+        $arrayAnuncios = array();
+        while($fila = mysqli_fetch_assoc($resultado)){
+            array_push($arrayAnuncios,$fila);
+        }
+        mysqli_close($this->conn);
+        return $arrayAnuncios;
+    }
 
 }

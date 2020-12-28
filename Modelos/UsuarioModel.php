@@ -57,8 +57,8 @@
             }
 
             function getUsuario_usuario($usuario) {                
-                var $listado_usuarios = leer_usuarios();
-                var $enc = false;
+                 $listado_usuarios = leer_usuarios();
+                 $enc = false;
                 while (!$enc && mysqli_fetch_array($listado_usuarios)) {
                     if($listado_usuarios[0] == $usuario){
                         $enc = true;

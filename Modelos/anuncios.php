@@ -16,39 +16,45 @@ class anuncios {
     //put your code here
 
     private $idAnuncio;
-    private $name;
-    private $idTypeAnuncio;
-
-    function __construct() {
-        
-    }
-
+    private $precio;
+    private $direccion;
+    private $usuario_pk;
+    
     function getIdAnuncio() {
         return $this->idAnuncio;
     }
 
-    function getName() {
-        return $this->name;
+    function getPrecio() {
+        return $this->precio;
     }
 
-    function getIdTypeAnuncio() {
-        return $this->idTypeAnuncio;
+    function getDireccion() {
+        return $this->direccion;
+    }
+
+    function getUsuario_pk() {
+        return $this->usuario_pk;
     }
 
     function setIdAnuncio($idAnuncio) {
         $this->idAnuncio = $idAnuncio;
     }
 
-    function setName($name) {
-        $this->name = $name;
+    function setPrecio($precio) {
+        $this->precio = $precio;
     }
 
-    function setIdTypeAnuncio($idTypeAnuncio) {
-        $this->idTypeAnuncio = $idTypeAnuncio;
+    function setDireccion($direccion) {
+        $this->direccion = $direccion;
+    }
+
+    function setUsuario_pk($usuario_pk) {
+        $this->usuario_pk = $usuario_pk;
     }
 
     public function __toString() {
         
     }
+
 
 }
