@@ -2,6 +2,7 @@
 <html>
     <head>
         <?php
+        session_start();
         include_once '../Controladores/AdministradoresController.php';
         ?>
     </head>
@@ -26,8 +27,9 @@
         <?php
         if (isset($_POST['entrar'])) {
             if (iniciar_sesion_administrador($_POST['user'], $_POST['pass'])) {
+                $_SESSION['usuario'] = $_POST['user'];
                 header("Location: index.php");
-            }else{
+            } else {
                 alert("Introduzca unas credenciales válidas");
             }
         }

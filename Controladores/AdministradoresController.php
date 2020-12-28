@@ -7,7 +7,6 @@
     </head>
     <body>
         <?php
-
         function iniciar_sesion_administrador($usuario, $pass) {
             return comprobar_administrador($usuario, $pass);
         }

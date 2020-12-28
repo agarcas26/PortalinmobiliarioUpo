@@ -3,6 +3,7 @@
     <head>
         <title>title</title>
         <?php
+        session_start();
         include_once '../Controladores/loginController.php';
         include_once '../Controladores/registroController.php';
         ?>
@@ -31,10 +32,11 @@
             <?php
         } else {
             if (isset($_POST['entrar'])) {
-                if (loginController($_POST['user'], $_POST['pass']) == true) {
+                if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
+                    $_SESSION['usuario'] = $_POST['user'];
                     header("Location: index.php");
                 }else{
-                    echo loginController($_POST['user'], $_POST['pass']);
+                    echo controllerInicioSesion($_POST['user'], $_POST['pass']);
                 }
             }
 
