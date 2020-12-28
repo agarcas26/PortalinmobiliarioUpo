@@ -26,6 +26,11 @@
             $sentence = "DELETE FROM `usuarios` (`usuario`,`contrasenya`) VALUES ()";
             $result = mysqli_query($conexion, $sentence);
         }
+        
+        function modificar_usuario($nuevos_datos){
+            $sentence = "UPDATE `usuarios` SET **** WHERE";
+            $result = mysqli_query($conexion, $sentence);
+        }
         ?>
     </body>
 </html>
