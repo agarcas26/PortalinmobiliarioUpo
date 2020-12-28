@@ -70,11 +70,12 @@ class daoanuncios {
         mysqli_close($this->conn);
     }
     public function modificar($objAnuncio){
+        $idAnuncio = $objAnuncio->getIdAnuncio();
         $direccion = $objAnuncio->getDireccion();
         $precio = $objAnuncio->getPrecio();
         $usuario_pk = $objAnuncio->getUsuario_pk();
         
-        $sql = "UPDATE anuncio SET'$idTypeAnuncio',name='$name' WHERE idAnuncio='$idAnuncio'";
+        $sql = "UPDATE anuncio SET direccion='$direccion',precio='$precio',usuario_pk='$usuario_pk' WHERE idAnuncio='$idAnuncio'";
          if(!$this->conn->query($sql)){
              return false;
          }else{
