@@ -85,5 +85,5 @@
         header('Location: login.php');
     }
     ?>
-</html>       ?>
+</html>
 </html>
