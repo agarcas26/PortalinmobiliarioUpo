@@ -26,10 +26,11 @@ class daoanuncios {
     public function insertar($objAnuncio) {
         //paso del objeto anuncio a las variables individuales
 //        $idAnuncio = $objAnuncio->getIdAnuncio();
-        $idTypeAnuncio = $objAnuncio->getIdTypeAnuncio();
-        $name = $objAnuncio->getName();
+        $direccion = $objAnuncio->getDireccion();
+        $precio = $objAnuncio->getPrecio();
+        $usuario_pk = $objAnuncio->getUsuario_pk();
 
-        $sql = "INSERT INTO anuncios values(null,'$idTypeAnuncio','$name')";
+        $sql = "INSERT INTO anuncios values(null,'$direccion','$precio','$usuario_pk')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -49,8 +50,9 @@ class daoanuncios {
         }else{
             $arrayAux = mysqli_fetch_assoc($objMySqlLi);
              $objAnuncio->setIdAnuncio($arrayAux["idAnuncio"]);
-             $objAnuncio->setIdTypeAnuncio($arrayAux["idTypeAnuncio"]);
-             $objAnuncio->setName($arrayAux["name"]);
+             $objAnuncio->setDireccion($arrayAux["direccion"]);
+             $objAnuncio->setPrecio($arrayAux["precio"]);
+             $objAnuncio->setUsuario_pk($arrayAux["usuario_pk"]);
              
              return $objAnuncio;
         }
@@ -68,9 +70,9 @@ class daoanuncios {
         mysqli_close($this->conn);
     }
     public function modificar($objAnuncio){
-        $idAnuncio = $objAnuncio->getIdAnuncio();
-        $idTypeAnuncio = $objAnuncio->getIdTypeAnuncio();
-        $name = $objAnuncio->getname();
+        $direccion = $objAnuncio->getDireccion();
+        $precio = $objAnuncio->getPrecio();
+        $usuario_pk = $objAnuncio->getUsuario_pk();
         
         $sql = "UPDATE anuncio SET'$idTypeAnuncio',name='$name' WHERE idAnuncio='$idAnuncio'";
          if(!$this->conn->query($sql)){
