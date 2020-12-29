@@ -10,6 +10,7 @@
         <?php
 
         function modeloInicioSesion($nombre_usuario, $pass) {
+            //mejor en SQL(?)
             $usuarios = leer_usuarios();
 
             if (sizeof($usuarios) > 0) {

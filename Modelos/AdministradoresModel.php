@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-
+        //Esto no lo hace la base de datos?
         function comprobar_administrador($usuario, $pass) {
             $listado_admin = listar_administradores();
             $encontrado = false;
