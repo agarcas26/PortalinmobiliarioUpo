@@ -21,7 +21,7 @@
                 if(registroGetUsuario($usuario) == NULL){
                     registroNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
                 }
-                return true;
+                return "Usuario registrado con exito";
             }else{
                 return "Los datos introducidos no son válidos";
             }
