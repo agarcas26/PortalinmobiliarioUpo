@@ -56,21 +56,26 @@
                 return $this->moroso;
             }
 
-            function getUsuario_usuario($usuario) {                
-                 $listado_usuarios = leer_usuarios();
-                 $enc = false;
+            function getUsuario_usuario($usuario) {
+                $listado_usuarios = leer_usuarios();
+                $enc = false;
                 while (!$enc && mysqli_fetch_array($listado_usuarios)) {
-                    if($listado_usuarios[0] == $usuario){
+                    if ($listado_usuarios[0] == $usuario) {
                         $enc = true;
                     }
                 }
-                
+
                 return $enc;
             }
-            
-            function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo){
+
+            function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo) {
                 crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
             }
+
+            function actualizarDatosUsuario($datos) {
+                modificar_usuario($nuevos_datos);
+            }
+
         }
         ?>
     </body>

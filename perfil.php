@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Mi Perfil</title>
+        <?php
+        include_once '../Controladores/PerfilController.php';
+        ?>
     </head>
     <body>
         <header>
@@ -19,7 +22,11 @@
             <aside>
                 <!-- ANUNCIOS -->
             </aside>
+            <?php
+            $datos = getDatosPerfil($_SESSION['usuario']);
+            ?>
             <form action="perfil.php" method="POST">
+                <input type="submit" name="logout" value="Cerrar sesión" />
                 <table>
                     <tr>
                     <h1>Datos del perfil</h1>
@@ -31,24 +38,33 @@
                         </td>
                         <td>
                             <label>Usuario: </label>
-                            <input type="type" name="name">
+                            <input type="type" name="usuario" value="<?php echo $datos[0]; ?>">
                         </td>
                         <td>
                             <label>Nombre: </label>
-                            <input type="type" name="name">
+                            <input type="type" name="nombre" value="<?php echo $datos[1]; ?>">
                         </td>
                         <td>
                             <label>Correo: </label>
-                            <input type="type" name="name">
+                            <input type="type" name="email" value="<?php echo $datos[2]; ?>">
                         </td>
                         <td>
                             <label>Contraseña: </label>
-                            <input type="type" name="name">
+                            <input type="password" name="pass" value="">
+                            <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
+                        </td>
+                        <td>
+                            <label>Nueva contraseña: </label>
+                            <input type="password" name="nueva_pass" value="">
+                        </td>
+                        <td>
+                            <label>Confirmar nueva contraseña: </label>
+                            <input type="password" name="conf_nueva_pass" value="">
                         </td>
                     </tr>
                 </table>
 
-                <input type="submit" value="Guardar cambios" />
+                <input type="submit" name="guardar" value="Guardar cambios" />
             </form>
             <?php
             if (!isset($_SESSION['searchuser'])) {                //opcion exclusiva para admins
@@ -81,15 +97,19 @@
 
         </main>
 
+        <?php
+        if (isset($_POST['logout'])) {
+            unset($_SESSION['user']);
+            header('Location: login.php');
+        }
+
+        if (isset($_POST['guardar'])) {
+            salvarCambios($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
+        }
+        ?>
     </body>
     <footer>
 
     </footer>
-    <?php
-    if (isset($_POST['logout'])) {
-        unset($_SESSION['user']);
-        header('Location: login.php');
-    }
-    ?>
 </html>
 </html>
