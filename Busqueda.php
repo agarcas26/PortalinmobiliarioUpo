@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
     <head>
-        <title>Publica ya tu anuncio</title>
+        <title></title>
     </head>
     <body>
-
+        <?php
+        ?>
     </body>
 </html>
