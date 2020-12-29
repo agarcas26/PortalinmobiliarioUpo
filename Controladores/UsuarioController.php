@@ -19,6 +19,11 @@
             crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
         }
         
+        function actualizarDatosUsuario($datos){
+            //Sanear y filtrar las entradas
+            
+            
+        }
         ?>
     </body>
 </html>
