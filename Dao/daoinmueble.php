@@ -33,7 +33,7 @@ class daoinmueble {
         $num_plantas = $objInmueble->getNum_plantas();
         $planta = $objInmueble->getPlanta();
         $ascensor = $objInmueble->getAscensor();
-        //tengo que pedirle al usuario la direccion y guardarla en la pk
+        //tengo que pedirle al usuario la direccion y guardarla como pk
         $sql = "INSERT INTO inmuebles values('$direccion','$usuario_pk','$resenyas_usuarios','$num_habitaciones','$num_banyos','$cocina','$tipo_inmueble','$num_plantas','$planta','$ascensor')";
         if (!$this->conn->query($sql)) {
             return false;
@@ -43,4 +43,37 @@ class daoinmueble {
         mysqli_close($this->conn);
     }
 
+    public function read($objInmueble) {
+        $usuario_pk = $objInmueble->getUsuario_pk();
+
+        $sql = "SELECT * FROM inmuebles WHERE usuario_pk='$usuario_pk'";
+        $objMySqlLi = $this->conn->query($sql);
+
+        if ($objMySqlLi->num_rows != 1) {
+            return false;
+        } else {
+            $arrayAux = mysqli_fetch_assoc($objMySqlLi);
+            $objInmueble->setDireccion($arrayAux["direccion"]);
+            $objInmueble->setUsuario_pk($arrayAux["usuario_pk"]);
+            $objInmueble->setResenyas_usuarios($arrayAux["resenyas_usuarios"]);
+            $objInmueble->setNum_habitaciones($arrayAux["num_habitaciones"]);
+            $objInmueble->setNum_banyos($arrayAux["num_banyos"]);
+            $objInmueble->setCocina($arrayAux["cocina"]);
+            $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
+            $objInmueble->setNum_plantas($arrayAux["num_plantas"]);
+            $objInmueble->setPlanta($arrayAux["planta"]);
+            $objInmueble->setAscensor($arrayAux["ascensor"]);
+            return $objInmueble;
+        }
+        mysqli_close($this->conn);
+    }
+
+    
+    public function eliminar($objInmueble){
+        $direccion = $objInmueble->getDireccion();
+        
+        $sql = "DELETE FROM inmuebles WHERE direccion='$direccion'";
+        
+        
+    }
 }
