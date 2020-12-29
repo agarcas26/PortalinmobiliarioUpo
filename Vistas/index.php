@@ -22,7 +22,7 @@ and open the template in the editor.
             <a href="anunciate.php">Pon tu anuncio</a>
         </header>
         <nav id="buscador">
-            <form action="index.php" method="POST">
+            <form action="Busqueda.php" method="POST">
                 <select multiple id="filtros">
                     <option>Compra</option>
                     <option>Alquiler</option>
@@ -39,16 +39,16 @@ and open the template in the editor.
         </aside>
         <article>
             <?php
-            if (isset($_POST['realizar_busqueda'])) {
-                $palabras_clave = split(' ', $_POST['barra_buscador']);
-                
-                foreach($_POST['filtros'] as $filtro){
-                    $palabras_clave .= $filtro;
-                }
-                
-                //Buscamos en la bbdd aquellos inmuebles que contentan las palabras clave
-            }
-            ?>
+//            if (isset($_POST['realizar_busqueda'])) {
+//                $palabras_clave = split(' ', $_POST['barra_buscador']);
+//                
+//                foreach($_POST['filtros'] as $filtro){
+//                    $palabras_clave .= $filtro;
+//                }
+//                
+//                //Buscamos en la bbdd aquellos inmuebles que contentan las palabras clave
+//            }
+//            ?>
         </article>
 
     </body>
