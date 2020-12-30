@@ -11,6 +11,13 @@
  *
  * @author agarc
  */
-class readAnuncioController {
-    //put your code here
+include_once '../Modelos/modelo_anuncios.php';
+include_once '../Dao/daoanuncios.php';
+
+function readAnuncio($idAnuncio){
+    $anuncio1= new anuncio();
+    $anuncio1->setIdAnuncio($idAnuncio);
+    
+    $daoAnuncio= new daoanuncios();
+    return $daoAnuncio->read($anuncio1);
 }
