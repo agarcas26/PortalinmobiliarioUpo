@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include_once '../Model/UsuarioModel.php';
+        include_once '../Modelos/UsuarioModel.php';
         ?>
     </head>
     <body>

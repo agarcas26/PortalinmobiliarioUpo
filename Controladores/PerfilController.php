@@ -13,7 +13,7 @@
             return getDatosPerfil($usuario);
         }
 
-        function salvarCambios($datos, $pass, $nueva_pass, $conf_nueva_pass) {
+        function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
             if ($datos[sizeof($datos) - 1] == $pass) {
                 if ($nueva_pass != NULL) {
                     if ($nueva_pass == $conf_nueva_pass) {
