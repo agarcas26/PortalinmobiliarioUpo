@@ -14,7 +14,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        if (!isset($_POST['enviar'])) {
+        if (!isset($_POST['enviar'])) { //esto va en el controlador no en la vista
             ?>
             <form action="registro.php" method="POST">
                 Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
