@@ -8,6 +8,14 @@
     </head>
     <body>
         <?php
+        if (isset($_POST['logout'])) {
+            unset($_SESSION['user']);
+            header('Location: login.php');
+        }
+
+        if (isset($_POST['guardar'])) {
+            salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
+        }
 
         function getDatosPerfil($usuario) {
             return getDatosPerfil($usuario);
@@ -24,7 +32,7 @@
                 } else {
                     return "Las contraseñas no coinciden";
                 }
-            }else{
+            } else {
                 return "Introduzca correctamente su contraseña actual";
             }
         }

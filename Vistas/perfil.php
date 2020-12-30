@@ -22,7 +22,7 @@
             <aside>
                 <!-- ANUNCIOS -->
             </aside>
-            <form action="perfil.php" method="POST">
+            <form action="PerfilController.php" method="POST">
                 <input type="submit" name="logout" value="Cerrar sesión" />
                 <table>
                     <tr>
@@ -55,12 +55,15 @@
                         <?php
                         if (!isset($_SESSION['searchuser'])) {
                             ?>
-                            }
                             <td>
                                 <label>Contraseña: </label>
                                 <input type="password" name="pass" value="">
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
+                            <?php
+                        }else{
+                            ?>
+                            
                             <?php
                         }
                         ?>
@@ -79,16 +82,6 @@
             </form>
 
         </main>  
-        <?php
-        if (isset($_POST['logout'])) {
-            unset($_SESSION['user']);
-            header('Location: login.php');
-        }
-
-        if (isset($_POST['guardar'])) {
-            salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
-        }
-        ?>
     </body>
     <footer>
 

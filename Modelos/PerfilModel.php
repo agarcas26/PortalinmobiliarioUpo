@@ -8,11 +8,12 @@
     </head>
     <body>
         <?php
-        function getDatosPerfil($usuario){
+
+        function getDatosPerfil($usuario) {
             return getUsuarioByUsuario($usuario);
         }
-        
-        function salvarCambios($datos){
+
+        function salvarCambios($datos) {
             actualizarDatosUsuario($datos);
         }
         ?>
