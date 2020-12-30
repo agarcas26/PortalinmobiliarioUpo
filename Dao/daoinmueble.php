@@ -4,13 +4,14 @@
         <title>title</title>
         <?php
         require_once '../Persistencia/Conexion.php';
-require_once '../Modelos/anuncios.php';
-require_once '../Modelos/usuario.php';
-require_once '../Modelos/inmuebles.php';
+        require_once '../Modelos/anuncios.php';
+        require_once '../Modelos/usuario.php';
+        require_once '../Modelos/inmuebles.php';
         ?>
     </head>
     <body>
         <?php
+
         class daoinmueble {
 
             public $conObj;
