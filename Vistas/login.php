@@ -13,7 +13,7 @@
         <?php
         if (!isset($_POST['registro']) && !isset($_POST['entrar'])) { 
             ?>
-            <form action="login.php" method="post">
+            <form action="loginController.php" method="post">
                 <div class="usuario">
                     <label class="label" for="fijo">Usuario: </label>
                     <input type="text" id="user" name="user">
@@ -30,19 +30,6 @@
                 </div>
             </form>
             <?php
-        } else {
-            if (isset($_POST['entrar'])) {
-                if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
-                    $_SESSION['usuario'] = $_POST['user'];
-                    header("Location: index.php");
-                }else{
-                    echo controllerInicioSesion($_POST['user'], $_POST['pass']);
-                }
-            }
-
-            if (isset($_POST['registro'])) {
-                header("Location: registro.php");
-            }
         }
         ?>
     </body>
