@@ -11,7 +11,7 @@
     <body>
         <h2>Iniciar sesion</h2>
         <?php
-        if (!isset($_POST['registro']) && !isset($_POST['entrar'])) { //registro
+        if (!isset($_POST['registro']) && !isset($_POST['entrar'])) { 
             ?>
             <form action="login.php" method="post">
                 <div class="usuario">

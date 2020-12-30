@@ -8,7 +8,6 @@
     </head>
     <body>
         <?php
-        //Funciones duplicadas
         function getDatosPerfil($usuario){
             return getUsuarioByUsuario($usuario);
         }

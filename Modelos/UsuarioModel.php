@@ -72,7 +72,6 @@
                 crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
             }
 
-            //funcion tripicada(?)
             function actualizarDatosUsuario($datos) {
                 modificar_usuario($nuevos_datos);
             }
