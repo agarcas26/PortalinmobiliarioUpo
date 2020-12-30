@@ -9,7 +9,7 @@
     <body>
         <h2>Iniciar sesion</h2>
 
-        <form action="login.php" method="post">
+        <form action="loginAdminController.php" method="post">
             <div class="usuario">
                 <label class="label" for="fijo">Usuario: </label>
                 <input type="text" id="user" name="user">
@@ -23,17 +23,6 @@
             </div>
         </form>
 
-
-        <?php
-        if (isset($_POST['entrar'])) {
-            if (iniciar_sesion_administrador($_POST['user'], $_POST['pass'])) {
-                $_SESSION['usuario'] = $_POST['user'];  //sesion distinta?
-                header("Location: index.php");
-            } else {
-                alert("Introduzca unas credenciales válidas");
-            }
-        }
-        ?>
 
     </body>
 </html>
