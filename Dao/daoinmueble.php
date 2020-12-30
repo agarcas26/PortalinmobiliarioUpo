@@ -68,12 +68,50 @@ class daoinmueble {
         mysqli_close($this->conn);
     }
 
-    
-    public function eliminar($objInmueble){
+    public function eliminar($objInmueble) {
         $direccion = $objInmueble->getDireccion();
-        
+
         $sql = "DELETE FROM inmuebles WHERE direccion='$direccion'";
-        
-        
+
+        if (!$this->conn->query($sql)) {
+            return false;
+        } else {
+            return true;
+        }
+        mysqli_close($this->conn);
     }
+
+    public function modificar($objInmueble) {
+        $direccion = $objInmueble->getDireccion();
+        $usuario_pk = $objInmueble->getUsuario_pk();
+        $resenyas_usuarios = $objInmueble->getResenyas_usuarios();
+        $num_habitaciones = $objInmueble->getNum_habitaciones();
+        $num_banyos = $objInmueble->getNum_banyos();
+        $cocina = $objInmueble->getCocina();
+        $tipo_inmueble = $objInmueble->getTipo_inmueble();
+        $num_plantas = $objInmueble->getNum_plantas();
+        $planta = $objInmueble->getPlanta();
+        $ascensor = $objInmueble->getAscensor();
+
+        $sql = "UPDATE anuncio SET direccion='$direccion',usuario_pk='$usuario_pk',resenyas_usuarios='$resenyas_usuarios',num_habitaciones='$num_habitaciones',num_banyos='$num_banyos',cocina='$cocina',tipo_inmueble='$tipo_inmueble',num_plantas='$num_plantas',planta='$planta',ascensor='$ascensor' WHERE direccion='$direccion'";
+
+        if (!$this->conn->query($sql)) {
+            return false;
+        } else {
+            return true;
+        }
+        mysqli_close($this->conn);
+    }
+
+    public function listar() {
+        $sql = "SELECT * FROM inmuebles";
+        $resultado = $this->conn->query($sql);
+        $arrayInmuebles = array();
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            array_push($arrayInmuebles, $fila);
+        }
+        mysqli_close($this->conn);
+        return $arrayInmuebles;
+    }
+
 }
