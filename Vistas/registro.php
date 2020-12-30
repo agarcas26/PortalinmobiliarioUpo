@@ -16,7 +16,7 @@ and open the template in the editor.
         <?php
         if (!isset($_POST['enviar'])) { //esto va en el controlador no en la vista
             ?>
-            <form action="registro.php" method="POST">
+            <form action="registroController.php" method="POST">
                 Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
                 <br>
                 Email: <input type="text" id="email" name="email" value="" />
@@ -38,19 +38,6 @@ and open the template in the editor.
                 <input type="submit" id="enviar" name="enviar" value="Confirmar registro" />
             </form>
             <?php
-        } else {
-            $nombre_usuario = $_POST['nombre_usuario'];
-            $email = $_POST['email'];
-            $usuario = $_POST['usuario'];
-            $pass = $_POST['conf_contrasena'];
-            $tipo = $_POST['tipo'];
-            //Comprobar que no haya usuarios repetidos ni correos repetidos en la bbdd
-
-            if (registroController($nombre_usuario, $email, $usuario, $pass, $tipo)) {
-                header("Location: index.php");
-            } else {
-                echo registroController($nombre_usuario, $email, $usuario, $pass, $tipo);
-            }
         }
         ?>
     </body>

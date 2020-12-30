@@ -8,6 +8,12 @@
     </head>
     <body>
         <?php
+        $nombre_usuario = $_POST['nombre_usuario'];
+        $email = $_POST['email'];
+        $usuario = $_POST['usuario'];
+        $pass = $_POST['conf_contrasena'];
+        $tipo = $_POST['tipo'];
+        registroController($nombre_usuario, $email, $usuario, $pass, $tipo);
 
         function registroController($nombre_usuario, $email, $usuario, $pass, $tipo) {
 
@@ -17,12 +23,12 @@
                 filter_var($usuario, FILTER_SANITIZE_MAGIC_QUOTES);
                 filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
                 filter_var($tipo, FILTER_SANITIZE_STRING);
-                
-                if(registroGetUsuario($usuario) == NULL){
+
+                if (registroGetUsuario($usuario) == NULL) {
                     registroNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
                 }
                 return "Usuario registrado con exito";
-            }else{
+            } else {
                 return "Los datos introducidos no son válidos";
             }
         }

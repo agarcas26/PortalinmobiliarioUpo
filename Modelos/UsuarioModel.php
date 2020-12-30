@@ -14,7 +14,7 @@
             private $particular_profesional;
             private $contrasenya;
             private $listas = [];
-            private $moroso=false;
+            private $moroso = false;
 
             function set_usuario_pk($usuario) {
                 $this->usuario_pk = $usuario;
@@ -71,6 +71,7 @@
             function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo) {
                 crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
             }
+
             //funcion tripicada(?)
             function actualizarDatosUsuario($datos) {
                 modificar_usuario($nuevos_datos);
