@@ -27,9 +27,10 @@
                 if (registroGetUsuario($usuario) == NULL) {
                     registroNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
                 }
-                return "Usuario registrado con exito";
+                header("Location: index.php");
             } else {
-                return "Los datos introducidos no son válidos";
+                unset($_POST['registro']);
+                header("Location: registro.php");
             }
         }
         ?>
