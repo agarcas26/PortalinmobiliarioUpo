@@ -17,7 +17,7 @@
                 ?>
                 <form>
                     <button>Añade tus fotos</button>
-                    <label>Puedes subir varias a la vez</label>
+                    <label>Puedes subir varias a la vez. Recuerda subir fotos de todas las estancias.</label>
                     <select id="tipo_inmueble" type="picker" label="Tipo de inmueble" display="" aria-invalid="false" class="">
                         <option value="casa">Casa</option>
                         <option value="atico">Ático</option>
