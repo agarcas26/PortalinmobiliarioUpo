@@ -11,7 +11,7 @@
         <header>
             <nav>
                 <a>Anuncios</a>
-                <a>Mis alertas</a>
+                <a href="misAlertas.php">Mis alertas</a>
                 <a>General</a>
                 <a>Mis mensajes</a>
                 <a>Mi perfil</a>
