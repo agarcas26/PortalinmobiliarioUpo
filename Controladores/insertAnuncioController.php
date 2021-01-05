@@ -18,3 +18,4 @@ $daoAnuncio = new daoanuncios();
 $daoAnuncio->insertar($anuncio1);
 
 header('Location: ../Vistas/perfil.php ');
+//TENGO QUE AÑADIR COSAS AUN 
