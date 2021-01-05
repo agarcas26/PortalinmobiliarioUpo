@@ -23,7 +23,7 @@
             <a href="">Inmobiliaria UPO</a>
         </header>
         <main>
-            <form action="psgoController.php" method="POST">
+            <form action="pagoController.php" method="POST">
                 <input type="submit" name="paypal" value="PayPal" />
                 <input type="submit" name="visa" onclick="datosTarjeta()" value="Visa" />
                 <table id="datos_visa">
