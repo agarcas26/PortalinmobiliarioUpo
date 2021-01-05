@@ -79,7 +79,6 @@
                 </table>
                 <input type="submit" name="guardar" value="Guardar cambios" />
             </form>
-
         </main>  
     </body>
     <footer>
