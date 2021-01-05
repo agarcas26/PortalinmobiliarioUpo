@@ -8,37 +8,35 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
+        <?php
+        include_once '../scripts.js';
+        ?>
     </head>
     <body>
         <header>
-            <div id="encabezado">
-                <figure id="logo">
-                    <img src="src" alt="Inmobiliaria UPO"/>
-                </figure>
-
-                <a href="login.php">¿Ya tienes cuenta?Inicia sesión</a>  
-            </div>
-
-            <a href="anunciate.php">Pon tu anuncio</a>
+            <script src="scripts.js">
+                header();
+            </script>
         </header>
-        <nav id="buscador">
-            <form action="Busqueda.php" method="POST">
-                <select multiple id="filtros">
-                    <option>Compra</option>
-                    <option>Alquiler</option>
-                    <option>Vacacional</option>
-                    <option>Apartamento</option>
-                    <option>option</option>
-                </select>
-                <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
-                <input type="submit" id="realizar_busqueda" name="realizar_busqueda" value="Buscar" />
-            </form>
-        </nav>
-        <aside id="ultimas_busquedas">
-            <!-- Insertar galería de fotos de las últimas búsquedas -->
-        </aside>
-        <article>
-            <?php
+        <main>
+            <nav id="buscador">
+                <form action="Busqueda.php" method="POST">
+                    <select multiple id="filtros">
+                        <option>Compra</option>
+                        <option>Alquiler</option>
+                        <option>Vacacional</option>
+                        <option>Apartamento</option>
+                        <option>option</option>
+                    </select>
+                    <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
+                    <input type="submit" id="realizar_busqueda" name="realizar_busqueda" value="Buscar" />
+                </form>
+            </nav>
+            <aside id="ultimas_busquedas">
+                <!-- Insertar galería de fotos de las últimas búsquedas -->
+            </aside>
+            <article>
+                <?php
 //            if (isset($_POST['realizar_busqueda'])) {
 //                $palabras_clave = split(' ', $_POST['barra_buscador']);
 //                
@@ -48,11 +46,14 @@ and open the template in the editor.
 //                
 //                //Buscamos en la bbdd aquellos inmuebles que contentan las palabras clave
 //            }
-//            ?>
-        </article>
-
+//            
+                ?>
+            </article>
+        </main>
     </body>
-
-    <?php ?>
-</body>
+    <footer>
+        <script src="scripts.js">
+                footer();
+        </script>
+    </footer>
 </html>
