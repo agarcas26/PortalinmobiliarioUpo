@@ -2,16 +2,15 @@
 <html>
     <head>
         <title></title>
+        <?php
+        include_once '../scripts.js';
+        ?>
     </head>
     <body>   
         <header>
-            <ul>
-                <li><img src="" alt="Logo"></li>
-                <li><a href="">Inmobiliaria UPO</a></li>
-                <li><input type="text" name="buscador"/></li>
-                <li><a href="login.php">Mi cuenta</a></li>
-                <li><a href="anunciate.php">Publica tu anuncio gratis</a></li>
-            </ul>
+            <script src="scripts.js">
+                header();
+            </script>
             <ul>
                 <!-- Filtros -->
             </ul>
@@ -28,13 +27,15 @@
                 <input type="submit" value="Lista" />
                 <input type="submit" value="Cuadricula" />
             </form>
-            
+
             <!-- ANUNCIOS -->
         </main>
         <?php
         ?>
     </body>
     <footer>
-        
+        <script src="scripts.js">
+                footer();
+        </script>
     </footer>
 </html>
