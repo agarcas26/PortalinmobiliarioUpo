@@ -4,7 +4,7 @@ include_once '../Modelos/UsuarioModel.php';
 include_once '../Modelos/AnunciosModel.php';
 include_once '../Dao/daoanuncios.php';
 include_once '../Modelos/InmueblesModel.php';
-include_once '../Dao/daoinmueble.php';
+include_once '../Dao/daoInmueble.php';
 
 session_start();
 //FALTA INSERTAR ANUNCIOS
