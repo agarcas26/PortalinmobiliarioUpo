@@ -13,7 +13,7 @@ and open the template in the editor.
         ?>
     </head>
     <body>
-        <header>
+        <header class="masthead text-white text-center">
             <script src="scripts.js">
                 header();
             </script>
@@ -22,7 +22,8 @@ and open the template in the editor.
         if (!isset($_POST['realizar_busqueda'])) {
             ?>
             <main>
-                <nav id="buscador">
+                <nav id="buscador" class="navbar navbar-light bg-light static-top">
+                    >
                     <form action="indexController.php" method="POST">
                         <select multiple id="filtros">
                             <option>Compra</option>
@@ -32,7 +33,7 @@ and open the template in the editor.
                             <option>option</option>
                         </select>
                         <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
-                        <input type="submit" id="realizar_busqueda" name="realizar_busqueda" value="Buscar" />
+                        <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" value="Buscar" />
                     </form>
                 </nav>
                 <aside id="ultimas_busquedas">
@@ -44,8 +45,12 @@ and open the template in the editor.
             <?php
         }
         ?>
+
+
+        <script src="../Bootstrap/vendor/jquery/jquery.min.js"></script>
+        <script src="../Bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
-    <footer>
+    <footer class="footer bg-light">
         <script src="scripts.js">
                 footer();
         </script>
