@@ -1,7 +1,7 @@
 <?php
 
 include_once '../Modelos/UsuarioModel.php';
-include_once '../Modelos/modelo_anuncios.php';
+include_once '../Modelos/AnunciosModel.php';
 include_once '../Dao/daoanuncios.php';
 
 session_start();
