@@ -5,14 +5,18 @@
         <title>Mi Perfil</title>
         <?php
         include_once '../Controladores/PerfilController.php';
-        include_once '../scripts.js';
         ?>
     </head>
     <body>
         <header>
-            <script src="scripts.js">
-                header();
-            </script>
+            <nav>
+                <a>Anuncios</a>
+                <a>Mis alertas</a>
+                <a>General</a>
+                <a>Mis mensajes</a>
+                <a>Mi perfil</a>
+            </nav>
+            <img src="src" alt="Logo"/>
         </header>
         <main>
             <aside>
@@ -57,9 +61,9 @@
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                             <?php
-                        } else {
+                        }else{
                             ?>
-
+                            
                             <?php
                         }
                         ?>
@@ -73,14 +77,14 @@
                         </td>
                     </tr>
                 </table>
+
                 <input type="submit" name="guardar" value="Guardar cambios" />
             </form>
+
         </main>  
     </body>
     <footer>
-        <script src="scripts.js">
-                footer();
-        </script>
+
     </footer>
 </html>
 </html>
