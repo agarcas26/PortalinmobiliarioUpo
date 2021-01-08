@@ -23,7 +23,6 @@ and open the template in the editor.
             ?>
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
-                    >
                     <form action="indexController.php" method="POST">
                         <select multiple id="filtros">
                             <option>Compra</option>
@@ -38,6 +37,9 @@ and open the template in the editor.
                 </nav>
                 <aside id="ultimas_busquedas">
                     <!-- Insertar galería de fotos de las últimas búsquedas -->
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"></li>
+                    </ul>
                 </aside>
                 <article>
                 </article>
