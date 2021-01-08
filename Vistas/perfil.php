@@ -9,7 +9,7 @@
         ?>
     </head>
     <body>
-        <header>
+        <header class="masthead text-white text-center">
             <script src="scripts.js">
                 header();
             </script>
@@ -19,7 +19,7 @@
                 <!-- ANUNCIOS -->
             </aside>
             <form action="PerfilController.php" method="POST">
-                <input type="submit" name="logout" value="Cerrar sesión" />
+                <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />
                 <table>
                     <tr>
                     <h1>Datos del perfil</h1>
@@ -77,7 +77,7 @@
             </form>
         </main>  
     </body>
-    <footer>
+    <footer class="footer bg-light">
         <script src="scripts.js">
                 footer();
         </script>
