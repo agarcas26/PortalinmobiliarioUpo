@@ -2,19 +2,17 @@
 <html>
     <head>
         <title>Mis Alertas</title>
-        <?php
-        include_once '../scripts.js';
-        ?>
     </head>
     <body>
         <header>
-            <script src="scripts.js">
-                header();
-            </script>
-            <a>Anuncios</a>
-            <a href='misAlertas.php'>Mis alertas</a>
-            <a>General</a>
-            <a>Mis mensajes</a>
+            <div>
+                <img id="logo" />
+                <a>Inmobiliaria UPO</a>
+            </div>
+            <ul>
+                <li><a href="" id="perfil">Mi cuenta</a></li>
+                <li><a href="anunciate.php">Publica tu anuncio gratis</a></li>
+            </ul>
         </header>
         <main>
             <h1>Activar nueva alerta</h1>
@@ -74,9 +72,4 @@
             </form>
         </main>
     </body>
-    <footer>
-        <script src="scripts.js">
-                footer();
-        </script>
-    </footer>
 </html>
