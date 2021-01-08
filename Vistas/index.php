@@ -23,7 +23,7 @@ and open the template in the editor.
             ?>
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
-                    <form action="indexController.php" method="POST">
+                    <form action="../Controladores/indexController.php" method="POST">
                         <select multiple id="filtros">
                             <option>Compra</option>
                             <option>Alquiler</option>
