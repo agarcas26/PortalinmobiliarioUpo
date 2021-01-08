@@ -11,7 +11,11 @@
         <header>
             <nav>
                 <a>Anuncios</a>
+<<<<<<< HEAD
                 <a>Mis alertas</a>
+=======
+                <a href="misAlertas.php">Mis alertas</a>
+>>>>>>> parent of 29af66c... Renombramiento de clases y scripts footer + header
                 <a>General</a>
                 <a>Mis mensajes</a>
                 <a>Mi perfil</a>
