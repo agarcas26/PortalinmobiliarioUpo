@@ -2,14 +2,15 @@
 <html>
     <head>
         <title>Publica ya tu anuncio</title>
+        <?php
+        include_once '../scripts.js';
+        ?>
     </head>
     <body>
         <header>
-            <ul>
-                <li><img></li><!-- LOGO -->
-                <li><a>Inmobiliaria UPO</a></li>
-                <li>Mi cuenta</li>
-            </ul>
+            <script src="scripts.js">
+                header();
+            </script>
         </header>
         <main>
             <?php
@@ -61,4 +62,9 @@
             ?>
         </main>
     </body>
+    <footer>
+        <script src="scripts.js">
+                footer();
+        </script>
+    </footer>
 </html>

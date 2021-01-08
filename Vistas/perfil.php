@@ -5,22 +5,14 @@
         <title>Mi Perfil</title>
         <?php
         include_once '../Controladores/PerfilController.php';
+        include_once '../scripts.js';
         ?>
     </head>
     <body>
         <header>
-            <nav>
-                <a>Anuncios</a>
-<<<<<<< HEAD
-                <a>Mis alertas</a>
-=======
-                <a href="misAlertas.php">Mis alertas</a>
->>>>>>> parent of 29af66c... Renombramiento de clases y scripts footer + header
-                <a>General</a>
-                <a>Mis mensajes</a>
-                <a>Mi perfil</a>
-            </nav>
-            <img src="src" alt="Logo"/>
+            <script src="scripts.js">
+                header();
+            </script>
         </header>
         <main>
             <aside>
@@ -65,9 +57,9 @@
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                             <?php
-                        }else{
+                        } else {
                             ?>
-                            
+
                             <?php
                         }
                         ?>
@@ -81,14 +73,14 @@
                         </td>
                     </tr>
                 </table>
-
                 <input type="submit" name="guardar" value="Guardar cambios" />
             </form>
-
         </main>  
     </body>
     <footer>
-
+        <script src="scripts.js">
+                footer();
+        </script>
     </footer>
 </html>
 </html>

@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>Pago</title>
+        <?php
+        include_once '../scripts.js';
+        ?>
         <script type="text/javascript">
             function datosTarjeta() {
                 var tabla_datos = document.getElementById("datos_visa");
@@ -19,11 +22,12 @@
     </head>
     <body>
         <header>
-            <img id="logo" src="" />
-            <a href="">Inmobiliaria UPO</a>
+            <script src="scripts.js">
+            header();
+            </script>
         </header>
         <main>
-            <form action="psgoController.php" method="POST">
+            <form action="pagoController.php" method="POST">
                 <input type="submit" name="paypal" value="PayPal" />
                 <input type="submit" name="visa" onclick="datosTarjeta()" value="Visa" />
                 <table id="datos_visa">
@@ -42,4 +46,9 @@
             </form>
         </main>
     </body>
+    <footer>
+        <script src="scripts.js">
+                    footer();
+        </script>
+    </footer>
 </html>
