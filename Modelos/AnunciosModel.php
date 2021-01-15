@@ -15,87 +15,46 @@ class anuncios {
 
     //put your code here
 
-    private $id_anuncio;
+    private $idAnuncio;
     private $precio;
-    private $nombre_via;
-    private $tipo_via;
-    private $cp;
-    private $numero;
-    private $nombre_usuario;
-    private $fecha_anuncio;
+    private $direccion;
+    private $usuario_pk;
     
-    function __construct() {
-        
-    }
-
-    function getId_anuncio() {
-        return $this->id_anuncio;
+    function getIdAnuncio() {
+        return $this->idAnuncio;
     }
 
     function getPrecio() {
         return $this->precio;
     }
 
-    function getNombre_via() {
-        return $this->nombre_via;
+    function getDireccion() {
+        return $this->direccion;
     }
 
-    function getTipo_via() {
-        return $this->tipo_via;
+    function getUsuario_pk() {
+        return $this->usuario_pk;
     }
 
-    function getCp() {
-        return $this->cp;
-    }
-
-    function getNumero() {
-        return $this->numero;
-    }
-
-    function getNombre_usuario() {
-        return $this->nombre_usuario;
-    }
-
-    function getFecha_anuncio() {
-        return $this->fecha_anuncio;
-    }
-
-    function setId_anuncio($id_anuncio) {
-        $this->id_anuncio = $id_anuncio;
+    function setIdAnuncio($idAnuncio) {
+        $this->idAnuncio = $idAnuncio;
     }
 
     function setPrecio($precio) {
         $this->precio = $precio;
     }
 
-    function setNombre_via($nombre_via) {
-        $this->nombre_via = $nombre_via;
+    function setDireccion($direccion) {
+        $this->direccion = $direccion;
     }
 
-    function setTipo_via($tipo_via) {
-        $this->tipo_via = $tipo_via;
-    }
-
-    function setCp($cp) {
-        $this->cp = $cp;
-    }
-
-    function setNumero($numero) {
-        $this->numero = $numero;
-    }
-
-    function setNombre_usuario($nombre_usuario) {
-        $this->nombre_usuario = $nombre_usuario;
-    }
-
-    function setFecha_anuncio($fecha_anuncio) {
-        $this->fecha_anuncio = $fecha_anuncio;
+    function setUsuario_pk($usuario_pk) {
+        $this->usuario_pk = $usuario_pk;
     }
 
     public function __toString() {
         
     }
-
 
 
 }
