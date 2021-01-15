@@ -12,34 +12,51 @@
  * @author agarc
  */
 class inmueble {
-    private $direccion;
-    private $usuario_pk;
-    private $resenyas_usuarios;
-    private $num_habitaciones;
-    private $num_banyos;  
+    private $numero;
+    private $cp;
+    private $nombre_via;
+    private $tipo_via;
+    private $nombre_usuario;
+    private $nombre_localidad;
+    private $nombre_provincia;
+    private $num_banyos;
     private $cocina;
-    private $tipo_inmueble;
-    private $num_plantas;
+    private $tipo;
+    private $numero_plantas;
     private $planta;
-    private $ascensor;
+    private $metros;
+    private $tipo_inmuebles;
+
     function __construct() {
         
     }
 
-    function getDireccion() {
-        return $this->direccion;
+    function getNumero() {
+        return $this->numero;
     }
 
-    function getUsuario_pk() {
-        return $this->usuario_pk;
+    function getCp() {
+        return $this->cp;
     }
 
-    function getResenyas_usuarios() {
-        return $this->resenyas_usuarios;
+    function getNombre_via() {
+        return $this->nombre_via;
     }
 
-    function getNum_habitaciones() {
-        return $this->num_habitaciones;
+    function getTipo_via() {
+        return $this->tipo_via;
+    }
+
+    function getNombre_usuario() {
+        return $this->nombre_usuario;
+    }
+
+    function getNombre_localidad() {
+        return $this->nombre_localidad;
+    }
+
+    function getNombre_provincia() {
+        return $this->nombre_provincia;
     }
 
     function getNum_banyos() {
@@ -50,36 +67,52 @@ class inmueble {
         return $this->cocina;
     }
 
-    function getTipo_inmueble() {
-        return $this->tipo_inmueble;
+    function getTipo() {
+        return $this->tipo;
     }
 
-    function getNum_plantas() {
-        return $this->num_plantas;
+    function getNumero_plantas() {
+        return $this->numero_plantas;
     }
 
     function getPlanta() {
         return $this->planta;
     }
 
-    function getAscensor() {
-        return $this->ascensor;
+    function getMetros() {
+        return $this->metros;
     }
 
-    function setDireccion($direccion) {
-        $this->direccion = $direccion;
+    function getTipo_inmuebles() {
+        return $this->tipo_inmuebles;
     }
 
-    function setUsuario_pk($usuario_pk) {
-        $this->usuario_pk = $usuario_pk;
+    function setNumero($numero) {
+        $this->numero = $numero;
     }
 
-    function setResenyas_usuarios($resenyas_usuarios) {
-        $this->resenyas_usuarios = $resenyas_usuarios;
+    function setCp($cp) {
+        $this->cp = $cp;
     }
 
-    function setNum_habitaciones($num_habitaciones) {
-        $this->num_habitaciones = $num_habitaciones;
+    function setNombre_via($nombre_via) {
+        $this->nombre_via = $nombre_via;
+    }
+
+    function setTipo_via($tipo_via) {
+        $this->tipo_via = $tipo_via;
+    }
+
+    function setNombre_usuario($nombre_usuario) {
+        $this->nombre_usuario = $nombre_usuario;
+    }
+
+    function setNombre_localidad($nombre_localidad) {
+        $this->nombre_localidad = $nombre_localidad;
+    }
+
+    function setNombre_provincia($nombre_provincia) {
+        $this->nombre_provincia = $nombre_provincia;
     }
 
     function setNum_banyos($num_banyos) {
@@ -90,20 +123,24 @@ class inmueble {
         $this->cocina = $cocina;
     }
 
-    function setTipo_inmueble($tipo_inmueble) {
-        $this->tipo_inmueble = $tipo_inmueble;
+    function setTipo($tipo) {
+        $this->tipo = $tipo;
     }
 
-    function setNum_plantas($num_plantas) {
-        $this->num_plantas = $num_plantas;
+    function setNumero_plantas($numero_plantas) {
+        $this->numero_plantas = $numero_plantas;
     }
 
     function setPlanta($planta) {
         $this->planta = $planta;
     }
 
-    function setAscensor($ascensor) {
-        $this->ascensor = $ascensor;
+    function setMetros($metros) {
+        $this->metros = $metros;
+    }
+
+    function setTipo_inmuebles($tipo_inmuebles) {
+        $this->tipo_inmuebles = $tipo_inmuebles;
     }
 
     public function __toString() {
