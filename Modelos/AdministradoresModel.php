@@ -2,15 +2,26 @@
 
 include_once '../DAO/AdministradoresCRUD.php';
 
-//Esto no lo hace la base de datos?
-function comprobar_administrador($usuario, $pass) {
-    $listado_admin = listar_administradores();
-    $encontrado = false;
-    while (!encontrado && myqli_fetch_array($listado_admin)) {
-        if ($listado_admin[0] == $usuario && $listado_admin[1] == $pass) {
-            $encontrado = true;
-        }
+class Administradores {
+
+    private $nombre_usuario_admin;
+    private $contrasenya_admin;
+
+    function getNombre_usuario_admin() {
+        return $this->nombre_usuario_admin;
     }
 
-    return $encontrado;
+    function getContrasenya_admin() {
+        return $this->contrasenya_admin;
+    }
+
+    function setNombre_usuario_admin($nombre_usuario_admin) {
+        $this->nombre_usuario_admin = $nombre_usuario_admin;
+    }
+
+    function setContrasenya_admin($contrasenya_admin) {
+        $this->contrasenya_admin = $contrasenya_admin;
+    }
+    
+    
 }
