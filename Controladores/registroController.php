@@ -1,13 +1,9 @@
-<!doctype html>
-<html>
-    <head>
-        <title>registroController</title>
+
         <?php
         include_once '../Modelos/registroModel.php';
-        ?>
-    </head>
-    <body>
-        <?php
+        
+
+        
         $nombre_usuario = $_POST['nombre_usuario'];
         $email = $_POST['email'];
         $usuario = $_POST['usuario'];
@@ -33,6 +29,4 @@
                 header("Location: registro.php");
             }
         }
-        ?>
-    </body>
-</html>
+

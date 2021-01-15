@@ -1,13 +1,7 @@
-<!doctype html>
-<html>
-    <head>
-        <title></title>
+
         <?php
         include_once '../Model/PerfilModel.php';
-        ?>
-    </head>
-    <body>
-        <?php
+    
         if (isset($_POST['logout'])) {
             unset($_SESSION['user']);
             header('Location: login.php');
@@ -36,6 +30,5 @@
                 return "Introduzca correctamente su contraseña actual";
             }
         }
-        ?>
-    </body>
-</html>
+        
+

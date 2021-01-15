@@ -1,9 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <title>title</title>
-    </head>
-    <body>
+
+
         <?php
         if (isset($_POST['lista'])) {
             mostrarVistaLista();
@@ -19,8 +15,6 @@
         function mostrarVistaCuadricula() {
             echo '    <tr>' + '<td>' + '<figure>' + '<img>' + '<figcaption>num hab. num baños. m2.</figcaption>' + '</figure>' + '</td>' + '</tr>';
         }
-        ?>
+        
 
 
-    </body>
-</html>
