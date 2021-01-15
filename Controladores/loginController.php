@@ -1,36 +1,30 @@
-<!doctype html>
-<<html>
-    <head>
-        <title>Login Controller</title>
-        <?php
-        include_once '../Modelos/loginModel.php';
-        ?>
-    </head>
-    <body>
-        <?php
-        if (isset($_POST['entrar'])) {
-            if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
-                $_SESSION['usuario'] = $_POST['user'];
-                header("Location: index.php");
-            } else {
-                echo controllerInicioSesion($_POST['user'], $_POST['pass']);
-            }
-        }
+<?php
 
-        if (isset($_POST['registro'])) {
-            header("Location: registro.php");
-        }
+include_once '../Controladores/UsuarioController.php';
 
-        function controllerInicioSesion($nombre_usuario, $pass) {
-            if (preg_match($pattern, $nombre_usuario) && preg_match($pattern, $pass)) {
-                $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
-                $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+if (isset($_POST['entrar'])) {
+    if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
+        $_SESSION['usuario'] = $_POST['user'];
+        header("Location: index.php");
+    } else {
+        echo controllerInicioSesion($_POST['user'], $_POST['pass']);
+    }
+}
 
-                return modeloInicioSesion($nombre_usuario, $pass);
-            } else {
-                return "Introduzca unos datos válidos";
-            }
+if (isset($_POST['registro'])) {
+    header("Location: registro.php");
+}
+
+function controllerInicioSesion($nombre_usuario, $pass) {
+    if (preg_match($pattern, $nombre_usuario) && preg_match($pattern, $pass)) {
+        $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
+        $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+
+        $usuario = getUsuarioByUsuario($nombre_usuario);
+        if ($usuario . get_contrasenya_user() == $pass) {
+            header("Location: index.php");
         }
-        ?>
-    </body>
-</html>
+    } else {
+        return "Introduzca unos datos válidos";
+    }
+}

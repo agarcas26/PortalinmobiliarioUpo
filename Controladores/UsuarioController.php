@@ -4,7 +4,10 @@ include_once '../DAO/daoUsuarios.php';
 include_once '../Modelos/UsuarioModel.php';
 
 function getUsuarioByUsuario($nombre_usuario) {
-    $usuario = get_usuario_by_nombre_usuario($nombre_usuario);
+    $usuario_datos = get_usuario_by_nombre_usuario($nombre_usuario);
+    $usuario = new Usuario($usuario_datos[0], $usuario_datos[1], $usuario_datos[2], $usuario_datos[3]);
+    
+    return $usuario;
 }
 
 function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {
