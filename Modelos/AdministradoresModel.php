@@ -1,11 +1,8 @@
-<!doctype html>
-<html>
-    <head>
+
         <?php
         include_once '../DAO/AdministradoresCRUD.php';
         ?>
-    </head>
-    <body>
+   
         <?php
         //Esto no lo hace la base de datos?
         function comprobar_administrador($usuario, $pass) {
@@ -20,5 +17,3 @@
             return $encontrado;
         }
         ?>
-    </body>
-</html>

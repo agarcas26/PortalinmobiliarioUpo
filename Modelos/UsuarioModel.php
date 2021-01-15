@@ -1,11 +1,8 @@
-<!doctype html>
-<html>
-    <head>
+
         <?php
         include_once '../DAO/UsuarioCRUD.php';
         ?>
-    </head>
-    <body>
+  
         <?php
 
         class Usuario {
@@ -77,6 +74,5 @@
             }
 
         }
-        ?>
-    </body>
-</html>
+        
+    
