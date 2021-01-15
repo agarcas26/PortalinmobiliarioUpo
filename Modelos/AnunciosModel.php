@@ -15,46 +15,87 @@ class anuncios {
 
     //put your code here
 
-    private $idAnuncio;
+    private $id_anuncio;
     private $precio;
-    private $direccion;
-    private $usuario_pk;
+    private $nombre_via;
+    private $tipo_via;
+    private $cp;
+    private $numero;
+    private $nombre_usuario;
+    private $fecha_anuncio;
     
-    function getIdAnuncio() {
-        return $this->idAnuncio;
+    function __construct() {
+        
+    }
+
+    function getId_anuncio() {
+        return $this->id_anuncio;
     }
 
     function getPrecio() {
         return $this->precio;
     }
 
-    function getDireccion() {
-        return $this->direccion;
+    function getNombre_via() {
+        return $this->nombre_via;
     }
 
-    function getUsuario_pk() {
-        return $this->usuario_pk;
+    function getTipo_via() {
+        return $this->tipo_via;
     }
 
-    function setIdAnuncio($idAnuncio) {
-        $this->idAnuncio = $idAnuncio;
+    function getCp() {
+        return $this->cp;
+    }
+
+    function getNumero() {
+        return $this->numero;
+    }
+
+    function getNombre_usuario() {
+        return $this->nombre_usuario;
+    }
+
+    function getFecha_anuncio() {
+        return $this->fecha_anuncio;
+    }
+
+    function setId_anuncio($id_anuncio) {
+        $this->id_anuncio = $id_anuncio;
     }
 
     function setPrecio($precio) {
         $this->precio = $precio;
     }
 
-    function setDireccion($direccion) {
-        $this->direccion = $direccion;
+    function setNombre_via($nombre_via) {
+        $this->nombre_via = $nombre_via;
     }
 
-    function setUsuario_pk($usuario_pk) {
-        $this->usuario_pk = $usuario_pk;
+    function setTipo_via($tipo_via) {
+        $this->tipo_via = $tipo_via;
+    }
+
+    function setCp($cp) {
+        $this->cp = $cp;
+    }
+
+    function setNumero($numero) {
+        $this->numero = $numero;
+    }
+
+    function setNombre_usuario($nombre_usuario) {
+        $this->nombre_usuario = $nombre_usuario;
+    }
+
+    function setFecha_anuncio($fecha_anuncio) {
+        $this->fecha_anuncio = $fecha_anuncio;
     }
 
     public function __toString() {
         
     }
+
 
 
 }

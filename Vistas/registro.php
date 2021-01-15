@@ -25,6 +25,7 @@ and open the template in the editor.
                 ?>
                 <form action="registroController.php" method="POST">
                     Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
+                    
                     <br>
                     Email: <input type="text" id="email" name="email" value="" />
                     <br>
