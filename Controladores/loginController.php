@@ -1,7 +1,13 @@
-
+<!doctype html>
+<<html>
+    <head>
+        <title>Login Controller</title>
         <?php
         include_once '../Modelos/loginModel.php';
-        
+        ?>
+    </head>
+    <body>
+        <?php
         if (isset($_POST['entrar'])) {
             if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
                 $_SESSION['usuario'] = $_POST['user'];
@@ -25,3 +31,6 @@
                 return "Introduzca unos datos válidos";
             }
         }
+        ?>
+    </body>
+</html>

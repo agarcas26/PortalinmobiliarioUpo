@@ -4,9 +4,9 @@
         <title>title</title>
         <?php
         require_once '../Persistencia/Conexion.php';
-        require_once '../Modelos/anuncios.php';
-        require_once '../Modelos/usuario.php';
-        require_once '../Modelos/inmuebles.php';
+        require_once '../Modelos/AnunciosModel.php';
+        require_once '../Modelos/UsuarioModel.php';
+        require_once '../Modelos/InmueblesModel.php';
         ?>
     </head>
     <body>

@@ -1,4 +1,9 @@
-
+<!doctype html>
+<html>
+    <head>
+        <title>Index Controller</title>
+    </head>
+    <body>
         <?php
         if (isset($_POST['realizar_busqueda'])) {
             $palabras_clave = split(' ', $_POST['barra_buscador']);
@@ -14,3 +19,6 @@
                           */
             
         }
+        ?>
+    </body>
+</html>
