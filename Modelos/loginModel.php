@@ -1,8 +1,5 @@
 
-        <?php
-        include_once '../Persistencia/UsuarioCRUD.php';
-        ?>
-
+       
         <?php
 
         function modeloInicioSesion($nombre_usuario, $pass) {

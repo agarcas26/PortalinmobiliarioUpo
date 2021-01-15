@@ -1,9 +1,5 @@
 
         <?php
-        include_once '../DAO/UsuarioCRUD.php';
-        ?>
-  
-        <?php
 
         class Usuario {
 

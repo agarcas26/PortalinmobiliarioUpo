@@ -1,6 +1,6 @@
 
         <?php
-        include_once '../DAO/AdministradoresCRUD.php';
+        include_once '../Dao/daoAdministradores.php';
         ?>
    
         <?php
