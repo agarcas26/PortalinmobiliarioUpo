@@ -1,5 +1,4 @@
 
-
 function footer() {
     document.write("<p>Diseñado por GRUPO10\n Derechos de autos y copyright GRUPO10</p>"
             + "<nav>"
