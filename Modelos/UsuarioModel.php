@@ -1,5 +1,4 @@
-
-        <?php
+<?php
 
 class Usuario {
 
@@ -51,26 +50,4 @@ class Usuario {
         return $this->get_nombre_usuario() . "," . $this->get_nombre_usuario() . "," . $this->get_contrasenya_user() . "," . $this->get_moroso();
     }
 
-            function getUsuario_usuario($usuario) {
-                $listado_usuarios = leer_usuarios();
-                $enc = false;
-                while (!$enc && mysqli_fetch_array($listado_usuarios)) {
-                    if ($listado_usuarios[0] == $usuario) {
-                        $enc = true;
-                    }
-                }
-
-                return $enc;
-            }
-
-            function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo) {
-                crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
-            }
-
-            function actualizarDatosUsuario($datos) {
-                modificar_usuario($nuevos_datos);
-            }
-
-        }
-        
-    
+}

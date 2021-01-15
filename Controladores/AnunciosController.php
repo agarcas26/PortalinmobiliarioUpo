@@ -1,4 +1,10 @@
-
+<!doctype html>
+<html>
+    <head>
+        <title>AnunciosController</title>
+    </head>
+    <body>
+        <main>
             <?php
             include_once '../Modelos/UsuarioModel.php';
             include_once '../Modelos/AnunciosModel.php';
@@ -90,4 +96,7 @@
                 return $daoanuncios->listar();
             }
             ?>
-   
+        </main>
+    </body>
+</html>
+

@@ -1,9 +1,12 @@
-
-
+<!doctype html>
+<html>
+    <head>
+        <title>title</title>
         <?php
         include_once '../Controladores/UsuarioController.php';
         ?>
-
+    </head>
+    <body>
         <?php
 
         function getDatosPerfil($usuario) {
@@ -14,4 +17,5 @@
             actualizarDatosUsuario($datos);
         }
         ?>
-
+    </body>
+</html>
