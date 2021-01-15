@@ -1,82 +1,53 @@
-<!doctype html>
-<html>
-    <head>
-        <?php
-        include_once '../DAO/UsuarioCRUD.php';
-        ?>
-    </head>
-    <body>
-        <?php
+<?php
 
-        class Usuario {
+class Usuario {
 
-            private $usuario_pk;
-            private $particular_profesional;
-            private $contrasenya;
-            private $listas = [];
-            private $moroso = false;
+    private $nombre_usuario;
+    private $nombre_apellidos;
+    private $contrasenya_user;
+    private $moroso = false;
 
-            function set_usuario_pk($usuario) {
-                $this->usuario_pk = $usuario;
-            }
+    function set_nombre_usuario($nombre_usuario) {
+        $this->nombre_usuario = $nombre_usuario;
+    }
 
-            function get_usuario_pk() {
-                return $this->usuario_pk;
-            }
+    function get_nombre_usuario() {
+        return $this->nombre_usuario;
+    }
 
-            function set_particular_profesional($particular_profesional) {
-                $this->particular_profesional = $particular_profesional;
-            }
+    function set_nombre_apellidos($nombre_apellidos) {
+        $this->nombre_apellidos = $nombre_apellidos;
+    }
 
-            function get_particular_profesional() {
-                return $this->particular_profesional;
-            }
+    function get_nombre_apellidos() {
+        return $this->nombre_apellidos;
+    }
 
-            function set_contrasenya($contrasenya) {
-                $this->contrasenya = $contrasenya;
-            }
+    function set_contrasenya_user($contrasenya_user) {
+        $this->contrasenya_user = $contrasenya_user;
+    }
 
-            function get_contrasenya() {
-                return $this->contrasenya;
-            }
+    function get_contrasenya_user() {
+        return $this->contrasenya_user;
+    }
 
-            function set_listas($nueva_lista) {
-                $this->listas = $nueva_lista;
-            }
+    function set_moroso($moroso) {
+        $this->moroso = $moroso;
+    }
 
-            function get_listas() {
-                return $this->listas;
-            }
+    function get_moroso() {
+        return $this->moroso;
+    }
 
-            function set_moroso($moroso) {
-                $this->moroso = $moroso;
-            }
+    function __construct($nombre_apellidos, $nombre_usuario, $pass, $moroso) {
+        $this->set_nombre_apellidos($nombre_apellidos);
+        $this->set_nombre_usuario($nombre_usuario);
+        $this->set_contrasenya_user($contrasenya_user);
+        $this->set_moroso($moroso);
+    }
 
-            function get_moroso() {
-                return $this->moroso;
-            }
+    function __toString() {
+        return $this->get_nombre_usuario() . "," . $this->get_nombre_usuario() . "," . $this->get_contrasenya_user() . "," . $this->get_moroso();
+    }
 
-            function getUsuario_usuario($usuario) {
-                $listado_usuarios = leer_usuarios();
-                $enc = false;
-                while (!$enc && mysqli_fetch_array($listado_usuarios)) {
-                    if ($listado_usuarios[0] == $usuario) {
-                        $enc = true;
-                    }
-                }
-
-                return $enc;
-            }
-
-            function crearNuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo) {
-                crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, "false", $tipo);
-            }
-
-            function actualizarDatosUsuario($datos) {
-                modificar_usuario($nuevos_datos);
-            }
-
-        }
-        ?>
-    </body>
-</html>
+}

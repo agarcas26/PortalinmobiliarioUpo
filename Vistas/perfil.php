@@ -44,10 +44,6 @@
                             <label>Nombre: </label>
                             <input type="type" name="nombre" value="<?php echo $datos[1]; ?>">
                         </td>
-                        <td>
-                            <label>Correo: </label>
-                            <input type="type" name="email" value="<?php echo $datos[2]; ?>">
-                        </td>
                         <?php
                         if (!isset($_SESSION['searchuser'])) {
                             ?>
