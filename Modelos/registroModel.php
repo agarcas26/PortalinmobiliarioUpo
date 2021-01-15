@@ -14,4 +14,4 @@
             nuevoUsuario($nombre_usuario, $email, $usuario, $pass, $tipo);
         }
         
-        ?>
+        
