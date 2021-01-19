@@ -21,7 +21,7 @@ function controllerInicioSesion($nombre_usuario, $pass) {
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
         $usuario = getUsuarioByUsuario($nombre_usuario);
-        if ($usuario . get_contrasenya_user() == $pass) {
+        if ($usuario.get_contrasenya_user() == $pass) {
             header("Location: index.php");
         }
     } else {

@@ -5,8 +5,6 @@
         <?php
         session_start();
         include_once '../Controladores/loginController.php';
-        include_once '../Controladores/registroController.php';
-        include_once '../scripts.js';
         ?>
     </head>
     <body>

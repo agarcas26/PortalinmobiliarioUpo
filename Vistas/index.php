@@ -8,13 +8,13 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
+        <script src="scripts.js"></script>
         <?php
-        include_once '../scripts.js';
         ?>
     </head>
     <body>
         <header class="masthead text-white text-center">
-            <script src="scripts.js">
+            <script>
                 header();
             </script>
         </header>
@@ -53,7 +53,7 @@ and open the template in the editor.
         <script src="../Bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
     <footer class="footer bg-light">
-        <script src="scripts.js">
+        <script>
                 footer();
         </script>
     </footer>
