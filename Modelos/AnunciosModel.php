@@ -21,14 +21,30 @@ class anuncios {
     private $tipo_via;
     private $cp;
     private $numero;
-    private $nombre_usuario;
+    private $nombre_usuario_publica;
+    private $nombre_usuario_anuncio;
     private $fecha_anuncio;
     
     function __construct() {
         
     }
+    function getNombre_usuario_publica() {
+        return $this->nombre_usuario_publica;
+    }
 
-    function getId_anuncio() {
+    function getNombre_usuario_anuncio() {
+        return $this->nombre_usuario_anuncio;
+    }
+
+    function setNombre_usuario_publica($nombre_usuario_publica) {
+        $this->nombre_usuario_publica = $nombre_usuario_publica;
+    }
+
+    function setNombre_usuario_anuncio($nombre_usuario_anuncio) {
+        $this->nombre_usuario_anuncio = $nombre_usuario_anuncio;
+    }
+
+        function getId_anuncio() {
         return $this->id_anuncio;
     }
 

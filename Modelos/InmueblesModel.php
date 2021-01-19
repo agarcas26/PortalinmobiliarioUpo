@@ -16,7 +16,7 @@ class inmueble {
     private $cp;
     private $nombre_via;
     private $tipo_via;
-    private $nombre_usuario;
+    private $nombre_usuario_dueño;
     private $nombre_localidad;
     private $nombre_provincia;
     private $num_banyos;
@@ -25,7 +25,7 @@ class inmueble {
     private $numero_plantas;
     private $planta;
     private $metros;
-    private $tipo_inmuebles;
+    private $tipo_inmueble;
 
     function __construct() {
         
@@ -139,8 +139,8 @@ class inmueble {
         $this->metros = $metros;
     }
 
-    function setTipo_inmuebles($tipo_inmuebles) {
-        $this->tipo_inmuebles = $tipo_inmuebles;
+    function setTipo_inmuebles($tipo_inmueble) {
+        $this->tipo_inmuebles = $tipo_inmueble;
     }
 
     public function __toString() {

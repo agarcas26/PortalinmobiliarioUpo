@@ -13,9 +13,9 @@
  */
 class pago {
     private $id_pago;
-    private $cuantia;
-    private $usuario_pk;
-    private $periodo;
+    private $fecha_pago;
+    private $id_contrato_alquiler;
+    private $id_contrato_senyal_pago;
     
     function __construct() {
         
@@ -24,36 +24,33 @@ class pago {
         return $this->id_pago;
     }
 
-    function getCuantia() {
-        return $this->cuantia;
+    function getFecha_pago() {
+        return $this->fecha_pago;
     }
 
-    function getUsuario_pk() {
-        return $this->usuario_pk;
+    function getId_contrato_alquiler() {
+        return $this->id_contrato_alquiler;
     }
 
-    function getPeriodo() {
-        return $this->periodo;
+    function getId_contrato_senyal_pago() {
+        return $this->id_contrato_senyal_pago;
     }
 
     function setId_pago($id_pago) {
         $this->id_pago = $id_pago;
     }
 
-    function setCuantia($cuantia) {
-        $this->cuantia = $cuantia;
+    function setFecha_pago($fecha_pago) {
+        $this->fecha_pago = $fecha_pago;
     }
 
-    function setUsuario_pk($usuario_pk) {
-        $this->usuario_pk = $usuario_pk;
+    function setId_contrato_alquiler($id_contrato_alquiler) {
+        $this->id_contrato_alquiler = $id_contrato_alquiler;
     }
 
-    function setPeriodo($periodo) {
-        $this->periodo = $periodo;
+    function setId_contrato_senyal_pago($id_contrato_senyal_pago) {
+        $this->id_contrato_senyal_pago = $id_contrato_senyal_pago;
     }
 
-    public function __toString() {
-        
-    }
 
 }
