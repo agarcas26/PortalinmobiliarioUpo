@@ -5,13 +5,20 @@
         <?php
         session_start();
         include_once '../Controladores/loginController.php';
+        include_once '../header.php';
         ?>
     </head>
     <body>
-        <header>
-            <script src="scripts.js">
-                header();
-            </script>
+        <header class="masthead text-white text-center">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
         </header>
         <main>
             <h2>Iniciar sesion</h2>
@@ -39,10 +46,10 @@
             ?>
         </main>
     </body>
-    <footer>
-        <script src="scripts.js">
-                footer();
-        </script>
+    <footer class="footer bg-light">
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
     </footer>
 </html>
 

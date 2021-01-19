@@ -8,15 +8,21 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
-        <script src="scripts.js"></script>
         <?php
+        include_once '../header.php';
         ?>
     </head>
     <body>
         <header class="masthead text-white text-center">
-            <script>
-                header();
-            </script>
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
         </header>
         <?php
         if (!isset($_POST['realizar_busqueda'])) {
@@ -53,8 +59,8 @@ and open the template in the editor.
         <script src="../Bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
     <footer class="footer bg-light">
-        <script>
-                footer();
-        </script>
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
     </footer>
 </html>

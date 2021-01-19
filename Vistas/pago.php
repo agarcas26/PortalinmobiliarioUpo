@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>Pago</title>
-        <?php
-        include_once '../scripts.js';
+        <?php        
+        include_once '../header.php';
         ?>
         <script type="text/javascript">
             function datosTarjeta() {
@@ -21,10 +21,16 @@
         </script>
     </head>
     <body>
-        <header>
-            <script src="scripts.js">
-            header();
-            </script>
+        <header class="masthead text-white text-center">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
         </header>
         <main>
             <form action="pagoController.php" method="POST">
@@ -46,9 +52,9 @@
             </form>
         </main>
     </body>
-    <footer>
-        <script src="scripts.js">
-                    footer();
-        </script>
+    <footer class="footer bg-light">
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
     </footer>
 </html>

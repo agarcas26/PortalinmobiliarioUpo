@@ -4,9 +4,21 @@
         <?php
         session_start();
         include_once '../Controladores/AdministradoresController.php';
+        include_once '../header.php';
         ?>
     </head>
     <body>
+        <header class="masthead text-white text-center">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
+        </header>
         <h2>Iniciar sesion</h2>
 
         <form action="loginAdminController.php" method="post">
@@ -22,7 +34,10 @@
                 <input type="submit" name="entrar" value="entrar" />
             </div>
         </form>
-
-
     </body>
+    <footer class="footer bg-light">
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
+    </footer>
 </html>
