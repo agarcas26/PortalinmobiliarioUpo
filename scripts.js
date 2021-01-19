@@ -9,12 +9,3 @@ function footer() {
             + "</ul>"
             + "</nav>");
 }
-
-function header() {
-    document.write("<img src='src' alt='Logo'/>"
-            + "<a href='index.php'>Inmobiliaria UPO</a>"
-            + "<nav>"
-            + "<a href='login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
-            + "<a>Mi perfil</a>"
-            + "</nav>");
-}

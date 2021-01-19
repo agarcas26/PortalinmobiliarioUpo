@@ -5,18 +5,30 @@
         <title>Mi Perfil</title>
         <?php
         include_once '../Controladores/PerfilController.php';
-        include_once '../scripts.js';
+        include_once '../header.php';
         ?>
     </head>
     <body>
         <header class="masthead text-white text-center">
-            <script src="scripts.js">
-                header();
-            </script>
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
         </header>
         <main>
             <aside>
-                <!-- ANUNCIOS -->
+                <nav>
+                    <ul>
+                        <li><a href="../Vistas/mis_anuncios.php">Mis anuncios</a></li>
+                        <li><a href='../Vistas/mis_favoritos.php'>Mis favoritos</a></li>
+                        <li><a href='../Vistas/mis_alertas.php'>Mis alertas</a></li>
+                    </ul>
+                </nav>
             </aside>
             <form action="PerfilController.php" method="POST">
                 <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />
@@ -74,9 +86,9 @@
         </main>  
     </body>
     <footer class="footer bg-light">
-        <script src="scripts.js">
-                footer();
-        </script>
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
     </footer>
 </html>
 </html>
