@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Regístrate</title>
         <?php
         include_once '../Controladores/registroController.php';
-        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
+        include_once '../Vistas/header.php';
         ?>
     </head>
     <body>

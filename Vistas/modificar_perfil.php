@@ -5,7 +5,7 @@
         <title>Mi Perfil</title>
         <?php
         include_once '../Controladores/PerfilController.php';
-        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
+        include_once '../Vistas/header.php';
         ?>
     </head>
     <body>

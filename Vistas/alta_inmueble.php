@@ -10,8 +10,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php
-        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
-        include_once '../PortalinmobiliariaUPO/Vistas/aside.php';
+        include_once '../Vistas/header.php';
+        include_once '../Vistas/aside.php';
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>

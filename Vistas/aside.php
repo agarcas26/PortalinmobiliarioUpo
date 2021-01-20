@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include_once '../PortalinmobiliarioUpo/Controladores/AnunciosController.php';
+include_once '../Controladores/AnunciosController.php';
 
 function aside_sesion_iniciada() {
     $anuncios = listar_anuncios_usuario($_SESSION['usuario']);

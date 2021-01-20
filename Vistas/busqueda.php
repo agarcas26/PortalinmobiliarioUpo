@@ -3,7 +3,7 @@
     <head>
         <title></title>
         <?php
-        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
+        include_once '../Vistas/header.php';
         ?>
     </head>
     <body>   

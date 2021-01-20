@@ -3,11 +3,11 @@
     <head>
         <title>Mi perfil</title>
         <?php
-        include_once '../PortalinmobiliariaUPO/Vistas/aside.php';
-        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
-        include_once '../PortalinmobiliarioUpo/Controladores/AnunciosController.php';
-        include_once '../PortalinmobiliarioUpo/Controladores/AlertasController.php';
-        include_once '../PortalinmobiliarioUpo/Controladores/FavoritosController.php';
+        include_once '../Vistas/aside.php';
+        include_once '../Vistas/header.php';
+        include_once '../Controladores/AnunciosController.php';
+        include_once '../Controladores/AlertasController.php';
+        include_once '../Controladores/FavoritosController.php';
 
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
