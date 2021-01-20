@@ -20,7 +20,6 @@
             ?>
         </header>
         <h2>Iniciar sesion</h2>
-
         <form action="loginAdminController.php" method="post">
             <div class="usuario">
                 <label class="label" for="fijo">Usuario: </label>

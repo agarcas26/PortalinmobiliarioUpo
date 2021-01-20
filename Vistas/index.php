@@ -52,10 +52,6 @@ and open the template in the editor.
             <?php
         }
         ?>
-
-
-        <script src="../Bootstrap/vendor/jquery/jquery.min.js"></script>
-        <script src="../Bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
     <?php
     include_once '../Vistas/footer.html';
