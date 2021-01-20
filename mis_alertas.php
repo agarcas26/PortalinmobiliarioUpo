@@ -15,6 +15,7 @@
                 <aside>
                     <?php aside_sesion_iniciada(); ?>
                 </aside>
+            </main>
         </body>
         <footer>
             <?php include_once '../PortalinmobiliarioUpo/Vistas/footer.html'; ?>
