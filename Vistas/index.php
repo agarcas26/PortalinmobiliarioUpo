@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <?php
         include_once '../Vistas/header.php';
         ?>

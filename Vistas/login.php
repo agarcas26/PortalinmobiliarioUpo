@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
     <head>
-        <title>title</title>
+        <title>Iniciar sesión</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <?php
         session_start();
         include_once '../Controladores/loginController.php';
