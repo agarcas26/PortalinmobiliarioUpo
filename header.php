@@ -20,6 +20,7 @@ function no_sesion_iniciada() {
     + "<a href='index.php'>Inmobiliaria UPO</a>" 
     + "<nav>" 
     + "<a href='login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
+    + "<a href='registro.php'>¡Regístrate gratis!</a>"
     + "</nav>";
 }
 
