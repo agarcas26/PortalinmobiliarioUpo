@@ -90,8 +90,14 @@ function listAllAnuncios() {
     return $daoanuncios->listar();
 }
 
-function listar_anuncios_usuario($usuario) {
+function listar_anuncios_usuario() {
     $daoanuncios = new daoanuncios();
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    }
+    if (isset($_SESSION['usuario_profesional'])) {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     return $daoanuncios->listar_anuncios_usuario($usuario);
 }
 
