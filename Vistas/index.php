@@ -19,7 +19,7 @@ and open the template in the editor.
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
-            } else {        
+            } else {
                 no_sesion_iniciada();
             }
             ?>
@@ -56,7 +56,7 @@ and open the template in the editor.
         <script src="../Bootstrap/vendor/jquery/jquery.min.js"></script>
         <script src="../Bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
-        <?php
-        include_once '../Vistas/footer.html';
-        ?>
+    <?php
+    include_once '../Vistas/footer.html';
+    ?>
 </html>

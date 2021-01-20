@@ -31,7 +31,7 @@ and open the template in the editor.
                 ?>
                 <form action="registroController.php" method="POST">
                     Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
-                    
+
                     <br>
                     Email: <input type="text" id="email" name="email" value="" />
                     <br>
@@ -56,9 +56,7 @@ and open the template in the editor.
             ?>
         </main>
     </body>
-    <footer class="footer bg-light">
-        <?php
-        include_once '../Vistas/footer.html';
-        ?>
-    </footer>
+    <?php
+    include_once '../Vistas/footer.html';
+    ?>
 </html>

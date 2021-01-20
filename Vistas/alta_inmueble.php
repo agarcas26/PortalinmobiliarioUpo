@@ -52,9 +52,7 @@ and open the template in the editor.
                 </article>
             </main>
         </body>
-        <footer>
-            <?php include_once '../PortalinmobiliarioUpo/Vistas/footer.html'; ?>
-        </footer>
+        <?php include_once '../PortalinmobiliarioUpo/Vistas/footer.html'; ?>
         <?php
     } else {
         header("Location: login.php");

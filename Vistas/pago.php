@@ -52,9 +52,7 @@
             </form>
         </main>
     </body>
-    <footer class="footer bg-light">
-        <?php
-        include_once '../Vistas/footer.html';
-        ?>
-    </footer>
+    <?php
+    include_once '../Vistas/footer.html';
+    ?>
 </html>
