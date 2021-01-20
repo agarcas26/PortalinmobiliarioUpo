@@ -3,7 +3,7 @@
     <head>
         <title>Pago</title>
         <?php        
-        include_once '../header.php';
+        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
         ?>
         <script type="text/javascript">
             function datosTarjeta() {

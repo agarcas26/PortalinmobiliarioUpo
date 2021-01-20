@@ -5,7 +5,7 @@
         <?php
         session_start();
         include_once '../Controladores/loginController.php';
-        include_once '../header.php';
+        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
         ?>
     </head>
     <body>

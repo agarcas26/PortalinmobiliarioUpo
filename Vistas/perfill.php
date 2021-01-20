@@ -3,8 +3,8 @@
     <head>
         <title>Mi perfil</title>
         <?php
-        include_once '../PortalinmobiliarioUpo/aside.php';
-        include_once '../PortalinmobiliarioUpo/header.php';
+        include_once '../PortalinmobiliariaUPO/Vistas/aside.php';
+        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
         include_once '../PortalinmobiliarioUpo/Controladores/AnunciosController.php';
         include_once '../PortalinmobiliarioUpo/Controladores/AlertasController.php';
         include_once '../PortalinmobiliarioUpo/Controladores/FavoritosController.php';

@@ -9,7 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
         <?php
-        include_once '../header.php';
+        include_once '../PortalinmobiliariaUPO/Vistas/header.php';
         ?>
     </head>
     <body>
