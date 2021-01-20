@@ -19,7 +19,7 @@ and open the template in the editor.
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
-            } else {
+            } else {        
                 no_sesion_iniciada();
             }
             ?>
