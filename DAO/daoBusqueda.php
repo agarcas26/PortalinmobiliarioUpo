@@ -17,4 +17,8 @@ class daoBusqueda{
         cerrar_conexion();
         $this->conexion = null;
     }
+    
+    function listar_busquedas(){
+        
+    }
 }
