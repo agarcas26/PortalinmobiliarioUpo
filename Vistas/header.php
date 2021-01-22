@@ -11,6 +11,7 @@ function sesion_iniciada() {
     . "<a href='../Vistas/perfil.php'>Mi perfil</a>"
     . "<a href='../Vistas/mis_anuncios.php'>Mi anuncios</a>"
     . "</nav>"
+    ."<br>"
     . "<a href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
@@ -19,6 +20,7 @@ function no_sesion_iniciada() {
     . "<a href='../Vistas/login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
     . "<a href='../Vistas/registro.php'>¡Regístrate gratis!</a>"
     . "</nav>"
+    ."<br>"
     ."<a href='../Vistas/index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
