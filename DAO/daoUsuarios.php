@@ -7,12 +7,14 @@ class daoUsuario {
     private $conexion;
 
     function __construct() {
-        $this->conexion = establecer_conexion();
+        $conn = new Conexion();
+        $this->conexion = $conn->establecer_conexion();
     }
 
-    function __destruct() {
+    function destruct() {
+        $conn = new Conexion();
         $this->conexion = null;
-        cerrar_conexion();
+        $conn->cerrar_conexion();
     }
 
     function leer_usuarios() {

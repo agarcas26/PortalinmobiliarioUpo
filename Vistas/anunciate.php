@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Publica ya tu anuncio</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
         ?>
@@ -20,7 +22,7 @@
         </header>
         <main>
             <?php
-            if ($_POST['guardar']) {
+            if (!isset($_POST['guardar'])) {
                 ?>
                 <form>
                     <button>Añade tus fotos</button>
