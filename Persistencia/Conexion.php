@@ -21,10 +21,10 @@ class Conexion {
 
         $this->setConexion(mysqli_connect($host, $user, $pwd, $db_name, $port));
 
-        if (!$this->getConexion()) {
-            die("Ha habido un error con la conexión " . mysqli_error($this->getConexion()));
+        if (!$this->conexion) {
+            die("Ha habido un error con la conexión " . mysqli_error($this->conexion));
         } else {
-            return $this->getConexion();
+            return $this->conexion;
         }
     }
 
