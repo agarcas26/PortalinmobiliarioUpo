@@ -7,7 +7,6 @@ if (isset($_POST['cuadricula'])) {
     mostrarVistaCuadricula();
 }
 
-if(isset($_POST['']))
 function mostrarVistaLista() {
     echo '<tr>' + '<a href=""> <!-- ENLACE AL ANUNCIO -->' + '<td></td> <!-- FOTO -->' + '<td>' + '<span>' + ' <h4>€/mes</h4>' + '<p>num hab. num baños. m2</p>' + '<p>Tipo inmubele - direccion</p>' + ' <p>descripcion</p>' + '</span>' + ' <button id = "contactar" onclick = "contactar()">Contactar</button>' + '</td>' + '</a >' + '</tr>';
 }
