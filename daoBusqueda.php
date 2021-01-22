@@ -6,3 +6,15 @@
  * and open the template in the editor.
  */
 
+class daoBusqueda{
+    private $conexion;
+    
+    function __construct($conexion) {
+        $this->conexion = establecer_conexion();
+    }
+    
+    function __destruct() {
+        cerrar_conexion();
+        $this->conexion = null;
+    }
+}
