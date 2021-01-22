@@ -21,15 +21,17 @@ class daoinmueble {
         $cp = $objInmueble->getCp();
         $nombre_via = $objInmueble->getNombre_via();
         $tipo_via = $objInmueble->getTipo_via();
-        $num_habitaciones = $objInmueble->getNum_habitaciones();
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
+        $nombre_localidad = $objInmueble->getNombre_localidad();
+        $nombre_provincia = $objInmueble->getNombre_provincia();
         $num_banyos = $objInmueble->getNum_banyos();
         $cocina = $objInmueble->getCocina();
-        $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $num_plantas = $objInmueble->getNum_plantas();
         $planta = $objInmueble->getPlanta();
-        
+        $metros = $objInmueble->getMetros();
+        $tipo_inmueble = $objInmueble->getTipo_inmueble();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = "INSERT INTO inmueble values('$numero','$cp','$nombre_via','$tipo_via','$num_habitaciones','$num_banyos','$cocina','$tipo_inmueble','$num_plantas','$planta')";
+        $sql = "INSERT INTO inmueble values('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$cocina','$num_plantas','$planta','$metros','$tipo_inmueble')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -38,27 +40,29 @@ class daoinmueble {
         mysqli_close($this->conn);
     }
 
-  
     public function read($objInmueble) {
-        $usuario_pk = $objInmueble->getUsuario_pk();
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
 
-        $sql = "SELECT * FROM inmueble WHERE usuario_pk='$usuario_pk'";
+        $sql = "SELECT * FROM inmueble WHERE nombre_usuario_duenyos='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conn->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
             return false;
         } else {
             $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-            $objInmueble->setDireccion($arrayAux["direccion"]);
-            $objInmueble->setUsuario_pk($arrayAux["usuario_pk"]);
-            $objInmueble->setResenyas_usuarios($arrayAux["resenyas_usuarios"]);
-            $objInmueble->setNum_habitaciones($arrayAux["num_habitaciones"]);
+            $objInmueble->setNumero($arrayAux["numero"]);
+            $objInmueble->setCp($arrayAux["cp"]);
+            $objInmueble->setNombre_via($arrayAux["nombre_via"]);
+            $objInmueble->setTipo_via($arrayAux["tipo_via"]);
+            $objInmueble->setNombre_usuario_duenyos($arrayAux["nombre_usuario_duenyos"]);
+            $objInmueble->setNombre_localidad($arrayAux["nombre_localidad"]);
+            $objInmueble->setNombre_provincia($arrayAux["nombre_provincia"]);
             $objInmueble->setNum_banyos($arrayAux["num_banyos"]);
             $objInmueble->setCocina($arrayAux["cocina"]);
-            $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
             $objInmueble->setNum_plantas($arrayAux["num_plantas"]);
             $objInmueble->setPlanta($arrayAux["planta"]);
-            $objInmueble->setAscensor($arrayAux["ascensor"]);
+            $objInmueble->setMetros($arrayAux["metros"]);
+            $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
             return $objInmueble;
         }
         mysqli_close($this->conn);
@@ -78,18 +82,24 @@ class daoinmueble {
     }
 
     public function modificar($objInmueble) {
-        $direccion = $objInmueble->getDireccion();
-        $usuario_pk = $objInmueble->getUsuario_pk();
-        $resenyas_usuarios = $objInmueble->getResenyas_usuarios();
-        $num_habitaciones = $objInmueble->getNum_habitaciones();
+        $numero = $objInmueble->getNumero();
+        $cp = $objInmueble->getCp();
+        $nombre_via = $objInmueble->getNombre_via();
+        $tipo_via = $objInmueble->getTipo_via();
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
+        $nombre_localidad = $objInmueble->getNombre_localidad();
+        $nombre_provincia = $objInmueble->getNombre_provincia();
         $num_banyos = $objInmueble->getNum_banyos();
         $cocina = $objInmueble->getCocina();
-        $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $num_plantas = $objInmueble->getNum_plantas();
         $planta = $objInmueble->getPlanta();
-        $ascensor = $objInmueble->getAscensor();
+        $metros = $objInmueble->getMetros();
+        $tipo_inmueble = $objInmueble->getTipo_inmueble();
 
-        $sql = "UPDATE inmueble SET direccion='$direccion',usuario_pk='$usuario_pk',resenyas_usuarios='$resenyas_usuarios',num_habitaciones='$num_habitaciones',num_banyos='$num_banyos',cocina='$cocina',tipo_inmueble='$tipo_inmueble',num_plantas='$num_plantas',planta='$planta',ascensor='$ascensor' WHERE direccion='$direccion'";
+        $sql = "UPDATE inmueble SET nombre_usuario_duenyos='$nombre_usuario_duenyos',nombre_localidad='$nombre_localidad',"
+                . "nombre_provincia='$nombre_provincia',num_banyos='$num_banyos',"
+                . "cocina='$cocina',num_plantas='$num_plantas',planta='$planta',metros='$metros',tipo_inmueble='$tipo_inmueble' "
+                . "WHERE numero='$numero',cp='$cp',nombre_via='$nombre_via',tipo_via='$tipo_via'";
 
         if (!$this->conn->query($sql)) {
             return false;
