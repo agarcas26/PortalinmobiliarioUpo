@@ -42,9 +42,9 @@ class daoUsuario {
         $result = mysqli_query($conexion, $sentence);
         $enc = false;
 
-        while (!$enc && mysqli_fetch_array($listado_usuarios)) {
-            if ($listado_usuarios[0] == $usuario) {
-                $usuario = $listado_usuarios;
+        while (!$enc && mysqli_fetch_array($result)) {
+            if ($result[0] == $usuario) {
+                $usuario = $result;
                 $enc = true;
             }
         }
