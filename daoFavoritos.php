@@ -6,8 +6,3 @@
  * and open the template in the editor.
  */
 
-include_once '../DAO/daoFavoritos';
-
-function get_favoritos_usuario(){
-    return get_favoritos();
-}

@@ -15,6 +15,11 @@
                 <aside>
                     <?php aside_sesion_iniciada(); ?>
                 </aside>
+                <article class="">
+                    <section>
+                        
+                    </section>
+                </article>
             </main>
         </body>
           <?php
