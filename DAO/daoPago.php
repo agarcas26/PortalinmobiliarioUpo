@@ -1,18 +1,32 @@
 <?php
+include_once '../Persistencia/Conexion.php';
 
-function listar_pagos(){
+class daoPago {
+    private $conexion;
     
-    $sentence = "SELECT * FROM `pagos`";
-    $result = mysqli_query($conexion, $sentence);
+    function __construct(){
+        $this->conexion = establecer_conexion();
+    }
     
-    return $result;
-}
+    function __destruct() {
+        $this->conexion = null;
+        cerrar_conexion();
+    }
 
-function listar_pagos_usuario($nombre_usuario){
-    
-}
+    function listar_pagos() {
 
-function crear_pago(){
-    
-    
+        $sentence = "SELECT * FROM `pagos`";
+        $result = mysqli_query($conexion, $sentence);
+
+        return $result;
+    }
+
+    function listar_pagos_usuario($nombre_usuario) {
+        
+    }
+
+    function crear_pago() {
+        
+    }
+
 }
