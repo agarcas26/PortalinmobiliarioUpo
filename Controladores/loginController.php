@@ -19,15 +19,15 @@ if (isset($_POST['registro'])) {
 }
 
 function controllerInicioSesion($nombre_usuario, $pass) {
-    if (preg_match($pattern, $nombre_usuario) && preg_match($pattern, $pass)) {
+    if (preg_match("\D[A-Za-zÁÉÍÓÚáéíóú]{3}", $nombre_usuario) && preg_match("\D[A-Za-zÁÉÍÓÚáéíóú]{3}", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
         $usuario = getUsuarioByUsuario($nombre_usuario);
         if ($usuario.get_contrasenya_user() == $pass) {
-            header("Location: index.php");
+            return true;
         }
     } else {
-        return "Introduzca unos datos válidos";
+        return false;
     }
 }
