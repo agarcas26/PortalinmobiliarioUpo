@@ -27,7 +27,7 @@
             <?php
             if (!isset($_POST['registro']) && !isset($_POST['entrar'])) {
                 ?>
-                <form action="loginController.php" method="post">
+                <form action="../Controladores/loginController.php" method="post">
                     <div class="usuario">
                         <label class="label" for="fijo">Usuario: </label>
                         <input type="text" id="user" name="user" class="form-text">
