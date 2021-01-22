@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <title></title>
         <?php
         include_once '../Vistas/header.php';
@@ -21,7 +23,7 @@
         <main>
             <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
             <input type="text" id="user" name="user" class="form-text">
-            <!-- OPCION LISTA / CUADRICULA -->
+            
             <form action="busquedaUsuarioController_admin.php" method="GET">
                 <input type="submit" name="busuario" value="Buscar" />
             </form>

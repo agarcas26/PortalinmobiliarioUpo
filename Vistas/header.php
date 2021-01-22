@@ -7,7 +7,7 @@
  */
 
 function sesion_iniciada() {
-    echo "<img src='src' alt='Logo'/>"
+    echo "<img src='../img/logo.png' alt='Logo'/>"
     . "<a href='index.php'>Inmobiliaria UPO</a>"
     . "<nav class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/perfil.php'>Mi perfil</a>"
@@ -16,7 +16,7 @@ function sesion_iniciada() {
 }
 
 function no_sesion_iniciada() {
-    echo "<img src='src' alt='Logo'/>"
+    echo "<img src='../img/logo.png' alt='Logo'/>"
     . "<a href='../Vistas/index.php'>Inmobiliaria UPO</a>"
     . "<nav class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
