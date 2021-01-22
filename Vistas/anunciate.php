@@ -35,7 +35,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select multiple id="tipo_inmueble" type="picker" label="Tipo de inmueble" display="" aria-invalid="false" class="dropdown-menu">
+                                <select id="tipo_inmueble" type="picker" label="Tipo de inmueble" display="" aria-invalid="false" class="dropdown-menu">
                                     <option value="casa">Casa</option>
                                     <option value="atico">Ático</option>
                                     <option value="duplex">Dúplex</option>
