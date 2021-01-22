@@ -3,7 +3,6 @@
     <head>
         <title>Iniciar sesión</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
-        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         session_start();
         include_once '../Controladores/loginController.php';
@@ -22,7 +21,7 @@
             }
             ?>
         </header>
-        <main class="align-self-xl-center">
+        <main>
             <h2>Iniciar sesion</h2>
             <?php
             if (!isset($_POST['registro']) && !isset($_POST['entrar'])) {
@@ -30,17 +29,17 @@
                 <form action="loginController.php" method="post">
                     <div class="usuario">
                         <label class="label" for="fijo">Usuario: </label>
-                        <input type="text" id="user" name="user" class="form-text">
+                        <input type="text" id="user" name="user">
                     </div> 
                     <div class="contraseña">
                         <label class="label" for="fijo">Contraseña:  </label>
-                        <input type="password" id="pass" name="pass" class="form-text">
+                        <input type="password" id="pass" name="pass">
                     </div> 
                     <div class="entrar">
-                        <input type="submit" name="entrar" value="Iniciar sesión" class="form-text" />
+                        <input type="submit" name="entrar" value="entrar" />
                     </div> 
                     <div class="registro">
-                        <input type="submit" name="registro" value="Registro"/>
+                        <input type="submit" name="registro" value="registro" />
                     </div>
                 </form>
                 <?php

@@ -9,10 +9,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
-        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
-        include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
@@ -32,33 +30,22 @@ and open the template in the editor.
             ?>
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
-                    <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
-                        <select style="float: left;" type="multiple" class="dropdown-item" id="filtros">
+                    <form action="../Controladores/indexController.php" method="POST">
+                        <select type="multiple" id="filtros">
                             <option>Compra</option>
                             <option>Alquiler</option>
                             <option>Vacacional</option>
                             <option>Apartamento</option>
                         </select>
-                        <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+                        <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
                         <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
                     </form>
                 </nav>
-                <aside id="ultimas_busquedas">                    
-                </aside>
-                <?php if (isset($_SESSION['usuario_particular'])) { ?>
-                    <h1>Tus últimas búsquedas</h1>
-                    <ul class = "list-inline mb-0">
-                        <?php
-                        get_ultimas_busquedas_usuario();
-                        ?>
+                <aside id="ultimas_busquedas">
+                    <!-- Insertar galería de fotos de las últimas búsquedas -->
+                    <ul class="list-inline mb-0">
                     </ul>
-                <?php } ?>
-                <h3>Lo más buscado</h3>
-                <ul class="list-inline mb-0">
-                    <?php
-                    get_ultimas_busquedas();
-                    ?>
-                </ul>
+                </aside>
                 <article>
                 </article>
             </main>
