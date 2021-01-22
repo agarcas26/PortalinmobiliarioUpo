@@ -3,7 +3,17 @@
 include_once '../Persistencia/Conexion.php';
 
 class daoAdministradores {
+    private $conexion;
+    
+    function __construct() {
+        $this->conexion = establecer_conexion();
+    }
 
+    function __destruct() {
+        $this->conexion = null;
+        establecer_conexion();
+    }
+    
     function listar_administradores() {
         $sentence = "SELECT * FROM `administradores`";
         $result = mysqli_query($conexion, $sentence);
