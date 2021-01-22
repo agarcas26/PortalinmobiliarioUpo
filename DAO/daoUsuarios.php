@@ -22,7 +22,7 @@ class daoUsuario {
         return $result;
     }
 
-    function crear_usuario($nombre_usuario, $contrasenya, $usuario, $email, $moroso, $particular_profesional) {
+    function crear_usuario($nombre_usuario, $contrasenya, $usuario, $moroso) {
         $sentence = "INSERT INTO `usuarios` (`usuario`,`contrasenya`) VALUES ()";
         $result = mysqli_query($conexion, $sentence);
     }
@@ -38,12 +38,13 @@ class daoUsuario {
     }
 
     function get_usuario_by_nombre_usuario($nombre_usuario) {
-        $listado_usuarios = leer_usuarios();
+        $sentence = "SELECT * FROM `usuarios` WHERE `usuarios`.`nombre_usuario`='" . $nombre_usuario . "';";
+        $result = mysqli_query($conexion, $sentence);
         $enc = false;
 
-        while (!$enc && mysqli_fetch_array($listado_usuarios)) {
-            if ($listado_usuarios[0] == $usuario) {
-                $usuario = $listado_usuarios;
+        while (!$enc && mysqli_fetch_array($result)) {
+            if ($result[0] == $usuario) {
+                $usuario = $result;
                 $enc = true;
             }
         }
