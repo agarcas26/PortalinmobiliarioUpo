@@ -3,12 +3,15 @@
 include_once '../Controladores/UsuarioController.php';
 
 if (isset($_POST['entrar'])) {
+    $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
         $_SESSION['usuario'] = $_POST['user'];
         header("Location: index.php");
     } else {
         echo controllerInicioSesion($_POST['user'], $_POST['pass']);
     }
+    
+    $dao->destruct();
 }
 
 if (isset($_POST['registro'])) {
