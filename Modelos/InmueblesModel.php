@@ -12,11 +12,12 @@
  * @author agarc
  */
 class inmueble {
+
     private $numero;
     private $cp;
     private $nombre_via;
     private $tipo_via;
-    private $nombre_usuario_dueño;
+    private $nombre_usuario_duenyo;
     private $nombre_localidad;
     private $nombre_provincia;
     private $num_banyos;
@@ -47,8 +48,8 @@ class inmueble {
         return $this->tipo_via;
     }
 
-    function getNombre_usuario() {
-        return $this->nombre_usuario;
+    function getNombre_usuario_duenyo() {
+        return $this->nombre_usuario_duenyo;
     }
 
     function getNombre_localidad() {
@@ -83,8 +84,8 @@ class inmueble {
         return $this->metros;
     }
 
-    function getTipo_inmuebles() {
-        return $this->tipo_inmuebles;
+    function getTipo_inmueble() {
+        return $this->tipo_inmueble;
     }
 
     function setNumero($numero) {
@@ -103,8 +104,8 @@ class inmueble {
         $this->tipo_via = $tipo_via;
     }
 
-    function setNombre_usuario($nombre_usuario) {
-        $this->nombre_usuario = $nombre_usuario;
+    function setNombre_usuario_duenyo($nombre_usuario_duenyo) {
+        $this->nombre_usuario_duenyo = $nombre_usuario_duenyo;
     }
 
     function setNombre_localidad($nombre_localidad) {
@@ -139,14 +140,12 @@ class inmueble {
         $this->metros = $metros;
     }
 
-    function setTipo_inmuebles($tipo_inmueble) {
-        $this->tipo_inmuebles = $tipo_inmueble;
+    function setTipo_inmueble($tipo_inmueble) {
+        $this->tipo_inmueble = $tipo_inmueble;
     }
 
     public function __toString() {
         
     }
 
-    
-    
 }
