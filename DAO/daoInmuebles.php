@@ -1,9 +1,9 @@
 <?php
 
 require_once '../Persistencia/Conexion.php';
-require_once '../Modelos/anuncios.php';
-require_once '../Modelos/usuario.php';
-require_once '../Modelos/inmuebles.php';
+require_once '../Modelos/AnunciosModel.php';
+require_once '../Modelos/UsuarioModel.php';
+require_once '../Modelos/InmueblesModel.php';
 
 class daoinmueble {
 
@@ -17,18 +17,19 @@ class daoinmueble {
     }
 
     public function insertar($objInmueble) {
-        $direccion = $objInmueble->getDireccion();
-        $usuario_pk = $objInmueble->getUsuario_pk();
-        $resenyas_usuarios = $objInmueble->getResenyas_usuarios();
+        $numero = $objInmueble->getNumero();
+        $cp = $objInmueble->getCp();
+        $nombre_via = $objInmueble->getNombre_via();
+        $tipo_via = $objInmueble->getTipo_via();
         $num_habitaciones = $objInmueble->getNum_habitaciones();
         $num_banyos = $objInmueble->getNum_banyos();
         $cocina = $objInmueble->getCocina();
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $num_plantas = $objInmueble->getNum_plantas();
         $planta = $objInmueble->getPlanta();
-        $ascensor = $objInmueble->getAscensor();
+        
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = "INSERT INTO inmuebles values('$direccion','$usuario_pk','$resenyas_usuarios','$num_habitaciones','$num_banyos','$cocina','$tipo_inmueble','$num_plantas','$planta','$ascensor')";
+        $sql = "INSERT INTO inmueble values('$numero','$cp','$nombre_via','$tipo_via','$num_habitaciones','$num_banyos','$cocina','$tipo_inmueble','$num_plantas','$planta')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -37,10 +38,11 @@ class daoinmueble {
         mysqli_close($this->conn);
     }
 
+  
     public function read($objInmueble) {
         $usuario_pk = $objInmueble->getUsuario_pk();
 
-        $sql = "SELECT * FROM inmuebles WHERE usuario_pk='$usuario_pk'";
+        $sql = "SELECT * FROM inmueble WHERE usuario_pk='$usuario_pk'";
         $objMySqlLi = $this->conn->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
@@ -65,7 +67,7 @@ class daoinmueble {
     public function eliminar($objInmueble) {
         $direccion = $objInmueble->getDireccion();
 
-        $sql = "DELETE FROM inmuebles WHERE direccion='$direccion'";
+        $sql = "DELETE FROM inmueble WHERE direccion='$direccion'";
 
         if (!$this->conn->query($sql)) {
             return false;
@@ -87,7 +89,7 @@ class daoinmueble {
         $planta = $objInmueble->getPlanta();
         $ascensor = $objInmueble->getAscensor();
 
-        $sql = "UPDATE anuncio SET direccion='$direccion',usuario_pk='$usuario_pk',resenyas_usuarios='$resenyas_usuarios',num_habitaciones='$num_habitaciones',num_banyos='$num_banyos',cocina='$cocina',tipo_inmueble='$tipo_inmueble',num_plantas='$num_plantas',planta='$planta',ascensor='$ascensor' WHERE direccion='$direccion'";
+        $sql = "UPDATE inmueble SET direccion='$direccion',usuario_pk='$usuario_pk',resenyas_usuarios='$resenyas_usuarios',num_habitaciones='$num_habitaciones',num_banyos='$num_banyos',cocina='$cocina',tipo_inmueble='$tipo_inmueble',num_plantas='$num_plantas',planta='$planta',ascensor='$ascensor' WHERE direccion='$direccion'";
 
         if (!$this->conn->query($sql)) {
             return false;
@@ -98,7 +100,7 @@ class daoinmueble {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM inmuebles";
+        $sql = "SELECT * FROM inmueble";
         $resultado = $this->conn->query($sql);
         $arrayInmuebles = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
