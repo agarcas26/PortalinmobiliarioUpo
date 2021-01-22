@@ -23,8 +23,7 @@
             <input type="text" id="user" name="user" class="form-text">
             <!-- OPCION LISTA / CUADRICULA -->
             <form action="busquedaUsuarioController_admin.php" method="GET">
-                <input type="submit" value="Lista" />
-                <input type="submit" value="Cuadricula" />
+                <input type="submit" name="busuario" value="Buscar" />
             </form>
 
             <!-- ANUNCIOS -->
