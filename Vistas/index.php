@@ -12,6 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
@@ -30,38 +31,34 @@ and open the template in the editor.
         if (!isset($_POST['realizar_busqueda'])) {
             ?>
             <main>
-                <nav style="display: inline-block" id="buscador" class="navbar navbar-light bg-light static-top">
-                    <form action="../Controladores/indexController.php" method="POST">
-                        <select type="multiple" class="dropdown-item" id="filtros">
+                <nav id="buscador" class="navbar navbar-light bg-light static-top">
+                    <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
+                        <select style="float: left;" type="multiple" class="dropdown-item" id="filtros">
                             <option>Compra</option>
                             <option>Alquiler</option>
                             <option>Vacacional</option>
                             <option>Apartamento</option>
                         </select>
-                        <input type="text" style="width: 250%" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+                        <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
                         <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
                     </form>
                 </nav>
                 <aside id="ultimas_busquedas">                    
                 </aside>
-                <h1>Tus últimas búsquedas</h1>
-                    <ul class="list-inline mb-0">
-                        <?php 
-                        $ultimas_busquedas = get_ultimas_busquedas_usuario();
-                        while(mysqli_fetch_row($ultimas_busquedas)){
-                            echo '<li>'.'</li>';
-                        }
+                <?php if (isset($_SESSION['usuario_particular'])) { ?>
+                    <h1>Tus últimas búsquedas</h1>
+                    <ul class = "list-inline mb-0">
+                        <?php
+                        get_ultimas_busquedas_usuario();
                         ?>
                     </ul>
-                    <h1>Lo más buscado</h1>
-                    <ul class="list-inline mb-0">
-                        <?php 
-                        $ultimas_busquedas = get_ultimas_busquedas();
-                        while(mysqli_fetch_row($ultimas_busquedas)){
-                            echo '<li>'.'</li>';
-                        }
-                        ?>
-                    </ul>
+                <?php } ?>
+                <h3>Lo más buscado</h3>
+                <ul class="list-inline mb-0">
+                    <?php
+                    get_ultimas_busquedas();
+                    ?>
+                </ul>
                 <article>
                 </article>
             </main>
