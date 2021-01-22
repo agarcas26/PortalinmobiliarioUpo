@@ -20,13 +20,9 @@
         </header>
         <main>
             <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
-            <select id="ordenar_por">
-                <option value="fecha">Los más actualizados</option>
-                <option value="valoracion">Mejor valorados</option>
-                <option value="baratos">Más baratos primero</option>
-            </select>
+            <input type="text" id="user" name="user" class="form-text">
             <!-- OPCION LISTA / CUADRICULA -->
-            <form action="busquedaController.php" method="GET">
+            <form action="busquedaUsuarioController_admin.php" method="GET">
                 <input type="submit" value="Lista" />
                 <input type="submit" value="Cuadricula" />
             </form>
