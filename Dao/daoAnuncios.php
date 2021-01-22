@@ -21,11 +21,16 @@ class daoanuncios {
     public function insertar($objAnuncio) {
 //paso del objeto anuncio a las variables individuales
 //        $idAnuncio = $objAnuncio->getIdAnuncio();
-        $direccion = $objAnuncio->getDireccion();
-        $precio = $objAnuncio->getPrecio();
-        $usuario_pk = $objAnuncio->getUsuario_pk();
 
-        $sql = "INSERT INTO anuncios values(null,'$direccion','$precio','$usuario_pk')";
+        $nombre_via = $objAnuncio->getNombre_via();
+        $tipo_via = $objAnuncio->getTipo_via();
+        $cp = $objAnuncio->getCp();
+        $numero = $objAnuncio->getNumero();
+        $precio = $objAnuncio->getPrecio();
+        $fecha_anuncio = $objAnuncio->getFecha_anuncio();
+        $nombre_usuario_publica = $objAnuncio->getNombre_usuario_publica();
+        $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
+        $sql = "INSERT INTO anuncio values(null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio',$fecha_anuncio')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -37,7 +42,7 @@ class daoanuncios {
 //leer anuncio por id
     public function read($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
-        $sql = "SELECT * FROM anuncios WHERE idAnuncio='$idAnuncio'";
+        $sql = "SELECT * FROM anuncio WHERE idAnuncio='$idAnuncio'";
         $objMySqlLi = $this->conn->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
@@ -45,9 +50,14 @@ class daoanuncios {
         } else {
             $arrayAux = mysqli_fetch_assoc($objMySqlLi);
             $objAnuncio->setIdAnuncio($arrayAux["idAnuncio"]);
-            $objAnuncio->setDireccion($arrayAux["direccion"]);
+            $objAnuncio->setNombre_via($arrayAux["nombre_via"]);
+            $objAnuncio->setTipo_via($arrayAux["tipo_via"]);
+            $objAnuncio->setCp($arrayAux["cp"]);
+            $objAnuncio->setNumero($arrayAux["numero"]);
+            $objAnuncio->setFecha_anuncio($arrayAux["fecha_anuncio"]);
             $objAnuncio->setPrecio($arrayAux["precio"]);
-            $objAnuncio->setUsuario_pk($arrayAux["usuario_pk"]);
+            $objAnuncio->setNombre_usuario_publica($arrayAux["nombre_usuario_publica"]);
+            $objAnuncio->setNombre_usuario_anuncio($arrayAux["nombre_usuario_anuncio"]);
 
             return $objAnuncio;
         }
@@ -57,7 +67,7 @@ class daoanuncios {
     public function eliminar($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
 
-        $sql = "DELETE FROM anuncios WHERE idAnuncio='$idAnuncio'";
+        $sql = "DELETE FROM anuncio WHERE idAnuncio='$idAnuncio'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -82,7 +92,7 @@ class daoanuncios {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM anuncios";
+        $sql = "SELECT * FROM anuncio";
         $resultado = $this->conn->query($sql);
 
         $arrayAnuncios = array();
@@ -94,10 +104,15 @@ class daoanuncios {
     }
 
     function listar_anuncios_usuario($usuario) {
-        $sentence = "SELECT * FROM `anuncios` WHERE `nombre_usuario_anuncio`='" + $usuario + "';";
-        $result = mysqli_query($conexion, $sentence);
-        
-        return $result;
+        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" + $usuario + "';";
+        $resultado = $this->conn->query($sql);
+
+        $arrayAnuncios = array();
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            array_push($arrayAnuncios, $fila);
+        }
+        mysqli_close($this->conn);
+        return $arrayAnuncios;
     }
 
 }
