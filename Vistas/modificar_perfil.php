@@ -71,13 +71,7 @@
                                 <input type="password" name="pass" value="">
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
-                            <?php
-                        } else {
-                            ?>
-
-                            <?php
-                        }
-                        ?>
+                        <?php } ?>
                         <td>
                             <label>Nueva contraseña: </label>
                             <input type="password" name="nueva_pass" value="">
