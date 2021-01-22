@@ -16,14 +16,14 @@ function mostrarVistaCuadricula() {
 }
 
 function get_ultimas_busquedas() {
-    $ultimas_busquedas = get_ultimas_busquedas();
+    $ultimas_busquedas = listar_busquedas();
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
 }
 
 function get_ultimas_busquedas_usuario() {
-    $ultimas_busquedas = get_ultimas_busquedas_usuario();
+    $ultimas_busquedas = listar_busquedas_usuario();
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
