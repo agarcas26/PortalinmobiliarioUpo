@@ -9,6 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Bienvenido, ¿qué buscas?</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
         ?>
@@ -31,13 +32,13 @@ and open the template in the editor.
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
                     <form action="../Controladores/indexController.php" method="POST">
-                        <select type="multiple" id="filtros">
+                        <select type="multiple" class="dropdown-divider" id="filtros">
                             <option>Compra</option>
                             <option>Alquiler</option>
                             <option>Vacacional</option>
                             <option>Apartamento</option>
                         </select>
-                        <input type="text" id="barra_buscador" name="barra_buscador" value="" maxlength="100" />
+                        <input type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
                         <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
                     </form>
                 </nav>
