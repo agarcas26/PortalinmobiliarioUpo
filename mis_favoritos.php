@@ -4,6 +4,7 @@
         <title>Mis favoritos</title> <?php
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
+        include_once '../Controladores/FavoritosController.php';
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>
@@ -16,15 +17,9 @@
                 </aside>
                 <article>
                     <section>
-                        <table>
+                        <table class="table-borderless">
                             <?php
-                            $favoritos = get_favoritos_usuario();
-
-                            while (mysqli_fetch_array($favoritos)) {
-                                echo '<tr>';
-                                echo '<td>' . '</td>';
-                                echo '</tr>';
-                            }
+                            get_favoritos_usuario();
                             ?>
                         </table>
                     </section>
