@@ -12,7 +12,7 @@ class daoinmueble {
     public $inmueble;
 
     function __construct() {
-        $this->conObj = new conn();
+        $this->conObj = new Conexion();
         $this->conn = $this->conObj->establecer_conexion();
     }
 
