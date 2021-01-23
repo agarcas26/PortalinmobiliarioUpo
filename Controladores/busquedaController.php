@@ -2,6 +2,7 @@
 
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/AnunciosController.php';
+include_once '../Modelos/AnunciosModel.php';
 
 if (isset($_POST['lista'])) {
     mostrarVistaLista();
@@ -40,6 +41,29 @@ function get_ultimas_busquedas_usuario() {
     }
 }
 
-function get_resultados_busqueda(){
-   
+function print_resultados_busqueda(){
+   $barra_busqueda=$_POST["barra_busqueda"]; 
+   $anuncios[] = anuncios_barra_busqueda($barra_busqueda);
+   echo"<tr>";
+   for($i=0; $i < siceof($anuncios);$i++){
+       
+       echo "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>"
+               . "<td>".anuncios[i]."</td>";
+   }
+   echo "</tr>";
 }
+private $id_anuncio;
+    private $precio;
+    private $nombre_via;
+    private $tipo_via;
+    private $cp;
+    private $numero;
+    private $nombre_usuario_publica;
+    private $nombre_usuario_anuncio;
+    private $fecha_anuncio;
