@@ -7,7 +7,7 @@ if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
         $_SESSION['usuario'] = $_POST['user'];
-        header("Location: index.php");
+        header("Location: ../Vistas/index.php");
     } else {
         echo controllerInicioSesion($_POST['user'], $_POST['pass']);
     }
