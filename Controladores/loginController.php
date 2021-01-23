@@ -8,6 +8,7 @@ include_once '../DAO/daoUsuario.php';
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
+        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $_SESSION['usuario'] = $_POST['user'];
         header("Location: ../Vistas/index.php");
     } else {
