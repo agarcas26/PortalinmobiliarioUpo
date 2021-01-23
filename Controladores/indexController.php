@@ -5,7 +5,7 @@ include_once '../Controladores/AnuncioController.php';
 if (isset($_POST['realizar_busqueda'])) {
     $palabras_clave = split(' ', $_POST['barra_buscador']);
 
-    foreach ($_POST['filtros'] as $filtro) {
+    foreach ($_POST['tipo_oferta'] as $filtro) {
         $palabras_clave .= $filtro;
     }
 
