@@ -3,11 +3,12 @@
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 
+
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
         $_SESSION['usuario'] = $_POST['user'];
-        header("Location: index.php");
+        header("Location: ../Vistas/index.php");
     } else {
         echo controllerInicioSesion($_POST['user'], $_POST['pass']);
     }
@@ -27,6 +28,7 @@ function controllerInicioSesion($nombre_usuario, $pass) {
         $usuario = getUsuarioByUsuario($nombre_usuario);
         if ($usuario.get_contrasenya_user() == $pass) {
             return true;
+       
         }
     } else {
         return false;
