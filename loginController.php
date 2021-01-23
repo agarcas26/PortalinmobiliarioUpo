@@ -2,18 +2,14 @@
 
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
-include_once '../DAO/daoUsuarios.php';
-
-
 
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
-        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $_SESSION['usuario'] = $_POST['user'];
-        header("Location: ../Vistas/index.php");
+        header("Location: index.php");
     } else {
-        header("Location: ../Vistas/login.php");
+        echo controllerInicioSesion($_POST['user'], $_POST['pass']);
     }
     
     $dao->destruct();
@@ -31,7 +27,6 @@ function controllerInicioSesion($nombre_usuario, $pass) {
         $usuario = getUsuarioByUsuario($nombre_usuario);
         if ($usuario->get_contrasenya_user() == $pass) {
             return true;
-       
         }
     } else {
         return false;
