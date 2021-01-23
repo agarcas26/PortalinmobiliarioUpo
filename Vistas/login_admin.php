@@ -17,6 +17,13 @@
             } else {
                 no_sesion_iniciada();
             }
+
+            if (isset($_SESSION['usuario_particular'])) {
+                unset($_SESSION['usuario_particular']);
+            }
+            if (isset($_SESSION['usuario_profesional'])) {
+                unset($_SESSION['usuario_particular']);
+            }
             ?>
         </header>
         <h2>Iniciar sesion</h2>
