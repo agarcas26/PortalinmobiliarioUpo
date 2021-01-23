@@ -62,6 +62,10 @@ and open the template in the editor.
                             <td><input type="number" id="m2" name="m2" value="Metros cuadrados"></td>
                         </tr>
                         <tr>
+                            <td><label>Anuncios posteriores al...</label></td>
+                            <td><input type="date" id="fecha" name="fecha" value="Fecha"></td>
+                        </tr>
+                        <tr>
                             <td><input type="submit" id="aplicar_filtros" name="aplicar_filtros" value="Aplicar filtros" class="btn-outline-success"></td>
                         </tr>
                     </table>
