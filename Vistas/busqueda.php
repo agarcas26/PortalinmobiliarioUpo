@@ -27,23 +27,67 @@ and open the template in the editor.
             ?>
         </header>
         <main>
-            <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
-            <select id="ordenar_por">
-                <option value="fecha">Los más actualizados</option>
-                <option value="valoracion">Mejor valorados</option>
-                <option value="baratos">Más baratos primero</option>
-            </select>
-            <!-- OPCION LISTA / CUADRICULA -->
-            <form action="busquedaController.php" method="GET">
-                <input type="submit" name="lista" value="Lista" />
-                <input type="submit" name="cuadricula" value="Cuadricula" />
-            </form>
-
-            <!-- ANUNCIOS -->
+            <aside style="position: sticky; top: 20px;">
+                <form method="GET" action="../Controladores/busquedaController.php">
+                    <table class="table-borderless">
+                        <tr>
+                            <td><label>Número de baños</label></td>
+                            <td><input type="number" id="num_banyos" name="num_banyos" value=""></td>
+                        </tr>
+                        <tr>
+                            <td><select class="dropdown-item" id="tipo_inmueble">
+                                    <option value="casa">Casa</option>
+                                    <option value="piso">Piso</option>
+                                    <option value="duplex">Dúplex</option>
+                                    <option value="chalet">Chalet</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><select class="dropdown-item" id="tipo_oferta">
+                                    <option>Compra</option>
+                                    <option>Alquiler</option>
+                                    <option>Vacacional</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label>Precio máximo</label></td>
+                            <td><input type="number" id="precio_max" name="precio_max" value="Precio máximo"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Número de habitaciones</label></td>
+                            <td><input type="number" id="num_hab" name="num_hab" value="Número de habitaciones"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Metros cuadrados</label></td>
+                            <td><input type="number" id="m2" name="m2" value="Metros cuadrados"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" id="aplicar_filtros" name="aplicar_filtros" value="Aplicar filtros" class="btn-outline-success"></td>
+                        </tr>
+                    </table>
+                </form>
+            </aside>
             <article>
+                <section>
+                    <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
+                    <select id="ordenar_por">
+                        <option value="fecha">Los más actualizados</option>
+                        <option value="valoracion">Mejor valorados</option>
+                        <option value="baratos">Más baratos primero</option>
+                    </select>
+                    <!-- OPCION LISTA / CUADRICULA -->
+                    <form style="float: right;" action="busquedaController.php" method="GET">
+                        <input type="submit" name="lista" value="Lista" />
+                        <input type="submit" name="cuadricula" value="Cuadricula" />
+                    </form>
+                </section>
+                <section id="filtros">
+                    <input type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
+                </section>
+
+                <!-- ANUNCIOS -->
                 <table>
                     <?php
-                    
                     ?>
                 </table>
             </article>
