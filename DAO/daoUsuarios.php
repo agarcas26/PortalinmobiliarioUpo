@@ -9,7 +9,11 @@ class daoUsuario {
     private $usuario;
 
     function __construct() {
+<<<<<<< HEAD
         $this->conObj = new Conexin();
+=======
+        $this->conObj = new Conexion();
+>>>>>>> 3eff5bcd31e14542a0f71bbe48703b764f2cbaf0
         $this->conn = $this->conObj->establecer_conexion();
     }
 
