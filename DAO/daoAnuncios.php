@@ -30,7 +30,8 @@ class daoanuncios {
         $fecha_anuncio = $objAnuncio->getFecha_anuncio();
         $nombre_usuario_publica = $objAnuncio->getNombre_usuario_publica();
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
-        $sql = "INSERT INTO anuncio values(null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio',$fecha_anuncio')";
+        $titulo = $objAnuncio->getTitulo();
+        $sql = "INSERT INTO anuncio values(null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio','$fecha_anuncio','$titulo')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -56,6 +57,7 @@ class daoanuncios {
             $objAnuncio->setNumero($arrayAux["numero"]);
             $objAnuncio->setFecha_anuncio($arrayAux["fecha_anuncio"]);
             $objAnuncio->setPrecio($arrayAux["precio"]);
+            $objAnuncio->setTitulo($arrayAux["titulo"]);
             $objAnuncio->setNombre_usuario_publica($arrayAux["nombre_usuario_publica"]);
             $objAnuncio->setNombre_usuario_anuncio($arrayAux["nombre_usuario_anuncio"]);
 
@@ -85,10 +87,10 @@ class daoanuncios {
         $fecha_anuncio = $objAnuncio->getFecha_anuncio();
         $nombre_usuario_publica = $objAnuncio->getNombre_usuario_publica();
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
-
+        $titulo = $objAnuncio->getTitulo();
 
         $sql = "UPDATE anuncio SET nombre_via='$nombre_via',tipo_via='$tipo_via',cp='$cp',numero='$numero',precio='$precio',"
-                . "fecha_anuncio='$fecha_anuncio',nombre_usuario_publica='$nombre_usuario_publica',nombre_usuario_anuncio='$nombre_usuario_anuncio'";
+                . "fecha_anuncio='$fecha_anuncio',nombre_usuario_publica='$nombre_usuario_publica',nombre_usuario_anuncio='$nombre_usuario_anuncio',titulo='$titulo'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
