@@ -8,6 +8,8 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Regístrate</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/registroController.php';
@@ -15,6 +17,15 @@ and open the template in the editor.
     </head>
     <body>
         <header class="masthead text-white text-center">
+            <?php
+            if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
+                sesion_iniciada();
+            } elseif (isset($_SESSION['admin'])) {
+                cabecera_admin();
+            } else {
+                no_sesion_iniciada();
+            }
+            ?>
         </header>
         <main>
             <article>
