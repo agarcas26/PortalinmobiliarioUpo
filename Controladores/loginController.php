@@ -1,6 +1,7 @@
 <?php
 
 include_once '../Controladores/UsuarioController.php';
+include_once '../Modelos/UsuarioModel.php';
 
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
