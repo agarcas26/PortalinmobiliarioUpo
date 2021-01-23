@@ -2,12 +2,12 @@
 
 include_once '../Controladores/UsuarioController.php';
 
-$nombre_usuario = $_POST['nombre_usuario'];
-$usuario = $_POST['usuario'];
-$pass = $_POST['conf_contrasena'];
-$tipo = $_POST['tipo'];
 
 if ($_POST['enviar']) {
+    $nombre_usuario = $_POST['nombre_usuario'];
+    $usuario = $_POST['usuario'];
+    $pass = $_POST['conf_contrasena'];
+    $tipo = $_POST['tipo'];
     registroController($nombre_usuario, $usuario, $pass, $tipo);
 }
 
