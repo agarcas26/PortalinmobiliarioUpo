@@ -106,3 +106,17 @@ function vista_previa_anuncios() {
     $anuncios = $daoanuncios->listar();
     return mysqli_fetch_row($anuncios);
 }
+
+function anuncios_barra_busqueda($barra_busqueda) {
+    $all_anuncios = listAllAnuncios();
+    $anuncios = [];
+    while (mysqli_fetch_array($all_anuncios)) {
+        for ($i = 0; $i < sizeof($all_anuncios); $i++) {
+            if ($all_anuncios[i] == $barra_busqueda) {
+                $anuncios[] = $all_anuncios;
+            }
+        }
+    }
+
+    return $anuncios;
+}
