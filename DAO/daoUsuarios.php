@@ -1,14 +1,16 @@
 <?php
 
 include_once '../Persistencia/Conexion.php';
-
+require_once '../Modelos/UsuarioModel.php';
 class daoUsuario {
 
-    private $conexion;
+    public $conObj;
+    public $conn;
+    private $usuario;
 
     function __construct() {
-        $conn = new Conexion();
-        $this->conexion = $conn->establecer_conexion();
+        $this->conObj = new conn();
+        $this->conn = $this->conObj->establecer_conexion();
     }
 
     function destruct() {
@@ -17,11 +19,25 @@ class daoUsuario {
         $conn->cerrar_conexion();
     }
 
-    function leer_usuarios() {
-        $sentence = "SELECT * FROM `usuarios`";
-        $result = mysqli_query($conexion, $sentence);
+    function leer_usuarios($objUsuario) {
+        $nombre_usuario = $objUsuario->getNombre_usuario();
+        
+        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario='$nombre_usuario'";
+        $objMySqlLi = $this->conn->query($sentence);
+        if($objMySqlLi->num_rows != 1){
+            return false;
+        }else{
+            $arrayAux = mysqli_fetch_assoc($objMySqlLi); 
+            $objUsuario->setNombre_usuario($arrayAux["nombre_usuario"]);
+            $objUsuario->setContrasenya_user($arrayAux["contrasenya_user"]);
+            $objUsuario->setNombre_apellidos($arrayAux["nombre_apellidos"]);
+            $objUsuario->setMoroso($arrayAux["moroso"]);
+            
+            return  $objUsuario;
+        }
+        
 
-        return $result;
+     mysqli_close($this->conn);
     }
 
     function crear_usuario($nombre_usuario, $contrasenya, $usuario, $moroso) {
@@ -52,6 +68,27 @@ class daoUsuario {
         }
 
         return $usuario;
+    }
+
+    function escribirResenyas($objUsuario) {
+        //$id_resenyas = $objUsuario->getId_resenyas();
+        $nombre_usuario = $objUsuario->getNombre_usuario();
+        $cp = $objUsuario->getCp();
+        $nombre_via = $objUsuario->getNombre_via();
+        $tipo_via = $objUsuario->getTipo_via();
+        $numero = $objUsuario->getNumero();
+        $descripcion = $objUsuario->getDescripcion();
+        $fecha_resenya = $objUsuario->getFecha_resenya();
+        $valoracion = $objUsuario->getValoracion();
+
+        $sql = "INSERT INTO resenya values(null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
+
+        if (!$this->conn->query($sql)) {
+            return false;
+        } else {
+            return true;
+        }
+        mysqli_close($this->conn);
     }
 
 }
