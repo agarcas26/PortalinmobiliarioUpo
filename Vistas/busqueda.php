@@ -66,7 +66,7 @@ and open the template in the editor.
                             <td><input type="date" id="fecha" name="fecha" value="Fecha"></td>
                         </tr>
                         <tr>
-                            <td><input type="submit" id="aplicar_filtros" name="aplicar_filtros" value="Aplicar filtros" class="btn-outline-success"></td>
+                            <td><input class="btn btn-primary" type="submit" id="aplicar_filtros" name="aplicar_filtros" value="Aplicar filtros"></td>
                         </tr>
                     </table>
                 </form>
@@ -74,19 +74,21 @@ and open the template in the editor.
             <article>
                 <section>
                     <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
-                    <select id="ordenar_por">
+                    <select class="form-control" id="ordenar_por">
                         <option value="fecha">Los más actualizados</option>
                         <option value="valoracion">Mejor valorados</option>
                         <option value="baratos">Más baratos primero</option>
                     </select>
                     <!-- OPCION LISTA / CUADRICULA -->
                     <form style="float: right;" action="busquedaController.php" method="GET">
-                        <input type="submit" name="lista" value="Lista" />
-                        <input type="submit" name="cuadricula" value="Cuadricula" />
+                        <div class="form-group">
+                        <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
+                        <input class="btn btn-primary" type="submit" name="cuadricula" value="Cuadricula" />
+                        </div>
                     </form>
                 </section>
                 <section id="filtros">
-                    <input type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
+                    <input class="form-control"  type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
                 </section>
 
                 <!-- ANUNCIOS -->

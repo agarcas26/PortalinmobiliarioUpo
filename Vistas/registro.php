@@ -31,22 +31,32 @@ and open the template in the editor.
             <article>
                 <section>
                     <form action="../Controladores/registroController.php" method="POST">
-                        Nombre: <input type="text" id="nombre_usuario" name="nombre_usuario" value="" />
+                        <div class="form-group">
+                        Nombre: <input class="form-control" type="text" id="nombre_usuario" name="nombre_usuario" value="" />
                         <br>
-                        Usuario: <input type="text" id="usuario" name="usuario" value="" />
+                        </div>
+                        <div class="form-group">
+                        Usuario: <input class="form-control" type="text" id="usuario" name="usuario" value="" />
                         <br>
+                        </div>
+                        <div class="form-check">
                         Tipo de usuario:
                         <br>
-                        <input required type="radio" name="tipo" id="profesional" value="profesional">
-                        <label for="profesional">Profesional</label>
+                        <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
+                        <label class="form-check-label" for="profesional">Profesional</label>
                         <br>
-                        <input type="radio" name="tipo" id="particular" value="particular">
-                        <label for="particular">Particular</label>
+                        <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
+                        <label class="form-check-label" for="particular">Particular</label>
                         <br>
-                        Contraseña: <input type="password" id="contrasena" name="contrasena" value="" />
+                        </div>
+                        <div class="form-group">
+                        Contraseña: <input class="form-control" type="password" id="contrasena" name="contrasena" value="" />
                         <br>
-                        Confirmar contraseña: <input type="password" id="conf_contrasena" name="conf_contrasena" value="" />
-                        <input type="submit" id="enviar" name="enviar" value="Confirmar registro" />
+                        </div>
+                        <div class="form-group">
+                        Confirmar contraseña: <input class="form-control" type="password" id="conf_contrasena" name="conf_contrasena" value="" />
+                        </div>
+                        <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
                     </form>
                 </section>
             </article>
