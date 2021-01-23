@@ -29,7 +29,7 @@
                     <table class="table">
                         <tr>
                             <td>
-                                <input type="file" value="Añade tus fotos"/></br>
+                                <input class="custom-file" type="file" value="Añade tus fotos"/></br>
                                 <label>Puedes subir varias imágenes a la vez. Recuerda subir fotos de todas las estancias.</label>
                             </td>
                         </tr>

@@ -27,23 +27,42 @@ and open the template in the editor.
             ?>
         </header>
         <main>
-            <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
-            <select id="ordenar_por">
-                <option value="fecha">Los más actualizados</option>
-                <option value="valoracion">Mejor valorados</option>
-                <option value="baratos">Más baratos primero</option>
-            </select>
-            <!-- OPCION LISTA / CUADRICULA -->
-            <form action="busquedaController.php" method="GET">
-                <input type="submit" name="lista" value="Lista" />
-                <input type="submit" name="cuadricula" value="Cuadricula" />
-            </form>
-
-            <!-- ANUNCIOS -->
             <article>
+                <section>
+                    <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
+                    <select id="ordenar_por">
+                        <option value="fecha">Los más actualizados</option>
+                        <option value="valoracion">Mejor valorados</option>
+                        <option value="baratos">Más baratos primero</option>
+                    </select>
+                    <!-- OPCION LISTA / CUADRICULA -->
+                    <form style="float: right;" action="busquedaController.php" method="GET">
+                        <input type="submit" name="lista" value="Lista" />
+                        <input type="submit" name="cuadricula" value="Cuadricula" />
+                    </form>
+                </section>
+                <section>
+                    <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+                    <input type="checkbox" id="num_banyos" name="num_banyos" value="Número de baños">
+                    <select class="dropdown-item" id="tipo_inmueble">
+                        <option value="casa">Casa</option>
+                        <option value="piso">Piso</option>
+                        <option value="duplex">Dúplex</option>
+                        <option value="chalet">Chalet</option>
+                    </select>
+                    <select class="dropdown-item" id="tipo_oferta">
+                        <option>Compra</option>
+                        <option>Alquiler</option>
+                        <option>Vacacional</option>
+                    </select>
+                    <input type="number" id="precio_max" name="precio_max" value="Precio máximo">
+                    <input type="number" id="num_hab" name="num_hab" value="Número de habitaciones">
+                    <input type="number" id="id" name="name" value="value">
+                    <input type="checkbox" id="id" name="name" value="value">
+                </section>
+                <!-- ANUNCIOS -->
                 <table>
                     <?php
-                    
                     ?>
                 </table>
             </article>
