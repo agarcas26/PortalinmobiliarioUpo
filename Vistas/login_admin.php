@@ -10,7 +10,7 @@
     <body>
         <header class="masthead text-white text-center">
             <?php
-            if (isset($_SESSION['usuario'])) {
+            if (!isset($_POST['registro']) && !isset($_POST['entrar'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
