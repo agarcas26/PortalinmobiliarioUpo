@@ -40,6 +40,13 @@ and open the template in the editor.
             </form>
 
             <!-- ANUNCIOS -->
+            <article>
+                <table>
+                    <?php
+                    
+                    ?>
+                </table>
+            </article>
         </main>
         <?php
         ?>

@@ -1,6 +1,7 @@
 <?php
 
 include_once '../DAO/daoBusqueda.php';
+include_once '../Controladores/AnunciosController.php';
 
 if (isset($_POST['lista'])) {
     mostrarVistaLista();
@@ -37,4 +38,8 @@ function get_ultimas_busquedas_usuario() {
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
+}
+
+function get_resultados_busqueda(){
+   
 }
