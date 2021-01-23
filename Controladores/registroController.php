@@ -3,7 +3,7 @@
 include_once '../Controladores/UsuarioController.php';
 
 
-if ($_POST['enviar']) {
+if (isset($_POST['enviar'])) {
     $nombre_usuario = $_POST['nombre_usuario'];
     $usuario = $_POST['usuario'];
     $pass = $_POST['conf_contrasena'];
