@@ -9,7 +9,7 @@ if (isset($_POST['entrar'])) {
         $_SESSION['usuario'] = $_POST['user'];
         header("Location: ../Vistas/index.php");
     } else {
-        echo controllerInicioSesion($_POST['user'], $_POST['pass']);
+        header("Location: ../Vistas/login.php");
     }
     
     $dao->destruct();
