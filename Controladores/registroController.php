@@ -24,6 +24,6 @@ function registroController($nombre_usuario, $email, $usuario, $pass) {
         header("Location: login.php");
     } else {
         unset($_POST['registro']);
-        header("Location: registro.php");
+        header("Location: ../Vistas/registro.php");
     }
 }

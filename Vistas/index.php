@@ -18,7 +18,7 @@ and open the template in the editor.
     <body>
         <header class="masthead">
             <?php
-            if (isset($_SESSION['usuario'])) {
+            if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
