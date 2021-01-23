@@ -12,7 +12,7 @@ class daoanuncios {
     private $anuncio;
 
     function __construct() {
-        $this->conObj = new conn();
+        $this->conObj = new Conexion();
         $this->conn = $this->conObj->establecer_conexion();
     }
 
@@ -77,12 +77,18 @@ class daoanuncios {
     }
 
     public function modificar($objAnuncio) {
-        $idAnuncio = $objAnuncio->getIdAnuncio();
-        $direccion = $objAnuncio->getDireccion();
+        $nombre_via = $objAnuncio->getNombre_via();
+        $tipo_via = $objAnuncio->getTipo_via();
+        $cp = $objAnuncio->getCp();
+        $numero = $objAnuncio->getNumero();
         $precio = $objAnuncio->getPrecio();
-        $usuario_pk = $objAnuncio->getUsuario_pk();
+        $fecha_anuncio = $objAnuncio->getFecha_anuncio();
+        $nombre_usuario_publica = $objAnuncio->getNombre_usuario_publica();
+        $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
 
-        $sql = "UPDATE anuncio SET direccion='$direccion',precio='$precio',usuario_pk='$usuario_pk' WHERE idAnuncio='$idAnuncio'";
+
+        $sql = "UPDATE anuncio SET nombre_via='$nombre_via',tipo_via='$tipo_via',cp='$cp',numero='$numero',precio='$precio',"
+                . "fecha_anuncio='$fecha_anuncio',nombre_usuario_publica='$nombre_usuario_publica',nombre_usuario_anuncio='$nombre_usuario_anuncio'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -104,7 +110,7 @@ class daoanuncios {
     }
 
     function listar_anuncios_usuario($usuario) {
-        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" + $usuario + "';";
+        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" . $usuario . "';";
         $resultado = $this->conn->query($sql);
 
         $arrayAnuncios = array();

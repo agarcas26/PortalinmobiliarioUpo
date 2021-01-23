@@ -49,25 +49,6 @@ class daoUsuario {
         return $result;
     }
 
-    function escribirResenyas($objUsuario) {
-        //$id_resenyas = $objUsuario->getId_resenyas();
-        $nombre_usuario = $objUsuario->getNombre_usuario();
-        $cp = $objUsuario->getCp();
-        $nombre_via = $objUsuario->getNombre_via();
-        $tipo_via = $objUsuario->getTipo_via();
-        $numero = $objUsuario->getNumero();
-        $descripcion = $objUsuario->getDescripcion();
-        $fecha_resenya = $objUsuario->getFecha_resenya();
-        $valoracion = $objUsuario->getValoracion();
-
-        $sql = "INSERT INTO resenya values(null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
-
-        if (!$this->conn->query($sql)) {
-            return false;
-        } else {
-            return true;
-        }
-        mysqli_close($this->conn);
-    }
+    
 
 }
