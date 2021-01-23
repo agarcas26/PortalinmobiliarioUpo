@@ -11,7 +11,7 @@
  *
  * @author agarc
  */
-class anuncios {
+class Anuncio {
 
     //put your code here
 
