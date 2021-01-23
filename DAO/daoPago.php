@@ -1,6 +1,6 @@
 <?php
 include_once '../Persistencia/Conexion.php';
-
+include_once '../Modelos/PagoModel.php';
 class daoPago {
     private $conexion;
     

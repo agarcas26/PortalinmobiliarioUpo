@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Reseña{
+class Resenya{
     private $id_resenya;
     private $nombre_usuario;
     private $cp;
