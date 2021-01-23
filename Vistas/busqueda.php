@@ -41,7 +41,7 @@ and open the template in the editor.
                         <input type="submit" name="cuadricula" value="Cuadricula" />
                     </form>
                 </section>
-                <section>
+                <section id="filtros">
                     <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
                     <input type="checkbox" id="num_banyos" name="num_banyos" value="Número de baños">
                     <select class="dropdown-item" id="tipo_inmueble">
@@ -57,8 +57,7 @@ and open the template in the editor.
                     </select>
                     <input type="number" id="precio_max" name="precio_max" value="Precio máximo">
                     <input type="number" id="num_hab" name="num_hab" value="Número de habitaciones">
-                    <input type="number" id="id" name="name" value="value">
-                    <input type="checkbox" id="id" name="name" value="value">
+                    <input type="number" id="m2" name="m2" value="Metros cuadrados">
                 </section>
                 <!-- ANUNCIOS -->
                 <table>
