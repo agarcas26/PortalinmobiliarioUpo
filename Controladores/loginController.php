@@ -15,7 +15,7 @@ if (isset($_POST['entrar'])) {
 }
 
 if (isset($_POST['registro'])) {
-    header("Location: registro.php");
+    header("Location: ../Vistas/registro.php");
 }
 
 function controllerInicioSesion($nombre_usuario, $pass) {

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../DAO/daoBusqueda.php';
+
 if (isset($_POST['lista'])) {
     mostrarVistaLista();
 }
@@ -16,14 +18,22 @@ function mostrarVistaCuadricula() {
 }
 
 function get_ultimas_busquedas() {
-    $ultimas_busquedas = listar_busquedas();
+    $dao = new daoBusqueda();
+    $ultimas_busquedas = $dao->listar_busquedas();
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
 }
 
 function get_ultimas_busquedas_usuario() {
-    $ultimas_busquedas = listar_busquedas_usuario();
+    if(isset($_SESSION['usuario_particular'])){
+        $usuario = $_SESSION['usuario_particular'];
+    }
+    if(isset($_SESSION['usuario_profesional'])){
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    $dao = new daoBusqueda();
+    $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
