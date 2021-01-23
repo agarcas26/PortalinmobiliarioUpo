@@ -24,16 +24,17 @@ if (isset($_POST['registro'])) {
 }
 
 function controllerInicioSesion($nombre_usuario, $pass) {
+    $r=false;
     if (preg_match("/[\w]+@{1}[\w]+\.[a-z]{2,3}/", $nombre_usuario) && preg_match("/[\w]+@{1}[\w]+\.[a-z]{2,3}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
         $usuario = getUsuarioByUsuario($nombre_usuario);
         if ($usuario->get_contrasenya_user() == $pass) {
-            return true;
+            $r = true;
        
         }
-    } else {
-        return false;
     }
+    return $r;
+    
 }
