@@ -16,6 +16,7 @@ class Anuncio {
     //put your code here
 
     private $id_anuncio;
+    private $titulo;
     private $precio;
     private $nombre_via;
     private $tipo_via;
@@ -24,10 +25,19 @@ class Anuncio {
     private $nombre_usuario_publica;
     private $nombre_usuario_anuncio;
     private $fecha_anuncio;
-    
+
     function __construct() {
         
     }
+
+    function getTitulo() {
+        return $this->titulo;
+    }
+
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
     function getNombre_usuario_publica() {
         return $this->nombre_usuario_publica;
     }
@@ -44,7 +54,7 @@ class Anuncio {
         $this->nombre_usuario_anuncio = $nombre_usuario_anuncio;
     }
 
-        function getId_anuncio() {
+    function getId_anuncio() {
         return $this->id_anuncio;
     }
 
@@ -111,7 +121,5 @@ class Anuncio {
     public function __toString() {
         
     }
-
-
 
 }
