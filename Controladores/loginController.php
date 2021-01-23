@@ -5,6 +5,7 @@ include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuario.php';
 
 
+
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuario();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
@@ -30,6 +31,7 @@ function controllerInicioSesion($nombre_usuario, $pass) {
         $usuario = getUsuarioByUsuario($nombre_usuario);
         if ($usuario->get_contrasenya_user() == $pass) {
             return true;
+       
         }
     } else {
         return false;
