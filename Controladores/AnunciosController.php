@@ -113,7 +113,17 @@ function anuncios_barra_busqueda($barra_busqueda) {
     while (mysqli_fetch_array($all_anuncios)) {
         for ($i = 0; $i < sizeof($all_anuncios); $i++) {
             if ($all_anuncios[i] == $barra_busqueda) {
-                $anuncios[] = $all_anuncios;
+                $anuncio_aux = new Anuncio();
+                $anuncio_aux->setId_anuncio($all_anuncios[0]);
+                $anuncio_aux->setNombre_via($all_anuncios[1]);
+                $anuncio_aux->setTipo_via($all_anuncios[2]);
+                $anuncio_aux->setCp($all_anuncios[3]);
+                $anuncio_aux->setNumero($all_anuncios[4]);
+                $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
+                $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
+                $anuncio_aux->setPrecio($all_anuncios[7]);
+                $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
+                $anuncios[] = $anuncio_aux;
             }
         }
     }
