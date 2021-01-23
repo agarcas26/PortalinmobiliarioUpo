@@ -1,7 +1,7 @@
 <?php
 
 include_once '../Persistencia/Conexion.php';
-require_once '../Modelos/UsuarioModel.php';
+include_once '../Modelos/UsuarioModel.php';
 class daoUsuario {
 
     public $conObj;
@@ -9,7 +9,9 @@ class daoUsuario {
     private $usuario;
 
     function __construct() {
+
         $this->conObj = new Conexion();
+
         $this->conn = $this->conObj->establecer_conexion();
     }
 
