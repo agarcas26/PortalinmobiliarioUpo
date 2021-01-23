@@ -2,44 +2,28 @@
 
 include_once '../Persistencia/Conexion.php';
 include_once '../Modelos/UsuarioModel.php';
+
 class daoUsuario {
 
     public $conObj;
-    public $conn;
-    private $usuario;
+    public $conexion;
 
     function __construct() {
-
         $this->conObj = new Conexion();
-
-        $this->conn = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->establecer_conexion();
     }
 
     function destruct() {
-        $conn = new Conexion();
+        $this->conObj = new Conexion();
         $this->conexion = null;
-        $conn->cerrar_conexion();
+        $this->conObj->cerrar_conexion();
     }
 
-    function leer_usuarios($objUsuario) {
-        $nombre_usuario = $objUsuario->getNombre_usuario();
-        
-        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario='$nombre_usuario'";
-        $objMySqlLi = $this->conn->query($sentence);
-        if($objMySqlLi->num_rows != 1){
-            return false;
-        }else{
-            $arrayAux = mysqli_fetch_assoc($objMySqlLi); 
-            $objUsuario->setNombre_usuario($arrayAux["nombre_usuario"]);
-            $objUsuario->setContrasenya_user($arrayAux["contrasenya_user"]);
-            $objUsuario->setNombre_apellidos($arrayAux["nombre_apellidos"]);
-            $objUsuario->setMoroso($arrayAux["moroso"]);
-            
-            return  $objUsuario;
-        }
-        
+    function leer_usuarios() {
+        $sentence = "SELECT * FROM `usuarios`";
+        $result = mysqli_query($this->conn, $sentence);
 
-     mysqli_close($this->conn);
+        return $result;
     }
 
     function crear_usuario($nombre_usuario, $contrasenya, $usuario, $moroso) {
@@ -60,16 +44,8 @@ class daoUsuario {
     function get_usuario_by_nombre_usuario($nombre_usuario) {
         $sentence = "SELECT * FROM `usuarios` WHERE `usuarios`.`nombre_usuario`='" . $nombre_usuario . "';";
         $result = mysqli_query($conexion, $sentence);
-        $enc = false;
 
-        while (!$enc && mysqli_fetch_array($result)) {
-            if ($result[0] == $usuario) {
-                $usuario = $result;
-                $enc = true;
-            }
-        }
-
-        return $usuario;
+        return $result;
     }
 
     function escribirResenyas($objUsuario) {
