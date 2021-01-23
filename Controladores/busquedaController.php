@@ -52,7 +52,7 @@ function print_resultados_busqueda(){
    for($i=0; $i < siceof($anuncios);$i++){
        
        echo "<td>".$anuncios[$i]->getPrecio()."</td>"
-               . "<td>".titulo . $i."</td>"
+               . "<td>".$anuncios[$i]->getTitulo()."</td>"
                . "<td>".$anuncios[$i]->getFecha_anuncio()."</td>"
                . "<td>".$anuncios[$i]->getNombre_usuario_publica()."</td>"
                . "<td>".$anuncios[$i]->getNombre_via()." "
