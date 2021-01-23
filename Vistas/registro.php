@@ -9,8 +9,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Regístrate</title>
         <?php
-        include_once '../Controladores/registroController.php';
         include_once '../Vistas/header.php';
+        include_once '../Controladores/registroController.php';
         ?>
     </head>
     <body>
