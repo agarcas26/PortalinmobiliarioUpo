@@ -40,7 +40,7 @@
                         <input class="btn btn-primary" type="submit" name="entrar" value="Iniciar sesión" class="form-text" />
                     </div> 
                     <div class="registro">
-                        <input class="btn btn-primary" type="submit" name="registro" value="Registro"/>
+                        <input class="btn btn-primary" type="submit" name="registro" value="Regístrate"/>
                     </div>
                 </form>
                 <?php

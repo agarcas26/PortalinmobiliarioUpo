@@ -13,6 +13,8 @@ function getUsuarioByUsuario($nombre_usuario) {
 
 function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {
     $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);
+    $dao = new daoUsuarios();
+    $dao->crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso);
 }
 
 function actualizarDatosUsuario($datos) {

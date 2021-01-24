@@ -21,6 +21,7 @@ function registroController($nombre_usuario, $usuario, $pass, $tipo) {
 
         if (getUsuarioByUsuario($nombre_usuario) == NULL) {
             nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false);
+            
         }
         header("Location: ../Vistas/login.php");
     } else {
