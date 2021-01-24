@@ -4,5 +4,8 @@
  * and open the template in the editor.
  */
 function mostrar_ocultar() {
-    $('aside #filtros').toggle();
+    if ($('aside #filtros').is(":visible"))
+        $('aside #filtros').slideUp(2000);
+    else
+        $('aside #filtros').slideDown(2000);
 }

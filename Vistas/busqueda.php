@@ -31,7 +31,7 @@ and open the template in the editor.
         </header>
         <main>
             <aside id="filtros" style="position: sticky; top: 20px;">
-                <button onclick="mostrar_ocultar()">Mostrar/Ocultar filtros</button>
+                <button style="float: right;" onclick="mostrar_ocultar()" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
                         <tr>
