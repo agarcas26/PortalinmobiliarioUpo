@@ -60,7 +60,7 @@ class Usuario {
     }
     
     function getTipoUsr(){
-        if(is_a(this, "UsuarioParticular")){
+        if(is_a($this, "UsuarioParticular")){
             return "particular";
         }
         else{
