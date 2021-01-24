@@ -14,7 +14,7 @@ function getUsuarioByUsuario($nombre_usuario) {
 function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {//HE CAMBIADO AQUI 
     $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);//AQUI LE PASABA CONTRASEÑA EN VEZ DE PASS
     $dao = new daoUsuarios();
-    $dao->crear_usuario($nuevo_usuario);//AQUI SE LE PASABA TODO EN VEZ DEL OBJETO NUEVO USUARIOO
+    $dao->crear_usuario_registro($nuevo_usuario);//AQUI SE LE PASABA TODO EN VEZ DEL OBJETO NUEVO USUARIOO
 }
 
 function actualizarDatosUsuario($datos) {

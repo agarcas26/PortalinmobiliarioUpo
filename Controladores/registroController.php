@@ -15,7 +15,8 @@ function registroController($nombre_usuario, $usuario, $pass, $tipo) {
 
     if (preg_match($nombre_usuario, "^(?!.* (?: |$))[A-Z][a-z ]+$") && preg_match($email, "/^[\w]+@{1}[\w]+\.[a-z]{2,3}$/") && preg_match($usuario, "^@?(\w){1,15}") && preg_match($pass, "^(?![a-z]*$)(?![A-Z]*$)(?!\d*$)(?")) {
         filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
-        filter_var($email, FILTER_SANITIZE_EMAIL);
+        filter_var($email, FILTER_SANITIZE_EMAIL);//porque se le pasa aqui un email??
+        
         filter_var($usuario, FILTER_SANITIZE_MAGIC_QUOTES);
         filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
 
