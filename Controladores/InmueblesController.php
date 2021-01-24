@@ -67,7 +67,7 @@ function insertInmuebles() {
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil sin errores
     } else {
-        header('Location: ../Vistas/perfil.php'); //se ba a la pantalla de perfil mostrando un mensaje de error
+        header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil mostrando un mensaje de error
     }
 }
 
