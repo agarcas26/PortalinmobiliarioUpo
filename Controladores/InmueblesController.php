@@ -109,8 +109,8 @@ function getInmuebleByAnuncio($anuncio) {
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
-                    $r=$lista[$i];
-                    $encontrado=true;
+                    $r = $lista[$i];
+                    $encontrado = true;
                 }
             }
         }

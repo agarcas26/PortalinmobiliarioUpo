@@ -4,6 +4,7 @@ include_once '../Modelos/UsuarioModel.php';
 include_once '../Modelos/AnunciosModel.php';
 include_once '../DAO/daoanuncios.php';
 include_once '../Modelos/InmueblesModel.php';
+include_once '../Modelos/InmueblesController.php';
 include_once '../DAO/daoInmuebles.php';
 
 session_start();
@@ -113,6 +114,101 @@ function anuncios_barra_busqueda($barra_busqueda) {
     while (mysqli_fetch_array($all_anuncios)) {
         for ($i = 0; $i < sizeof($all_anuncios); $i++) {
             if ($all_anuncios[i] == $barra_busqueda) {
+                $anuncio_aux = new Anuncio();
+                $anuncio_aux->setId_anuncio($all_anuncios[0]);
+                $anuncio_aux->setNombre_via($all_anuncios[1]);
+                $anuncio_aux->setTipo_via($all_anuncios[2]);
+                $anuncio_aux->setCp($all_anuncios[3]);
+                $anuncio_aux->setNumero($all_anuncios[4]);
+                $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
+                $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
+                $anuncio_aux->setPrecio($all_anuncios[7]);
+                $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
+                $anuncios[] = $anuncio_aux;
+            }
+        }
+    }
+
+    return $anuncios;
+}
+
+function getFiltros() {
+    $filtros = [];
+    if (isset($_GET["num_banyos"])) {
+        $filtros[] = $_GET["num_banyos"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["tipo_inmueble"])) {
+        $filtros[] = $_GET["tipo_inmueble"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["tipo_oferta"])) {
+        $filtros[] = $_GET["tipo_oferta"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["precio_max"])) {
+        $filtros[] = $_GET["precio_max"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["num_hab"])) {
+        $filtros[] = $_GET["num_hab"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["m2"])) {
+        $filtros[] = $_GET["m2"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["fecha"])) {
+        $filtros[] = $_GET["fecha"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    return $filtros;
+}
+
+function probarFiltros($filtros, $anuncio) {
+    $r = false;
+    $inmueble = getInmuebleByAnuncio($anuncio);
+
+    if ($filtros[0] == "notset" || $filtros[0] == $inmueble->getNum_banyos()) {
+        if ($filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo()) {
+            //if ($filtros[2] == "notset" || $filtros[2] == $anuncio->getTipo()) {
+                if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {  
+                    //if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNumeroHabitaciones()) {
+                        if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
+                            if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
+                                $r = true;
+                            }
+                        }
+                    //}
+                }
+            //}
+        }
+    }
+
+    return $r;
+}
+
+function anuncios_busqueda() {
+    $filtros = getFiltros();
+    $all_anuncios = listAllAnuncios();
+    $anuncios = [];
+    while (mysqli_fetch_array($all_anuncios)) {
+        for ($i = 0; $i < sizeof($all_anuncios); $i++) {
+            if (probarFiltros($filtros, $all_anuncios)) {
                 $anuncio_aux = new Anuncio();
                 $anuncio_aux->setId_anuncio($all_anuncios[0]);
                 $anuncio_aux->setNombre_via($all_anuncios[1]);
