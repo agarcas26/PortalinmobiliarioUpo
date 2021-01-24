@@ -61,3 +61,23 @@ function print_resultados_busqueda(){
    }
    echo "</tr>";
 }
+
+function print_resultados_filtros(){ 
+   $anuncios[] = anuncios_busqueda();
+   echo"<tr>"
+           ."<th>Titulo<th>"
+           ."<th>Fecha Publicacion<th>"
+           ."<th>Publicado por<th>"
+           ."<th>Direccion<th>";
+   for($i=0; $i < siceof($anuncios);$i++){
+       
+       echo "<td>".$anuncios[$i]->getPrecio()."</td>"
+               . "<td>".$anuncios[$i]->getTitulo()."</td>"
+               . "<td>".$anuncios[$i]->getFecha_anuncio()."</td>"
+               . "<td>".$anuncios[$i]->getNombre_usuario_publica()."</td>"
+               . "<td>".$anuncios[$i]->getNombre_via()." "
+               .$anuncios[$i]->getNumero()." "
+               .$anuncios[$i]->getCp()."</td>";
+   }
+   echo "</tr>";
+}
