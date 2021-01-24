@@ -31,7 +31,7 @@ class daoinmueble {
         $metros = $objInmueble->getMetros();
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = "INSERT INTO inmueble values('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$cocina','$num_plantas','$planta','$metros','$tipo_inmueble')";
+        $sql = "INSERT INTO `inmueble` INSERT INTO `inmueble`(`numero`, `cp`, `nombre_via`, `tipo_via`, `nombre_usuario_duenyos`, `nombre_localidad`, `nombre_provincia`, `num_banyos`, `cocina`, `tipo`, `numero_plantas`, `planta`, `metros`) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$cocina','$num_plantas','$planta','$metros','$tipo_inmueble')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -43,7 +43,7 @@ class daoinmueble {
     public function read($objInmueble) {
         $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
 
-        $sql = "SELECT * FROM inmueble WHERE nombre_usuario_duenyos='$nombre_usuario_duenyos'";
+        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conn->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
@@ -71,7 +71,7 @@ class daoinmueble {
     public function eliminar($objInmueble) {
         $direccion = $objInmueble->getDireccion();
 
-        $sql = "DELETE FROM inmueble WHERE direccion='$direccion'";
+        $sql = "DELETE FROM `inmueble` WHERE direccion='$direccion'";
 
         if (!$this->conn->query($sql)) {
             return false;
@@ -96,10 +96,10 @@ class daoinmueble {
         $metros = $objInmueble->getMetros();
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
 
-        $sql = "UPDATE inmueble SET nombre_usuario_duenyos='$nombre_usuario_duenyos',nombre_localidad='$nombre_localidad',"
-                . "nombre_provincia='$nombre_provincia',num_banyos='$num_banyos',"
-                . "cocina='$cocina',num_plantas='$num_plantas',planta='$planta',metros='$metros',tipo_inmueble='$tipo_inmueble' "
-                . "WHERE numero='$numero',cp='$cp',nombre_via='$nombre_via',tipo_via='$tipo_via'";
+        $sql = "UPDATE `inmueble` SET `nombre_usuario_duenyos`='$nombre_usuario_duenyos',`nombre_localidad`='$nombre_localidad',"
+                . "`nombre_provincia`='$nombre_provincia',`num_banyos`='$num_banyos',"
+                . "`cocina`='$cocina',`num_plantas`='$num_plantas',`planta`='$planta',`metros`='$metros',`tipo_inmueble`='$tipo_inmueble' "
+                . "WHERE `numero`='$numero',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via'";
 
         if (!$this->conn->query($sql)) {
             return false;
@@ -110,7 +110,7 @@ class daoinmueble {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM inmueble";
+        $sql = "SELECT * FROM `inmueble`";
         $resultado = $this->conn->query($sql);
         $arrayInmuebles = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {

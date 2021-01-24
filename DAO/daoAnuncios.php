@@ -31,7 +31,7 @@ class daoanuncios {
         $nombre_usuario_publica = $objAnuncio->getNombre_usuario_publica();
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
         $titulo = $objAnuncio->getTitulo();
-        $sql = "INSERT INTO anuncio values(null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio','$fecha_anuncio','$titulo')";
+        $sql = "INSERT INTO `anuncio` (`id_anuncio`, `nombre_via`, `tipo_via`, `cp`, `numero`, `nombre_usuario_publica`, `nombre_usuario_anuncio`, `precio`, `fecha_anuncio`, `titulo`) VALUES (null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio','$fecha_anuncio','$titulo')";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -43,7 +43,7 @@ class daoanuncios {
 //leer anuncio por id
     public function read($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
-        $sql = "SELECT * FROM anuncio WHERE idAnuncio='$idAnuncio'";
+        $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         $objMySqlLi = $this->conn->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
@@ -69,7 +69,7 @@ class daoanuncios {
     public function eliminar($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
 
-        $sql = "DELETE FROM anuncio WHERE idAnuncio='$idAnuncio'";
+        $sql = "DELETE FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -89,8 +89,8 @@ class daoanuncios {
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
         $titulo = $objAnuncio->getTitulo();
 
-        $sql = "UPDATE anuncio SET nombre_via='$nombre_via',tipo_via='$tipo_via',cp='$cp',numero='$numero',precio='$precio',"
-                . "fecha_anuncio='$fecha_anuncio',nombre_usuario_publica='$nombre_usuario_publica',nombre_usuario_anuncio='$nombre_usuario_anuncio',titulo='$titulo'";
+        $sql = "UPDATE `anuncio` SET `nombre_via`='$nombre_via',`tipo_via`='$tipo_via',`cp`='$cp',`numero`='$numero',`precio`='$precio',"
+                . "`fecha_anuncio`='$fecha_anuncio',`nombre_usuario_publica`='$nombre_usuario_publica',`nombre_usuario_anuncio`='$nombre_usuario_anuncio',`titulo`='$titulo'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -100,7 +100,7 @@ class daoanuncios {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM anuncio";
+        $sql = "SELECT * FROM `anuncio`";
         $resultado = $this->conn->query($sql);
 
         $arrayAnuncios = array();
