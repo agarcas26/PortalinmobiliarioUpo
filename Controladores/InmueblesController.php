@@ -49,7 +49,7 @@ function insertInmuebles() {
         }
     }
     if ($_SESSION["validacion"]) {
-        $inmueble1 = new modelo_inmuebles();
+        $inmueble1 = new InmueblesModel();
         $inmueble1->setDireccion($_POST["txtDireccion"]);
         $inmueble1->setNum_habitaciones($_POST["txtNum_habitaciones"]);
         $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
@@ -57,7 +57,7 @@ function insertInmuebles() {
         $inmueble1->setTipo_inmueble($_POST["txtTipo_inmueble"]);
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setAscensor($_POST["txtAscensor"]);
-        $daoInmueble = new daoinmueble();
+        $daoInmueble = new daoInmuebles();
 
         $insertOk = $daoInmueble->insertar($inmueble1);
         if (!$insertOk) {
@@ -67,6 +67,6 @@ function insertInmuebles() {
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil sin errores
     } else {
-        header('Location: ../Vistas/perfil.php'); //se ba a la pantalla de perfil mostrando un mensaje de error
+        header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil mostrando un mensaje de error
     }
 }
