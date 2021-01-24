@@ -29,36 +29,58 @@ and open the template in the editor.
         </header>
         <main>
             <article>
-                <section>
+                <section class="align-content-center" >
                     <form action="../Controladores/registroController.php" method="POST">
-                        <div class="form-group">
-                            Nombre: <input class="form-control" type="text" id="nombre_apellidos" name="nombre_apellidos" value="" />
-                            <br>
-                        </div>
-                        <div class="form-group">
-                            Usuario: <input class="form-control" type="text" id="nombre_usuario" name="nombre_usuario" value="" />
-                            <br>
-                        </div>
-                        <div class="form-check">
-                            Tipo de usuario:
-                            <br>
-                            <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
-                            <label class="form-check-label" for="profesional">Profesional</label>
-                            <br>
-                            <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
-                            <label class="form-check-label" for="particular">Particular</label>
-                            <br>
-                        </div>
-                        Empresa: <input type="text" name="empresa" id="empresa" value="" />
-                        <label>Si usted trabaja para una empresa, por favor, rellene el campo anterior</label>
-                        <div class="form-group">
-                            Contraseña: <input class="form-control" type="password" id="contrasenya" name="contrasenya" value="" />
-                            <br>
-                        </div>
-                        <div class="form-group">
-                            Confirmar contraseña: <input class="form-control" type="password" id="conf_contrasenya" name="conf_contrasenya" value="" />
-                        </div>
-                        <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
+                        <table class="table-responsive-lg">
+                            <thead><th>Formulario de registro</th></thead>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>
+                                    <input class="form-control" type="text" id="nombre_apellidos" name="nombre_apellidos" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Usuario:</td>
+                                <td>
+                                    <input class="form-control" type="text" id="nombre_usuario" name="nombre_usuario" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tipo de usuario:</td>
+                                <td>
+                                    <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
+                                    <label class="form-check-label" for="profesional">Profesional</label>
+                                </td>
+                                <td>
+                                    <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
+                                    <label class="form-check-label" for="particular">Particular</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Empresa:</td>
+                                <td>
+                                    <input type="text" name="empresa" id="empresa" value="" />
+                                </td>
+                                <td><label>Si usted trabaja para una empresa, por favor, rellene este campo</label></td>
+                            </tr>
+                            <tr>
+                                <td>Contraseña:</td>
+                                <td>
+                                    <input class="form-control" type="password" id="contrasenya" name="contrasenya" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Confirmar contraseña:</td>
+                                <td>
+                                    <input class="form-control" type="password" id="conf_contrasenya" name="conf_contrasenya" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
+                                </td>
+                            </tr>
+                        </table>
                     </form>
                 </section>
             </article>
