@@ -8,6 +8,7 @@
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/InmueblesController.php';
+        include_once '../Controladores/ResenyasController.php';
         ?>
     </head>
     <body>
