@@ -39,3 +39,13 @@ function escribirResenyas() {
         }
     }
 }
+function eliminarResenyas(){
+    if($_POST["txtDescripcion"]){
+        $_SESSION["validacion"]=false;
+        $_SESSION["errores"]["txtDescripcion"] = "Debe de rellenar el campo descripcion";
+        
+            
+    }
+    }
+    
+}
