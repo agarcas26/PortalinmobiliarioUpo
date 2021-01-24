@@ -90,7 +90,6 @@ and open the template in the editor.
                 <section id="filtros">
                     <input class="form-control"  type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
                 </section>
-
                 <!-- ANUNCIOS -->
                 <table>
                     <?php
