@@ -39,13 +39,41 @@ function escribirResenyas() {
         }
     }
 }
-function eliminarResenyas(){
+
+function eliminarResenyas() {
+    if ($_POST["txtDescripcion"]) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtDescripcion"] = "Debe de rellenar el campo descripcion";
+    }
+    if ($_POST["txtValoracion"]) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
+    }
+    if ($_SESSION["validacion"]) {
+        $resenya2 = new Resenyamodel();
+        $resenya2->setDescripcion($_POST["txtDescripcion"]);
+        $resenya2->setValoracion($_POST["txtValoracion"]);
+
+        $daoResenya = new daoResenyas();
+        $deleteOk = $daoResenya->eliminarResenyas($resenya2);
+        if (!$deleteOk) {
+            $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
+        }
+    }
+    if ($_SESSION["validacion"]) {
+        header('Location: ../Vistas/Inmuebles.php'); //sin errores
+    } else {
+        header('Location: ../Vistas/Inmuebles.php'); //con errores
+    }
+}
+function modificarResenya(){
     if($_POST["txtDescripcion"]){
         $_SESSION["validacion"]=false;
-        $_SESSION["errores"]["txtDescripcion"] = "Debe de rellenar el campo descripcion";
+        $_SESSION["errores"]["txtDescripcion"]="debe completar el campo descripción.";
         
-            
     }
+    if ($_POST["txtValoracion"]) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
     }
-    
 }

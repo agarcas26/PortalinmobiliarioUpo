@@ -79,19 +79,20 @@ function listar() {
     while (mysqli_fetch_array($inmuebles)) {
         $inmueble_aux = new inmueble();
         $inmueble_aux->setCp($inmuebles[1]);
-        $inmueble_aux->setMetros($inmuebles[12]);
+        $inmueble_aux->setMetros($inmuebles[13]);
         $inmueble_aux->setNombre_localidad($inmuebles[5]);
         $inmueble_aux->setNombre_provincia($inmuebles[6]);
         $inmueble_aux->setNombre_usuario_duenyo($inmuebles[4]);
         $inmueble_aux->setNombre_via($inmuebles[2]);
         $inmueble_aux->setNum_banyos($inmuebles[7]);
         $inmueble_aux->setNumero($inmuebles[0]);
-        $inmueble_aux->setNumero_plantas($inmuebles[10]);
-        $inmueble_aux->setPlanta($inmuebles[11]);
-        $inmueble_aux->setTipo($inmuebles[9]);
-        $inmueble_aux->setCocina($inmuebles[8]);
+        $inmueble_aux->setNumero_plantas($inmuebles[11]);
+        $inmueble_aux->setPlanta($inmuebles[12]);
+        $inmueble_aux->setTipo($inmuebles[10]);
+        $inmueble_aux->setCocina($inmuebles[9]);
         $inmueble_aux->setTipo_via($inmuebles[3]);
-
+        $inmueble_aux->setFotos($inmuebles[14]);
+        $inmueble_aux->setNum_hab($inmuebles[8]);
         $anuncios[] = $anuncio_aux;
     }
     return $anuncios;

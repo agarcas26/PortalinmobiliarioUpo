@@ -27,12 +27,29 @@ class inmueble {
     private $planta;
     private $metros;
     private $tipo_inmueble;
+    private $num_hab;
+    private $fotos;
 
     function __construct() {
         
     }
+    function getNum_hab() {
+        return $this->num_hab;
+    }
 
-    function getNumero() {
+    function getFotos() {
+        return $this->fotos;
+    }
+
+    function setNum_hab($num_hab) {
+        $this->num_hab = $num_hab;
+    }
+
+    function setFotos($fotos) {
+        $this->fotos = $fotos;
+    }
+
+            function getNumero() {
         return $this->numero;
     }
 
