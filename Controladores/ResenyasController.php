@@ -24,6 +24,10 @@ function escribirResenyas(){
     }
     if($_SESSION["validacion"]){
         $resenya1 = new Resenyamodel();
+        $resenya1->setDescripcion($_POST["txtDescripcion"]);
+        $resenya1->setValoracion($_POST["txtValoracion"]);
+        $daoresenya = new daoResenyas();
+        
         
     }
 }
