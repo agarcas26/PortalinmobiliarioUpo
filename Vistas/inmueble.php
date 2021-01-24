@@ -31,7 +31,7 @@
                 <article>
                     <section id="detalle_inmueble">
                     <h1><?php echo $dirección; ?></h1>
-                    <ul>
+                    <ul class="img-fluid">
                         <?php 
                         //Galería de imágenes del inmueble
                         ?>
