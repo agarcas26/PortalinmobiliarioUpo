@@ -36,10 +36,11 @@
                         <label class="form-group" class="label" for="fijo">Contraseña:  </label>
                         <input type="password" id="pass" name="pass" class="form-text">
                     </div> 
-                    <div class="entrar">
+                    <br>
+                    <div class="entrar" style="float: left;" >
                         <input class="btn btn-primary" type="submit" name="entrar" value="Iniciar sesión" class="form-text" />
                     </div> 
-                    <div class="registro">
+                    <div  class="registro" style="margin-left: 10%;">
                         <input class="btn btn-primary" type="submit" name="registro" value="Regístrate"/>
                     </div>
                 </form>
