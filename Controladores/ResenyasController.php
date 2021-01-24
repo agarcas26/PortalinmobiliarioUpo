@@ -39,3 +39,6 @@ function escribirResenyas() {
         }
     }
 }
+function eliminarResenyas(){
+    
+}
