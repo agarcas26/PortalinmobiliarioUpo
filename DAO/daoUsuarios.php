@@ -28,7 +28,12 @@ class daoUsuarios {
 
     function crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso) {
         $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
+
+        echo 'aaaaaa      ' . $sentence;
+
         $result = mysqli_query($conexion, $sentence);
+
+        echo 'bbbbbbb     ' . $result;
     }
 
     function eliminar_usuario($nombre_usuario, $contrasenya) {
