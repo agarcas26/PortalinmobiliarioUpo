@@ -54,7 +54,7 @@ function modifyAnuncio() {
         $_SESSION["errores"]["sms"] = "Petición ajena al sistema.";
     }
     if ($_SESSION["validacion"]) {
-        $anuncio1 = new modelo_anuncios();
+        $anuncio1 = new AnunciosModel();
 
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->setDireccion($_POST["txtDireccion"]);
@@ -67,9 +67,9 @@ function modifyAnuncio() {
 
         if ($_SESSION["validacion"] || $_SESSION["cancelado"]) {
 
-            header('Location: ../Vista/perfil.php');
+            header('Location: ../Vistas/perfil.php');
         } else {
-            header('Location: ../Vista/perfil.php'); //mensajes de errores
+            header('Location: ../Vistas/perfil.php'); //mensajes de errores
         }
     }
 }
