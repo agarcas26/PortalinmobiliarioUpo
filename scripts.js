@@ -3,10 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-$('aside #filtros').click(function () {
-    if ($(this).prev().is(":visible"))
-        $(this).slideUp(2000);
-    else
-        $(this).prev().slideDown(2000);
-});
+function mostrar_ocultar() {
+    $('aside #filtros').toggle();
+}

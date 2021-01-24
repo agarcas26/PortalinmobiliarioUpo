@@ -10,6 +10,9 @@ and open the template in the editor.
         <title>Bienvenido, ¿qué buscas?</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <script src="../scripts.js"></script>        
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/busquedaController.php';
@@ -32,6 +35,7 @@ and open the template in the editor.
             ?>
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
+                    <button onclick="mostrar_ocultar()">Mostrar/Ocultar filtros</button>
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
                         <div class="form-group">
                         <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">
