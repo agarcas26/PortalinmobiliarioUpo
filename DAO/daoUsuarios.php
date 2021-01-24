@@ -29,32 +29,10 @@ class daoUsuarios {
     }
 
     function crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso) {
-        echo $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
-
-        echo 'aaaaaa      ' . $sentence;
-
+        $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
+        
         $result = mysqli_query($conexion, $sentence);
-
-        echo 'bbbbbbb     ' . $result;
     }
-    
-//    function crear_usuario_registro($objUser) {
-//        //aqui paso del objeto usuario pasado por parametro a las variables individuales
-//        $nombre_usuario = $objUser->getNombre_usuario();
-//        $nombre_apellidos = $objUser->getNombre_apellidos();
-//        $contrasenya_user = $objUser->getContrasenya_user();
-//        $moroso = $objUser->getMoroso();
-//        //creo la sentencia que ejecutaré para registrar los datos
-//        $sql = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya_user . "','" . $nombre_apellidos . "','" . $moroso . ")";
-//        //ejecutamos la consulta si da error lo imprimimos
-//        if (!$this->conObj->query($sql)) {
-//            return false;
-//        } else {
-//            return true;
-//        }
-//        //una vez registrados los datos cierro la conexion activa
-//        mysqli_close($this->conObj);
-//    }
 
     function eliminar_usuario($nombre_usuario, $contrasenya) {
         $sentence = "DELETE FROM `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "')";

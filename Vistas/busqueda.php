@@ -99,6 +99,7 @@ and open the template in the editor.
                 <!-- ANUNCIOS -->
                 <table>
                     <?php
+                    mostrarVistaLista();
                     ?>
                 </table>
             </article>

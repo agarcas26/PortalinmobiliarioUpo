@@ -89,4 +89,37 @@ function modificarResenya() {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["msj"] = "Petición ajena al sistema.";
     }
+    if ($_SESSION["validacion"]) {
+        $resenya1 = new ResenyaModel();
+        $resenya1->setDescripcion($_POST["txtDescripcion"]);
+        $resenya1->setValoracion($_POST["txtValoracion"]);
+
+        $daoResenya = new daoResenyas();
+        $modifyOk = $daoResenya->modificarResenyas($resenya1);
+        if (!$modifyOk) {
+            $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
+        }
+        if ($_SESSION["validacion"] || $_SESSION["cancelado"]) {
+            header('Location: ../Vistas/Inmuebles.php'); //modificacion cancelada vuelve al formulario 
+        } else {
+            header('Location: ../Vistas/Inmuebles.php');
+        }
+    }
+}
+
+function listarResenyas() {
+    $daoResenyas = new daoResenyas();
+    return $daoResenyas->listarResenyas();
+}
+
+function leerResenyasbyUsuarios() {
+    $user = new UsuarioModel();
+    $daoResenyas = new daoResenyas();
+    return $daoResenyas->read_by_user($user);
+}
+
+function leerResenyasbyInmuebles() {
+    $inmueble = new InmueblesModel();
+    $daoResenyas = new daoResenyas();
+    return $daoResenyas->read_by_inmueble($inmueble);
 }
