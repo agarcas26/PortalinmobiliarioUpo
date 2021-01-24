@@ -6,20 +6,12 @@
  * and open the template in the editor.
  */
 
-class UsuarioProfesional{
-    private $nombre_usuario;
+class UsuarioProfesional extends Usuario{
     private $empresa;
     
-    function getNombre_usuario() {
-        return $this->nombre_usuario;
-    }
 
     function getEmpresa() {
         return $this->empresa;
-    }
-
-    function setNombre_usuario($nombre_usuario) {
-        $this->nombre_usuario = $nombre_usuario;
     }
 
     function setEmpresa($empresa) {
