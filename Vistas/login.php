@@ -30,11 +30,11 @@
                 <form action="../Controladores/loginController.php" method="post">
                     <div class="usuario">
                         <label class="form-group" class="label" for="fijo">Usuario: </label>
-                        <input type="text" id="user" name="user" class="form-text">
+                        <input type="text" id="nombre_usuario" name="nombre_usuario" class="form-text">
                     </div> 
                     <div class="contraseña">
                         <label class="form-group" class="label" for="fijo">Contraseña:  </label>
-                        <input type="password" id="pass" name="pass" class="form-text">
+                        <input type="password" id="contrasenya" name="contrasenya" class="form-text">
                     </div> 
                     <div class="entrar">
                         <input class="btn btn-primary" type="submit" name="entrar" value="Iniciar sesión" class="form-text" />

@@ -11,10 +11,18 @@ function getUsuarioByUsuario($nombre_usuario) {
     return $usuario;
 }
 
-function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {//HE CAMBIADO AQUI 
-    $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);//AQUI LE PASABA CONTRASEÑA EN VEZ DE PASS
+function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo, $empresa) {
     $dao = new daoUsuarios();
-    $dao->crear_usuario_registro($nuevo_usuario);//AQUI SE LE PASABA TODO EN VEZ DEL OBJETO NUEVO USUARIOO
+    $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo);
+    $dao->crear_usuario_registro($nombre_apellidos, $nombre_usuario, $pass, $moroso);
+
+    if ($tipo == particular) {
+        $dao_particular = new daoParticular();
+        $dao->crear_usuario_particular($nombre_usuario);
+    } else {
+        $dao_profesional = new daoProfesional();
+        $dao->crear_usuario_particular($nombre_usuario, $empresa);
+    }
 }
 
 function actualizarDatosUsuario($datos) {

@@ -32,29 +32,31 @@ and open the template in the editor.
                 <section>
                     <form action="../Controladores/registroController.php" method="POST">
                         <div class="form-group">
-                        Nombre: <input class="form-control" type="text" id="nombre_usuario" name="nombre_usuario" value="" />
-                        <br>
+                            Nombre: <input class="form-control" type="text" id="nombre_apellidos" name="nombre_apellidos" value="" />
+                            <br>
                         </div>
                         <div class="form-group">
-                        Usuario: <input class="form-control" type="text" id="usuario" name="usuario" value="" />
-                        <br>
+                            Usuario: <input class="form-control" type="text" id="nombre_usuario" name="nombre_usuario" value="" />
+                            <br>
                         </div>
                         <div class="form-check">
-                        Tipo de usuario:
-                        <br>
-                        <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
-                        <label class="form-check-label" for="profesional">Profesional</label>
-                        <br>
-                        <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
-                        <label class="form-check-label" for="particular">Particular</label>
-                        <br>
+                            Tipo de usuario:
+                            <br>
+                            <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
+                            <label class="form-check-label" for="profesional">Profesional</label>
+                            <br>
+                            <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
+                            <label class="form-check-label" for="particular">Particular</label>
+                            <br>
+                        </div>
+                        Empresa: <input type="text" name="empresa" id="empresa" value="" />
+                        <label>Si usted trabaja para una empresa, por favor, rellene el campo anterior</label>
+                        <div class="form-group">
+                            Contraseña: <input class="form-control" type="password" id="contrasenya" name="contrasenya" value="" />
+                            <br>
                         </div>
                         <div class="form-group">
-                        Contraseña: <input class="form-control" type="password" id="contrasena" name="contrasena" value="" />
-                        <br>
-                        </div>
-                        <div class="form-group">
-                        Confirmar contraseña: <input class="form-control" type="password" id="conf_contrasena" name="conf_contrasena" value="" />
+                            Confirmar contraseña: <input class="form-control" type="password" id="conf_contrasenya" name="conf_contrasenya" value="" />
                         </div>
                         <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
                     </form>
