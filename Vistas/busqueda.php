@@ -27,7 +27,7 @@ and open the template in the editor.
             ?>
         </header>
         <main>
-            <aside style="position: sticky; top: 20px;">
+            <aside id="filtros" style="position: sticky; top: 20px;">
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
                         <tr>
