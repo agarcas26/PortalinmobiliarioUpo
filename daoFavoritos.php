@@ -41,4 +41,14 @@ class daoFavoritos {
         return $favoritos;
     }
 
+    function crear_favorito($id_anuncio, $nombre_usuario) {
+        $sentence = "INSERT INTO `favorito` (`id_anuncio`,`nombre_usuario`) VALUES ('" . $id_anuncio . "','" . $nombre_usuario . "')";
+        $result = mysqli_query($this->conexion, $sentence);
+    }
+
+    function eliminar_favorito($id_anuncio) {
+        $sentence = "DELETE FROM `favorito` WHERE `id_anuncio`='" . $id_anuncio . "'";
+        $result = mysqli_query($this->conexion, $sentence);
+    }
+
 }
