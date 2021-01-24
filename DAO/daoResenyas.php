@@ -57,7 +57,7 @@ class daoResenyas {
         mysqli_close($this->conn);
     }
 
-    public function eliminarResenyas($objResenyas) {
+     function eliminarResenyas($objResenyas) {
         $id_resenya = $objResenyas->getId_resenya();
 
         $sql = "DELETE FROM `resenya` WHERE `id_resenya`='$id_resenya'";
@@ -69,7 +69,7 @@ class daoResenyas {
         mysqli_close($this->conn);
     }
 
-    public function listarResenyas() {
+   function listarResenyas() {
         $sql = "SELECT * FROM `resenya`";
         $resultado = $this->conn->query($sql);
         $arrayResenyas = array();
@@ -80,32 +80,32 @@ class daoResenyas {
         return $arrayResenyas;
     }
 
-}
 
-function read($objResenyas) {
-    $id_resenya = $objResenyas->getId_resenya();
-    $sql = "SELECT * FROM `resenya` WHERE `id_resenya`='$id_resenya'";
-    $objMySqlLi = $this->conn->query($sql);
 
-    if ($objMySqlLi->num_rows != 1) {
-        return false;
-    } else {
-        $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-        $objResenyas->setId_resenya($arrayAux["id_resenya"]);
-        $objResenyas->setNombre_usuario($arrayAux["nombre_usuario"]);
-        $objResenyas->setCp($arrayAux["cp"]);
-        $objResenyas->setNombre_via($arrayAux["nombre_via"]);
-        $objResenyas->setTipo_via($arrayAux["tipo_via"]);
-        $objResenyas->setNumero($arrayAux["numero"]);
-        $objResenyas->setDescripcion($arrayAux["descripcion"]);
-        $objResenyas->setFecha_resenya($arrayAux["fecha_resenya"]);
-        $objResenyas->setValoracion($arrayAux["valoracion"]);
-        return $objResenyas;
-    }
-    mysqli_close($this->conn);
-}
+//     function read($objResenyas) {
+//    $id_resenya = $objResenyas->getId_resenya();
+//    $sql = "SELECT * FROM `resenya` WHERE `id_resenya`='$id_resenya'";
+//    $objMySqlLi = $this->conn->query($sql);
+//
+//    if ($objMySqlLi->num_rows != 1) {
+//        return false;
+//    } else {
+//        $arrayAux = mysqli_fetch_assoc($objMySqlLi);
+//        $objResenyas->setId_resenya($arrayAux["id_resenya"]);
+//        $objResenyas->setNombre_usuario($arrayAux["nombre_usuario"]);
+//        $objResenyas->setCp($arrayAux["cp"]);
+//        $objResenyas->setNombre_via($arrayAux["nombre_via"]);
+//        $objResenyas->setTipo_via($arrayAux["tipo_via"]);
+//        $objResenyas->setNumero($arrayAux["numero"]);
+//        $objResenyas->setDescripcion($arrayAux["descripcion"]);
+//        $objResenyas->setFecha_resenya($arrayAux["fecha_resenya"]);
+//        $objResenyas->setValoracion($arrayAux["valoracion"]);
+//        return $objResenyas;
+//    }
+//    mysqli_close($this->conn);
+//}
 
-function read_by_user($objUser) {
+     function read_by_user($objUser) {
 
     $id_resenya = $objUser->getId_resenya();
     $objMySqlLi = $this->conn->query($sql);
@@ -153,4 +153,5 @@ function read_by_inmueble($objInmueble) {
         return $objInmueble;
     }
     mysqli_close($this->conn);
+}
 }
