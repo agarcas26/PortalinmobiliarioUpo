@@ -7,7 +7,7 @@ include_once '../DAO/daoUsuarios.php';
 
 
 if (isset($_POST['entrar'])) {
-    $dao = new daoUsuario();
+    $dao = new daoUsuarios();
     if (controllerInicioSesion($_POST['user'], $_POST['pass']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $_SESSION['usuario'] = $_POST['user'];

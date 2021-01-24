@@ -3,7 +3,7 @@
 include_once '../Persistencia/Conexion.php';
 include_once '../Modelos/UsuarioModel.php';
 
-class daoUsuario {
+class daoUsuarios {
 
     public $conObj;
     public $conexion;
@@ -26,13 +26,13 @@ class daoUsuario {
         return $result;
     }
 
-    function crear_usuario($nombre_usuario, $contrasenya, $usuario, $moroso) {
-        $sentence = "INSERT INTO `usuarios` (`usuario`,`contrasenya`) VALUES ()";
+    function crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso) {
+        $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
         $result = mysqli_query($conexion, $sentence);
     }
 
     function eliminar_usuario($nombre_usuario, $contrasenya) {
-        $sentence = "DELETE FROM `usuarios` (`usuario`,`contrasenya`) VALUES ()";
+        $sentence = "DELETE FROM `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "')";
         $result = mysqli_query($conexion, $sentence);
     }
 
@@ -41,14 +41,13 @@ class daoUsuario {
         $result = mysqli_query($conexion, $sentence);
     }
 
-    function get_usuario_by_nombre_usuario($nombre_usuario,$contrasenya_user) {
-        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario='$nombre_usuario',contrasenya_user='$contrasenya_user';";
-      
+    function get_usuario_by_nombre_usuario($nombre_usuario, $contrasenya_user) {
+        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' and contrasenya_user = '$contrasenya_user';
+";
+
         $result = mysqli_query($conexion, $sentence);
 
         return $result;
     }
-
-    
 
 }
