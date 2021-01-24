@@ -4,4 +4,9 @@
  * and open the template in the editor.
  */
 
-
+$('aside #filtros').toggle(function () {
+    if ($(this).prev().is(":visible"))
+        $(this).slideUp(2000);
+    else
+        $(this).prev().slideDown(2000);
+});
