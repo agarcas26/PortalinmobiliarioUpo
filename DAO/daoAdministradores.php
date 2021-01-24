@@ -20,7 +20,7 @@ class daoAdministradores {
     }
 
     function get_administrador($nombre_usuario_admin, $contrasenya_admin) {
-        $sentence = "SELECT * FROM `administradores` WHERE `administradores`.`nombre_usuario_admin` = '" . $nombre_usuario_admin . "' and `administradores`.`contrasenya_admin` = '" . $contrasenya_admin . "';";
+        $sentence = "SELECT * FROM `administradores` WHERE `administradores`.`nombre_usuario_admin` = '" . $nombre_usuario_admin . "' and `administradores`.`contrasenya` = '" . $contrasenya_admin . "';";
         $result = mysqli_query($conexion, $sentence);
 
         return mysqli_fetch_row($result);

@@ -27,7 +27,7 @@ class daoResenyas {
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "INSERT INTO resenya values(null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
+        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
 
         if (!$this->conn->query($sql)) {
             return false;
@@ -47,8 +47,8 @@ class daoResenyas {
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "UPDATE resenya SET nombre_usuario='$nombre_usuario',cp='$cp',nombre_via='$nombre_via',tipo_via='$tipo_via',"
-                . "numero='$numero',descripcion='$descripcion',fecha_resenya='$fecha_resenya',valoracion='$valoracion'";
+        $sql = "UPDATE `resenya` SET `nombre_usuario`='$nombre_usuario',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via',"
+                . "`numero`='$numero',`descripcion`='$descripcion',`fecha_resenya`='$fecha_resenya',`valoracion`='$valoracion'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -60,7 +60,7 @@ class daoResenyas {
     public function eliminarResenyas($objResenyas) {
         $id_resenya = $objResenyas->getId_resenya();
 
-        $sql = "DELETE FROM resenya WHERE id_resenya='$id_resenya'";
+        $sql = "DELETE FROM `resenya` WHERE `id_resenya`='$id_resenya'";
         if (!$this->conn->query($sql)) {
             return false;
         } else {
@@ -70,7 +70,7 @@ class daoResenyas {
     }
 
     public function listarResenyas() {
-        $sql = "SELECT * FROM resenya";
+        $sql = "SELECT * FROM `resenya`";
         $resultado = $this->conn->query($sql);
         $arrayResenyas = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -84,7 +84,7 @@ class daoResenyas {
 
 function read($objResenyas) {
     $id_resenya = $objResenyas->getId_resenya();
-    $sql = "SELECT * FROM resenya WHERE id_resenya='$id_resenya'";
+    $sql = "SELECT * FROM `resenya` WHERE `id_resenya`='$id_resenya'";
     $objMySqlLi = $this->conn->query($sql);
 
     if ($objMySqlLi->num_rows != 1) {
@@ -110,7 +110,7 @@ function read_by_user($objUser) {
     $id_resenya = $objUser->getId_resenya();
     $objMySqlLi = $this->conn->query($sql);
 
-    $sql = "SELECT * FROM resenya r, usuarios u WHERE u.nombre_usuario  AND r.id_resenya = '$id_resenya'";
+    $sql = "SELECT * FROM `resenya` r, usuarios u WHERE u.`nombre_usuario`  AND r.`id_resenya` = '$id_resenya'";
     //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
     if ($objMySqlLi->num_rows != 1) {
         return false;
