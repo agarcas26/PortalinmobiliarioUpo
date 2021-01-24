@@ -58,5 +58,14 @@ class Usuario {
     function __toString() {
         return $this->get_nombre_usuario() . "," . $this->get_nombre_usuario() . "," . $this->get_contrasenya_user() . "," . $this->get_moroso();
     }
+    
+    function getTipoUsr(){
+        if(is_a(this, "UsuarioParticular")){
+            return "particular";
+        }
+        else{
+            return "profesional";
+        }
+    }
 
 }
