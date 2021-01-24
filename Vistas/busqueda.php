@@ -10,6 +10,9 @@ and open the template in the editor.
         <title>Búsqueda</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <script src="../scripts.js"></script>        
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
         include_once '../Vistas/header.php';
         ?>
@@ -28,6 +31,7 @@ and open the template in the editor.
         </header>
         <main>
             <aside id="filtros" style="position: sticky; top: 20px;">
+                <button onclick="mostrar_ocultar()">Mostrar/Ocultar filtros</button>
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
                         <tr>
@@ -84,8 +88,8 @@ and open the template in the editor.
                     <!-- OPCION LISTA / CUADRICULA -->
                     <form style="float: right;" action="busquedaController.php" method="GET">
                         <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
-                        <input class="btn btn-primary" type="submit" name="cuadricula" value="Cuadricula" />
+                            <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
+                            <input class="btn btn-primary" type="submit" name="cuadricula" value="Cuadricula" />
                         </div>
                     </form>
                 </section>
