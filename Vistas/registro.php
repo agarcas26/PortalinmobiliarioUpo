@@ -61,7 +61,7 @@ and open the template in the editor.
                                 <td>
                                     <input type="text" name="empresa" id="empresa" value="" />
                                 </td>
-                                <td><label>Si usted trabaja para una empresa, por favor, rellene este campo</label></td>
+                                <td><label class="alert-info">Si usted trabaja para una empresa, por favor, rellene este campo</label></td>
                             </tr>
                             <tr>
                                 <td>Contraseña:</td>
