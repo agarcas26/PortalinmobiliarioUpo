@@ -130,3 +130,74 @@ function anuncios_barra_busqueda($barra_busqueda) {
 
     return $anuncios;
 }
+
+function getFiltros() {
+    $filtros=[];
+    if(isset($_GET["num_banyos"])){
+        $filtros[]=$_GET["num_banyos"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["tipo_inmueble"])){
+        $filtros[]=$_GET["tipo_inmueble"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["tipo_oferta"])){
+        $filtros[]=$_GET["tipo_oferta"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["precio_max"])){
+        $filtros[]=$_GET["precio_max"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["num_hab"])){
+        $filtros[]=$_GET["num_hab"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["m2"])){
+        $filtros[]=$_GET["m2"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    if(isset($_GET["fecha"])){
+        $filtros[]=$_GET["fecha"];
+    }else{
+        $filtros[]="notset";
+    }
+    
+    return $filtros;
+}
+
+function anuncios_busqueda($filtros) {
+    $all_anuncios = listAllAnuncios();
+    $anuncios = [];
+    while (mysqli_fetch_array($all_anuncios)) {
+        for ($i = 0; $i < sizeof($all_anuncios); $i++) {
+            if ($filtros[$i] == $barra_busqueda) {
+                $anuncio_aux = new Anuncio();
+                $anuncio_aux->setId_anuncio($all_anuncios[0]);
+                $anuncio_aux->setNombre_via($all_anuncios[1]);
+                $anuncio_aux->setTipo_via($all_anuncios[2]);
+                $anuncio_aux->setCp($all_anuncios[3]);
+                $anuncio_aux->setNumero($all_anuncios[4]);
+                $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
+                $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
+                $anuncio_aux->setPrecio($all_anuncios[7]);
+                $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
+                $anuncios[] = $anuncio_aux;
+            }
+        }
+    }
+
+    return $anuncios;
+}
