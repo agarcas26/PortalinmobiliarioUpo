@@ -5,7 +5,7 @@ require_once '../Modelos/AnunciosModel.php';
 require_once '../Modelos/UsuarioModel.php';
 require_once '../Modelos/InmueblesModel.php';
 
-class daoanuncios {
+class daoAnuncios {
 
     public $conObj;
     public $conn;
@@ -16,11 +16,11 @@ class daoanuncios {
         $this->conn = $this->conObj->establecer_conexion();
     }
 
-//operaciones crud 
-//insertar anuncio
+    //operaciones crud 
+    //insertar anuncio
     public function insertar($objAnuncio) {
-//paso del objeto anuncio a las variables individuales
-//        $idAnuncio = $objAnuncio->getIdAnuncio();
+        //paso del objeto anuncio a las variables individuales
+        //        $idAnuncio = $objAnuncio->getIdAnuncio();
 
         $nombre_via = $objAnuncio->getNombre_via();
         $tipo_via = $objAnuncio->getTipo_via();
@@ -40,7 +40,7 @@ class daoanuncios {
         mysqli_close($this->conn);
     }
 
-//leer anuncio por id
+    //leer anuncio por id
     public function read($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
@@ -108,6 +108,7 @@ class daoanuncios {
             array_push($arrayAnuncios, $fila);
         }
         mysqli_close($this->conn);
+
         return $arrayAnuncios;
     }
 

@@ -33,17 +33,27 @@ and open the template in the editor.
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
-                        <div class="form-group">
-                        <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">
-                            <option>Compra</option>
-                            <option>Alquiler</option>
-                            <option>Vacacional</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                        <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
-                        </div>
-                        <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
+                        <table>
+                            <tr class="form-group">
+                                <td>
+                                    <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">
+                                        <option>Compra</option>
+                                        <option>Alquiler</option>
+                                        <option>Vacacional</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="form-group">
+                                <td>
+                                    <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
+                                </td>
+                            </tr>
+                        </table>
                     </form>
                 </nav>
                 <aside id="ultimas_busquedas">                    
