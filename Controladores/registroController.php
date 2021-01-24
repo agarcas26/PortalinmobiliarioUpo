@@ -28,6 +28,11 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
 
         if (getUsuarioByUsuario($nombre_usuario) == NULL) {
             nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false, $tipo, $empresa);
+            if ($tipo == profesional) {
+                $_SESSION['usuario_profesional'] = $nombre_usuario;
+            } else {
+                $_SESSION['usuario_particular'] = $nombre_usuario;
+            }
         }
         header("Location: ../Vistas/login.php");
     } else {
