@@ -35,6 +35,7 @@ and open the template in the editor.
                             <td><input type="number" id="num_banyos" name="num_banyos" value=""></td>
                         </tr>
                         <tr>
+                            <td><label>Tipo de inmueble</label></td>
                             <td><select class="dropdown-item" id="tipo_inmueble">
                                     <option value="casa">Casa</option>
                                     <option value="piso">Piso</option>
@@ -43,6 +44,7 @@ and open the template in the editor.
                                 </select></td>
                         </tr>
                         <tr>
+                            <td><label>Tipo de oferta</label></td>
                             <td><select class="dropdown-item" id="tipo_oferta">
                                     <option>Compra</option>
                                     <option>Alquiler</option>
