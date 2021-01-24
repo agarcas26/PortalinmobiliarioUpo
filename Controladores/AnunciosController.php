@@ -2,9 +2,9 @@
 
 include_once '../Modelos/UsuarioModel.php';
 include_once '../Modelos/AnunciosModel.php';
-include_once '../Dao/daoanuncios.php';
+include_once '../DAO/daoanuncios.php';
 include_once '../Modelos/InmueblesModel.php';
-include_once '../Dao/daoInmueble.php';
+include_once '../DAO/daoInmueble.php';
 
 session_start();
 //FALTA INSERTAR ANUNCIOS
