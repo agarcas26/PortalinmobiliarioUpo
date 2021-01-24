@@ -3,7 +3,7 @@
 include_once '../Persistencia/Conexion.php';
 include_once '../Modelos/UsuarioModel.php';
 
-class daoUsuario {
+class daoUsuarios {
 
     public $conObj;
     public $conexion;
