@@ -10,6 +10,7 @@ ini_set('display_errors', '1');
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
 $_SESSION["errores"] = "";
+$_SESSION["cancelado"] = false;
 
 function escribirResenyas() {
     if ($_POST["btonEscribir"]) {
@@ -41,13 +42,17 @@ function escribirResenyas() {
 }
 
 function eliminarResenyas() {
-    if ($_POST["txtDescripcion"]) {
-        $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtDescripcion"] = "Debe de rellenar el campo descripcion";
-    }
-    if ($_POST["txtValoracion"]) {
-        $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
+    if ($_POST["btonEliminar"]) {
+
+
+        if ($_POST["txtDescripcion"]) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errores"]["txtDescripcion"] = "Debe de rellenar el campo descripcion";
+        }
+        if ($_POST["txtValoracion"]) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
+        }
     }
     if ($_SESSION["validacion"]) {
         $resenya2 = new Resenyamodel();
@@ -66,14 +71,22 @@ function eliminarResenyas() {
         header('Location: ../Vistas/Inmuebles.php'); //con errores
     }
 }
-function modificarResenya(){
-    if($_POST["txtDescripcion"]){
-        $_SESSION["validacion"]=false;
-        $_SESSION["errores"]["txtDescripcion"]="debe completar el campo descripción.";
-        
-    }
-    if ($_POST["txtValoracion"]) {
+
+function modificarResenya() {
+    if ($_POST["btonModificar"]) {
+        if ($_POST["txtDescripcion"]) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errores"]["txtDescripcion"] = "debe completar el campo descripción.";
+        }
+        if ($_POST["txtValoracion"]) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
+        }
+    } elseif ($_POST["btonCancelar"]) {
+        $_SESSION["cancelado"] = true;
+        $_SESSION["errores"]["msj"] = "ha cancelado la operación.";
+    } else {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtValoracion"] = "Debe de rellenar el campo valoracion";
+        $_SESSION["errores"]["msj"] = "Petición ajena al sistema.";
     }
 }

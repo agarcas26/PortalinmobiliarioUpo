@@ -27,7 +27,7 @@ class daoUsuarios {
     }
 
     function crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso) {
-        $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
+      echo  $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
 
         echo 'aaaaaa      ' . $sentence;
 

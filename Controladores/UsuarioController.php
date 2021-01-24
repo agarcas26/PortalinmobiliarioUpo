@@ -11,10 +11,10 @@ function getUsuarioByUsuario($nombre_usuario) {
     return $usuario;
 }
 
-function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {
-    $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);
+function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso) {//HE CAMBIADO AQUI 
+    $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);//AQUI LE PASABA CONTRASEÑA EN VEZ DE PASS
     $dao = new daoUsuarios();
-    $dao->crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso);
+    $dao->crear_usuario($nuevo_usuario);//AQUI SE LE PASABA TODO EN VEZ DEL OBJETO NUEVO USUARIOO
 }
 
 function actualizarDatosUsuario($datos) {
