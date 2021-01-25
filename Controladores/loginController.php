@@ -7,16 +7,16 @@ include_once '../DAO/daoUsuarios.php';
 
 
 if (isset($_POST['entrar'])) {
-    $dao = new daoUsuarios();
+    //$dao = new daoUsuarios();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
-        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
+       //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $_SESSION['usuario'] = $_POST['user'];
         header("Location: ../Vistas/index.php");
-    } else {
+    }  else {
         header("Location: ../Vistas/login.php");
-    }
-    
-    $dao->destruct();
+     }
+   
+    //$dao->destruct();
 }
 
 if (isset($_POST['registro'])) {
@@ -25,11 +25,11 @@ if (isset($_POST['registro'])) {
 
 function controllerInicioSesion($nombre_usuario, $pass) {
     $r=false;
-    if (preg_match("/[\w]+@{1}[\w]+\.[a-z]{2,3}/", $nombre_usuario) && preg_match("/[\w]+@{1}[\w]+\.[a-z]{2,3}/", $pass)) {
+    if (preg_match("/[A-Za-z0-9_]{4}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{4}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-
         $usuario = getUsuarioByUsuario($nombre_usuario);
+        
         if ($usuario->get_contrasenya_user() == $pass) {
             $r = true;
        
