@@ -22,6 +22,9 @@ if (isset($_POST['ver_detalle'])) {
     $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
     $daoAnuncios->destruct();
     $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
+    
+    mostrar_detalle_anuncio();
+    header("Location: ../Vistas/detalle_anuncio.php");
 }
 
 function mostrar_detalle_anuncio(){
