@@ -48,6 +48,7 @@
                     </section>
                     <!-- Mostramos vista previa anuncios -->
                     <section>
+                        <table>
                         <?php
                         if (!isset($_POST['ver_todos'])) {
                             vista_previa_anuncios();
@@ -55,8 +56,6 @@
                             ver_todos_los_anuncios();
                         }
                         ?>
-                        <table>
-
                             <form>
                                 <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
