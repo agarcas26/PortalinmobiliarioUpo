@@ -24,15 +24,15 @@ class daoBusqueda {
         $this->conObj->cerrar_conexion();
     }
 
-    function listar_buquedas() {
-        $sentence = "SELECT * FROM `buqueda`";
+    function listar_busquedas() {
+        $sentence = "SELECT * FROM `busqueda`";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
 
-    function listar_buquedas_usuario($nombre_usuario) {
-        $sentence = "SELECT * FROM `buqueda` WHERE `nombre_usuario`='" . $nombre_usuario . "';";
+    function listar_busquedas_usuario($nombre_usuario) {
+        $sentence = "SELECT * FROM `busqueda` WHERE `nombre_usuario`='" . $nombre_usuario . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
