@@ -17,11 +17,11 @@ if (isset($_POST['enviar'])) {
 
 function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {
     if ($tipo == "profesional") {
-        if (preg_match("/[[:alpha:]]*/", $empresa)) {
+        if (preg_match("/^[a-zA-Z]+[a-zA-Z]+$/", $empresa)) {
             filter_var($empresa, FILTER_SANITIZE_STRING);
         }
     }
-    if (preg_match($nombre_apellidos, "/^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/") && preg_match($nombre_usuario, "/[A-Za-z0-9_]{4,15}/") && preg_match($pass, "/[A-Za-z0-9_]{8,15}/")) {
+    if (preg_match($nombre_apellidos, "/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/") && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
         filter_var($nombre_apellidos, FILTER_SANITIZE_STRING);
         filter_var($nombre_usuario, FILTER_SANITIZE_MAGIC_QUOTES);
         filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
