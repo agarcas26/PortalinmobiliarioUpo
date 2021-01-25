@@ -8,9 +8,15 @@ include_once '../Modelos/UsuarioModel.php';
 function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
     $dao = new daoUsuarios();
     $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario, $contraseña_usuario);
+    $daoProfesional = new daoProfesional();
     $usuario_datos = mysqli_fetch_row($usuario_datos);
     if (isset($usuario_datos[3])) {
         $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
+        if ($daoProfesional->get_usuario_by_nombre_usuario($nombre_usuario) != null) {
+            $usuario->setTipo("profesional");
+        } else {
+            $usuario->setTipo("particular");
+        }
     } else {
         $usuario = null;
     }

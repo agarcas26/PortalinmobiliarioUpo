@@ -27,6 +27,8 @@ class daoProfesional {
     function listar_profesionales() {
         $sentence = "SELECT * FROM `profesional`";
         $result = mysqli_query($this->conexion, $sentence);
+
+        return $result;
     }
 
     function crear_profesional($nombre_usuario, $empresa) {
@@ -37,6 +39,13 @@ class daoProfesional {
     function eliminar_profesional($nombre_usuario) {
         $sentence = "DELETE FROM `profesional` WHERE `nombre_usuario`='" . $nombre_usuario . "'";
         $result = mysqli_query($this->conexion, $sentence);
+    }
+
+    function get_usuario_by_nombre_usuario($nombre_usuario) {
+        $sentence = "SELECT * FROM `profesional` WHERE `profesional`.`nombre_usuario`='" . $nombre_usuario . "'";
+        $result = mysqli_query($this->conexion, $sentence);
+
+        return $result;
     }
 
 }
