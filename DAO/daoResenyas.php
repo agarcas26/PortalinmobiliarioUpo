@@ -32,8 +32,8 @@ class daoResenyas {
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
-
+        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
+//he añadido currentdate pero no estoy muy segura de que sea asi, andrea
         if (!$this->$conexion->query($sql)) {
             return false;
         } else {
