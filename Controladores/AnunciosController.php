@@ -100,7 +100,7 @@ function listar_anuncios_usuario() {
 }
 
 function vista_previa_anuncios() {
-    $daoanuncios = new daoanuncios();
+    $daoanuncios = new daoAnuncios();
     $anuncios = $daoanuncios->listar();
     return mysqli_fetch_row($anuncios);
 }
