@@ -24,7 +24,35 @@ if (isset($_POST['ver_detalle'])) {
     $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
 }
 
-//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
+function insertAnuncio() {
+    if ($_POST["btonInsertar"]) {
+        if (empty("txtPrecio")) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
+        }
+         if(empty("txtTitulo")){
+          $_SESSION["validacion"] = false;
+          $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
+          
+      }
+    }
+    if($_SESSION["validacion"]){
+        $anuncio1= new Anuncio();
+        $anuncio1->setPrecio($_POST["txtPrecio"]);
+        $anuncio1->getTitulo($_POST["txtTitulo"]);
+        $daoAnuncio = new daoAnuncios();
+        $insertOk = $daoAnuncio->insertar($anuncio1);
+        if(!$insertOk){
+            $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
+        }
+    }
+    if($_SESSION["validacion"]){
+        header('Location:../Vistas/anunciate.php');//se va a la pantalla sin errores
+    }else{
+        header('Location:../Vistas/anunciate.php');//muestra un error
+    }
+}
+
 function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();
 
