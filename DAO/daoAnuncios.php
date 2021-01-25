@@ -8,12 +8,17 @@ require_once '../Modelos/InmueblesModel.php';
 class daoAnuncios {
 
     public $conObj;
-    public $conn;
-    private $anuncio;
+    public $conexion;
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conn = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
+    }
+
+    function destruct() {
+        $this->conObj = new Conexion();
+        $this->conexion = null;
+        $this->conObj->cerrar_conexion();
     }
 
     //operaciones crud 
@@ -32,19 +37,19 @@ class daoAnuncios {
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
         $titulo = $objAnuncio->getTitulo();
         $sql = "INSERT INTO `anuncio` (`id_anuncio`, `nombre_via`, `tipo_via`, `cp`, `numero`, `nombre_usuario_publica`, `nombre_usuario_anuncio`, `precio`, `fecha_anuncio`, `titulo`) VALUES (null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio','$fecha_anuncio','$titulo')";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     //leer anuncio por id
     public function read($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
-        $objMySqlLi = $this->conn->query($sql);
+        $objMySqlLi = $this->conexion->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
             return false;
@@ -63,19 +68,19 @@ class daoAnuncios {
 
             return $objAnuncio;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function eliminar($objAnuncio) {
         $idAnuncio = $objAnuncio->getIdAnuncio();
 
         $sql = "DELETE FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function modificar($objAnuncio) {
@@ -91,36 +96,36 @@ class daoAnuncios {
 
         $sql = "UPDATE `anuncio` SET `nombre_via`='$nombre_via',`tipo_via`='$tipo_via',`cp`='$cp',`numero`='$numero',`precio`='$precio',"
                 . "`fecha_anuncio`='$fecha_anuncio',`nombre_usuario_publica`='$nombre_usuario_publica',`nombre_usuario_anuncio`='$nombre_usuario_anuncio',`titulo`='$titulo'";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function listar() {
         $sql = "SELECT * FROM `anuncio`";
-        $resultado = $this->conn->query($sql);
+        $resultado = $this->conexion->query($sql);
 
         $arrayAnuncios = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
             array_push($arrayAnuncios, $fila);
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
 
         return $arrayAnuncios;
     }
 
     function listar_anuncios_usuario($usuario) {
         $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" . $usuario . "';";
-        $resultado = $this->conn->query($sql);
+        $resultado = $this->conexion->query($sql);
 
         $arrayAnuncios = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
             array_push($arrayAnuncios, $fila);
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
         return $arrayAnuncios;
     }
 

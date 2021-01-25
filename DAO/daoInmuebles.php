@@ -8,12 +8,17 @@ require_once '../Modelos/InmueblesModel.php';
 class daoinmueble {
 
     public $conObj;
-    public $conn;
-    public $inmueble;
+    public $conexion;
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conn = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
+    }
+
+    function destruct() {
+        $this->conObj = new Conexion();
+        $this->conexion = null;
+        $this->conObj->cerrar_conexion();
     }
 
     public function insertar($objInmueble) {
@@ -34,19 +39,19 @@ class daoinmueble {
         $fotos = $objInmueble->getFotos();
         //tengo que pedirle al usuario la direccion y guardarla como pk
         $sql = "INSERT INTO `inmueble` INSERT INTO `inmueble`(`numero`, `cp`, `nombre_via`, `tipo_via`, `nombre_usuario_duenyos`, `nombre_localidad`, `nombre_provincia`, `num_banyos`, `num_hab`,`cocina`, `tipo`, `numero_plantas`, `planta`, `metros`,`fotos`) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function read($objInmueble) {
         $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
 
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
-        $objMySqlLi = $this->conn->query($sql);
+        $objMySqlLi = $this->conexion->query($sql);
 
         if ($objMySqlLi->num_rows != 1) {
             return false;
@@ -69,7 +74,7 @@ class daoinmueble {
             $objInmueble->setFotos($arrayAux["fotos"]);
             return $objInmueble;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function eliminar($objInmueble) {
@@ -80,12 +85,12 @@ class daoinmueble {
 
         $sql = "DELETE FROM `inmueble` WHERE numero='$numero',cp='$cp',nombre_via='$nombre_via',tipo_via='$tipo_via'";
 
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function modificar($objInmueble) {
@@ -109,12 +114,12 @@ class daoinmueble {
                 . "`cocina`='$cocina',`num_plantas`='$num_plantas',`planta`='$planta',`metros`='$metros',`tipo_inmueble`='$tipo_inmueble',`fotos`='$fotos' "
                 . "WHERE `numero`='$numero',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via'";
 
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     public function listar() {
@@ -124,7 +129,7 @@ class daoinmueble {
         while ($fila = mysqli_fetch_assoc($resultado)) {
             array_push($arrayInmuebles, $fila);
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
         return $arrayInmuebles;
     }
 

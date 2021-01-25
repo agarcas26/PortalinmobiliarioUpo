@@ -15,7 +15,7 @@ class daoFavoritos {
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conexion = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
     }
 
     function destruct() {
@@ -23,6 +23,7 @@ class daoFavoritos {
         $this->conexion = null;
         $this->conObj->cerrar_conexion();
     }
+
 
     function listar_favoritos() {
         $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito`";

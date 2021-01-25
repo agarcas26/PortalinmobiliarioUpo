@@ -8,17 +8,19 @@
 include_once '../Persistencia/Conexion.php';
 class daoBusqueda {
 
+    public $conObj;
     private $conexion;
 
     function __construct() {
-        $conn = new Conexion();
-        $this->conexion = $conn->establecer_conexion();
+       $this->conObj = new Conexion();
+        $this->conexion = $this->conObj->getConexion();
+
     }
 
     function __destruct() {
-        $conn = new Conexion();
-        $conn->cerrar_conexion();
+        $this->conObj = new Conexion();
         $this->conexion = null;
+        $this->conObj->cerrar_conexion();
     }
 
     function listar_busquedas() {

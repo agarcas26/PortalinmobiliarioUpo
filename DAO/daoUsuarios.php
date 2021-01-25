@@ -23,7 +23,7 @@ class daoUsuarios {
 
     function leer_usuarios() {
         $sentence = "SELECT * FROM `usuarios`";
-        $result = mysqli_query($this->conObj, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
