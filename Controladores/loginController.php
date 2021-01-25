@@ -10,7 +10,12 @@ if (isset($_POST['entrar'])) {
     $dao = new daoUsuarios();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
-        $_SESSION['usuario'] = $_POST['user'];
+        if (is_a(getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']), 'UsuarioParticular')) {
+            $_SESSION['usuario_particular'] = $_POST['nombre_usuario'];
+        }
+        if (is_a(getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']), 'UsuarioProfesional')) {
+            $_SESSION['usuario_profesional'] = $_POST['nombre_usuario'];
+        }
         header("Location: ../Vistas/index.php");
     } else {
         //header("Location: ../Vistas/login.php");

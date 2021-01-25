@@ -31,23 +31,23 @@ class daoUsuarios {
     function crear_usuario($nombre_usuario, $contrasenya, $nombre_apellidos, $moroso) {
         $sentence = "INSERT INTO `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "','" . $nombre_apellidos . "','" . $moroso . ")";
         
-        $result = mysqli_query($conexion, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
     }
 
     function eliminar_usuario($nombre_usuario, $contrasenya) {
         $sentence = "DELETE FROM `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "')";
-        $result = mysqli_query($conexion, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
     }
 
     function modificar_usuario($nuevos_datos) {
         $sentence = "UPDATE `usuarios` SET **** WHERE";
-        $result = mysqli_query($conexion, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
     }
 
     function get_usuario_by_nombre_usuario($nombre_usuario, $contrasenya_user) {
         $sentence = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' and contrasenya_user = '$contrasenya_user';";
 
-        $result = mysqli_query($conexion, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
