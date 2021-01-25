@@ -7,7 +7,11 @@ function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
     $dao = new daoUsuarios();
     $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario, $contraseña_usuario);
     $usuario_datos = mysqli_fetch_row($usuario_datos);
-    $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
+    if(isset($usuario_datos[3])){
+        $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
+    } else {
+        $usuario=null;
+    }
 
     return $usuario;
 }
