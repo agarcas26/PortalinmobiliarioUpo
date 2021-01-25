@@ -45,8 +45,7 @@ class daoUsuarios {
     }
 
     function get_usuario_by_nombre_usuario($nombre_usuario, $contrasenya_user) {
-        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' and contrasenya_user = '$contrasenya_user';
-";
+        $sentence = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' and contrasenya_user = '$contrasenya_user';";
 
         $result = mysqli_query($conexion, $sentence);
 
