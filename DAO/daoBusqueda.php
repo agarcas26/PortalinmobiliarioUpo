@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 include_once '../Persistencia/Conexion.php';
+
 class daoBusqueda {
 
     public $conObj;
