@@ -21,7 +21,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
             filter_var($empresa, FILTER_SANITIZE_STRING);
         }
     }
-    if (preg_match($nombre_apellidos, "/[[:alpha:]]*/") && preg_match($nombre_usuario, "/^@?(\w){1,15}") && preg_match($pass, "/^(?![a-z]*$)(?![A-Z]*$)(?!\d*$)(?")) {
+    if (preg_match($nombre_apellidos, "/[[:alpha:]]*/") && preg_match($nombre_usuario, "/[A-Za-z0-9_]{4,15}/") && preg_match($pass, "/[A-Za-z0-9_]{8,15}/")) {
         filter_var($nombre_apellidos, FILTER_SANITIZE_STRING);
         filter_var($nombre_usuario, FILTER_SANITIZE_MAGIC_QUOTES);
         filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
