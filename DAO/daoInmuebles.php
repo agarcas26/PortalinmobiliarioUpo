@@ -5,7 +5,7 @@ require_once '../Modelos/AnunciosModel.php';
 require_once '../Modelos/UsuarioModel.php';
 require_once '../Modelos/InmueblesModel.php';
 
-class daoinmueble {
+class daoInmuebles {
 
     public $conObj;
     public $conexion;

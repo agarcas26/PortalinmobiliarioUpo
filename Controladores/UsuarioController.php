@@ -20,6 +20,8 @@ function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
     } else {
         $usuario = null;
     }
+    $dao->destruct();
+    $daoProfesional->destruct();
 
     return $usuario;
 }
@@ -36,6 +38,9 @@ function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo,
         $dao_profesional = new daoProfesional();
         $dao_profesional->crear_profesional($nombre_usuario, $empresa);
     }
+    $dao->destruct();
+    $dao_particular->destruct();
+    $dao_profesional->destruct();
 }
 
 function actualizarDatosUsuario($datos) {
