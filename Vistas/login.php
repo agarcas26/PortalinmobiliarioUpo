@@ -13,7 +13,6 @@
     <body>
         <header class="masthead text-white text-center">
             <?php
-            session_start();
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
