@@ -17,14 +17,18 @@
                 </aside>
                 <article class="">
                     <section>
-                        
+                        <table>
+                            <?php
+                            get_alertas_usuario();
+                            ?>
+                        </table>
                     </section>
                 </article>
             </main>
         </body>
-          <?php
-    include_once '../Vistas/footer.html';
-    ?>
+        <?php
+        include_once '../Vistas/footer.html';
+        ?>
         <?php
     } else {
         header("Location: login.php");
