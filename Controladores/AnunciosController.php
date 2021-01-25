@@ -57,7 +57,7 @@ function modifyAnuncio() {
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->setDireccion($_POST["txtDireccion"]);
 
-         $daoanuncios = new daoAnuncios();
+        $daoanuncios = new daoAnuncios();
         $modifyOk = $daoanuncios->modificar($anuncio1);
         if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
@@ -102,7 +102,40 @@ function listar_anuncios_usuario() {
 function vista_previa_anuncios() {
     $daoanuncios = new daoAnuncios();
     $anuncios = $daoanuncios->listar();
-    return mysqli_fetch_row($anuncios);
+
+    if (mysqli_num_rows($anuncios) > 0) {
+        mysqli_fetch_array($anuncios);
+        echo '<tr>';
+        echo '<td><figure>' . $anuncios[14] . '</figure></td>';
+        echo '<td>' . $anuncios[0] . " " . $anuncios[2] . " " . $anuncios[1] . '</td>';
+        echo '<td>' . $anuncio[8] . '</td>';
+        echo '<td>' . $anuncio[7] . '</td>';
+        echo '<td>' . $anuncio[7] . '</td>';
+        echo '</tr>';
+    }
+}
+
+function ver_todos_los_anuncios() {
+    $daoanuncios = new daoAnuncios();
+    $anuncios = $daoanuncios->listar();
+    $i = 0;
+
+    if (mysqli_num_rows($anuncios) > 0) {
+        while (mysqli_fetch_array($anuncios)) {
+            echo '<tr>';
+            echo '<td><figure>' . $anuncios[14] . '</figure></td>';
+            echo '<td>' . $anuncios[0] . " " . $anuncios[2] . " " . $anuncios[1] . '</td>';
+            echo '<td>' . $anuncio[8] . '</td>';
+            echo '<td>' . $anuncio[7] . '</td>';
+            echo '<td>'
+            . '<form>'
+            . '<input type="submit" name="ver_detalle' . $i . '" id="ver_detalle' . $i . '" value="Ver detalle" />'
+            . '</form>'
+            . '</td>';
+            echo '</tr>';
+            $i++;
+        }
+    }
 }
 
 function anuncios_barra_busqueda($barra_busqueda) {

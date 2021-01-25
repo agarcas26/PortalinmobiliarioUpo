@@ -2,6 +2,7 @@
 
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/AnunciosController.php';
+include_once '../Controladores/busquedaController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
@@ -119,4 +120,16 @@ function print_resultados_filtros() {
         . $anuncios[$i]->getCp() . "</td>";
     }
     echo "</tr>";
+}
+
+function listar_busquedas_usuario(){
+    
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
+
+    $dao = new daoBusqueda();
+    return $dao->listar_busquedas_usuario($nombre_usuario);
 }
