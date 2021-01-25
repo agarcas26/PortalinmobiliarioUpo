@@ -2,6 +2,7 @@
 
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/AnunciosController.php';
+include_once '../Controladores/busquedaController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
