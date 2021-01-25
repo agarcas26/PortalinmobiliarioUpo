@@ -29,7 +29,7 @@ if (isset($_POST['registro'])) {
 
 function controllerInicioSesion($nombre_usuario, $pass) {
     $r = false;
-    if (preg_match("/[A-Za-z0-9_]{4}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{4}/", $pass)) {
+    if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
         $usuario = getUsuarioByUsuario($nombre_usuario, $pass);
