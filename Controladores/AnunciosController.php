@@ -24,6 +24,10 @@ if (isset($_POST['ver_detalle'])) {
     $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
 }
 
+function mostrar_detalle_anuncio(){
+    
+}
+
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();

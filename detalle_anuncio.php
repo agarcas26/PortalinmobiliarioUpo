@@ -30,7 +30,11 @@
             <main>
                 <article>
                     <section id="detalle_inmueble">
-                        
+                        <table>
+                            <?php
+                            mostrar_detalle_anuncio();
+                            ?>
+                        </table>
                     </section>
                 </article>
             </main> <?php
