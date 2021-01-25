@@ -18,8 +18,6 @@ and open the template in the editor.
     <body>
         <header class="masthead">
             <?php
-            echo 'aaaaaaaaaaaaa     ' . $_SESSION['usuario_particular'];
-            echo 'bbbbbbbbbbbbbb     ' . $_SESSION['usuario_profesional'];
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {

@@ -4,7 +4,7 @@ include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuarios.php';
 
-
+session_start();
 
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuarios();
@@ -16,8 +16,7 @@ if (isset($_POST['entrar'])) {
         } else {
             $_SESSION['usuario_particular'] = $_POST['nombre_usuario'];
         }
-        echo "aaaaaa    " .$usuario->getTipo() == "profesional";
-        //header("Location: ../Vistas/index.php");
+        header("Location: ../Vistas/index.php");
     } else {
         header("Location: ../Vistas/login.php");
     }

@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-session_start();
 
 function sesion_iniciada() {
     echo"<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
