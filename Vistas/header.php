@@ -10,6 +10,7 @@ function sesion_iniciada() {
     echo"<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/perfil.php'>Mi perfil</a>"
     . "<a href='../Vistas/mis_anuncios.php'>Mi anuncios</a>"
+    . "<a href='../Vistas/login.php'>Cerrar sesión</a>" //AÑADIR FUNCIONALIDAD
     . "</nav>"
     ."<br>"
     . "<a href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
