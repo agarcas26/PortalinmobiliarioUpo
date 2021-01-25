@@ -26,7 +26,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
         filter_var($nombre_usuario, FILTER_SANITIZE_MAGIC_QUOTES);
         filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
 
-        if (getUsuarioByUsuario($nombre_usuario) == NULL) {
+        if (getUsuarioByUsuario($nombre_usuario,$pass) == NULL) {
             nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false, $tipo, $empresa);
             if ($tipo == profesional) {
                 $_SESSION['usuario_profesional'] = $nombre_usuario;
