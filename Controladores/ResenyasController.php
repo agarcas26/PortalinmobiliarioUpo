@@ -27,9 +27,10 @@ function escribirResenyas() {
         $resenya1 = new Resenyamodel();
         $resenya1->setDescripcion($_POST["txtDescripcion"]);
         $resenya1->setValoracion($_POST["txtValoracion"]);
-        $daoresenya = new daoResenyas();
+        $daoResenya = new daoResenyas();
 
         $insertOk = $daoresenya->escribirResenyas($resenya1);
+        $daoResenya->destruct();
         if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
@@ -61,6 +62,7 @@ function eliminarResenyas() {
 
         $daoResenya = new daoResenyas();
         $deleteOk = $daoResenya->eliminarResenyas($resenya2);
+        $daoResenya->destruct();
         if (!$deleteOk) {
             $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
         }
@@ -96,6 +98,7 @@ function modificarResenya() {
 
         $daoResenya = new daoResenyas();
         $modifyOk = $daoResenya->modificarResenyas($resenya1);
+        $daoResenya->destruct();
         if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
@@ -109,17 +112,23 @@ function modificarResenya() {
 
 function listarResenyas() {
     $daoResenyas = new daoResenyas();
-    return $daoResenyas->listarResenyas();
+    $resenyas = $daoResenyas->listarResenyas();
+    $daoResenya->destruct();
+    return $resenyas;
 }
 
 function leerResenyasbyUsuarios() {
     $user = new UsuarioModel();
     $daoResenyas = new daoResenyas();
-    return $daoResenyas->read_by_user($user);
+    $resenyas_usuario = $daoResenyas->read_by_user($user);
+    $daoResenya->destruct();
+    return $resenyas_usuario;
 }
 
 function leerResenyasbyInmuebles() {
     $inmueble = new InmueblesModel();
     $daoResenyas = new daoResenyas();
-    return $daoResenyas->read_by_inmueble($inmueble);
+    $resenyas_inmieble = $daoResenyas->read_by_inmueble($inmueble);
+    $daoResenya->destruct();
+    return $resenyas_inmieble;
 }

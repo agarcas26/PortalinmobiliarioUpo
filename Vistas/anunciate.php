@@ -25,7 +25,7 @@
             if (!isset($_POST['guardar'])) {
                 ?>
                 <h3>Alta de un nuevo inmueble</h3>
-                <form class="form-control-plaintext">
+                <form class="form-control-plaintext" action="../Controladores/AnunciosController.php" method="POST">
                     <table class="table">
                         <tr>
                             <td>
@@ -64,17 +64,11 @@
                         </tr>
                         <tr>
                             <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="venta" checked="">Vendo</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="alquiler">Alquilo</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="vacacional">Vacacional</label>
+                                <select id="tipo_oferta" type="picker" label="Tipo de oferta" display="" aria-invalid="false" class="dropdown-menu">
+                                    <option value="alquiler">Alquiler</option>
+                                    <option value="comprar">Compra</option>
+                                    <option value="alquiler">Vacacional</option>
+                                </select>
                             </td>
                         </tr>
 

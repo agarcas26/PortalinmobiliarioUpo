@@ -15,13 +15,34 @@ $_SESSION["validacion"] = true;
 
 $_SESSION["cancelado"] = false;
 
-if (isset($_POST['ver_detalle'])) {
+function ver_detalle($id_anuncio) {
     $daoAnuncios = new daoAnuncios();
-    $id_anuncio = $_POST['id_anuncio'];
+    $id_anuncio = $_GET['id_anuncio'];
     $anuncio = readAnuncio($id_anuncio);
     $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
     $daoAnuncios->destruct();
     $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
+
+    mostrar_detalle_anuncio();
+    header("Location: ../Vistas/detalle_anuncio.php");
+}
+
+function mostrar_detalle_anuncio() {
+    echo '<tr>'
+    . '<td></td>' //FOTOS
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>';
 }
 
 function insertAnuncio() {
@@ -175,12 +196,11 @@ function ver_todos_los_anuncios() {
             echo '<td>' . $anuncios[1] . " " . $anuncios[3] . " " . $anuncios[2] . '</td>';
             echo '<td>' . $anuncio[8] . '</td>';
             echo '<td>' . $anuncio[7] . '</td>';
-            echo '<td>'
-            . '<form method="POST" action="../Controladores/AnunciosController.php">'
+            echo '<td>';
+            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $anuncios[0] . '">'
             . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-            . '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[0] . '" />'
-            . '</form>'
-            . '</td>';
+            . '</td>'
+            . '</a>';
             echo '</tr>';
             $i++;
         }
