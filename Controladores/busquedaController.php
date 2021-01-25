@@ -33,11 +33,15 @@ function mostrarVistaLista() {
     $array_anuncios = $dao->listar();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
-        echo '<a href="../Vistas/inmueble.php">';
+        echo '<a href="../Vistas/detalle_anuncio.php">';
         echo '<td>' . '</td>';    //Insertar imágenes
         echo '<td>' .  $array_anuncios[i][1]. '</td>';
         echo '<td>' .  $array_anuncios[i][7]. '</td>';
         echo '<td>' .  $array_anuncios[i][8]. '</td>';
+        echo '<form>';
+        echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />';
+        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />'. '</td>';
+        echo '</form>';
         echo '</a>';
         echo '</tr>';
     }
@@ -48,9 +52,13 @@ function mostrarVistaCuadricula() {
     $array_anuncios = $dao->listar();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {        
         echo '<tr>';
-        echo '<a href="../Vistas/inmueble.php">';
+        echo '<a href="../Vistas/detalle_anuncio.php">';
         echo '<td>' . '</td>';    //Insertar imágenes
         echo '<td>' .  $array_anuncios[i][7]. '</td>';
+        echo '<form>';
+        echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />';
+        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />'. '</td>';
+        echo '</form>';
         echo '</a>';
         echo '</tr>';
         
