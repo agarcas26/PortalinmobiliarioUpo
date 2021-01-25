@@ -24,9 +24,28 @@
             <?php
             if (!isset($_POST['guardar'])) {
                 ?>
-            <h3>Alta de un nuevo inmueble</h3>
+                <h3>Alta de un nuevo inmueble</h3>
                 <form class="form-control-plaintext">
                     <table class="table">
+                        <tr>
+                            <td>
+                                <label>Puedes seleccionar uno de tus inmuebles</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select>
+                                    <?php
+                                        listar_inmuebles_usuario();
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>O puedes dar de alta un nuevo inmueble</label>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <input class="custom-file" type="file" value="Añade tus fotos"/></br>
@@ -55,7 +74,7 @@
                         </tr>
                         <tr>
                             <td>
-                                    <input tabindex="-1" type="radio" name="oferta" value="vacacional">Vacacional</label>
+                                <input tabindex="-1" type="radio" name="oferta" value="vacacional">Vacacional</label>
                             </td>
                         </tr>
 

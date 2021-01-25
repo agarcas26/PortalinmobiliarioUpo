@@ -214,3 +214,13 @@ function getInmuebleByAnuncio($anuncio) {
 
     return $r;
 }
+
+function listar_inmuebles_usuario() {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    
+    //Listar  inmuebles by usuario
+}
