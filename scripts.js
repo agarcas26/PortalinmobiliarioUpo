@@ -11,19 +11,3 @@ function mostrar_ocultar() {
     else
         $('aside #filtros').slideDown(2000);
 }
-
-function ver_detalle($id_anuncio){
-    $daoAnuncios = new daoAnuncios();
-    $id_anuncio = $_POST['id_anuncio'];
-    $anuncio = readAnuncio($id_anuncio);
-    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
-    $daoAnuncios->destruct();
-    $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
-
-    mostrar_detalle_anuncio();
-    header("Location: ../Vistas/detalle_anuncio.php");
-}
-
-function mostrar_detalle_anuncio() {
-    
-}

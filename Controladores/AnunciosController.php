@@ -15,7 +15,65 @@ $_SESSION["validacion"] = true;
 
 $_SESSION["cancelado"] = false;
 
-//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
+function ver_detalle($id_anuncio) {
+    $daoAnuncios = new daoAnuncios();
+    $id_anuncio = $_GET['id_anuncio'];
+    $anuncio = readAnuncio($id_anuncio);
+    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
+    $daoAnuncios->destruct();
+    $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
+
+    mostrar_detalle_anuncio();
+    header("Location: ../Vistas/detalle_anuncio.php");
+}
+
+function mostrar_detalle_anuncio() {
+    echo '<tr>'
+    . '<td></td>' //FOTOS
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>'
+    . '<tr>'
+    . '<td></td>'
+    . '</tr>';
+}
+
+function insertAnuncio() {
+    if ($_POST["btonInsertar"]) {
+        if (empty("txtPrecio")) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
+        }
+         if(empty("txtTitulo")){
+          $_SESSION["validacion"] = false;
+          $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
+          
+      }
+    }
+    if($_SESSION["validacion"]){
+        $anuncio1= new Anuncio();
+        $anuncio1->setPrecio($_POST["txtPrecio"]);
+        $anuncio1->getTitulo($_POST["txtTitulo"]);
+        $daoAnuncio = new daoAnuncios();
+        $insertOk = $daoAnuncio->insertar($anuncio1);
+        if(!$insertOk){
+            $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
+        }
+    }
+    if($_SESSION["validacion"]){
+        header('Location:../Vistas/anunciate.php');//se va a la pantalla sin errores
+    }else{
+        header('Location:../Vistas/anunciate.php');//muestra un error
+    }
+}
+
 function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();
 
@@ -139,10 +197,10 @@ function ver_todos_los_anuncios() {
             echo '<td>' . $anuncio[8] . '</td>';
             echo '<td>' . $anuncio[7] . '</td>';
             echo '<td>';
-            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$anuncios[0].'">'
+            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $anuncios[0] . '">'
             . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
             . '</td>'
-            .'</a>';
+            . '</a>';
             echo '</tr>';
             $i++;
         }
