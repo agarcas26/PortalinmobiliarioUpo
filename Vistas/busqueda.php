@@ -36,7 +36,7 @@ and open the template in the editor.
                     <table class="table-borderless">
                         <tr>
                             <td><label>Número de baños</label></td>
-                            <td><input type="number" id="num_banyos" name="num_banyos" value=""></td>
+                            <td><input type="number" min="0" id="num_banyos" name="num_banyos" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Tipo de inmueble</label></td>
@@ -57,19 +57,19 @@ and open the template in the editor.
                         </tr>
                         <tr>
                             <td><label>Precio máximo</label></td>
-                            <td><input type="number" step="0.01" id="precio_max" name="precio_max" value="Precio máximo"></td>
+                            <td><input type="number" min="0" step="0.01" id="precio_max" name="precio_max" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Número de habitaciones</label></td>
-                            <td><input type="number" id="num_hab" name="num_hab" value="Número de habitaciones"></td>
+                            <td><input type="number" min="0" id="num_hab" name="num_hab" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Metros cuadrados</label></td>
-                            <td><input type="number" id="m2" name="m2" value="Metros cuadrados"></td>
+                            <td><input type="number" min="0" id="m2" name="m2" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Anuncios posteriores al...</label></td>
-                            <td><input type="date" id="fecha" name="fecha" value="Fecha"></td>
+                            <td><input type="date" id="fecha" name="fecha"></td>
                         </tr>
                         <tr>
                             <td><input class="btn btn-primary" type="submit" id="aplicar_filtros" name="aplicar_filtros" value="Aplicar filtros"></td>
