@@ -56,7 +56,7 @@
                             ver_todos_los_anuncios();
                         }
                         ?>
-                            <form>
+                            <form action="../Vistas/mis_anuncios.php" method="POST">
                                 <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
