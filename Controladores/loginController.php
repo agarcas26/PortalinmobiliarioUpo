@@ -28,7 +28,7 @@ function controllerInicioSesion($nombre_usuario, $pass) {
     if (preg_match("/[A-Za-z0-9_]{4}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{4}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-        $usuario = getUsuarioByUsuario($nombre_usuario);
+        $usuario = getUsuarioByUsuario($nombre_usuario,$pass);
         
         if ($usuario->get_contrasenya_user() == $pass) {
             $r = true;
