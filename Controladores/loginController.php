@@ -42,13 +42,3 @@ function controllerInicioSesion($nombre_usuario, $pass) {
     }
     return $r;
 }
-
-function cerrarSesion() {
-    if ($usuario->getTipo() == "profesional") {
-            unset($_SESSION['usuario_profesional']);
-        }  
-        if ($usuario->getTipo() == "particular") {
-            unset($_SESSION['usuario_particular']);
-        }
-        session_destroy();
-}
