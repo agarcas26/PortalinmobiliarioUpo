@@ -25,7 +25,7 @@
             if (!isset($_POST['guardar'])) {
                 ?>
                 <h3>Alta de un nuevo inmueble</h3>
-                <form class="form-control-plaintext">
+                <form class="form-control-plaintext" action="../Controladores/AnunciosController.php" method="POST">
                     <table class="table">
                         <tr>
                             <td>
