@@ -64,17 +64,11 @@
                         </tr>
                         <tr>
                             <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="venta" checked="">Vendo</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="alquiler">Alquilo</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input tabindex="-1" type="radio" name="oferta" value="vacacional">Vacacional</label>
+                                <select id="tipo_oferta" type="picker" label="Tipo de oferta" display="" aria-invalid="false" class="dropdown-menu">
+                                    <option value="alquiler">Alquiler</option>
+                                    <option value="comprar">Compra</option>
+                                    <option value="alquiler">Vacacional</option>
+                                </select>
                             </td>
                         </tr>
 
