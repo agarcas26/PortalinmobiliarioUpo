@@ -34,9 +34,9 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
                 $_SESSION['usuario_particular'] = $nombre_usuario;
             }
         }
-        header("Location: ../Vistas/login.php");
+        header("Location: ../Vistas/index.php");
     } else {
-        unset($_POST['registro']);
-        header("Location: ../Vistas/registro.php");
+        //unset($_POST['registro']);
+        //header("Location: ../Vistas/registro.php");
     }
 }
