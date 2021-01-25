@@ -76,7 +76,7 @@
         ?>
         <?php
     } else {
-        header("Location: login.php");
+        header("Location: ../Vistas/login.php");
     }
     ?>
 </html>
