@@ -34,7 +34,7 @@ and open the template in the editor.
                         <table class="table-responsive-lg">
                             <thead><th>Formulario de registro</th></thead>
                             <tr>
-                                <td>Nombre:</td>
+                                <td>Nombre y Apellidos:</td>
                                 <td>
                                     <input class="form-control" type="text" id="nombre_apellidos" name="nombre_apellidos" value="" />
                                 </td>
