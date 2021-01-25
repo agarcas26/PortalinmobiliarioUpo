@@ -33,8 +33,10 @@ function controllerInicioSesion($nombre_usuario, $pass) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
         $usuario = getUsuarioByUsuario($nombre_usuario, $pass);
-        if ($usuario->get_contrasenya_user() == $pass) {
-            $r = true;
+        if (isset($usuario)) {
+            if ($usuario->get_contrasenya_user() == $pass) {
+                $r = true;
+            }
         }
     }
     return $r;
