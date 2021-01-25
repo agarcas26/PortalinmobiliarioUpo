@@ -57,7 +57,7 @@ and open the template in the editor.
                         </tr>
                         <tr>
                             <td><label>Precio máximo</label></td>
-                            <td><input type="text" id="precio_max" name="precio_max" value="Precio máximo"></td>
+                            <td><input type="number" step="0.01" id="precio_max" name="precio_max" value="Precio máximo"></td>
                         </tr>
                         <tr>
                             <td><label>Número de habitaciones</label></td>
