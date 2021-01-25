@@ -17,16 +17,16 @@ if (isset($_POST['enviar'])) {
 
 function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {
     if ($tipo == "profesional") {
-        if (preg_match("/^[a-zA-Z]+[a-zA-Z]+$/", $empresa)) {
+        if (preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $empresa)) {
             filter_var($empresa, FILTER_SANITIZE_STRING);
         }
     }
-    if (preg_match($nombre_apellidos, "/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/") && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
+    if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos) && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
         filter_var($nombre_apellidos, FILTER_SANITIZE_STRING);
-        filter_var($nombre_usuario, FILTER_SANITIZE_MAGIC_QUOTES);
-        filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
+        filter_var($nombre_usuario, FILTER_SANITIZE_ADD_SLASHES);
+        filter_var($pass, FILTER_SANITIZE_ADD_SLASHES);
 
-        if (getUsuarioByUsuario($nombre_usuario,$pass) == NULL) {
+        if (getUsuarioByUsuario($nombre_usuario, $pass) == NULL) {
             nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false, $tipo, $empresa);
             if ($tipo == profesional) {
                 $_SESSION['usuario_profesional'] = $nombre_usuario;

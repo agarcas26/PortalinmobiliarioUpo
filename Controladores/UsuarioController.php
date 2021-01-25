@@ -1,6 +1,8 @@
 <?php
 
 include_once '../DAO/daoUsuarios.php';
+include_once '../DAO/daoParticular.php';
+include_once '../DAO/daoProfesional.php';
 include_once '../Modelos/UsuarioModel.php';
 
 function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
@@ -19,9 +21,9 @@ function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
 function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo, $empresa) {
     $dao = new daoUsuarios();
     $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo);
-    $dao->crear_usuario_registro($nombre_apellidos, $nombre_usuario, $pass, $moroso);
+    $dao->crear_usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);
 
-    if ($tipo == particular) {
+    if ($tipo == 'particular') {
         $dao_particular = new daoParticular();
         $dao_particular->crear_particular($nombre_usuario);
     } else {
