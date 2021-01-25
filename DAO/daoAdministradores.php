@@ -12,7 +12,7 @@ class daoAdministradores {
         $this->conexion = $this->conObj->getConexion();
     }
 
-    function __destruct() {
+    function destruct() {
         $this->conObj = new Conexion();
         $this->conexion = null;
         $this->conObj->cerrar_conexion();
