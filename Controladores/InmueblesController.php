@@ -216,11 +216,18 @@ function getInmuebleByAnuncio($anuncio) {
 }
 
 function listar_inmuebles_usuario() {
+
     if (isset($_SESSION['usuario_particular'])) {
-        $usuario = $_SESSION['usuario_particular'];
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
     } elseif (isset($_SESSION['usuario_profesional'])) {
-        $usuario = $_SESSION['usuario_profesional'];
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-    
+
+    $dao = new daoinmueble();
+    $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
+
     //Listar  inmuebles by usuario
+    while (mysqli_fetch_array($inmuebles_usuario)) {
+        echo '<option>' . $inmuebles_usuario[0] . " - " . $inmuebles_usuario[1] . " - " . $inmuebles_usuario[2] . " - " . $inmuebles_usuario[3] . '</option>';
+    }
 }

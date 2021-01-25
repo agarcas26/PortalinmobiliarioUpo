@@ -47,34 +47,34 @@ class daoinmueble {
         mysqli_close($this->conexion);
     }
 
-    public function read($objInmueble) {
-        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
+    public function read($nombre_usuario_duenyos) {
 
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
 
-        if ($objMySqlLi->num_rows != 1) {
-            return false;
-        } else {
-            $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-            $objInmueble->setNumero($arrayAux["numero"]);
-            $objInmueble->setCp($arrayAux["cp"]);
-            $objInmueble->setNombre_via($arrayAux["nombre_via"]);
-            $objInmueble->setTipo_via($arrayAux["tipo_via"]);
-            $objInmueble->setNombre_usuario_duenyos($arrayAux["nombre_usuario_duenyos"]);
-            $objInmueble->setNombre_localidad($arrayAux["nombre_localidad"]);
-            $objInmueble->setNombre_provincia($arrayAux["nombre_provincia"]);
-            $objInmueble->setNum_banyos($arrayAux["num_banyos"]);
-            $objInmueble->setNum_hab($arrayAux["num_hab"]);
-            $objInmueble->setCocina($arrayAux["cocina"]);
-            $objInmueble->setNum_plantas($arrayAux["num_plantas"]);
-            $objInmueble->setPlanta($arrayAux["planta"]);
-            $objInmueble->setMetros($arrayAux["metros"]);
-            $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
-            $objInmueble->setFotos($arrayAux["fotos"]);
-            return $objInmueble;
+        if ($objMySqlLi->num_rows > 0) {
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+                $objInmueble->setNumero($arrayAux["numero"]);
+                $objInmueble->setCp($arrayAux["cp"]);
+                $objInmueble->setNombre_via($arrayAux["nombre_via"]);
+                $objInmueble->setTipo_via($arrayAux["tipo_via"]);
+                $objInmueble->setNombre_usuario_duenyos($arrayAux["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_localidad($arrayAux["nombre_localidad"]);
+                $objInmueble->setNombre_provincia($arrayAux["nombre_provincia"]);
+                $objInmueble->setNum_banyos($arrayAux["num_banyos"]);
+                $objInmueble->setNum_hab($arrayAux["num_hab"]);
+                $objInmueble->setCocina($arrayAux["cocina"]);
+                $objInmueble->setNum_plantas($arrayAux["num_plantas"]);
+                $objInmueble->setPlanta($arrayAux["planta"]);
+                $objInmueble->setMetros($arrayAux["metros"]);
+                $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
+                $objInmueble->setFotos($arrayAux["fotos"]);
+
+                array_push($arrayAux, $objInmueble);
+            }
         }
         mysqli_close($this->conexion);
+        return $arrayAux;
     }
 
     public function eliminar($objInmueble) {
