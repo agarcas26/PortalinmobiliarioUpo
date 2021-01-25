@@ -9,7 +9,7 @@ if (isset($_POST['enviar'])) {
     $pass = $_POST['contrasenya'];
     $conf_pass = $_POST['conf_contrasenya'];
     $tipo = $_POST['tipo'];
-    $emmpresa = $_POST['empresa'];
+    $empresa = $_POST['empresa'];
     if ($pass == $conf_pass) {
         registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa);
     }
@@ -21,7 +21,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
             filter_var($empresa, FILTER_SANITIZE_STRING);
         }
     }
-    if (preg_match($nombre_apellidos, "/[[:alpha:]]*/") && preg_match($nombre_usuario, "/[A-Za-z0-9_]{4,15}/") && preg_match($pass, "/[A-Za-z0-9_]{8,15}/")) {
+    if (preg_match($nombre_apellidos, "/^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/") && preg_match($nombre_usuario, "/[A-Za-z0-9_]{4,15}/") && preg_match($pass, "/[A-Za-z0-9_]{8,15}/")) {
         filter_var($nombre_apellidos, FILTER_SANITIZE_STRING);
         filter_var($nombre_usuario, FILTER_SANITIZE_MAGIC_QUOTES);
         filter_var($pass, FILTER_SANITIZE_MAGIC_QUOTES);
