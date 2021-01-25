@@ -13,7 +13,6 @@ and open the template in the editor.
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
         
-        session_start();
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>

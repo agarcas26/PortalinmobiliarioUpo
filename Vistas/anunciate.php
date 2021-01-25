@@ -11,7 +11,6 @@
     <body>
         <header class="masthead text-white text-center">
             <?php
-            session_start();
             if (isset($_SESSION['usuario'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
