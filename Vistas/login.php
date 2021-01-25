@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
-        session_start();
         include_once '../Controladores/loginController.php';
         include_once '../Vistas/header.php';
         ?>
