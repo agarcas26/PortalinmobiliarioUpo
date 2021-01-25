@@ -16,6 +16,7 @@ $anuncio1->setUsuario_pk($_POST["usuario_pk"]);
 $daoAnuncio = new daoanuncios();
 
 $daoAnuncio->insertar($anuncio1);
+$daoAnuncio->destruct();
 
 header('Location: ../Vistas/perfil.php ');
 //TENGO QUE AÑADIR COSAS AUN 
