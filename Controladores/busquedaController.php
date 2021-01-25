@@ -31,47 +31,49 @@ if (isset($_POST['cuadricula'])) {
 function mostrarVistaLista() {
     $dao = new daoanuncios();
     $array_anuncios = $dao->listar();
+    $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
         echo '<a href="../Vistas/detalle_anuncio.php">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' .  $array_anuncios[i][1]. '</td>';
-        echo '<td>' .  $array_anuncios[i][7]. '</td>';
-        echo '<td>' .  $array_anuncios[i][8]. '</td>';
+        echo '<td>' . $array_anuncios[i][1] . '</td>';
+        echo '<td>' . $array_anuncios[i][7] . '</td>';
+        echo '<td>' . $array_anuncios[i][8] . '</td>';
         echo '<form>';
         echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />';
-        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />'. '</td>';
+        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />' . '</td>';
         echo '</form>';
         echo '</a>';
         echo '</tr>';
     }
 }
 
-function mostrarVistaCuadricula() {    
+function mostrarVistaCuadricula() {
     $dao = new daoanuncios();
     $array_anuncios = $dao->listar();
-    for ($i = 0; $i < sizeof($array_anuncios); $i++) {        
+    $dao->destruct();
+    for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
         echo '<a href="../Vistas/detalle_anuncio.php">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' .  $array_anuncios[i][7]. '</td>';
+        echo '<td>' . $array_anuncios[i][7] . '</td>';
         echo '<form>';
         echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />';
-        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />'. '</td>';
+        echo '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[$i][0] . '" />' . '</td>';
         echo '</form>';
         echo '</a>';
         echo '</tr>';
-        
     }
 }
 
 function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
+    $dao->destruct();
     while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
         $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
         //Buscamos en img/inmuebles/direccion y listamos la primera foto
-        echo '<li>' .  '</li>';
+        echo '<li>' . '</li>';
     }
 }
 
@@ -84,6 +86,7 @@ function get_ultimas_busquedas_usuario() {
     }
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
+    $dao->destruct();
     while (mysqli_fetch_row($ultimas_busquedas)) {
         echo '<li>' . '</li>';
     }
@@ -130,8 +133,8 @@ function print_resultados_filtros() {
     echo "</tr>";
 }
 
-function listar_busquedas_usuario(){
-    
+function listar_busquedas_usuario() {
+
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
     } elseif (isset($_SESSION['usuario_profesional'])) {
@@ -139,5 +142,7 @@ function listar_busquedas_usuario(){
     }
 
     $dao = new daoBusqueda();
-    return $dao->listar_busquedas_usuario($nombre_usuario);
+    $busquedas_usuario = $dao->listar_busquedas_usuario($nombre_usuario);
+    $dao->destruct();
+    return $busquedas_usuario;
 }
