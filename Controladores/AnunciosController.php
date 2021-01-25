@@ -2,7 +2,7 @@
 
 include_once '../Modelos/UsuarioModel.php';
 include_once '../Modelos/AnunciosModel.php';
-include_once '../DAO/daoanuncios.php';
+include_once '../DAO/daoAnuncios.php';
 include_once '../Modelos/InmueblesModel.php';
 include_once '../Controladores/InmueblesController.php';
 include_once '../DAO/daoInmuebles.php';

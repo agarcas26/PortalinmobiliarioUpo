@@ -9,7 +9,12 @@
 include_once '../Controladores/AnunciosController.php';
 
 function aside_sesion_iniciada() {
-    $anuncios = listar_anuncios_usuario($_SESSION['usuario']);
+    if(isset($_SESSION['usuario_particular'])){
+        $usuario = $_SESSION['usuario_particular'];
+    }else{
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    $anuncios = listar_anuncios_usuario($usuario);
 
     while (mysqli_fetch_array($anuncios)) {
         echo '<a><figure><figcaption></figcaption>' . $anuncios[7] . '</figure></a>';

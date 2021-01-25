@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include_once '../DAO/daoFavoritos';
+include_once '../DAO/daoFavoritos.php';
 
 function get_favoritos_usuario() {
     $favoritos = get_favoritos();

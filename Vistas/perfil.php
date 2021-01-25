@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Mi perfil</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/aside.php';
         include_once '../Vistas/header.php';
@@ -13,7 +15,7 @@
             ?>
         </head>
         <body>
-            <header>
+            <header class="masthead">
                 <?php
                 if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                     sesion_iniciada();
@@ -34,7 +36,7 @@
             <main>
                 <article>
                     <section>
-                        <a href="../PortalinmobiliarioUpo/Vistas/alta_inmueble.html">¿Quieres registrar un nuevo inmueble?</a>
+                        <a href="../Vistas/alta_inmueble.php">¿Quieres registrar un nuevo inmueble?</a>
                     </section>
                     <!-- Mostramos vista previa favoritos -->
                     <section>

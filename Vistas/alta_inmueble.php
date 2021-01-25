@@ -9,6 +9,8 @@ and open the template in the editor.
         <title>Alta inmueble</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
@@ -17,7 +19,7 @@ and open the template in the editor.
             ?>
         </head>
         <body>
-            <header>
+            <header class="masthead">
                 <?php sesion_iniciada(); ?>
             </header>
             <main>
@@ -53,7 +55,9 @@ and open the template in the editor.
                 </article>
             </main>
         </body>
-        <?php include_once '../PortalinmobiliarioUpo/Vistas/footer.html'; ?>
+        <?php 
+        include_once '../Vistas/footer.html'; 
+        ?>
         <?php
     } else {
         header("Location: login.php");
