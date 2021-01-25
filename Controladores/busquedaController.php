@@ -15,9 +15,9 @@ if (isset($_POST['aplicar_filtros'])) {
     $num_hab = $_POST['num_hab'];
     $m2 = $_POST['m2'];
     $fecha = $_POST['fecha'];
-    $dao = new daoBusqueda;
+    $dao = new daoBusqueda();
     $dao->crear_busqueda($num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2, $fecha);
-
+    $dao->destruct();
     mostrarVistaLista();
 }
 

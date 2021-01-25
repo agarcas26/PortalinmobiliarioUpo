@@ -50,30 +50,31 @@ class daoAnuncios {
     public function read($idAnuncio) {
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
-        
 
-        if ($objMySqlLi->num_rows >0) {
-            while(mysqli_fetch_assoc($objMySqlLi)){
-                
-            $objAnuncio->setIdAnuncio($objMySqlLi["idAnuncio"]);
-            $objAnuncio->setNombre_via($objMySqlLi["nombre_via"]);
-            $objAnuncio->setTipo_via($objMySqlLi["tipo_via"]);
-            $objAnuncio->setCp($objMySqlLi["cp"]);
-            $objAnuncio->setNumero($objMySqlLi["numero"]);
-            $objAnuncio->setFecha_anuncio($objMySqlLi["fecha_anuncio"]);
-            $objAnuncio->setPrecio($objMySqlLi["precio"]);
-            $objAnuncio->setTitulo($objMySqlLi["titulo"]);
-            $objAnuncio->setNombre_usuario_publica($objMySqlLi["nombre_usuario_publica"]);
-            $objAnuncio->setNombre_usuario_anuncio($objMySqlLi["nombre_usuario_anuncio"]);
 
-             array_push($arrayAux, $objAnuncio);
+        if ($objMySqlLi->num_rows > 0) {
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+
+                $objAnuncio->setIdAnuncio($objMySqlLi["idAnuncio"]);
+                $objAnuncio->setNombre_via($objMySqlLi["nombre_via"]);
+                $objAnuncio->setTipo_via($objMySqlLi["tipo_via"]);
+                $objAnuncio->setCp($objMySqlLi["cp"]);
+                $objAnuncio->setNumero($objMySqlLi["numero"]);
+                $objAnuncio->setFecha_anuncio($objMySqlLi["fecha_anuncio"]);
+                $objAnuncio->setPrecio($objMySqlLi["precio"]);
+                $objAnuncio->setTitulo($objMySqlLi["titulo"]);
+                $objAnuncio->setNombre_usuario_publica($objMySqlLi["nombre_usuario_publica"]);
+                $objAnuncio->setNombre_usuario_anuncio($objMySqlLi["nombre_usuario_anuncio"]);
+
+                array_push($arrayAux, $objAnuncio);
+            }
+            //mysqli_close($this->conexion);
+            return $arrayAux;
         }
-        //mysqli_close($this->conexion);
-         return $arrayAux;
     }
-    }
+
     public function eliminar($idAnuncio) {
-        
+
         $sql = "DELETE FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         if (!$this->conexion->query($sql)) {
             return false;
@@ -127,6 +128,17 @@ class daoAnuncios {
         }
         mysqli_close($this->conexion);
         return $arrayAnuncios;
+    }
+
+    function get_tipo_anuncio($id_anuncio) {
+        $sentence = "SELECT `id_compra` FROM `compra` WHERE `id_anuncio` = '" . $id_anuncio . "'";
+        $result = mysqli_query($this->conexion, $sentence);
+
+        if (mysqli_num_rows($result) > 0) {
+            $tipo_anuncio = "compra";
+        }else{
+            $tipo_anuncio = "alquiler";
+        }
     }
 
 }
