@@ -3,7 +3,10 @@
 class Conexion {
 
     private $conexion;
-    
+
+    function __construct() {
+        $this->establecer_conexion();
+    }
     function getConexion() {
         return $this->conexion;
     }
@@ -12,7 +15,7 @@ class Conexion {
         $this->conexion = $conexion;
     }
 
-        function establecer_conexion() {
+    function establecer_conexion() {
         $host = "174.138.6.73";
         $port = 3306;
         $user = "administrador";
