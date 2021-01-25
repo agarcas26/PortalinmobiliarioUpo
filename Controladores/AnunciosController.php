@@ -138,9 +138,11 @@ function ver_todos_los_anuncios() {
             echo '<td>' . $anuncios[1] . " " . $anuncios[3] . " " . $anuncios[2] . '</td>';
             echo '<td>' . $anuncio[8] . '</td>';
             echo '<td>' . $anuncio[7] . '</td>';
-            echo '<td>'
-            . '<input type="submit" onclick="ver_detalle(' . $anuncios[0] . ')" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-            . '</td>';
+            echo '<td>';
+            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$anuncios[0].'">'
+            . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
+            . '</td>'
+            .'</a>';
             echo '</tr>';
             $i++;
         }
