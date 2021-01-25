@@ -21,7 +21,7 @@
             }
             ?>
         </header>
-        <main class="align-self-center">
+        <main style="margin-left: 37%" class="align-self-center">
             <h2>Iniciar sesion</h2>
             <?php
             if (!isset($_POST['registro']) && !isset($_POST['entrar'])) {

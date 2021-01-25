@@ -54,21 +54,21 @@ class daoinmueble {
 
         if ($objMySqlLi->num_rows > 0) {
             while (mysqli_fetch_assoc($objMySqlLi)) {
-                $objInmueble->setNumero($arrayAux["numero"]);
-                $objInmueble->setCp($arrayAux["cp"]);
-                $objInmueble->setNombre_via($arrayAux["nombre_via"]);
-                $objInmueble->setTipo_via($arrayAux["tipo_via"]);
-                $objInmueble->setNombre_usuario_duenyos($arrayAux["nombre_usuario_duenyos"]);
-                $objInmueble->setNombre_localidad($arrayAux["nombre_localidad"]);
-                $objInmueble->setNombre_provincia($arrayAux["nombre_provincia"]);
-                $objInmueble->setNum_banyos($arrayAux["num_banyos"]);
-                $objInmueble->setNum_hab($arrayAux["num_hab"]);
-                $objInmueble->setCocina($arrayAux["cocina"]);
-                $objInmueble->setNum_plantas($arrayAux["num_plantas"]);
-                $objInmueble->setPlanta($arrayAux["planta"]);
-                $objInmueble->setMetros($arrayAux["metros"]);
-                $objInmueble->setTipo_inmueble($arrayAux["tipo_inmueble"]);
-                $objInmueble->setFotos($arrayAux["fotos"]);
+                $objInmueble->setNumero($objMySqlLi["numero"]);
+                $objInmueble->setCp($objMySqlLi["cp"]);
+                $objInmueble->setNombre_via($objMySqlLi["nombre_via"]);
+                $objInmueble->setTipo_via($objMySqlLi["tipo_via"]);
+                $objInmueble->setNombre_usuario_duenyos($objMySqlLi["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_localidad($objMySqlLi["nombre_localidad"]);
+                $objInmueble->setNombre_provincia($objMySqlLi["nombre_provincia"]);
+                $objInmueble->setNum_banyos($objMySqlLi["num_banyos"]);
+                $objInmueble->setNum_hab($objMySqlLi["num_hab"]);
+                $objInmueble->setCocina($objMySqlLi["cocina"]);
+                $objInmueble->setNum_plantas($objMySqlLi["num_plantas"]);
+                $objInmueble->setPlanta($objMySqlLi["planta"]);
+                $objInmueble->setMetros($objMySqlLi["metros"]);
+                $objInmueble->setTipo_inmueble($objMySqlLi["tipo_inmueble"]);
+                $objInmueble->setFotos($objMySqlLi["fotos"]);
 
                 array_push($arrayAux, $objInmueble);
             }
