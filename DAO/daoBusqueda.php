@@ -18,7 +18,7 @@ class daoBusqueda {
 
     }
 
-    function __destruct() {
+    function destruct() {
         $this->conObj = new Conexion();
         $this->conexion = null;
         $this->conObj->cerrar_conexion();
