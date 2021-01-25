@@ -45,7 +45,7 @@ class daoProfesional {
         $sentence = "SELECT * FROM `profesional` WHERE `profesional`.`nombre_usuario`='" . $nombre_usuario . "'";
         $result = mysqli_query($this->conexion, $sentence);
 
-        return $result;
+        return mysqli_num_rows($result);
     }
 
 }
