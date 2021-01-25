@@ -7,8 +7,6 @@ require_once '../Modelos/InmueblesModel.php';
 
 class daoResenyas {
 
-    
-
     public $conObj;
     public $conexion;
 
@@ -64,8 +62,8 @@ class daoResenyas {
         mysqli_close($this->conexion);
     }
 
-     function eliminarResenyas($objResenyas) {
-        $id_resenya = $objResenyas->getId_resenya();
+    function eliminarResenyas($id_resenya) {
+     
 
         $sql = "DELETE FROM `resenya` WHERE `id_resenya`='$id_resenya'";
         if (!$this->conexion->query($sql)) {
@@ -76,7 +74,7 @@ class daoResenyas {
         mysqli_close($this->conexion);
     }
 
-   function listarResenyas() {
+    function listarResenyas() {
         $sql = "SELECT * FROM `resenya`";
         $resultado = $this->conn->query($sql);
         $arrayResenyas = array();
@@ -86,8 +84,6 @@ class daoResenyas {
         mysqli_close($this->conexion);
         return $arrayResenyas;
     }
-
-
 
 //     function read($objResenyas) {
 //    $id_resenya = $objResenyas->getId_resenya();
@@ -112,53 +108,49 @@ class daoResenyas {
 //    mysqli_close($this->conn);
 //}
 
-     function read_by_user($objUser) {
-
-    $id_resenya = $objUser->getId_resenya();
-    $objMySqlLi = $this->conexion->query($sql);
-
-    $sql = "SELECT * FROM `resenya` r, usuarios u WHERE u.`nombre_usuario`  AND r.`id_resenya` = '$id_resenya'";
-    //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
-    if ($objMySqlLi->num_rows != 1) {
-        return false;
-    } else {
-        $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-        $objUser->setId_resenya($arrayAux["id_resenya"]);
-        $objUser->setNombre_usuario($arrayAux["nombre_usuario"]);
-        $objUser->setCp($arrayAux["cp"]);
-        $objUser->setNombre_via($arrayAux["nombre_via"]);
-        $objUser->setTipo_via($arrayAux["tipo_via"]);
-        $objUser->setNumero($arrayAux["numero"]);
-        $objUser->setDescripcion($arrayAux["descripcion"]);
-        $objUser->setFecha_resenya($arrayAux["fecha_resenya"]);
-        $objUser->setValoracion($arrayAux["valoracion"]);
-        return $objUser;
+    function read_by_user($id_resenya) {
+        $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `resenya` r, usuarios u WHERE u.`nombre_usuario`  AND r.`id_resenya` = '$id_resenya'";
+        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+        if ($objMySqlLi->num_rows > 0) {
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+                $objUser->setId_resenya($objMySqlLi["id_resenya"]);
+                $objUser->setNombre_usuario($objMySqlLi["nombre_usuario"]);
+                $objUser->setCp($objMySqlLi["cp"]);
+                $objUser->setNombre_via($objMySqlLi["nombre_via"]);
+                $objUser->setTipo_via($objMySqlLi["tipo_via"]);
+                $objUser->setNumero($objMySqlLi["numero"]);
+                $objUser->setDescripcion($objMySqlLi["descripcion"]);
+                $objUser->setFecha_resenya($objMySqlLi["fecha_resenya"]);
+                $objUser->setValoracion($objMySqlLi["valoracion"]);
+                array_push($arrayAux, $objUser);
+            }
+        }
+        //mysqli_close($this->conexion);
+        return $arrayAux;
     }
-    mysqli_close($this->conexion);
-}
 
-function read_by_inmueble($objInmueble) {
+    function read_by_inmueble($id_resenya) {
 
-    $id_resenya = $objInmueble->getId_resenya();
-    $objMySqlLi = $this->conexion->query($sql);
-
-    $sql = "SELECT * FROM `resenya` r, inmueble i WHERE i.`numero`, i.cp , i.nombre_via, i.tipo_via  AND r.`id_resenya` = '$id_resenya'";
-    //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
-    if ($objMySqlLi->num_rows != 1) {
-        return false;
-    } else {
-        $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-        $objInmueble->setId_resenya($arrayAux["id_resenya"]);
-        $objInmueble->setNombre_usuario($arrayAux["nombre_usuario"]);
-        $objInmueble->setCp($arrayAux["cp"]);
-        $objInmueble->setNombre_via($arrayAux["nombre_via"]);
-        $objInmueble->setTipo_via($arrayAux["tipo_via"]);
-        $objInmueble->setNumero($arrayAux["numero"]);
-        $objInmueble->setDescripcion($arrayAux["descripcion"]);
-        $objInmueble->setFecha_resenya($arrayAux["fecha_resenya"]);
-        $objInmueble->setValoracion($arrayAux["valoracion"]);
-        return $objInmueble;
+        $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `resenya` r, inmueble i WHERE i.`numero`, i.cp , i.nombre_via, i.tipo_via  AND r.`id_resenya` = '$id_resenya'";
+        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+        if ($objMySqlLi->num_rows > 0) {
+            while(mysqli_fetch_assoc($objMySqlLi)){
+            $objInmueble->setId_resenya($arrayAux["id_resenya"]);
+            $objInmueble->setNombre_usuario($objMySqlLi["nombre_usuario"]);
+            $objInmueble->setCp($objMySqlLi["cp"]);
+            $objInmueble->setNombre_via($objMySqlLi["nombre_via"]);
+            $objInmueble->setTipo_via($objMySqlLi["tipo_via"]);
+            $objInmueble->setNumero($objMySqlLi["numero"]);
+            $objInmueble->setDescripcion($objMySqlLi["descripcion"]);
+            $objInmueble->setFecha_resenya($objMySqlLi["fecha_resenya"]);
+            $objInmueble->setValoracion($objMySqlLi["valoracion"]);
+            array_push($arrayAux, $objInmueble);
+        }
+        }
+        //mysqli_close($this->conexion);
+        return $arrayAux;
     }
-    mysqli_close($this->conexion);
-}
+
 }

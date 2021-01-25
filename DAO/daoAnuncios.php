@@ -46,34 +46,33 @@ class daoAnuncios {
     }
 
     //leer anuncio por id
-    public function read($objAnuncio) {
-        $idAnuncio = $objAnuncio->getIdAnuncio();
-        $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
+    public function read($idAnuncio) {
         $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
+        
 
-        if ($objMySqlLi->num_rows != 1) {
-            return false;
-        } else {
-            $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-            $objAnuncio->setIdAnuncio($arrayAux["idAnuncio"]);
-            $objAnuncio->setNombre_via($arrayAux["nombre_via"]);
-            $objAnuncio->setTipo_via($arrayAux["tipo_via"]);
-            $objAnuncio->setCp($arrayAux["cp"]);
-            $objAnuncio->setNumero($arrayAux["numero"]);
-            $objAnuncio->setFecha_anuncio($arrayAux["fecha_anuncio"]);
-            $objAnuncio->setPrecio($arrayAux["precio"]);
-            $objAnuncio->setTitulo($arrayAux["titulo"]);
-            $objAnuncio->setNombre_usuario_publica($arrayAux["nombre_usuario_publica"]);
-            $objAnuncio->setNombre_usuario_anuncio($arrayAux["nombre_usuario_anuncio"]);
+        if ($objMySqlLi->num_rows >0) {
+            while(mysqli_fetch_assoc($objMySqlLi)){
+                
+            $objAnuncio->setIdAnuncio($objMySqlLi["idAnuncio"]);
+            $objAnuncio->setNombre_via($objMySqlLi["nombre_via"]);
+            $objAnuncio->setTipo_via($objMySqlLi["tipo_via"]);
+            $objAnuncio->setCp($objMySqlLi["cp"]);
+            $objAnuncio->setNumero($objMySqlLi["numero"]);
+            $objAnuncio->setFecha_anuncio($objMySqlLi["fecha_anuncio"]);
+            $objAnuncio->setPrecio($objMySqlLi["precio"]);
+            $objAnuncio->setTitulo($objMySqlLi["titulo"]);
+            $objAnuncio->setNombre_usuario_publica($objMySqlLi["nombre_usuario_publica"]);
+            $objAnuncio->setNombre_usuario_anuncio($objMySqlLi["nombre_usuario_anuncio"]);
 
-            return $objAnuncio;
+             array_push($arrayAux, $objAnuncio);
         }
-        mysqli_close($this->conexion);
+        //mysqli_close($this->conexion);
+         return $arrayAux;
     }
-
-    public function eliminar($objAnuncio) {
-        $idAnuncio = $objAnuncio->getIdAnuncio();
-
+    }
+    public function eliminar($idAnuncio) {
+        
         $sql = "DELETE FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         if (!$this->conexion->query($sql)) {
             return false;

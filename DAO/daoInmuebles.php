@@ -48,9 +48,9 @@ class daoinmueble {
     }
 
     public function read($nombre_usuario_duenyos) {
-
-        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
+
 
         if ($objMySqlLi->num_rows > 0) {
             while (mysqli_fetch_assoc($objMySqlLi)) {
@@ -73,7 +73,7 @@ class daoinmueble {
                 array_push($arrayAux, $objInmueble);
             }
         }
-        mysqli_close($this->conexion);
+        //mysqli_close($this->conexion);
         return $arrayAux;
     }
 

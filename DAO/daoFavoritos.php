@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include_once '../Conontroladores/AnunciosController.php';
+include_once '../Controladores/AnunciosController.php';
 
 class daoFavoritos {
 
