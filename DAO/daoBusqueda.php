@@ -23,14 +23,14 @@ class daoBusqueda {
         $this->conObj->cerrar_conexion();
     }
 
-    function listar_buqueda() {
+    function listar_buquedas() {
         $sentence = "SELECT * FROM `buqueda`";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
 
-    function listar_buqueda_usuario($nombre_usuario) {
+    function listar_buquedas_usuario($nombre_usuario) {
         $sentence = "SELECT * FROM `buqueda` WHERE `nombre_usuario`='" . $nombre_usuario . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
