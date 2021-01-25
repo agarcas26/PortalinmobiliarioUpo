@@ -3,9 +3,9 @@
 include_once '../DAO/daoUsuarios.php';
 include_once '../Modelos/UsuarioModel.php';
 
-function getUsuarioByUsuario($nombre_usuario) {
+function getUsuarioByUsuario($nombre_usuario,$contraseña_usuario) {
     $dao = new daoUsuarios();
-    $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario);
+    $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario,$contraseña_usuario);
     $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
 
     return $usuario;
