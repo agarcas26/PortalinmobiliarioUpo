@@ -11,6 +11,7 @@
     <body>   
         <header class="masthead text-white text-center">
             <?php
+            session_start();
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 alert("No tiene acceso a esta seccion");
             } elseif (isset($_SESSION['admin'])) {

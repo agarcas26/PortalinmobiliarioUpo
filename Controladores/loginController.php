@@ -15,7 +15,7 @@ if (isset($_POST['entrar'])) {
         } else {
             $_SESSION['usuario_particular'] = $_POST['nombre_usuario'];
         }
-        //header("Location: ../Vistas/index.php");
+        header("Location: ../Vistas/index.php");
     } else {
         header("Location: ../Vistas/login.php");
     }

@@ -9,6 +9,7 @@
         include_once '../Controladores/AlertasController.php';
         include_once '../Controladores/FavoritosController.php';
 
+        session_start();
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>
