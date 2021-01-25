@@ -91,7 +91,7 @@ function readAnuncio($idAnuncio) {
 
     $daoAnuncio = new daoAnuncios();
     $anuncio1 = $daoAnuncio->read($anuncio1);
-    $daoAnuncio->destruct();
+    $daoAnuncios->destruct();
     return $anuncio1;
 }
 
@@ -99,7 +99,7 @@ function readAnuncio($idAnuncio) {
 function listAllAnuncios() {
     $daoAnuncios = new daoAnuncios();
     $anuncios = $daoAnuncios->listar();
-    $daoAnuncio->destruct();
+    $daoAnuncios->destruct();
     return $anuncios;
 }
 
@@ -112,7 +112,7 @@ function listar_anuncios_usuario() {
         $usuario = $_SESSION['usuario_profesional'];
     }
     $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
-    $daoAnuncio->destruct();
+    $daoAnuncios->destruct();
 
     return $anuncios_usuario;
 }
@@ -120,7 +120,7 @@ function listar_anuncios_usuario() {
 function vista_previa_anuncios() {
     $daoAnuncios = new daoAnuncios();
     $anuncios = $daoAnuncios->listar();
-    $daoAnuncio->destruct();
+    $daoAnuncios->destruct();
 
     if (mysqli_num_rows($anuncios) > 0) {
         mysqli_fetch_array($anuncios);
@@ -137,7 +137,7 @@ function vista_previa_anuncios() {
 function ver_todos_los_anuncios() {
     $daoAnuncios = new daoAnuncios();
     $anuncios = $daoAnuncios->listar();
-    $daoAnuncio->destruct();
+    $daoAnuncios->destruct();
     $i = 0;
 
     if (mysqli_num_rows($anuncios) > 0) {
