@@ -18,7 +18,7 @@ if (isset($_POST['entrar'])) {
         }
         header("Location: ../Vistas/index.php");
     } else {
-        //header("Location: ../Vistas/login.php");
+        header("Location: ../Vistas/login.php");
     }
 
     $dao->destruct();
