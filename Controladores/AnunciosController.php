@@ -16,11 +16,11 @@ $_SESSION["validacion"] = true;
 $_SESSION["cancelado"] = false;
 
 if (isset($_POST['ver_detalle'])) {
-    $dao = new daoAnuncios();
+    $daoAnuncios = new daoAnuncios();
     $id_anuncio = $_POST['id_anuncio'];
     $anuncio = readAnuncio($id_anuncio);
-    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio) ;
-    $dao->destruct();
+    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
+    $daoAnuncios->destruct();
     $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
 }
 
@@ -29,8 +29,9 @@ function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();
 
     $anuncio1->setIdAnuncio($idanuncio);
-    $daoAnuncio = new daoanuncios();
+    $daoAnuncio = new daoAnuncios();
     $deleteOk = $daoAnuncio->eliminar($anuncio1);
+    $daoAnuncios->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
@@ -66,8 +67,9 @@ function modifyAnuncio() {
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->setDireccion($_POST["txtDireccion"]);
 
-        $daoanuncios = new daoAnuncios();
-        $modifyOk = $daoanuncios->modificar($anuncio1);
+        $daoAnuncios = new daoAnuncios();
+        $modifyOk = $daoAnuncios->modificar($anuncio1);
+        $daoAnuncios->destruct();
         if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
@@ -84,33 +86,41 @@ function modifyAnuncio() {
 //funcion consultar anuncios 
 
 function readAnuncio($idAnuncio) {
-    $anuncio1 = new anuncio();
+    $anuncio1 = new Anuncio();
     $anuncio1->setIdAnuncio($idAnuncio);
 
-    $daoAnuncio = new daoanuncios();
-    return $daoAnuncio->read($anuncio1);
+    $daoAnuncio = new daoAnuncios();
+    $anuncio1 = $daoAnuncio->read($anuncio1);
+    $daoAnuncio->destruct();
+    return $anuncio1;
 }
 
 //funcion listar anuncios
 function listAllAnuncios() {
-    $daoanuncios = new daoanuncios();
-    return $daoanuncios->listar();
+    $daoAnuncios = new daoAnuncios();
+    $anuncios = $daoAnuncios->listar();
+    $daoAnuncio->destruct();
+    return $anuncios;
 }
 
 function listar_anuncios_usuario() {
-    $daoanuncios = new daoanuncios();
+    $daoAnuncios = new daoAnuncios();
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
     }
     if (isset($_SESSION['usuario_profesional'])) {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    return $daoanuncios->listar_anuncios_usuario($usuario);
+    $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
+    $daoAnuncio->destruct();
+
+    return $anuncios_usuario;
 }
 
 function vista_previa_anuncios() {
-    $daoanuncios = new daoAnuncios();
-    $anuncios = $daoanuncios->listar();
+    $daoAnuncios = new daoAnuncios();
+    $anuncios = $daoAnuncios->listar();
+    $daoAnuncio->destruct();
 
     if (mysqli_num_rows($anuncios) > 0) {
         mysqli_fetch_array($anuncios);
@@ -125,8 +135,9 @@ function vista_previa_anuncios() {
 }
 
 function ver_todos_los_anuncios() {
-    $daoanuncios = new daoAnuncios();
-    $anuncios = $daoanuncios->listar();
+    $daoAnuncios = new daoAnuncios();
+    $anuncios = $daoAnuncios->listar();
+    $daoAnuncio->destruct();
     $i = 0;
 
     if (mysqli_num_rows($anuncios) > 0) {
