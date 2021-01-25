@@ -19,10 +19,10 @@ function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo,
 
     if ($tipo == particular) {
         $dao_particular = new daoParticular();
-        $dao->crear_usuario_particular($nombre_usuario);
+        $dao_particular->crear_particular($nombre_usuario);
     } else {
         $dao_profesional = new daoProfesional();
-        $dao->crear_usuario_particular($nombre_usuario, $empresa);
+        $dao_profesional->crear_profesional($nombre_usuario, $empresa);
     }
 }
 
