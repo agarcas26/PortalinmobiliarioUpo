@@ -15,22 +15,6 @@ $_SESSION["validacion"] = true;
 
 $_SESSION["cancelado"] = false;
 
-if (isset($_POST['ver_detalle'])) {
-    $daoAnuncios = new daoAnuncios();
-    $id_anuncio = $_POST['id_anuncio'];
-    $anuncio = readAnuncio($id_anuncio);
-    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
-    $daoAnuncios->destruct();
-    $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
-    
-    mostrar_detalle_anuncio();
-    header("Location: ../Vistas/detalle_anuncio.php");
-}
-
-function mostrar_detalle_anuncio(){
-    
-}
-
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();
@@ -155,10 +139,7 @@ function ver_todos_los_anuncios() {
             echo '<td>' . $anuncio[8] . '</td>';
             echo '<td>' . $anuncio[7] . '</td>';
             echo '<td>'
-            . '<form method="POST" action="../Controladores/AnunciosController.php">'
-            . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-            . '<input type="hidden" name="id_anuncio" id="id_anuncio" value="' . $anuncios[0] . '" />'
-            . '</form>'
+            . '<input type="submit" onclick="ver_detalle(' . $anuncios[0] . ')" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
             . '</td>';
             echo '</tr>';
             $i++;
