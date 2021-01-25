@@ -2,21 +2,25 @@
 include_once '../Persistencia/Conexion.php';
 include_once '../Modelos/PagoModel.php';
 class daoPago {
-    private $conexion;
-    
-    function __construct(){
-        $this->conexion = establecer_conexion();
+
+    public $conObj;
+    public $conexion;
+
+    function __construct() {
+        $this->conObj = new Conexion();
+        $this->conexion = $this->conObj->getConexion();
     }
-    
-    function __destruct() {
+
+    function destruct() {
+        $this->conObj = new Conexion();
         $this->conexion = null;
-        cerrar_conexion();
+        $this->conObj->cerrar_conexion();
     }
 
     function listar_pagos() {
 
         $sentence = "SELECT * FROM `pagos`";
-        $result = mysqli_query($conexion, $sentence);
+        $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }

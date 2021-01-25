@@ -8,14 +8,14 @@
 
 include_once '../Persistencia/Conexion.php';
 
-class daoParticular {
+class daoParticular {    
 
     public $conObj;
     public $conexion;
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conexion = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
     }
 
     function destruct() {

@@ -7,13 +7,20 @@ require_once '../Modelos/InmueblesModel.php';
 
 class daoResenyas {
 
+    
+
     public $conObj;
-    public $conn;
-    private $resenya;
+    public $conexion;
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conn = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
+    }
+
+    function destruct() {
+        $this->conObj = new Conexion();
+        $this->conexion = null;
+        $this->conObj->cerrar_conexion();
     }
 
     function escribirResenyas($objResenyas) {
@@ -29,12 +36,12 @@ class daoResenyas {
 
         $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion','$fecha_resenya','$valoracion')";
 
-        if (!$this->conn->query($sql)) {
+        if (!$this->$conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
     function modificarResenyas($objResenyas) {
@@ -49,24 +56,24 @@ class daoResenyas {
 
         $sql = "UPDATE `resenya` SET `nombre_usuario`='$nombre_usuario',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via',"
                 . "`numero`='$numero',`descripcion`='$descripcion',`fecha_resenya`='$fecha_resenya',`valoracion`='$valoracion'";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
      function eliminarResenyas($objResenyas) {
         $id_resenya = $objResenyas->getId_resenya();
 
         $sql = "DELETE FROM `resenya` WHERE `id_resenya`='$id_resenya'";
-        if (!$this->conn->query($sql)) {
+        if (!$this->conexion->query($sql)) {
             return false;
         } else {
             return true;
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
     }
 
    function listarResenyas() {
@@ -76,7 +83,7 @@ class daoResenyas {
         while ($fila = mysqli_fetch_assoc($resultado)) {
             array_push($arrayResenyas, $fila);
         }
-        mysqli_close($this->conn);
+        mysqli_close($this->conexion);
         return $arrayResenyas;
     }
 
@@ -108,7 +115,7 @@ class daoResenyas {
      function read_by_user($objUser) {
 
     $id_resenya = $objUser->getId_resenya();
-    $objMySqlLi = $this->conn->query($sql);
+    $objMySqlLi = $this->conexion->query($sql);
 
     $sql = "SELECT * FROM `resenya` r, usuarios u WHERE u.`nombre_usuario`  AND r.`id_resenya` = '$id_resenya'";
     //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
@@ -127,13 +134,13 @@ class daoResenyas {
         $objUser->setValoracion($arrayAux["valoracion"]);
         return $objUser;
     }
-    mysqli_close($this->conn);
+    mysqli_close($this->conexion);
 }
 
 function read_by_inmueble($objInmueble) {
 
     $id_resenya = $objInmueble->getId_resenya();
-    $objMySqlLi = $this->conn->query($sql);
+    $objMySqlLi = $this->conexion->query($sql);
 
     $sql = "SELECT * FROM `resenya` r, inmueble i WHERE i.`numero`, i.cp , i.nombre_via, i.tipo_via  AND r.`id_resenya` = '$id_resenya'";
     //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
@@ -152,6 +159,6 @@ function read_by_inmueble($objInmueble) {
         $objInmueble->setValoracion($arrayAux["valoracion"]);
         return $objInmueble;
     }
-    mysqli_close($this->conn);
+    mysqli_close($this->conexion);
 }
 }
