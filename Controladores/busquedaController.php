@@ -59,8 +59,8 @@ function mostrarVistaCuadricula() {
 function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
-    while (mysqli_fetch_row($ultimas_busquedas)) {
-        $direccion = $ultimas_busquedas[1] . $ultimas_busquedas[2] . $ultimas_busquedas[3] . $ultimas_busquedas[4];
+    while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
+        $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
         //Buscamos en img/inmuebles/direccion y listamos la primera foto
         echo '<li>' .  '</li>';
     }
