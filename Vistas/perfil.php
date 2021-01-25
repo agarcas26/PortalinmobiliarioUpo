@@ -49,25 +49,17 @@
                     <!-- Mostramos vista previa anuncios -->
                     <section>
                         <?php
-                        $anuncio = vista_previa_anuncios();
+                        if (!isset($_POST['ver_todos'])) {
+                            vista_previa_anuncios();
+                        } else {
+                            ver_todos_los_anuncios();
+                        }
                         ?>
                         <table>
-                            <tr>
-                                <td>
-                                    <figure>
-                                        <!-- Imagen -->
-                                    </figure>
-                                </td>
-                                <td>
-                                    <?php echo $anuncio[0] . " " . $anuncio[2] . " " . $anuncio[1] ?>
-                                </td>
-                                <td>
-                                    <?php echo $anuncio[8] ?>
-                                </td>
-                                <td>
-                                    <?php echo $anuncio[7] ?>
-                                </td>
-                            </tr>
+
+                            <form>
+                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                            </form>
                         </table>
                     </section>
                 </article>
