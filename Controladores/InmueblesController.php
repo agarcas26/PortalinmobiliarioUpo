@@ -7,7 +7,7 @@
  */
 
 include_once '../Modelos/InmueblesModel.php';
-include_once '../Dao/daoInmueble.php';
+include_once '../DAO/daoInmuebles.php';
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
