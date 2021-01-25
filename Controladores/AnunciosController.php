@@ -10,7 +10,12 @@ include_once '../DAO/daoInmuebles.php';
 //FALTA INSERTAR ANUNCIOS
 //funcion eliminar anuncios
 $_SESSION["errores"] = "";
+$_SESSION["validacion"] = true;
+//como es correcto eliminamos todos los errores
 
+$_SESSION["cancelado"] = false;
+
+//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 function deleteAnuncio($idanuncio) {
     $anuncio1 = new modelo_anuncios();
 
@@ -30,15 +35,8 @@ function deleteAnuncio($idanuncio) {
 
 //funcion modificar anuncios
 function modifyAnuncio() {
-    $_SESSION["validacion"] = true;
-//como es correcto eliminamos todos los errores
-    $_SESSION["errores"] = "";
-
-    $_SESSION["cancelado"] = false;
-//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
-
     if ($_POST["btonmodificar"]) {
-        if (emppty($_POST["txtPrecio"])) {
+        if (empty($_POST["txtPrecio"])) {
             $_SESSION["validacion"] = false;
             $_SESSION["errores"]["txtPrecio"] = "Debe de completar el campo precio.";
         }
@@ -59,7 +57,7 @@ function modifyAnuncio() {
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->setDireccion($_POST["txtDireccion"]);
 
-
+         $daoanuncios = new daoAnuncios();
         $modifyOk = $daoanuncios->modificar($anuncio1);
         if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
@@ -185,15 +183,15 @@ function probarFiltros($filtros, $anuncio) {
     if ($filtros[0] == "notset" || $filtros[0] == $inmueble->getNum_banyos()) {
         if ($filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo()) {
             //if ($filtros[2] == "notset" || $filtros[2] == $anuncio->getTipo()) {
-                if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {  
-                    //if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNumeroHabitaciones()) {
-                        if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
-                            if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
-                                $r = true;
-                            }
-                        }
-                    //}
+            if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {
+                //if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNumeroHabitaciones()) {
+                if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
+                    if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
+                        $r = true;
+                    }
                 }
+                //}
+            }
             //}
         }
     }
