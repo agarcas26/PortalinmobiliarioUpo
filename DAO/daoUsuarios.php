@@ -12,7 +12,7 @@ class daoUsuarios {
 
     function __construct() {
         $this->conObj = new Conexion();
-        $this->conexion = $this->conObj->establecer_conexion();
+        $this->conexion = $this->conObj->getConexion();
     }
 
     function destruct() {

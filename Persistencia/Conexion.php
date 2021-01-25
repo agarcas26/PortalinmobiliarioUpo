@@ -4,6 +4,9 @@ class Conexion {
 
     private $conexion;
 
+    function __construct() {
+        $this->establecer_conexion();
+    }
     function getConexion() {
         return $this->conexion;
     }
