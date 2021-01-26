@@ -38,24 +38,49 @@
                     <section>
                         <a href="../Vistas/alta_inmueble.php">¿Quieres registrar un nuevo inmueble?</a>
                     </section>
+                    <h4>Mis favoritos</h4>
                     <!-- Mostramos vista previa favoritos -->
                     <section>
-
+                        <table>
+                            <?php
+                            if (!isset($_POST['ver_todos_favoritos'])) {
+                                vista_previa_favoritos();
+                            } else {
+                                ver_todos_los_favoritos();
+                            }
+                            ?>
+                            <form action="../Vistas/mis_anuncios.php" method="POST">
+                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                            </form>
+                        </table>
                     </section>
                     <!-- Mostramos vista previa alertas -->
+                    <h4>Mis alertas</h4>
                     <section>
-
+                        <table>
+                            <?php
+                            if (!isset($_POST['ver_todas_alertas'])) {
+                                vista_previa_alertas();
+                            } else {
+                                ver_todas_las_alertas();
+                            }
+                            ?>
+                            <form action="../Vistas/mis_anuncios.php" method="POST">
+                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                            </form>
+                        </table>
                     </section>
+                    <h4>Mis anuncios</h4>
                     <!-- Mostramos vista previa anuncios -->
                     <section>
                         <table>
-                        <?php
-                        if (!isset($_POST['ver_todos'])) {
-                            vista_previa_anuncios();
-                        } else {
-                            ver_todos_los_anuncios();
-                        }
-                        ?>
+                            <?php
+                            if (!isset($_POST['ver_todos_anuncios'])) {
+                                vista_previa_anuncios();
+                            } else {
+                                ver_todos_los_anuncios();
+                            }
+                            ?>
                             <form action="../Vistas/mis_anuncios.php" method="POST">
                                 <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>

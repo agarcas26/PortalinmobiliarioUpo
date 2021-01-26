@@ -182,13 +182,12 @@ function vista_previa_anuncios() {
     $daoAnuncios->destruct();
 
     if (mysqli_num_rows($anuncios) > 0) {
-        mysqli_fetch_array($anuncios);
+        $fila = mysqli_fetch_array($anuncios);
         echo '<tr>';
-        echo '<td><figure>' . $anuncios[14] . '</figure></td>';
-        echo '<td>' . $anuncios[0] . " " . $anuncios[2] . " " . $anuncios[1] . '</td>';
-        echo '<td>' . $anuncio[8] . '</td>';
-        echo '<td>' . $anuncio[7] . '</td>';
-        echo '<td>' . $anuncio[7] . '</td>';
+        echo '<td>' . $fila[0] . " " . $fila[2] . " " . $fila[1] . '</td>';
+        echo '<td>' . $fila[8] . '</td>';
+        echo '<td>' . $fila[7] . '</td>';
+        echo '<td>' . $fila[7] . '</td>';
         echo '</tr>';
     }
 }

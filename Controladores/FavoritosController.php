@@ -16,3 +16,12 @@ function get_favoritos_usuario() {
         echo '</tr>';
     }
 }
+
+function vista_previa_favoritos(){
+    
+    
+}
+
+function ver_todos_los_favoritos(){
+    
+}
