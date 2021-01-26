@@ -66,7 +66,9 @@ function get_ultimas_busquedas() {
     while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
         $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
         //Buscamos en img/inmuebles/direccion y listamos la primera foto
-        echo '<li>' . '</li>';
+            echo '<li>' . $ultimas_busquedas[7] . '</li>';
+            echo '<li>' . $ultimas_busquedas[4] . '</li>';
+            echo '<li>' . $ultimas_busquedas[5] . '</li>';
     }
 }
 
@@ -82,11 +84,11 @@ function get_ultimas_busquedas_usuario() {
     $dao->destruct();
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         while (mysqli_fetch_array($ultimas_busquedas)) {
-            echo '<li>' . $ultimas_busquedas[7] . '</li>';
-            echo '<li>' . $ultimas_busquedas[2] . '</li>';
-            echo '<li>' . $ultimas_busquedas[6] . '</li>';
-            echo '<li>' . $ultimas_busquedas[4] . '</li>';
-            echo '<li>' . $ultimas_busquedas[5] . '</li>';
+            echo '<li>' . $ultimas_busquedas['m2'] . '</li>';
+            echo '<li>' . $ultimas_busquedas['num_banyos'] . '</li>';
+            echo '<li>' . $ultimas_busquedas['precio_max'] . '</li>';
+            echo '<li>' . $ultimas_busquedas['tipo_inmueble'] . '</li>';
+            echo '<li>' . $ultimas_busquedas['tipo_oferta'] . '</li>';
         }
     }
 }
