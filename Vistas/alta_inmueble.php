@@ -40,7 +40,7 @@ and open the template in the editor.
                             <input type="text" name="txtNombre_via" />
                             <legend> Tipo de via</legend>
                             <input type="radio" name="txtTipo_via" id="via1" value="Calle">
-                            <label for="via1">Calle</label>
+                            <label for="via1">Callo</label>
                             <input type="radio" name="txtTipo_via" id="via2" value="Avenida">
                             <label for="via2">Avenida</label>
                             <input type="radio" name="txtTipo_via" id="via3" value="Carretera">
