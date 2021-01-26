@@ -18,13 +18,14 @@ if (isset($_POST['enviar'])) {
     }
 }
 
-function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {   
-        $_POST["error_registro"]="";
+function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {
+    session_start();
+        $_SESSION["error_registro"]="";
     if ($tipo == "profesional") {
         if (preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $empresa)) {
             filter_var($empresa, FILTER_SANITIZE_STRING);
         } else {
-            $_POST["error_registro"] += "Nombre de empresa incorrecto(debe empezar con mayuscula)";
+            $_SESSION["error_registro"] .= "Nombre de empresa incorrecto(debe empezar con mayuscula).<br>";
         }
     }
     if (preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos) && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
@@ -38,15 +39,16 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
         header("Location: ../Vistas/login.php");
     } else {
         if (!preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
-            $_POST["error_registro"] += "Nombre y apellidos incorrectos(deben empezar con mayuscula)";
+            $_SESSION["error_registro"] .= "Nombre y apellidos incorrectos(deben empezar con mayuscula).<br>";
         }
         if (!preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario)) {
-            $_POST["error_registro"] += "Nombre de usuario incorrecto(debe contener 4 a 16 caracteres alfanumericos)";
+            $_SESSION["error_registro"] .= "Nombre de usuario incorrecto(debe contener 4 a 16 caracteres alfanumericos).<br>";
         }
             if (!preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
-            $_POST["error_registro"] += "Contraseña incorrecta(debe tener entre 9 y 16 caracteres alfanumericos)";
+            $_SESSION["error_registro"] .= "Contraseña incorrecta(debe tener entre 9 y 16 caracteres alfanumericos).<br>";
         }
-        unset($_POST['registro']);
+        
+        unset($_POST['enviar']);
         header("Location: ../Vistas/registro.php");
     }
 }
