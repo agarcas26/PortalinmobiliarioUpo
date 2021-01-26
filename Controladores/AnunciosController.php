@@ -161,17 +161,18 @@ function listar_anuncios_usuario() {
     }
     $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
     $daoAnuncios->destruct();
-
-    while (mysqli_fetch_array($anuncios_usuario)) {
-        echo '<tr>';
-        echo '<td><figure></figure></td>';
-        echo '<td>' . $anuncios_usuario[2] . '</td>';
-        echo '<td>' . $anuncios_usuario[1] . '</td>';
-        echo '<td>' . $anuncios_usuario[3] . '</td>';
-        echo '<td>' . $anuncios_usuario[4] . '</td>';
-        echo '<td>' . $anuncios_usuario[7] . '</td>';
-        echo '<td>' . $anuncios_usuario[8] . '</td>';
-        echo '</tr>';
+    if (mysqli_num_rows($anuncios_usuario) > 0) {
+        while (mysqli_fetch_array($anuncios_usuario)) {
+            echo '<tr>';
+            echo '<td><figure></figure></td>';
+            echo '<td>' . $anuncios_usuario[2] . '</td>';
+            echo '<td>' . $anuncios_usuario[1] . '</td>';
+            echo '<td>' . $anuncios_usuario[3] . '</td>';
+            echo '<td>' . $anuncios_usuario[4] . '</td>';
+            echo '<td>' . $anuncios_usuario[7] . '</td>';
+            echo '<td>' . $anuncios_usuario[8] . '</td>';
+            echo '</tr>';
+        }
     }
 }
 
