@@ -103,7 +103,7 @@ and open the template in the editor.
                     if ($("input:radio[name=tipo]:checked").val() != "profesional"){
                         $("#form_empresa").hide();
                     } else{
-                        $("#form_empresa").hide();
+                        $("#form_empresa").show();
                     }
             </script>
         </main>
