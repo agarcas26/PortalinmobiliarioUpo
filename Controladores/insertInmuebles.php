@@ -2,6 +2,7 @@
 
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
@@ -88,6 +89,7 @@ if ($_SESSION["validacion"]) {
     $inmueble1->setPlanta($_POST["txtPlanta"]);
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+    $inmueble1->setNombre_usuario_duenyo($_SESSION['usuario_particular']);
    // $inmueble1->setFotos($_FILES["fileFotos"]);
 
     $daoInmueble = new daoInmuebles();
