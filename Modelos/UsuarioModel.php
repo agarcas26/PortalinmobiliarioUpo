@@ -53,7 +53,6 @@ class Usuario {
         $this->set_nombre_usuario($nombre_usuario);
         $this->set_contrasenya_user($pass);
         $this->set_moroso($moroso);
-        $this->setTipo($tipo);
     }
 
     function __toString() {
