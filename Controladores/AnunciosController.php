@@ -51,26 +51,25 @@ function insertAnuncio() {
             $_SESSION["validacion"] = false;
             $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
         }
-         if(empty("txtTitulo")){
-          $_SESSION["validacion"] = false;
-          $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
-          
-      }
+        if (empty("txtTitulo")) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
+        }
     }
-    if($_SESSION["validacion"]){
-        $anuncio1= new Anuncio();
+    if ($_SESSION["validacion"]) {
+        $anuncio1 = new Anuncio();
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->getTitulo($_POST["txtTitulo"]);
         $daoAnuncio = new daoAnuncios();
         $insertOk = $daoAnuncio->insertar($anuncio1);
-        if(!$insertOk){
+        if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
     }
-    if($_SESSION["validacion"]){
-        header('Location:../Vistas/anunciate.php');//se va a la pantalla sin errores
-    }else{
-        header('Location:../Vistas/anunciate.php');//muestra un error
+    if ($_SESSION["validacion"]) {
+        header('Location:../Vistas/anunciate.php'); //se va a la pantalla sin errores
+    } else {
+        header('Location:../Vistas/anunciate.php'); //muestra un error
     }
 }
 
@@ -163,7 +162,17 @@ function listar_anuncios_usuario() {
     $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
     $daoAnuncios->destruct();
 
-    return $anuncios_usuario;
+    while (mysqli_fetch_array($anuncios_usuario)) {
+        echo '<tr>';
+        echo '<td><figure></figure></td>';
+        echo '<td>' . $anuncios_usuario[2] . '</td>';
+        echo '<td>' . $anuncios_usuario[1] . '</td>';
+        echo '<td>' . $anuncios_usuario[3] . '</td>';
+        echo '<td>' . $anuncios_usuario[4] . '</td>';
+        echo '<td>' . $anuncios_usuario[7] . '</td>';
+        echo '<td>' . $anuncios_usuario[8] . '</td>';
+        echo '</tr>';
+    }
 }
 
 function vista_previa_anuncios() {

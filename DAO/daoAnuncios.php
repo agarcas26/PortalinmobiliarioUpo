@@ -113,7 +113,7 @@ class daoAnuncios {
     }
 
     function listar_anuncios_usuario($usuario) {
-        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" . $usuario . "';";
+        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_publica`='" . $usuario . "';";
         $resultado = $this->conexion->query($sql);
 
         return $resultado;
