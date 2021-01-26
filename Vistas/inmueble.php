@@ -24,11 +24,6 @@
             }
             ?>
         </header>
-        <?php
-        if (!isset($_POST['realizar_busqueda'])) {
-            $dirección;
-            $datos;
-            ?>
             <main>
                 <article>
                     <section id="detalle_inmueble">
@@ -51,9 +46,7 @@
                         ?>
                     </section>
                 </article>
-            </main> <?php
-        }
-        ?>
+            </main>
     </body>
     <?php
     include_once '../Vistas/footer.html';
