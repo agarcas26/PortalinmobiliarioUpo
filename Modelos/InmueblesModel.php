@@ -22,7 +22,6 @@ class inmueble {
     private $nombre_provincia;
     private $num_banyos;
     private $cocina;
-    private $tipo;
     private $numero_plantas;
     private $planta;
     private $metros;
@@ -33,6 +32,7 @@ class inmueble {
     function __construct() {
         
     }
+
     function getNumero() {
         return $this->numero;
     }
@@ -69,10 +69,6 @@ class inmueble {
         return $this->cocina;
     }
 
-    function getTipo() {
-        return $this->tipo;
-    }
-
     function getNumero_plantas() {
         return $this->numero_plantas;
     }
@@ -85,10 +81,10 @@ class inmueble {
         return $this->metros;
     }
 
-    function getTipo_inmueble() {
+   
+    function getTipo_inmueble(){
         return $this->tipo_inmueble;
     }
-
     function getNum_hab() {
         return $this->num_hab;
     }
@@ -133,10 +129,6 @@ class inmueble {
         $this->cocina = $cocina;
     }
 
-    function setTipo($tipo) {
-        $this->tipo = $tipo;
-    }
-
     function setNumero_plantas($numero_plantas) {
         $this->numero_plantas = $numero_plantas;
     }
@@ -153,6 +145,7 @@ class inmueble {
         $this->tipo_inmueble = $tipo_inmueble;
     }
 
+    
     function setNum_hab($num_hab) {
         $this->num_hab = $num_hab;
     }
@@ -161,7 +154,6 @@ class inmueble {
         $this->fotos = $fotos;
     }
 
-    
     public function __toString() {
         
     }

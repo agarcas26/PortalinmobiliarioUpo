@@ -55,9 +55,7 @@ session_start();
                                 <input type="radio" name="txtTipo_via" id="via3" value="Carretera">
                                 <label for="via3">Carretera</label>  
                             </p>
-                            <label>usuario</label><br>
-                            <input type="hidden" name="txtNombreUser" />
-                            <br><br>
+
                             <label>Localidad</label><br>
                             <input type="text" name="txtNombre_localidad" />
                             <br><br>
@@ -79,7 +77,15 @@ session_start();
                                 <input type="radio" name="txtCocina" id="no" value="No">
                                 <label for="No">No</label>  
                             </p>
-
+                             <label>Tipo de inmueble</label>
+                            <p>
+                                <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="Alquiler">
+                                <label for="Alquiler">Alquiler</label>
+                            </p>
+                            <p>
+                                <input type="radio" name="txtTipo_Inmueble" id="compra" value="Compra">
+                                <label for="Compra">Compra</label>
+                                <br><br>
                             <label>Numero de plantas</label><br>
                             <input type="number" name="txtNum_Planta" />
                             <br><br>
@@ -89,21 +95,11 @@ session_start();
                             <label>Metros cuadrados</label><br>
                             <input type="number" name="txtMetros" />
                             <br><br>
-                            <label>Tipo de inmueble</label>
-                            <p>
-                                <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="Alquiler">
-                                <label for="Alquiler">Alquiler</label>
-                            </p>
-                            <p>
-                                <input type="radio" name="txtTipo_Inmueble" id="compra" value="Compra">
-                                <label for="Compra">Compra</label>
+                           
+                                <label for="fileFotos">Suba imágenes del inmueble:</label>
+                                <br><br>-->
+                                <input type="file" name="fileFotos" accept="image/png, image/jpeg">
                                 <br><br>
-                                <!--                            <label for="fileFotos">Suba imágenes del inmueble:</label>
-                                                            <br><br>-->
-                                <!--                            <input type="file"
-                                                                   id="fileFotos" name="fileFotos"
-                                                                   accept="image/png, image/jpeg">
-                                                            <br><br>-->
                                 <input type="submit" value="enviar" name="btonInsertar">
 
                         </form>
