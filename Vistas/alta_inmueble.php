@@ -14,7 +14,7 @@ and open the template in the editor.
         <?php
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
-        
+
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>
@@ -31,18 +31,26 @@ and open the template in the editor.
                         <h1>Rellene el formulario para dar de alta un nuevo inmueble</h1>
                         <form action='../PortalinmobiliarioUpo/Controladores/InmueblesController.php' method='POST'>
                             <label>A continuación rellene la dirección del inmueble</label>
-                            <label>Tipo de vía</label>
-                            <select>
-                                <option>Calle</option>
-                                <option>Avenida</option>
-                                <option>Carretera</option>
-                            </select>
-                            <label>Nombre de la vía</label>
-                            <input type="text" name="nombre_via" />
                             <label>Numero</label>
-                            <input type="number" name="numero" />
+                            <input type="number" name="txtNumero" />
+                            <br>fbffbhfbc<br>
                             <label>Codigo postal</label>
-                            <input type="number" name="cp" />
+                            <input type="number" name="txtCp" />
+                            <label>Nombre de la vía</label>
+                            <input type="text" name="txtNombre_via" />
+                            <legend> Tipo de via</legend>
+                            <input type="radio" name="txtTipo_via" id="via1" value="Calle">
+                            <label for="via1">Calle</label>
+                            <input type="radio" name="txtTipo_via" id="via2" value="Avenida">
+                            <label for="via2">Avenida</label>
+                            <input type="radio" name="txtTipo_via" id="via3" value="Carretera">
+                            <label for="via3">Carretera</label>
+                            
+
+                            <label>Localidad</label>
+                            <input type="text" name="txtLocalidad" />
+
+
                             <label>Tipo de anuncio</label>
                             <select>
                                 <option>Alquiler</option>
@@ -55,8 +63,8 @@ and open the template in the editor.
                 </article>
             </main>
         </body>
-        <?php 
-        include_once '../Vistas/footer.html'; 
+        <?php
+        include_once '../Vistas/footer.html';
         ?>
         <?php
     } else {
