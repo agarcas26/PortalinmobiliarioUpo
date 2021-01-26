@@ -29,18 +29,20 @@ if (isset($_POST['cuadricula'])) {
 }
 
 function mostrarVistaLista() {
-    $dao = new daoanuncios();
+    $dao = new daoAnuncios();
     $array_anuncios = $dao->listar();
     $dao->destruct();
-    for ($i = 0; $i < sizeof($array_anuncios); $i++) {
-        echo '<tr>';
-        echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[$i][1] . '</td>';
-        echo '<td>' . $array_anuncios[$i][7] . '</td>';
-        echo '<td>' . $array_anuncios[$i][8] . '</td>';
-        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '">'
-        . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
-        echo '</tr>';
+    if (mysqli_num_rows($array_anuncios) > 0) {
+        while ($fila = mysqli_fetch_array($array_anuncios)) {
+            echo '<tr>';
+            echo '<td>' . '</td>';    //Insertar imágenes
+            echo '<td>' . $fila[1] . '</td>';
+            echo '<td>' . $fila[7] . '</td>';
+            echo '<td>' . $fila[8] . '</td>';
+            echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
+            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
+            echo '</tr>';
+        }
     }
 }
 

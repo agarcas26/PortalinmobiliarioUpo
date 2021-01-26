@@ -34,7 +34,7 @@ and open the template in the editor.
 
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
                 <form method="GET" action="../Controladores/busquedaController.php">
-                    <table class="table-borderless">
+                    <table class="table-bordered">
                         <tr>
                             <td><label>Número de baños</label></td>
                             <td><input type="number" min="0" id="num_banyos" name="num_banyos" value="0"></td>
