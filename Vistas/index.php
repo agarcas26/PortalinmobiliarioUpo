@@ -11,7 +11,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
-        include_once '../Vistas/header.php';
+        include_once '../header.php';
         include_once '../Controladores/busquedaController.php';
         ?>
     </head>

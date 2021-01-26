@@ -17,7 +17,7 @@
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
-            } elseif (isset($_SESSION['admin'])) {
+            } elseif(isset($_SESSION['admin'])) {
                 cabecera_admin();
             } else {
                 no_sesion_iniciada();
