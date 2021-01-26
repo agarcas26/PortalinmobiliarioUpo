@@ -68,7 +68,7 @@ function get_ultimas_busquedas() {
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         $i = 0;
         while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
-            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            $direccion = $fila[1] . $fila[2] . $fila[4] . $fila[5];
             echo '<tr>';
             echo '<td></td>';       //imagenes
             echo '</tr>';
