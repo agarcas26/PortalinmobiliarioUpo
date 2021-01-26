@@ -10,7 +10,7 @@ if (isset($_POST['enviar'])) {
     $conf_pass = $_POST['conf_contrasenya'];
     $tipo = $_POST['tipo'];
     $empresa = $_POST['empresa'];
-    echo 'AAAAAAAAAAAAAAAAAAAAA';
+    
     if ($pass == $conf_pass) {
         registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa);
     }else{
