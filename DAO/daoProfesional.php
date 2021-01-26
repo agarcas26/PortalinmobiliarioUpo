@@ -20,7 +20,7 @@ class daoProfesional {
 
     function destruct() {
         $this->conObj = new Conexion();
-        $this->conexion = null;
+        $this->conexion = $this->conObj->getConexion();
         $this->conObj->cerrar_conexion();
     }
 

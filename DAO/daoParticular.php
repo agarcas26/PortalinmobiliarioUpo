@@ -19,8 +19,8 @@ class daoParticular {
     }
 
     function destruct() {
-        $this->conObj = new Conexion();
-        $this->conexion = null;
+        $this->conObj = new Conexion();        
+        $this->conexion = $this->conObj->getConexion();
         $this->conObj->cerrar_conexion();
     }
 
