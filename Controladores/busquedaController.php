@@ -63,14 +63,24 @@ function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
     $dao->destruct();
-    while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
-        $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
-        //Buscamos en img/inmuebles/direccion y listamos la primera foto
-            echo '<li>' . $ultimas_busquedas[7] . '</li>';
-            echo '<li>' . $ultimas_busquedas[2] . '</li>';
-            echo '<li>' . $ultimas_busquedas[6] . '</li>';
-            echo '<li>' . $ultimas_busquedas[4] . '</li>';
-            echo '<li>' . $ultimas_busquedas[5] . '</li>';
+    if (mysqli_num_rows($ultimas_busquedas) > 0) {
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
+        }
     }
 }
 
@@ -85,12 +95,22 @@ function get_ultimas_busquedas_usuario() {
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
-        while (mysqli_fetch_array($ultimas_busquedas)) {
-            echo '<li>' . $ultimas_busquedas['m2'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['num_banyos'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['precio_max'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['tipo_inmueble'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['tipo_oferta'] . '</li>';
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
         }
     }
 }

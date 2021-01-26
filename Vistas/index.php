@@ -60,18 +60,18 @@ and open the template in the editor.
                 </aside>
                 <?php if (isset($_SESSION['usuario_particular'])) { ?>
                     <h3>Tus últimas búsquedas</h3>
-                    <ul class = "list-inline mb-0">
+                    <table class="table-bordered">
                         <?php
                         get_ultimas_busquedas_usuario();
                         ?>
-                    </ul>
+                    </table>
                 <?php } ?>
                 <h3>Lo más buscado</h3>
-                <ul class="list-inline mb-0">
+                <table class="table-bordered">
                     <?php
                     get_ultimas_busquedas();
                     ?>
-                </ul>
+                </table>
                 <article>
                 </article>
             </main>
