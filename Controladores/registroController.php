@@ -24,7 +24,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
             $_POST["error_registro"] += "Nombre de empresa incorrecto(debe empezar con mayuscula)";
         }
     }
-    if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos) && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
+    if (preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos) && preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
         filter_var($nombre_apellidos, FILTER_SANITIZE_STRING);
         filter_var($nombre_usuario, FILTER_SANITIZE_ADD_SLASHES);
         filter_var($pass, FILTER_SANITIZE_ADD_SLASHES);
@@ -37,7 +37,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
                 $_SESSION['usuario_particular'] = $nombre_usuario;
             }
         }
-        header("Location: ../Vistas/index.php");
+        //header("Location: ../Vistas/index.php");
     } else {
         if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
             
@@ -55,6 +55,6 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
             $_POST["error_registro"] += "Contraseña incorrecta(debe tener entre 9 y 16 caracteres alfanumericos)";
         }
         unset($_POST['registro']);
-        header("Location: ../Vistas/registro.php");
+        //header("Location: ../Vistas/registro.php");
     }
 }
