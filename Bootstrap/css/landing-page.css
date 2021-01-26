@@ -22,8 +22,8 @@ header.masthead {
     position: relative;
     background-color: #343a40;
     background: url("../img/marketing-ciudades.jpg") no-repeat center center;
-    width: 100%;
-    background-size: cover;
+     padding-left: 70%;
+     width: 30%;
     padding-top: 8rem;
     padding-bottom: 8rem;
 }
