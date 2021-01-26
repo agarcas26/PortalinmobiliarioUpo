@@ -113,14 +113,14 @@ class daoAnuncios {
     }
 
     function listar_anuncios_usuario($usuario) {
-        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" . $usuario . "';";
+        $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_publica`='" . $usuario . "';";
         $resultado = $this->conexion->query($sql);
 
         return $resultado;
     }
 
     function get_tipo_anuncio($id_anuncio) {
-        $sentence = "SELECT `id_compra` FROM `compra` WHERE `id_anuncio` = '" . $id_anuncio . "'";
+        $sentence = "SELECT `compra`.`id_compra` FROM `compra` WHERE `compra`.`id_anuncio` = '" . $id_anuncio . "'";
         $result = mysqli_query($this->conexion, $sentence);
 
         if (mysqli_num_rows($result) > 0) {
@@ -128,6 +128,8 @@ class daoAnuncios {
         }else{
             $tipo_anuncio = "alquiler";
         }
+        
+        return $tipo_anuncio;
     }
 
 }

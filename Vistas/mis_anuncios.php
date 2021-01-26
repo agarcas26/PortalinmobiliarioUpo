@@ -18,26 +18,14 @@
             </header>
             <main>
                 <aside>
-                    <?php aside_sesion_iniciada(); ?>
+                    <?php //aside_sesion_iniciada(); ?>
                 </aside>
                 <article>
                     <section>
-                        <table id="anuncios">
-                            <?php
-                            $anuncios = listar_anuncios_usuario();
-                            while (mysqli_fetch_array($anuncios)) {
-                                echo '<tr>';
-                                echo '<td><figure></figure></td>';
-                                echo '<td>' . $anuncios[2] . '</td>';
-                                echo '<td>' . $anuncios[1] . '</td>';
-                                echo '<td>' . $anuncios[3] . '</td>';
-                                echo '<td>' . $anuncios[4] . '</td>';
-                                echo '<td>' . $anuncios[7] . '</td>';
-                                echo '<td>' . $anuncios[8] . '</td>';
-                                echo '</tr>';
-                            }
-                            ?>
-                        </table>
+                        <h4>Mis anuncios</h4>
+                        <?php
+                        listar_anuncios_usuario();
+                        ?>
                     </section>
                 </article>
             </main>

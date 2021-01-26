@@ -51,26 +51,25 @@ function insertAnuncio() {
             $_SESSION["validacion"] = false;
             $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
         }
-         if(empty("txtTitulo")){
-          $_SESSION["validacion"] = false;
-          $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
-          
-      }
+        if (empty("txtTitulo")) {
+            $_SESSION["validacion"] = false;
+            $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
+        }
     }
-    if($_SESSION["validacion"]){
-        $anuncio1= new Anuncio();
+    if ($_SESSION["validacion"]) {
+        $anuncio1 = new Anuncio();
         $anuncio1->setPrecio($_POST["txtPrecio"]);
         $anuncio1->getTitulo($_POST["txtTitulo"]);
         $daoAnuncio = new daoAnuncios();
         $insertOk = $daoAnuncio->insertar($anuncio1);
-        if(!$insertOk){
+        if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
     }
-    if($_SESSION["validacion"]){
-        header('Location:../Vistas/anunciate.php');//se va a la pantalla sin errores
-    }else{
-        header('Location:../Vistas/anunciate.php');//muestra un error
+    if ($_SESSION["validacion"]) {
+        header('Location:../Vistas/anunciate.php'); //se va a la pantalla sin errores
+    } else {
+        header('Location:../Vistas/anunciate.php'); //muestra un error
     }
 }
 
@@ -162,8 +161,25 @@ function listar_anuncios_usuario() {
     }
     $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
     $daoAnuncios->destruct();
-
-    return $anuncios_usuario;
+    if (mysqli_num_rows($anuncios_usuario) > 0) {
+        while ($fila = mysqli_fetch_array($anuncios_usuario)) {
+            echo '<table id="anuncios">';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[1] . " " . $fila[3] . " " . $fila[2] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[8] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[7] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>';
+            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
+            . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
+            . '</td>'
+            . '</a>';
+            echo '</tr>';
+            echo '</table>';
+        }
+    }
 }
 
 function vista_previa_anuncios() {
@@ -172,14 +188,13 @@ function vista_previa_anuncios() {
     $daoAnuncios->destruct();
 
     if (mysqli_num_rows($anuncios) > 0) {
-        mysqli_fetch_array($anuncios);
-        echo '<tr>';
-        echo '<td><figure>' . $anuncios[14] . '</figure></td>';
-        echo '<td>' . $anuncios[0] . " " . $anuncios[2] . " " . $anuncios[1] . '</td>';
-        echo '<td>' . $anuncio[8] . '</td>';
-        echo '<td>' . $anuncio[7] . '</td>';
-        echo '<td>' . $anuncio[7] . '</td>';
-        echo '</tr>';
+        while ($fila = mysqli_fetch_array($anuncios)) {
+            echo '<tr>';
+            echo '<td>' . $fila[0] . " Dirección:   " . $fila[2] . " " . $fila[1] . '</td>';
+            echo '<td>   Fecha de publicación:  ' . $fila[8] . '</td>';
+            echo '<td>   Precio:  ' . $fila[7] . '</td>';
+            echo '</tr>';
+        }
     }
 }
 

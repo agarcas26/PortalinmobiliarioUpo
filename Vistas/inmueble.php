@@ -7,6 +7,7 @@
         <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Vistas/aside.php';
         include_once '../Controladores/InmueblesController.php';
         include_once '../Controladores/ResenyasController.php';
         ?>
@@ -16,43 +17,36 @@
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
-            } elseif (isset($_SESSION['admin'])) {
+            } elseif(isset($_SESSION['admin'])) {
                 cabecera_admin();
             } else {
                 no_sesion_iniciada();
             }
             ?>
         </header>
-        <?php
-        if (!isset($_POST['realizar_busqueda'])) {
-            $dirección;
-            $datos;
-            ?>
-            <main>
-                <article>
-                    <section id="detalle_inmueble">
-                    <h1><?php echo $dirección; ?></h1>
+        <main>
+            <article>
+                <section id="detalle_inmueble">
+                    <h1></h1>
                     <ul class="img-fluid">
-                        <?php 
+                        <?php
                         //Galería de imágenes del inmueble
                         ?>
                     </ul>
                     <table>
-                        <?php 
+                        <?php
                         //Datos del inmueble
                         ?>
                     </table>
-                    </section>
-                    <section id="resenyas_inmueble">
-                        <button id="nueva_resenya" onclick="nueva_resenya()">Escribir una reseña</button>
-                        <?php
-                        //Hacer una tabla por cada resenya asociada a este anuncio
-                        ?>
-                    </section>
-                </article>
-            </main> <?php
-        }
-        ?>
+                </section>
+                <section id="resenyas_inmueble">
+                    <button id="nueva_resenya" onclick="nueva_resenya()">Escribir una reseña</button>
+                    <?php
+                    //Hacer una tabla por cada resenya asociada a este anuncio
+                    ?>
+                </section>
+            </article>
+        </main>
     </body>
     <?php
     include_once '../Vistas/footer.html';

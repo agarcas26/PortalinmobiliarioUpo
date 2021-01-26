@@ -1,6 +1,6 @@
 <?php
 
-include_once '../Controladores/AnuncioController.php';
+include_once '../Controladores/AnunciosController.php';
 
 if (isset($_POST['realizar_busqueda'])) {
     $palabras_clave = preg_split(' ', $_POST['barra_buscador']);

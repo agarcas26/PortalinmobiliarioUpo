@@ -26,15 +26,15 @@ class daoFavoritos {
 
 
     function listar_favoritos() {
+        $favoritos = [];
         $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito`";
         $id_anuncios_favoritos = mysqli_query($this->conexion, $sentence);
 
+        while ($id_anuncio = mysqli_fetch_row($id_anuncios_favoritos)) {
         $anuncios = listAllAnuncios();
-
-        while (mysqli_fetch_row($id_anuncios_favoritos)) {
-            for ($i = 0; $i < sizeof($anuncios); $i++) {
-                if ($anuncios[i][0] == $id_anuncios_favoritos) {
-                    array_push($favoritos, $anuncios[i]);
+            while ($anuncio = mysqli_fetch_row($anuncios)) {
+                if ($anuncio[0] == $id_anuncio[0]) {
+                    array_push($favoritos, $anuncio);
                 }
             }
         }
