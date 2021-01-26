@@ -30,9 +30,9 @@ if (isset($_POST['cuadricula'])) {
 
 function mostrarVistaLista() {
     $dao = new daoAnuncios();
-    $array_anuncios = $dao->listar();
-    $dao->destruct();
-    if (mysqli_num_rows($array_anuncios) > 0) {
+    if (mysqli_num_rows($dao->listar()) > 0) {
+        $array_anuncios = $dao->listar();
+        $dao->destruct();
         while ($fila = mysqli_fetch_array($array_anuncios)) {
             echo '<tr>';
             echo '<td>' . '</td>';    //Insertar imágenes
@@ -47,7 +47,7 @@ function mostrarVistaLista() {
 }
 
 function mostrarVistaCuadricula() {
-    $dao = new daoanuncios();
+    $dao = new daoAnuncios();
     $array_anuncios = $dao->listar();
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
@@ -65,23 +65,20 @@ function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
     $dao->destruct();
+    
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
-        $i = 0;
-        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
-            $direccion = $fila[1] . $fila[2] . $fila[4] . $fila[5];
+        while ($fila_busqueda = mysqli_fetch_array($ultimas_busquedas)) {
             echo '<tr>';
-            echo '<td></td>';       //imagenes
+            echo '<td class="td"></td>';       //imagenes
             echo '</tr>';
             echo '<tr>';
-            echo '<td>' . $direccion . ' dirección</td>';
-            echo '<td>' . $fila['m2'] . 'm2</td>';
-            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
-            echo '<td>' . $fila['precio_max'] . '€</td>';
-            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
-            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '<td class="td">' . $fila_busqueda[8] . ' m2      </td>';
+            echo '<td class="td">' . $fila_busqueda[2] . ' baños       </td>';
+            echo '<td class="td">' . $fila_busqueda[7] . '€        </td>';
+            echo '<td class="td">Tipo inmueble: ' . $fila_busqueda[4] . '      </td>';
+            echo '<td class="td">Tipo oferta: ' . $fila_busqueda[5] . '        </td>';
             echo '</tr>';
 
-            $i++;
         }
     }
 }
@@ -93,26 +90,26 @@ function get_ultimas_busquedas_usuario() {
     if (isset($_SESSION['usuario_profesional'])) {
         $usuario = $_SESSION['usuario_profesional'];
     }
+    
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
+    
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         $i = 0;
-        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
-            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) and $i < 3) {
             echo '<tr>';
-            echo '<td></td>';       //imagenes
+            echo '<td class="td"></td>';       //imagenes
             echo '</tr>';
             echo '<tr>';
-            echo '<td>' . $direccion . ' dirección</td>';
-            echo '<td>' . $fila['m2'] . 'm2</td>';
-            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
-            echo '<td>' . $fila['precio_max'] . '€</td>';
-            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
-            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '<td class="td">' . $fila[8] . ' m2      </td>';
+            echo '<td class="td">' . $fila[2] . ' baños       </td>';
+            echo '<td class="td">' . $fila[7] . '€        </td>';
+            echo '<td class="td">Tipo inmueble: ' . $fila[4] . '      </td>';
+            echo '<td class="td">Tipo oferta: ' . $fila[5] . '        </td>';
             echo '</tr>';
 
-            $i++;
+            $i = $i + 1;
         }
     }
 }
@@ -126,7 +123,6 @@ function print_resultados_busqueda() {
     . "<th>Publicado por<th>"
     . "<th>Direccion<th>";
     for ($i = 0; $i < siceof($anuncios); $i++) {
-
         echo "<td>" . $anuncios[$i]->getPrecio() . "</td>"
         . "<td>" . $anuncios[$i]->getTitulo() . "</td>"
         . "<td>" . $anuncios[$i]->getFecha_anuncio() . "</td>"
@@ -146,7 +142,6 @@ function print_resultados_filtros() {
     . "<th>Publicado por<th>"
     . "<th>Direccion<th>";
     for ($i = 0; $i < siceof($anuncios); $i++) {
-
         echo "<td>" . $anuncios[$i]->getPrecio() . "</td>"
         . "<td>" . $anuncios[$i]->getTitulo() . "</td>"
         . "<td>" . $anuncios[$i]->getFecha_anuncio() . "</td>"

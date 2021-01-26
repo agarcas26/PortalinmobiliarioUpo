@@ -13,9 +13,8 @@ class daoBusqueda {
     private $conexion;
 
     function __construct() {
-       $this->conObj = new Conexion();
+        $this->conObj = new Conexion();
         $this->conexion = $this->conObj->getConexion();
-
     }
 
     function destruct() {

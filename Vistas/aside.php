@@ -16,8 +16,8 @@ function aside_sesion_iniciada() {
     }
     $anuncios = listar_anuncios_usuario($usuario);
 
-    while (mysqli_fetch_array($anuncios)) {
-        echo '<a><figure><figcaption></figcaption>' . $anuncios[7] . '</figure></a>';
+    while ($aux = mysqli_fetch_array($anuncios)) {
+        echo '<a><figure><figcaption></figcaption>' . $aux[7] . '</figure></a>';
     }
 }
 
