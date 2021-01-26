@@ -45,11 +45,9 @@
                             <?php
                             if (!isset($_POST['ver_todos_favoritos'])) {
                                 vista_previa_favoritos();
-                            } else {
-                                ver_todos_los_favoritos();
                             }
                             ?>
-                            <form action="../Vistas/mis_anuncios.php" method="POST">
+                            <form action="../Vistas/mis_favoritos.php" method="POST">
                                 <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
@@ -61,11 +59,9 @@
                             <?php
                             if (!isset($_POST['ver_todas_alertas'])) {
                                 vista_previa_alertas();
-                            } else {
-                                ver_todas_las_alertas();
                             }
                             ?>
-                            <form action="../Vistas/mis_anuncios.php" method="POST">
+                            <form action="../Vistas/mis_alertas.php" method="POST">
                                 <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
@@ -77,8 +73,6 @@
                             <?php
                             if (!isset($_POST['ver_todos_anuncios'])) {
                                 vista_previa_anuncios();
-                            } else {
-                                ver_todos_los_anuncios();
                             }
                             ?>
                             <form action="../Vistas/mis_anuncios.php" method="POST">
