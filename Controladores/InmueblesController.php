@@ -250,7 +250,7 @@ function listar_inmuebles_usuario() {
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $daoInmueble->destruct();
 
-//Listar  inmuebles by usuario
+    //Listar  inmuebles by usuario
     while (mysqli_fetch_array($inmuebles_usuario)) {
         echo '<option>' . $inmuebles_usuario[0] . " - " . $inmuebles_usuario[1] . " - " . $inmuebles_usuario[2] . " - " . $inmuebles_usuario[3] . '</option>';
     }
