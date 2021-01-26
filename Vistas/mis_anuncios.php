@@ -18,7 +18,7 @@
             </header>
             <main>
                 <aside>
-                    <?php aside_sesion_iniciada(); ?>
+                    <?php //aside_sesion_iniciada(); ?>
                 </aside>
                 <article>
                     <section>

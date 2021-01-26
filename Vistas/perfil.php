@@ -25,7 +25,7 @@
                 ?>
             </header>
             <aside>
-                //<?php
+                <?php
 //                if (isset($_SESSION['usuario_particular'])) {
 //                    aside_sesion_iniciada();
 //                } else {

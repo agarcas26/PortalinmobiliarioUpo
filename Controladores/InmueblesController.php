@@ -22,66 +22,70 @@ $url_exito = "../Vistas/inmueble.php";
 //direccion en caso de error, por lo general será la vista del formulario que llamo
 //a este controlador
 $url_error = "../Vistas/alta_inmueble.php";
+
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
-function insertar($inmueble1) {
-    if ($_POST["btonInsertar"]) {
-        if (empty($_POST["txtNumero"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
-        }
-        if (empty($_POST["txtCp"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtCp"] = "Debe de completar el campo cp.";
-        }
-        if (empty($_POST["txtNombre_via"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNombre_via"] = "Debe de completar el campo nombre via.";
-        }if (empty($_POST["txtTipo_via"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtTipo_via"] = "Debe de completar el campo tipo de via.";
-        }if (empty($_POST["txtNombre_localidad"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNombre_localidad"] = "Debe de completar el nombre de la localidad.";
-        }if (empty($_POST["txtNombre_provincia"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNombre_provincia"] = "Debe de completar el nombre de la provincia.";
-        }
-        if (empty($_POST["txtNum_banyos"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
-        }
-        if (empty($_POST["txtNum_habitaciones"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNum_habitaciones"] = "Debe de completar el campo numero de habitaciones.";
-        }
-        if (empty($_POST["txtCocina"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtCocina"] = "Debe de completar el campo cocina.";
-        }
-        if (empty($_POST["txtNum_Planta"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtNum_Planta"] = "Debe de completar el campo numero de plantas.";
-        }
-        if (empty($_POST["txtPlanta"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
-        }
-        if (empty($_POST["txtMetros"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
-        }
-        if (empty($_POST["txtTipo_Inmueble"])) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
-        }
+
+function validacion_campos() {
+    if (empty($_POST["txtNumero"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
+    }
+    if (empty($_POST["txtCp"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtCp"] = "Debe de completar el campo cp.";
+    }
+    if (empty($_POST["txtNombre_via"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_via"] = "Debe de completar el campo nombre via.";
+    }if (empty($_POST["txtTipo_via"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtTipo_via"] = "Debe de completar el campo tipo de via.";
+    }if (empty($_POST["txtNombre_localidad"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_localidad"] = "Debe de completar el nombre de la localidad.";
+    }if (empty($_POST["txtNombre_provincia"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_provincia"] = "Debe de completar el nombre de la provincia.";
+    }
+    if (empty($_POST["txtNum_banyos"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
+    }
+    if (empty($_POST["txtNum_habitaciones"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNum_habitaciones"] = "Debe de completar el campo numero de habitaciones.";
+    }
+    if (empty($_POST["txtCocina"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtCocina"] = "Debe de completar el campo cocina.";
+    }
+    if (empty($_POST["txtNum_Planta"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNum_Planta"] = "Debe de completar el campo numero de plantas.";
+    }
+    if (empty($_POST["txtPlanta"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
+    }
+    if (empty($_POST["txtMetros"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
+    }
+    if (empty($_POST["txtTipo_Inmueble"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
+    }
 //    if (empty($_POST["fileFotos"])) {
 //        $_SESSION["validacion"] = false;
 //        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
 //    }
-    }
-    if ($_SESSION["validacion"]) {
+}
+
+if (isset($_POST['btonInsertar'])) {
+    validacion_campos();
+    if ($_SESSION["validacion"] == true) {
 
         $inmueble1 = new inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
@@ -113,15 +117,15 @@ function insertar($inmueble1) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
     }
+}
 //echo "<pre>";
 //var_dump($inmueble1);
 //var_dump($_SESSION);
 //echo "</pre>";
-    if ($_SESSION["validacion"]) {
-        header('Location: ' . $url_exito);
-    } else {
-        header('Location: ' . $url_error);
-    }
+if ($_SESSION["validacion"]) {
+    header('Location: ' . $url_exito);
+} else {
+    header('Location: ' . $url_error);
 }
 
 function modificarInmueble() {
@@ -246,7 +250,7 @@ function listar_inmuebles_usuario() {
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $daoInmueble->destruct();
 
-    //Listar  inmuebles by usuario
+//Listar  inmuebles by usuario
     while (mysqli_fetch_array($inmuebles_usuario)) {
         echo '<option>' . $inmuebles_usuario[0] . " - " . $inmuebles_usuario[1] . " - " . $inmuebles_usuario[2] . " - " . $inmuebles_usuario[3] . '</option>';
     }
