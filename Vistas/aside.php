@@ -14,11 +14,8 @@ function aside_sesion_iniciada() {
     }else{
         $usuario = $_SESSION['usuario_profesional'];
     }
-    $anuncios = listar_anuncios_usuario($usuario);
+    listar_anuncios_usuario();
 
-    while ($aux = mysqli_fetch_array($anuncios)) {
-        echo '<a><figure><figcaption></figcaption>' . $aux[7] . '</figure></a>';
-    }
 }
 
 function aside_sesion_no_iniciada() {

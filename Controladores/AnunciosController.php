@@ -162,15 +162,15 @@ function listar_anuncios_usuario() {
     $anuncios_usuario = $daoAnuncios->listar_anuncios_usuario($usuario);
     $daoAnuncios->destruct();
     if (mysqli_num_rows($anuncios_usuario) > 0) {
-        while (mysqli_fetch_array($anuncios_usuario)) {
+        while ($fila = mysqli_fetch_array($anuncios_usuario)) {
             echo '<tr>';
             echo '<td><figure></figure></td>';
-            echo '<td>' . $anuncios_usuario[2] . '</td>';
-            echo '<td>' . $anuncios_usuario[1] . '</td>';
-            echo '<td>' . $anuncios_usuario[3] . '</td>';
-            echo '<td>' . $anuncios_usuario[4] . '</td>';
-            echo '<td>' . $anuncios_usuario[7] . '</td>';
-            echo '<td>' . $anuncios_usuario[8] . '</td>';
+            echo '<td>' . $fila[2] . '     </td>';
+            echo '<td>' . $fila[1] . '     </td>';
+            echo '<td> CP: ' . $fila[3] . '     </td>';
+            echo '<td> Nº' . $fila[4] . '     </td>';
+            echo '<td>' . $fila[7] . '€     </td>';
+            echo '<td> Fecha de publicación: ' . $fila[8] . '     </td>';
             echo '</tr>';
         }
     }
