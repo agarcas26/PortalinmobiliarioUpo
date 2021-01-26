@@ -20,8 +20,8 @@ $_SESSION["cancelado"] = false;
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
-function insertar(){
-    
+function insertar() {
+
 
     if (isset($_POST["btonInsertar"])) {
         if (empty($_POST["txtNumero"])) {
@@ -102,15 +102,14 @@ function insertar(){
         if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
-       
     }
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil sin errores
     } else {
         header('Location: ../Vistas/login.php'); //se va a la pantalla de perfil mostrando un mensaje de error
     }
-
 }
+
 function modificarInmueble() {
     if (empty($_POST["btonmodificar"])) {
         if (empty($_POST["txtNum_banyos"])) {
@@ -157,7 +156,7 @@ function modificarInmueble() {
             $inmueble1->setFotos($_POST["fileFotos"]);
             $daoInmueble2 = new daoinmueble();
             $modifyOk = $daoInmueble2->modificar($inmueble1);
-        $daoInmueble->destruct();
+            $daoInmueble->destruct();
             if (!$modifyOk) {
                 $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
             }
@@ -173,7 +172,7 @@ function modificarInmueble() {
 function listar() {
     $daoinmueble = new daoinmueble();
     $inmuebles = $daoinmueble->listar();
-        $daoInmueble->destruct();
+    $daoInmueble->destruct();
 
 
     while (mysqli_fetch_array($inmuebles)) {
@@ -231,7 +230,7 @@ function listar_inmuebles_usuario() {
 
     $dao = new daoinmueble();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
-        $daoInmueble->destruct();
+    $daoInmueble->destruct();
 
     //Listar  inmuebles by usuario
     while (mysqli_fetch_array($inmuebles_usuario)) {
