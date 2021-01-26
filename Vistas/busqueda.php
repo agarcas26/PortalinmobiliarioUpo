@@ -30,7 +30,7 @@ and open the template in the editor.
             ?>
         </header>
         <main>
-            <aside id="filtros" style="position: sticky; top: 20px;">
+            <aside id="filtros_aside" style="position: sticky; top: 20px;">
                 <button style="float: right;" onclick="mostrar_ocultar()" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
