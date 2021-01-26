@@ -4,13 +4,14 @@ include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuarios.php';
 
-
+session_start();
 
 if (isset($_POST['entrar'])) {
     $dao = new daoUsuarios();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $usuario = getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
+        
         if ($usuario->getTipo() == "profesional") {
             $_SESSION['usuario_profesional'] = $_POST['nombre_usuario'];
         } else {
