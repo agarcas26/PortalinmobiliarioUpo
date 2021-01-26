@@ -14,6 +14,7 @@ function aside_sesion_iniciada() {
     }else{
         $usuario = $_SESSION['usuario_profesional'];
     }
+    
     listar_anuncios_usuario();
 
 }
