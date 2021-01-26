@@ -80,6 +80,18 @@ and open the template in the editor.
                                     <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
                                 </td>
                             </tr>
+                            <?php
+                            if (isset($_POST["error_registro"])) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <p style="color: red;"><?php$_POST["error_registro"]?><p>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+
                         </table>
                     </form>
                 </section>
