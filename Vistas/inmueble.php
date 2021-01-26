@@ -27,7 +27,7 @@
             <main>
                 <article>
                     <section id="detalle_inmueble">
-                    <h1><?php echo $dirección; ?></h1>
+                    <h1></h1>
                     <ul class="img-fluid">
                         <?php 
                         //Galería de imágenes del inmueble

@@ -110,7 +110,7 @@ if ($_SESSION["validacion"]) {
 //var_dump($_SESSION);
 //echo "</pre>";
 if ($_SESSION["validacion"]) {
-    header('Location: ' . $url_exito ); 
+    //header('Location: ' . $url_exito ); 
 } else {
     header('Location: ' .$url_error ); 
 }
