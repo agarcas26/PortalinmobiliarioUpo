@@ -37,19 +37,13 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
         }
         header("Location: ../Vistas/login.php");
     } else {
-        if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
-            
-        }else{
+        if (!preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
             $_POST["error_registro"] += "Nombre y apellidos incorrectos(deben empezar con mayuscula)";
         }
-        if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario)) {
+        if (!preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario)) {
             $_POST["error_registro"] += "Nombre de usuario incorrecto(debe contener 4 a 16 caracteres alfanumericos)";
-        }else{
-            
         }
-        if (preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
-            
-        }else{
+            if (!preg_match("/[A-Za-z0-9_]{8,15}/", $pass)) {
             $_POST["error_registro"] += "Contraseña incorrecta(debe tener entre 9 y 16 caracteres alfanumericos)";
         }
         unset($_POST['registro']);
