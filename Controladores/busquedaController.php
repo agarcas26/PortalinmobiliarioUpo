@@ -67,6 +67,8 @@ function get_ultimas_busquedas() {
         $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
         //Buscamos en img/inmuebles/direccion y listamos la primera foto
             echo '<li>' . $ultimas_busquedas[7] . '</li>';
+            echo '<li>' . $ultimas_busquedas[2] . '</li>';
+            echo '<li>' . $ultimas_busquedas[6] . '</li>';
             echo '<li>' . $ultimas_busquedas[4] . '</li>';
             echo '<li>' . $ultimas_busquedas[5] . '</li>';
     }
