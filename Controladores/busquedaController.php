@@ -80,8 +80,14 @@ function get_ultimas_busquedas_usuario() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
-    while (mysqli_fetch_row($ultimas_busquedas)) {
-        echo '<li>' . '</li>';
+    if (mysqli_num_rows($ultimas_busquedas) > 0) {
+        while (mysqli_fetch_array($ultimas_busquedas)) {
+            echo '<li>' . $ultimas_busquedas[7] . '</li>';
+            echo '<li>' . $ultimas_busquedas[2] . '</li>';
+            echo '<li>' . $ultimas_busquedas[6] . '</li>';
+            echo '<li>' . $ultimas_busquedas[4] . '</li>';
+            echo '<li>' . $ultimas_busquedas[5] . '</li>';
+        }
     }
 }
 
