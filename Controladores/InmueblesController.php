@@ -123,7 +123,7 @@ if (isset($_POST['btonInsertar'])) {
 //var_dump($_SESSION);
 //echo "</pre>";
 if ($_SESSION["validacion"]) {
-    header('Location: ' . $url_exito);
+    header('Location: ../Vistas/inmueble.php');
 } else {
     header('Location: ' . $url_error);
 }
