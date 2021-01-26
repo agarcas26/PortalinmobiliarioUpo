@@ -20,9 +20,7 @@ $_SESSION["cancelado"] = false;
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
-function insertar() {
-
-
+function insertar($inmueble1) {
     if (isset($_POST["btonInsertar"])) {
         if (empty($_POST["txtNumero"])) {
             $_SESSION["validacion"] = false;

@@ -27,7 +27,7 @@ session_start();
             <article>
                 <section>
                     <h1>Rellene el formulario para dar de alta un nuevo inmueble</h1>
-                    <form name="insertarInmueble" id="insertarInmueble" action='../Controladores/InmueblesController.php' method='POST' style="margin-left:20px;">
+                    <form  action='../Controladores/insertInmuebles.php' method='POST' style="margin-left:20px;">
                         <label>A continuación rellene la dirección del inmueble</label>
                         <br><br>
                         <label>Numero</label><br>
@@ -96,12 +96,12 @@ session_start();
                             <input type="radio" name="txtTipo_Inmueble" id="compra" value="Compra">
                             <label for="Compra">Compra</label>
                             <br><br>
-                            <label for="fileFotos">Suba imágenes del inmueble:</label>
-                            <br><br>
-                            <input type="file"
+<!--                            <label for="fileFotos">Suba imágenes del inmueble:</label>
+                            <br><br>-->
+<!--                            <input type="file"
                                    id="fileFotos" name="fileFotos"
                                    accept="image/png, image/jpeg">
-                            <br><br>
+                            <br><br>-->
                             <input type="submit" value="enviar" name="btonInsertar">
 
                     </form>

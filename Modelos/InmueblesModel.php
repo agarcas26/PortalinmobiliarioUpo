@@ -49,7 +49,7 @@ class inmueble {
         $this->fotos = $fotos;
     }
 
-            function getNumero() {
+    function getNumero() {
         return $this->numero;
     }
 

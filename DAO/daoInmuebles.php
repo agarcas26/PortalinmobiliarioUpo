@@ -32,13 +32,14 @@ class daoInmuebles {
         $num_banyos = $objInmueble->getNum_banyos();
         $num_hab = $objInmueble->getNum_hab();
         $cocina = $objInmueble->getCocina();
-        $num_plantas = $objInmueble->getNum_plantas();
+        $num_plantas = $objInmueble->getNumero_plantas();
         $planta = $objInmueble->getPlanta();
         $metros = $objInmueble->getMetros();
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $fotos = $objInmueble->getFotos();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = " INSERT INTO `inmueble`(`numero`, `cp`, `nombre_via`, `tipo_via`, `nombre_usuario_duenyos`, `nombre_localidad`, `nombre_provincia`, `num_banyos`, `num_hab`,`cocina`, `tipo`, `numero_plantas`, `planta`, `metros`,`fotos`) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
+        $sql = " INSERT INTO `inmueble`(`numero`, `cp`, `nombre_via`, `tipo_via`, `nombre_usuario_duenyos`, `nombre_localidad`, `nombre_provincia`, `num_banyos`, `num_hab`,`cocina`,  `numero_plantas`, `planta`, `metros`,`tipo`,`fotos`) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$num_plantas','$planta','$metros','$tipo_inmueble','$fotos')";
+
         if (!$this->conexion->query($sql)) {
             return false;
         } else {
