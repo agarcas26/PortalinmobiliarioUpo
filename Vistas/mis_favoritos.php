@@ -22,11 +22,9 @@
                 <article>
                     <section>
                         <h4>Mis favoritos</h4>
-                        <table class="table-borderless">
                             <?php
                             get_favoritos_usuario();
                             ?>
-                        </table>
                     </section>
                 </article>
             </main>

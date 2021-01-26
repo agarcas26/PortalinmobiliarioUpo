@@ -163,15 +163,21 @@ function listar_anuncios_usuario() {
     $daoAnuncios->destruct();
     if (mysqli_num_rows($anuncios_usuario) > 0) {
         while ($fila = mysqli_fetch_array($anuncios_usuario)) {
-            echo '<tr>';
-            echo '<td><figure></figure></td>';
-            echo '<td>' . $fila[2] . '     </td>';
-            echo '<td>' . $fila[1] . '     </td>';
-            echo '<td> CP: ' . $fila[3] . '     </td>';
-            echo '<td> Nº' . $fila[4] . '     </td>';
-            echo '<td>' . $fila[7] . '€     </td>';
-            echo '<td> Fecha de publicación: ' . $fila[8] . '     </td>';
+            echo '<table id="anuncios">';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[1] . " " . $fila[3] . " " . $fila[2] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[8] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>' . $fila[7] . '</td>';
+            echo '</tr><tr>';
+            echo '<td>';
+            echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
+            . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
+            . '</td>'
+            . '</a>';
             echo '</tr>';
+            echo '</table>';
         }
     }
 }

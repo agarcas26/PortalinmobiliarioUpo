@@ -21,11 +21,9 @@
                 <article class="">
                     <section>
                         <h4>Mis alertas</h4>
-                        <table>
                             <?php
                             get_alertas_usuario();
                             ?>
-                        </table>
                     </section>
                 </article>
             </main>

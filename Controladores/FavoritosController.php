@@ -14,23 +14,30 @@ function get_favoritos_usuario() {
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
-        for($i = 0; $i < sizeof($favoritos); $i++){
+        for ($i = 0; $i < sizeof($favoritos); $i++) {
+            echo '<table class="table-borderless">';
             echo '<tr>';
-            echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . '</td>';
-            echo '<td>   Fecha de publicación:  ' . $favoritos[$i][8] . '</td>';
+            echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . " " . $favoritos[$i][4] . " " . $favoritos[$i][3] . '</td>';
+            echo '</tr><tr>';
             echo '<td>   Precio:  ' . $favoritos[$i][7] . '</td>';
-            echo '</tr>';
+            echo '</tr><tr>';
+            echo '<td>   Fecha de publicación:  ' . $favoritos[$i][8] . '</td>';
+            echo '</tr><tr>';
+            echo '</tr><tr>';
+            echo '<td>   Fecha de publicación:  ' . $favoritos[$i][9] . '</td>';
+            echo '</tr><tr>';
+            echo '</table>';
         }
     }
 }
 
-function vista_previa_favoritos(){
+function vista_previa_favoritos() {
     $daoFavoritos = new daoFavoritos();
     $favoritos = $daoFavoritos->listar_favoritos();
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
-        for($i = 0; $i < sizeof($favoritos); $i++){
+        for ($i = 0; $i < sizeof($favoritos); $i++) {
             echo '<tr>';
             echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . '</td>';
             echo '<td>   Fecha de publicación:  ' . $favoritos[$i][8] . '</td>';

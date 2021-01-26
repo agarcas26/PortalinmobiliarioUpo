@@ -26,14 +26,21 @@ function get_alertas_usuario() {
     }
 
     for ($i = 0; $i < sizeof($alertas); $i++) {
+        echo '<table>';
         echo '<tr>';
-        echo '<td>Tipo de inmueble: ' . $alertas[0][4] . '</td>';
-        echo '<td>Tipo de oferta: ' . $alertas[0][5] . '</td>';
-        echo '<td>Metros cuadrados: ' . $alertas[0][8] . '</td>';
-        echo '<td>Número de baños: ' . $alertas[0][2] . '</td>';
-        echo '<td>Número de habitaciones: ' . $alertas[0][7] . '</td>';
-        echo '<td>Precio máximo: ' . $alertas[0][6] . '€</td>';
+        echo '<td>Tipo de inmueble: ' . $alertas[$i][4] . '</td>';
+        echo '</tr><tr>';
+        echo '<td>Tipo de oferta: ' . $alertas[$i][5] . '</td>';
+        echo '</tr><tr>';
+        echo '<td>Metros cuadrados: ' . $alertas[$i][8] . '</td>';
+        echo '</tr><tr>';
+        echo '<td>Número de baños: ' . $alertas[$i][2] . '</td>';
+        echo '</tr><tr>';
+        echo '<td>Número de habitaciones: ' . $alertas[$i][7] . '</td>';
+        echo '</tr><tr>';
+        echo '<td>Precio máximo: ' . $alertas[$i][6] . '€</td>';
         echo '</tr>';
+        echo '</table>';
     }
 }
 

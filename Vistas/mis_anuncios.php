@@ -22,11 +22,10 @@
                 </aside>
                 <article>
                     <section>
-                        <table id="anuncios">
-                            <?php
-                            listar_anuncios_usuario();
-                            ?>
-                        </table>
+                        <h4>Mis anuncios</h4>
+                        <?php
+                        listar_anuncios_usuario();
+                        ?>
                     </section>
                 </article>
             </main>
