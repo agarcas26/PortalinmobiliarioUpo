@@ -6,8 +6,8 @@
 
 
 function mostrar_ocultar() {
-    if ($('aside #filtros').is(":visible"))
-        $('aside #filtros').slideUp(2000);
+    if ($('#filtros_aside').is(":visible"))
+        $('#filtros_aside').slideUp(2000);
     else
-        $('aside #filtros').slideDown(2000);
+        $('#filtros_aside').slideDown(2000);
 }
