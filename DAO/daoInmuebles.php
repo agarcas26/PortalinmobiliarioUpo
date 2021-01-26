@@ -9,6 +9,7 @@ class daoInmuebles {
 
     public $conObj;
     public $conexion;
+    public $objInmueble;
 
     function __construct() {
         $this->conObj = new Conexion();
@@ -26,7 +27,7 @@ class daoInmuebles {
         $cp = $objInmueble->getCp();
         $nombre_via = $objInmueble->getNombre_via();
         $tipo_via = $objInmueble->getTipo_via();
-        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyo();
         $nombre_localidad = $objInmueble->getNombre_localidad();
         $nombre_provincia = $objInmueble->getNombre_provincia();
         $num_banyos = $objInmueble->getNum_banyos();
@@ -38,12 +39,14 @@ class daoInmuebles {
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $fotos = $objInmueble->getFotos();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = " INSERT INTO inmueble VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
+        $sql = "INSERT INTO inmueble (numero,cp,nombre_via,tipo_via,nombre_usuario_duenyos,nombre_localidad,nombre_provincia,num_banyos,num_hab,cocina,cocina,tipo_inmueble,num_plantas,planta,metros,fotos) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
 
-        if (!$this->conexion->query($sql)) {
-            return false;
+        if ($this->conexion->query($sql)=== true) {
+
+            echo "New record created successfully";
         } else {
-            return true;
+
+           echo "Error: " . $sql . "<br>" . $this->conexion->error;
         }
         mysqli_close($this->conexion);
     }

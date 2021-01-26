@@ -68,7 +68,7 @@ if ($_POST["btonInsertar"]) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
-//    if (empty($_FILES["fileFotos"])) {
+//    if (empty($_POST["fileFotos"])) {
 //        $_SESSION["validacion"] = false;
 //        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
 //    }
@@ -90,7 +90,7 @@ if ($_SESSION["validacion"]) {
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
 //    $inmueble1->setNombre_usuario_duenyo($_SESSION['usuario_particular']);
-   // $inmueble1->setFotos($_FILES["fileFotos"]);
+    $inmueble1->setFotos($_POST["fileFotos"]);
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyo = $_SESSION['usuario_particular'];
     } else {
@@ -106,7 +106,7 @@ if ($_SESSION["validacion"]) {
     }
 }
 echo "<pre>";
-var_dump($insertOk);
+var_dump($inmueble1);
 var_dump($_SESSION);
 echo "</pre>";
 //if ($_SESSION["validacion"]) {
