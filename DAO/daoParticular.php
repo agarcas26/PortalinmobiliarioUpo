@@ -7,7 +7,7 @@
  */
 
 include_once '../Persistencia/Conexion.php';
-
+include_once '../Modelos/UsuarioParticularModel.php';
 class daoParticular {    
 
     public $conObj;
