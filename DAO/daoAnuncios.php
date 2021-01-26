@@ -109,13 +109,7 @@ class daoAnuncios {
         $sql = "SELECT * FROM `anuncio`";
         $resultado = $this->conexion->query($sql);
 
-        $arrayAnuncios = array();
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            array_push($arrayAnuncios, $fila);
-        }
-        mysqli_close($this->conexion);
-
-        return $arrayAnuncios;
+        return $resultado;
     }
 
     function listar_anuncios_usuario($usuario) {

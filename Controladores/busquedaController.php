@@ -29,18 +29,20 @@ if (isset($_POST['cuadricula'])) {
 }
 
 function mostrarVistaLista() {
-    $dao = new daoanuncios();
+    $dao = new daoAnuncios();
     $array_anuncios = $dao->listar();
     $dao->destruct();
-    for ($i = 0; $i < sizeof($array_anuncios); $i++) {
-        echo '<tr>';
-        echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[$i][1] . '</td>';
-        echo '<td>' . $array_anuncios[$i][7] . '</td>';
-        echo '<td>' . $array_anuncios[$i][8] . '</td>';
-        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '">'
-        . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
-        echo '</tr>';
+    if (mysqli_num_rows($array_anuncios) > 0) {
+        while ($fila = mysqli_fetch_array($array_anuncios)) {
+            echo '<tr>';
+            echo '<td>' . '</td>';    //Insertar imágenes
+            echo '<td>' . $fila[1] . '</td>';
+            echo '<td>' . $fila[7] . '</td>';
+            echo '<td>' . $fila[8] . '</td>';
+            echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
+            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
+            echo '</tr>';
+        }
     }
 }
 
@@ -63,14 +65,24 @@ function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
     $dao->destruct();
-    while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
-        $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
-        //Buscamos en img/inmuebles/direccion y listamos la primera foto
-            echo '<li>' . $ultimas_busquedas[7] . '</li>';
-            echo '<li>' . $ultimas_busquedas[2] . '</li>';
-            echo '<li>' . $ultimas_busquedas[6] . '</li>';
-            echo '<li>' . $ultimas_busquedas[4] . '</li>';
-            echo '<li>' . $ultimas_busquedas[5] . '</li>';
+    if (mysqli_num_rows($ultimas_busquedas) > 0) {
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[4] . $fila[5];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
+        }
     }
 }
 
@@ -85,12 +97,22 @@ function get_ultimas_busquedas_usuario() {
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
-        while (mysqli_fetch_array($ultimas_busquedas)) {
-            echo '<li>' . $ultimas_busquedas['m2'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['num_banyos'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['precio_max'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['tipo_inmueble'] . '</li>';
-            echo '<li>' . $ultimas_busquedas['tipo_oferta'] . '</li>';
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
         }
     }
 }
