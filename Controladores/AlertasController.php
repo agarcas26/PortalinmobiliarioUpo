@@ -50,7 +50,8 @@ function vista_previa_alertas() {
     $daoAlertas->destruct();
 
     if (mysqli_num_rows($alertas) > 0) {
-        while ($fila = mysqli_fetch_array($alertas)) {
+        $i = 0;
+        while ($fila = mysqli_fetch_array($alertas) and $i < 3) {
             if ($fila[3] == 'true') {
                 echo '<tr>';
                 echo '<td>Tipo de inmueble: ' . $fila[4] . '</td>';
@@ -60,6 +61,7 @@ function vista_previa_alertas() {
                 echo '<td>Número de habitaciones: ' . $fila[7] . '</td>';
                 echo '<td>Precio máximo: ' . $fila[6] . '€</td>';
                 echo '</tr>';
+                $i++;
             }
         }
     }
