@@ -10,6 +10,9 @@ and open the template in the editor.
         <title>Regístrate</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/registroController.php';
@@ -56,7 +59,7 @@ and open the template in the editor.
                                     <label class="form-check-label" for="particular">Particular</label>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="form_empresa">
                                 <td>Empresa:</td>
                                 <td>
                                     <input type="text" name="empresa" id="empresa" value="" />
@@ -85,17 +88,24 @@ and open the template in the editor.
                                 ?>
                                 <tr>
                                     <td>
-                                        <p style="color: red;"><?php$_POST["error_registro"]?><p>
+                                        <p style="color: red;"><?php $_POST["error_registro"] ?><p>
                                     </td>
                                 </tr>
                                 <?php
                             }
                             ?>
-
                         </table>
                     </form>
                 </section>
             </article>
+            <script>
+                $(document).ready(function() {
+                    if ($("input:radio[name=tipo]:checked").val() != "profesional"){
+                        $("#form_empresa").hide();
+                    } else{
+                        $("#form_empresa").hide();
+                    }
+            </script>
         </main>
     </body>
     <?php
