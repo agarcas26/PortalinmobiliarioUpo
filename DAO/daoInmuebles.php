@@ -124,13 +124,8 @@ class daoInmuebles {
 
     public function listar() {
         $sql = "SELECT * FROM `inmueble`";
-        $resultado = $this->conn->query($sql);
-        $arrayInmuebles = array();
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            array_push($arrayInmuebles, $fila);
-        }
-        mysqli_close($this->conexion);
-        return $arrayInmuebles;
+        $resultado = $this->conexion->query($sql);
+        return $resultado;
     }
 
 }
