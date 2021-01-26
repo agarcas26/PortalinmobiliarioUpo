@@ -33,22 +33,6 @@ class inmueble {
     function __construct() {
         
     }
-    function getNum_hab() {
-        return $this->num_hab;
-    }
-
-    function getFotos() {
-        return $this->fotos;
-    }
-
-    function setNum_hab($num_hab) {
-        $this->num_hab = $num_hab;
-    }
-
-    function setFotos($fotos) {
-        $this->fotos = $fotos;
-    }
-
     function getNumero() {
         return $this->numero;
     }
@@ -103,6 +87,14 @@ class inmueble {
 
     function getTipo_inmueble() {
         return $this->tipo_inmueble;
+    }
+
+    function getNum_hab() {
+        return $this->num_hab;
+    }
+
+    function getFotos() {
+        return $this->fotos;
     }
 
     function setNumero($numero) {
@@ -161,6 +153,15 @@ class inmueble {
         $this->tipo_inmueble = $tipo_inmueble;
     }
 
+    function setNum_hab($num_hab) {
+        $this->num_hab = $num_hab;
+    }
+
+    function setFotos($fotos) {
+        $this->fotos = $fotos;
+    }
+
+    
     public function __toString() {
         
     }

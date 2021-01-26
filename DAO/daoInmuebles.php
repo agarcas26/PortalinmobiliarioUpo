@@ -38,7 +38,7 @@ class daoInmuebles {
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $fotos = $objInmueble->getFotos();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = " INSERT INTO inmueble VALUES('$numero','$cp','$nombre_via','$tipo_via',null,'$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
+        $sql = " INSERT INTO inmueble VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
 
         if (!$this->conexion->query($sql)) {
             return false;

@@ -89,9 +89,15 @@ if ($_SESSION["validacion"]) {
     $inmueble1->setPlanta($_POST["txtPlanta"]);
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
-    $inmueble1->setNombre_usuario_duenyo($_SESSION['usuario_particular']);
+//    $inmueble1->setNombre_usuario_duenyo($_SESSION['usuario_particular']);
    // $inmueble1->setFotos($_FILES["fileFotos"]);
-
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyo = $_SESSION['usuario_particular'];
+    } else {
+        
+        $nombre_usuario_duenyo = $_SESSION['usuario_profesional'];
+    }
+    $inmueble1->setNombre_usuario_duenyo($nombre_usuario_duenyo);
     $daoInmueble = new daoInmuebles();
 
     $insertOk = $daoInmueble->insertar($inmueble1);
