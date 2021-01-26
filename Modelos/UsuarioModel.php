@@ -48,7 +48,7 @@ class Usuario {
         return $this->moroso;
     }
 
-    function __construct($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo) {
+    function __construct($nombre_apellidos, $nombre_usuario, $pass, $moroso) {
         $this->set_nombre_apellidos($nombre_apellidos);
         $this->set_nombre_usuario($nombre_usuario);
         $this->set_contrasenya_user($pass);
