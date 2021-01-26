@@ -17,26 +17,15 @@ $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
-
 //direccion en caso de exito, sustituir vista.php por la vista correspondiente 
-//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
-
-
-function insertar($inmueble1) {
-    include_once '../DAO/daoInmuebles.php';
-    include_once '../Modelos/InmueblesModel.php';
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-
-//damos por correcto el formulario
-    $_SESSION["validacion"] = true;
-//como es correcto eliminamos todos los errores
-    $_SESSION["errores"] = "";
-    $_SESSION["cancelado"] = false;
-    $url_exito = "../Vistas/inmueble.php";
+$url_exito = "../Vistas/inmueble.php";
 //direccion en caso de error, por lo general será la vista del formulario que llamo
 //a este controlador
-    $url_error = "../Vistas/alta_inmueble.php";
+$url_error = "../Vistas/alta_inmueble.php";
+//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
+//validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
+
+function insertar($inmueble1) {
     if ($_POST["btonInsertar"]) {
         if (empty($_POST["txtNumero"])) {
             $_SESSION["validacion"] = false;
@@ -124,15 +113,15 @@ function insertar($inmueble1) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
     }
-echo "<pre>";
-var_dump($inmueble1);
-var_dump($_SESSION);
-echo "</pre>";
-//    if ($_SESSION["validacion"]) {
-//        header('Location: ' . $url_exito);
-//    } else {
-//        header('Location: ' . $url_error);
-//    }
+//echo "<pre>";
+//var_dump($inmueble1);
+//var_dump($_SESSION);
+//echo "</pre>";
+    if ($_SESSION["validacion"]) {
+        header('Location: ' . $url_exito);
+    } else {
+        header('Location: ' . $url_error);
+    }
 }
 
 function modificarInmueble() {
