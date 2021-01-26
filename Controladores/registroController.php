@@ -15,7 +15,8 @@ if (isset($_POST['enviar'])) {
     }
 }
 
-function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {
+function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa) {   
+        $_POST["error_registro"]="";
     if ($tipo == "profesional") {
         if (preg_match("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $empresa)) {
             filter_var($empresa, FILTER_SANITIZE_STRING);
@@ -38,7 +39,6 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
         }
         header("Location: ../Vistas/index.php");
     } else {
-        $_POST["error_registro"]="";
         if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
             
         }else{
