@@ -10,11 +10,11 @@ and open the template in the editor.
         <title>Búsqueda</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-        <script src="../scripts.js"></script>        
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
@@ -30,8 +30,9 @@ and open the template in the editor.
             ?>
         </header>
         <main>
+            <button style="float: right;" id="mostrar_ocultar" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
+
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
-                <button style="float: right;" onclick="mostrar_ocultar()" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
                         <tr>
@@ -103,6 +104,18 @@ and open the template in the editor.
                     ?>
                 </table>
             </article>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("mostrar_ocultar").click(function () {
+                        if ($("#filtros_aside:visible")) {
+                            $("#filtros_aside").hide();
+                        } else {
+                            $("#filtros_aside").show();
+                        }
+
+                    });
+                });
+            </script>
         </main>
         <?php
         ?>

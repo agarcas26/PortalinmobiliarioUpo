@@ -30,17 +30,17 @@ function nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo,
     $dao = new daoUsuarios();
     $nuevo_usuario = new Usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso, $tipo);
     $dao->crear_usuario($nombre_apellidos, $nombre_usuario, $pass, $moroso);
+    $dao->destruct();
 
     if ($tipo == 'particular') {
         $dao_particular = new daoParticular();
         $dao_particular->crear_particular($nombre_usuario);
+        $dao_particular->destruct();
     } else {
         $dao_profesional = new daoProfesional();
         $dao_profesional->crear_profesional($nombre_usuario, $empresa);
+        $dao_profesional->destruct();
     }
-    $dao->destruct();
-    $dao_particular->destruct();
-    $dao_profesional->destruct();
 }
 
 function actualizarDatosUsuario($datos) {

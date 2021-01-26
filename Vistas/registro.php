@@ -79,21 +79,20 @@ and open the template in the editor.
                             </tr>
                             <tr>
                                 <td>
+                                    <input type="hidden" name="error_registro" value=" "/>
                                     <input class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Confirmar registro" />
                                 </td>
                             </tr>
+                            </table>
                             <?php
-                            if (isset($_POST["error_registro"])) {
+                            if (isset($_SESSION["error_registro"])) {
                                 ?>
-                                <tr>
-                                    <td>
-                                        <p style="color: red;"><?php $_POST["error_registro"] ?><p>
-                                    </td>
-                                </tr>
+                                        <p style="color: red;"><?php echo $_SESSION["error_registro"];?><p>
                                 <?php
                             }
+                            session_destroy();
                             ?>
-                        </table>
+                        
                     </form>
                 </section>
             </article>

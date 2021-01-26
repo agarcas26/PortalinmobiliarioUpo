@@ -34,13 +34,12 @@ function mostrarVistaLista() {
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
-        echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$array_anuncios[$i][0].'">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[i][1] . '</td>';
-        echo '<td>' . $array_anuncios[i][7] . '</td>';
-        echo '<td>' . $array_anuncios[i][8] . '</td>';
-        echo '<td>' . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle" /></td>';
-        echo '</a>';
+        echo '<td>' . $array_anuncios[$i][1] . '</td>';
+        echo '<td>' . $array_anuncios[$i][7] . '</td>';
+        echo '<td>' . $array_anuncios[$i][8] . '</td>';
+        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '">'
+        . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
         echo '</tr>';
     }
 }
@@ -51,13 +50,11 @@ function mostrarVistaCuadricula() {
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
-        echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$array_anuncios[$i][0].'">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[i][7] . '</td>';
+        echo '<td>' . $array_anuncios[$i][7] . '</td>';
         echo '<form>';
-        echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'.'</td>';
+        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>' . '</td>';
         echo '</form>';
-        echo '</a>';
         echo '</tr>';
     }
 }
@@ -66,10 +63,24 @@ function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
     $dao->destruct();
-    while ($fila = mysqli_fetch_row($ultimas_busquedas)) {
-        $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
-        //Buscamos en img/inmuebles/direccion y listamos la primera foto
-        echo '<li>' . '</li>';
+    if (mysqli_num_rows($ultimas_busquedas) > 0) {
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
+        }
     }
 }
 
@@ -83,8 +94,24 @@ function get_ultimas_busquedas_usuario() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
-    while (mysqli_fetch_row($ultimas_busquedas)) {
-        echo '<li>' . '</li>';
+    if (mysqli_num_rows($ultimas_busquedas) > 0) {
+        $i = 0;
+        while ($fila = mysqli_fetch_array($ultimas_busquedas) && $i < 3) {
+            $direccion = $fila[1] . $fila[2] . $fila[3] . $fila[4];
+            echo '<tr>';
+            echo '<td></td>';       //imagenes
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $direccion . ' dirección</td>';
+            echo '<td>' . $fila['m2'] . 'm2</td>';
+            echo '<td>' . $fila['num_banyos'] . 'baños</td>';
+            echo '<td>' . $fila['precio_max'] . '€</td>';
+            echo '<td>Tipo inmueble:' . $fila['tipo_inmueble'] . '</td>';
+            echo '<td>Tipo oferta:' . $fila['tipo_oferta'] . '</td>';
+            echo '</tr>';
+
+            $i++;
+        }
     }
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 include_once '../Controladores/loginController.php';
 
 /*
@@ -8,12 +9,17 @@ include_once '../Controladores/loginController.php';
  */
 
 function sesion_iniciada() {
-    echo"<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
-    . "<a href='../Vistas/perfil.php'>Mi perfil</a>"
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    echo "<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
+    . "<a href='../Vistas/perfil.php'>¡Bienvenido " . $usuario . "! Mi perfil</a>"
     . "<a href='../Vistas/mis_anuncios.php'>Mi anuncios</a>"
     . "<a href='../Controladores/logoutController.php'>Cerrar sesión</a>" //AÑADIR FUNCIONALIDAD
     . "</nav>"
-    ."<br>"
+    . "<br>"
     . "<a href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
@@ -22,8 +28,8 @@ function no_sesion_iniciada() {
     . "<a href='../Vistas/login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
     . "<a href='../Vistas/registro.php'>¡Regístrate gratis!</a>"
     . "</nav>"
-    ."<br>"
-    ."<a href='../Vistas/index.php'><img src='../img/logo.png' alt='Logo'/></a>";
+    . "<br>"
+    . "<a href='../Vistas/index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
 function cabecera_admin() {
