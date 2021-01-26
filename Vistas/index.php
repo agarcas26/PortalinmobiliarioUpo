@@ -59,7 +59,7 @@ and open the template in the editor.
                 <aside id="ultimas_busquedas">                    
                 </aside>
                 <?php if (isset($_SESSION['usuario_particular'])) { ?>
-                    <h1>Tus últimas búsquedas</h1>
+                    <h3>Tus últimas búsquedas</h3>
                     <ul class = "list-inline mb-0">
                         <?php
                         get_ultimas_busquedas_usuario();
