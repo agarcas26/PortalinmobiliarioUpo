@@ -10,8 +10,11 @@ if (isset($_POST['enviar'])) {
     $conf_pass = $_POST['conf_contrasenya'];
     $tipo = $_POST['tipo'];
     $empresa = $_POST['empresa'];
+    echo 'AAAAAAAAAAAAAAAAAAAAA';
     if ($pass == $conf_pass) {
         registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa);
+    }else{
+        header("Location: ../Vistas/registro.php");
     }
 }
 
@@ -31,13 +34,8 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
 
         if (getUsuarioByUsuario($nombre_usuario, $pass) == NULL) {
             nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false, $tipo, $empresa);
-            if ($tipo == profesional) {
-                $_SESSION['usuario_profesional'] = $nombre_usuario;
-            } else {
-                $_SESSION['usuario_particular'] = $nombre_usuario;
-            }
         }
-        //header("Location: ../Vistas/index.php");
+        header("Location: ../Vistas/login.php");
     } else {
         if (preg_match_all("/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/", $nombre_apellidos)) {
             
@@ -55,6 +53,6 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
             $_POST["error_registro"] += "Contraseña incorrecta(debe tener entre 9 y 16 caracteres alfanumericos)";
         }
         unset($_POST['registro']);
-        //header("Location: ../Vistas/registro.php");
+        header("Location: ../Vistas/registro.php");
     }
 }
