@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Regístrate</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-
+        <script src="../scripts.js"></script>   
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
@@ -51,11 +51,11 @@ and open the template in the editor.
                             <tr>
                                 <td>Tipo de usuario:</td>
                                 <td>
-                                    <input class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
+                                    <input  class="form-check-input" required type="radio" name="tipo" id="profesional" value="profesional">
                                     <label class="form-check-label" for="profesional">Profesional</label>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
+                                    <input  class="form-check-input" type="radio" name="tipo" id="particular" value="particular">
                                     <label class="form-check-label" for="particular">Particular</label>
                                 </td>
                             </tr>
@@ -98,13 +98,18 @@ and open the template in the editor.
                     </form>
                 </section>
             </article>
-            <script>
-                $(document).ready(function() {
-                    if ($("input:radio[name=tipo]:checked").val() != "profesional"){
-                        $("#form_empresa").hide();
-                    } else{
-                        $("#form_empresa").show();
-                    }
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#form_empresa").hide();
+                    $("input:radio").click(function () {
+                        if ($("input:radio[name=tipo]:checked").val() != "profesional") {
+                            $("#form_empresa").hide();
+                        } else {
+                            $("#form_empresa").show();
+                        }
+
+                    });
+                });
             </script>
         </main>
     </body>
