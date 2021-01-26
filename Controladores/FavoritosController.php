@@ -18,10 +18,17 @@ function get_favoritos_usuario() {
 }
 
 function vista_previa_favoritos(){
-    
-    
-}
+    $daoFavoritos = new daoFavoritos();
+    $favoritos = $daoFavoritos->listar_favoritos();
+    $daoFavoritos->destruct();
 
-function ver_todos_los_favoritos(){
-    
+    if (sizeof($favoritos) > 0) {
+        for($i = 0; $i < sizeof($favoritos); $i++){
+            echo '<tr>';
+            echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . '</td>';
+            echo '<td>   Fecha de publicación:  ' . $favoritos[$i][8] . '</td>';
+            echo '<td>   Precio:  ' . $favoritos[$i][7] . '</td>';
+            echo '</tr>';
+        }
+    }
 }

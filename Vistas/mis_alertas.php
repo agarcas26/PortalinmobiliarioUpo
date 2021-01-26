@@ -11,7 +11,8 @@
         if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
             ?>
         </head>
-        <body><header>
+        <body>
+            <header class="masthead">
                 <?php sesion_iniciada(); ?>
             </header>
             <main>
@@ -19,6 +20,7 @@
                 </aside>
                 <article class="">
                     <section>
+                        <h4>Mis alertas</h4>
                         <table>
                             <?php
                             get_alertas_usuario();
