@@ -34,13 +34,12 @@ function mostrarVistaLista() {
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
-        echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$array_anuncios[$i][0].'">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[i][1] . '</td>';
-        echo '<td>' . $array_anuncios[i][7] . '</td>';
-        echo '<td>' . $array_anuncios[i][8] . '</td>';
-        echo '<td>' . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle" /></td>';
-        echo '</a>';
+        echo '<td>' . $array_anuncios[$i][1] . '</td>';
+        echo '<td>' . $array_anuncios[$i][7] . '</td>';
+        echo '<td>' . $array_anuncios[$i][8] . '</td>';
+        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '">'
+        . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
         echo '</tr>';
     }
 }
@@ -51,13 +50,11 @@ function mostrarVistaCuadricula() {
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
         echo '<tr>';
-        echo '<a href="../Vistas/detalle_anuncio.php?id_anuncio='.$array_anuncios[$i][0].'">';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[i][7] . '</td>';
+        echo '<td>' . $array_anuncios[$i][7] . '</td>';
         echo '<form>';
-        echo '<td>' . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'.'</td>';
+        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>' . '</td>';
         echo '</form>';
-        echo '</a>';
         echo '</tr>';
     }
 }
