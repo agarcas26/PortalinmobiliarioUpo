@@ -14,6 +14,8 @@ if (isset($_POST['enviar'])) {
     if ($pass == $conf_pass) {
         registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $empresa);
     }else{
+        session_start();
+        $_SESSION["error_registro"]="Las contraseñas no coinciden.";
         header("Location: ../Vistas/registro.php");
     }
 }
