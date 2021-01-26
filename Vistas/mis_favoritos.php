@@ -21,6 +21,7 @@
                 </aside>
                 <article>
                     <section>
+                        <h4>Mis favoritos</h4>
                         <table class="table-borderless">
                             <?php
                             get_favoritos_usuario();
@@ -31,7 +32,7 @@
             </main>
         </body>
         <footer>
-            <?php include_once '../PortalinmobiliarioUpo/Vistas/footer.html'; ?>
+            <?php include_once '../Vistas/footer.html'; ?>
         </footer>
         <?php
     } else {

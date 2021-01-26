@@ -9,11 +9,18 @@
 include_once '../DAO/daoFavoritos.php';
 
 function get_favoritos_usuario() {
-    $favoritos = get_favoritos();
-    while(mysqli_fetch_array($favoritos)){
-        echo '<tr>';
-        echo '';
-        echo '</tr>';
+    $daoFavoritos = new daoFavoritos();
+    $favoritos = $daoFavoritos->listar_favoritos();
+    $daoFavoritos->destruct();
+
+    if (sizeof($favoritos) > 0) {
+        for($i = 0; $i < sizeof($favoritos); $i++){
+            echo '<tr>';
+            echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . '</td>';
+            echo '<td>   Fecha de publicación:  ' . $favoritos[$i][8] . '</td>';
+            echo '<td>   Precio:  ' . $favoritos[$i][7] . '</td>';
+            echo '</tr>';
+        }
     }
 }
 
