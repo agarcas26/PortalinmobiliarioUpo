@@ -6,8 +6,9 @@
  * and open the template in the editor.
  */
 
-include_once '../Modelos/InmueblesModel.php';
+
 include_once '../DAO/daoInmuebles.php';
+include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -19,8 +20,10 @@ $_SESSION["cancelado"] = false;
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
-function insertInmuebles() {
-    if ($_POST["btonInsertar"]) {
+function insertar(){
+    
+
+    if (isset($_POST["btonInsertar"])) {
         if (empty($_POST["txtNumero"])) {
             $_SESSION["validacion"] = false;
             $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
@@ -77,7 +80,7 @@ function insertInmuebles() {
     }
     if ($_SESSION["validacion"]) {
 
-        $inmueble1 = new inmueble();
+        $inmueble1 = new InmueblesModel();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
         $inmueble1->setNombre_via($_POST["txtNombre_via"]);
@@ -99,15 +102,15 @@ function insertInmuebles() {
         if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
-        $daoInmueble->destruct();
+       
     }
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil sin errores
     } else {
-        header('Location: ../Vistas/perfil.php'); //se va a la pantalla de perfil mostrando un mensaje de error
+        header('Location: ../Vistas/login.php'); //se va a la pantalla de perfil mostrando un mensaje de error
     }
-}
 
+}
 function modificarInmueble() {
     if (empty($_POST["btonmodificar"])) {
         if (empty($_POST["txtNum_banyos"])) {

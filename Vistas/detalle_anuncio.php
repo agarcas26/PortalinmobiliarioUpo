@@ -37,7 +37,8 @@
                         </table>
                     </section>
                 </article>
-            </main> <?php
+            </main> 
+            <?php
         }
         ?>
     </body>
