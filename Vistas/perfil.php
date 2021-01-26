@@ -25,12 +25,12 @@
                 ?>
             </header>
             <aside>
-                <?php
-                if (isset($_SESSION['usuario_particular'])) {
-                    aside_sesion_iniciada();
-                } else {
-                    aside_sesion_no_iniciada();
-                }
+                //<?php
+//                if (isset($_SESSION['usuario_particular'])) {
+//                    aside_sesion_iniciada();
+//                } else {
+//                    aside_sesion_no_iniciada();
+//                }
                 ?>
             </aside>
             <main>
