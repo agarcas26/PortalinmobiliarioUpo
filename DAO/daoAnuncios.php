@@ -116,12 +116,7 @@ class daoAnuncios {
         $sql = "SELECT * FROM `anuncio` WHERE `nombre_usuario_anuncio`='" . $usuario . "';";
         $resultado = $this->conexion->query($sql);
 
-        $arrayAnuncios = array();
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            array_push($arrayAnuncios, $fila);
-        }
-        mysqli_close($this->conexion);
-        return $arrayAnuncios;
+        return $resultado;
     }
 
     function get_tipo_anuncio($id_anuncio) {
