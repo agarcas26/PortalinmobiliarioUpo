@@ -31,7 +31,7 @@ and open the template in the editor.
         </header>
         <main>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
-                <button style="float: right;" onclick="mostrar_ocultar()" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
+                <button style="float: right;" id="mostrar_ocultar" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-borderless">
                         <tr>
@@ -103,6 +103,19 @@ and open the template in the editor.
                     ?>
                 </table>
             </article>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#filtros_aside').hide();
+                    $("mostrar_ocultar").click(function () {
+                        if ($("mostrar_ocultar:checked")) {
+                            $("#form_empresa").hide();
+                        } else {
+                            $("#form_empresa").show();
+                        }
+
+                    });
+                });
+            </script>
         </main>
         <?php
         ?>
