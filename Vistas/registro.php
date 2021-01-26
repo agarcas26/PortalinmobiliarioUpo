@@ -10,7 +10,6 @@ and open the template in the editor.
         <title>Regístrate</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-        <script src="../scripts.js"></script>   
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php
