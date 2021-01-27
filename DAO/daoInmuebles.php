@@ -51,6 +51,7 @@ class daoInmuebles {
         mysqli_close($this->conexion);
     }
 
+<<<<<<< Updated upstream
     public function read($nombre_usuario_duenyos) {
         
         
@@ -76,6 +77,32 @@ class daoInmuebles {
                 $objInmueble->setFotos($objInmuebleAux["fotos"]);
 
                 array_push($objInmuebleAux, $objInmueble);
+=======
+    public function read($objInmueble) {
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyo();
+        $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
+
+        if ($objMySqlLi->num_rows != 1) {
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+                $objInmueble->setNumero($objMySqlLi["numero"]);
+                $objInmueble->setCp($objMySqlLi["cp"]);
+                $objInmueble->setNombre_via($objMySqlLi["nombre_via"]);
+                $objInmueble->setTipo_via($objMySqlLi["tipo_via"]);
+                $objInmueble->setNombre_usuario_duenyos($objMySqlLi["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_localidad($objMySqlLi["nombre_localidad"]);
+                $objInmueble->setNombre_provincia($objMySqlLi["nombre_provincia"]);
+                $objInmueble->setNum_banyos($objMySqlLi["num_banyos"]);
+                $objInmueble->setNum_hab($objMySqlLi["num_hab"]);
+                $objInmueble->setCocina($objMySqlLi["cocina"]);
+                $objInmueble->setNum_plantas($objMySqlLi["num_plantas"]);
+                $objInmueble->setPlanta($objMySqlLi["planta"]);
+                $objInmueble->setMetros($objMySqlLi["metros"]);
+                $objInmueble->setTipo_inmueble($objMySqlLi["tipo_inmueble"]);
+                $objInmueble->setFotos($objMySqlLi["fotos"]);
+
+                array_push($arrayAux, $objInmueble);
+>>>>>>> Stashed changes
             }
             
         }
@@ -141,6 +168,13 @@ class daoInmuebles {
         $sql = "SELECT * FROM `inmueble`";
         $resultado = $this->conexion->query($sql);
         return $resultado;
+    }
+
+    function get_imueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
+        $sentence = "SELECTO * FROM `inmueble` WHERE `inmueble`.`numero` = '" . $numero . "' "
+                . "and `inmueble`.`cp`='" . $cp . "' and `inmueble`.`nombre_via`='" . $nombre_via . "' "
+                . "and `inmueble`.`tipo_via`='" . $tipo_via . "'";
+        $result = mysqli_query($this->conexion, $sentence);
     }
 
 }
