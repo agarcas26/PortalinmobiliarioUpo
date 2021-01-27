@@ -40,7 +40,9 @@ function mostrarVistaLista() {
             echo '<td>' . $fila[7] . '</td>';
             echo '<td>' . $fila[8] . '</td>';
             echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
+            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
+            . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
+            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Lo quiero</button></a></td>';
             echo '</tr>';
         }
     }
@@ -65,7 +67,7 @@ function get_ultimas_busquedas() {
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas();
     $dao->destruct();
-    
+
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         while ($fila_busqueda = mysqli_fetch_array($ultimas_busquedas)) {
             echo '<tr>';
@@ -78,7 +80,6 @@ function get_ultimas_busquedas() {
             echo '<td class="td">Tipo inmueble: ' . $fila_busqueda[4] . '      </td>';
             echo '<td class="td">Tipo oferta: ' . $fila_busqueda[5] . '        </td>';
             echo '</tr>';
-
         }
     }
 }
@@ -90,11 +91,11 @@ function get_ultimas_busquedas_usuario() {
     if (isset($_SESSION['usuario_profesional'])) {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    
+
     $dao = new daoBusqueda();
     $ultimas_busquedas = $dao->listar_busquedas_usuario($usuario);
     $dao->destruct();
-    
+
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         $i = 0;
         while ($fila = mysqli_fetch_array($ultimas_busquedas) and $i < 3) {
@@ -181,7 +182,7 @@ function listar_alertas_usuario() {
     return $busquedas_usuario;
 }
 
-if(isset($_GET["id_busqueda"])){
+if (isset($_GET["id_busqueda"])) {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
     } elseif (isset($_SESSION['usuario_profesional'])) {
@@ -192,5 +193,5 @@ if(isset($_GET["id_busqueda"])){
     $busquedas_usuario = $dao->eliminar_alerta_usuario($_GET["id_busqueda"]);
     $dao->destruct();
     unset($_GET["id_busqueda"]);
-     header("Location: ../Vistas/mis_alertas.php");
+    header("Location: ../Vistas/mis_alertas.php");
 }
