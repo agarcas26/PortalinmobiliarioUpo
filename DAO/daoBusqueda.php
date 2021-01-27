@@ -44,7 +44,7 @@ class daoBusqueda {
     }
     
     function eliminar_alerta_usuario($id) {
-        $sentence = "UPDATE `busqueda` SET `alerta`='false'  WHERE `id_busqueda`='" . $id . "' AND `nombre_usuario`='" . $nombre_usuario . "';";
+        $sentence = "UPDATE `busqueda` SET `alerta`='false'  WHERE `id_busqueda`='" . $id . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
