@@ -56,7 +56,7 @@ function mostrar_detalle_anuncio($id_anuncio) {
             . '</tr>'
             . '<tr>'
             . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="transaccion" id="transaccion" value="transaccion">Lo quiero</button></a></td>'
+            . '<button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>'
             . '</tr>';
         }
     }
