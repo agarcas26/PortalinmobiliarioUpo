@@ -41,44 +41,52 @@ class daoInmuebles {
         //tengo que pedirle al usuario la direccion y guardarla como pk
         $sql = "INSERT INTO inmueble (numero,cp,nombre_via,tipo_via,nombre_usuario_duenyos,nombre_localidad,nombre_provincia,num_banyos,num_hab,cocina,tipo,numero_plantas,planta,metros,fotos) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
 
-        if ($this->conexion->query($sql)=== true) {
+        if ($this->conexion->query($sql) === true) {
 
             echo "New record created successfully";
         } else {
 
-           echo "Error: " . $sql . "<br>" . $this->conexion->error;
+            echo "Error: " . $sql . "<br>" . $this->conexion->error;
         }
         mysqli_close($this->conexion);
     }
 
-    public function read( $objInmueble) {
-        $nombre_usuario_duenyos= $objInmueble->getNombre_usuario_duenyo();
-        $objMySqlLi = $this->conexion->query($sql);
+    public function read($nombre_usuario_duenyos) {
+
+
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
+        $objMySqlLi = $this->conexion->query($sql);
+        $objInmueble = new inmueble();
+        if ($objMySqlLi->num_rows > 0) {
+            while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
+                $objInmueble->setNumero($objInmuebleAux["numero"]);
+                $objInmueble->setCp($objInmuebleAux["cp"]);
+                $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);
+                $objInmueble->setTipo_via($objInmuebleAux["tipo_via"]);
+                $objInmueble->setNombre_usuario_duenyos($objInmuebleAux["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_localidad($objInmuebleAux["nombre_localidad"]);
+                $objInmueble->setNombre_provincia($objInmuebleAux["nombre_provincia"]);
+                $objInmueble->setNum_banyos($objInmuebleAux["num_banyos"]);
+                $objInmueble->setNum_hab($objInmuebleAux["num_hab"]);
+                $objInmueble->setCocina($objInmuebleAux["cocina"]);
+                $objInmueble->setNum_plantas($objInmuebleAux["num_plantas"]);
+                $objInmueble->setPlanta($objInmuebleAux["planta"]);
+                $objInmueble->setMetros($objInmuebleAux["metros"]);
+                $objInmueble->setTipo_inmueble($objInmuebleAux["tipo_inmueble"]);
+                $objInmueble->setFotos($objInmuebleAux["fotos"]);
 
-
-        if ($objMySqlLi->num_rows != 1) {
-            while (mysqli_fetch_assoc($objMySqlLi)) {
-                $objInmueble->setNumero($objMySqlLi["numero"]);
-                $objInmueble->setCp($objMySqlLi["cp"]);
-                $objInmueble->setNombre_via($objMySqlLi["nombre_via"]);
-                $objInmueble->setTipo_via($objMySqlLi["tipo_via"]);
-                $objInmueble->setNombre_usuario_duenyos($objMySqlLi["nombre_usuario_duenyos"]);
-                $objInmueble->setNombre_localidad($objMySqlLi["nombre_localidad"]);
-                $objInmueble->setNombre_provincia($objMySqlLi["nombre_provincia"]);
-                $objInmueble->setNum_banyos($objMySqlLi["num_banyos"]);
-                $objInmueble->setNum_hab($objMySqlLi["num_hab"]);
-                $objInmueble->setCocina($objMySqlLi["cocina"]);
-                $objInmueble->setNum_plantas($objMySqlLi["num_plantas"]);
-                $objInmueble->setPlanta($objMySqlLi["planta"]);
-                $objInmueble->setMetros($objMySqlLi["metros"]);
-                $objInmueble->setTipo_inmueble($objMySqlLi["tipo_inmueble"]);
-                $objInmueble->setFotos($objMySqlLi["fotos"]);
-
-                array_push($arrayAux, $objInmueble);
+                array_push($objInmuebleAux, $objInmueble);
             }
         }
-        mysqli_close($this->conexion);
+//        if ($this->conexion->query($sql) === true) {
+//
+//            echo "New record created successfully";
+//        } else {
+//
+//            echo "Error: " . $sql . "<br>" . $this->conexion->error;
+//        }
+//        mysqli_close($this->conexion);
+
         return $arrayAux;
     }
 
