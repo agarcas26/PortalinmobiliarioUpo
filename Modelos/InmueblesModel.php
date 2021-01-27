@@ -17,7 +17,7 @@ class inmueble {
     private $cp;
     private $nombre_via;
     private $tipo_via;
-    private $nombre_usuario_duenyo;
+    private $nombre_usuario_duenyos;
     private $nombre_localidad;
     private $nombre_provincia;
     private $num_banyos;
@@ -49,8 +49,8 @@ class inmueble {
         return $this->tipo_via;
     }
 
-    function getNombre_usuario_duenyo() {
-        return $this->nombre_usuario_duenyo;
+    function getNombre_usuario_duenyos() {
+        return $this->nombre_usuario_duenyos;
     }
 
     function getNombre_localidad() {
@@ -109,8 +109,8 @@ class inmueble {
         $this->tipo_via = $tipo_via;
     }
 
-    function setNombre_usuario_duenyo($nombre_usuario_duenyo) {
-        $this->nombre_usuario_duenyo = $nombre_usuario_duenyo;
+    function setNombre_usuario_duenyos($nombre_usuario_duenyos) {
+        $this->nombre_usuario_duenyos = $nombre_usuario_duenyos;
     }
 
     function setNombre_localidad($nombre_localidad) {

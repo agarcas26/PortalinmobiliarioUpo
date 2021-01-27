@@ -230,27 +230,33 @@ function getInmuebleByAnuncio($anuncio) {
 
 function listar_inmuebles_usuario() {
 
+
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-    } elseif (isset($_SESSION['usuario_profesional'])) {
+    } else {
+
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
+     $inmueble1 = new inmueble();
+    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
-    //$dao->destruct();
-
-
+    $dao->destruct();
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
         echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
     }
-    
-    if (!$inmuebles_usuario) {
-                $_SESSION["errores"]["inmuebles_usuario"] = "No se ha encontrado";
-            }
-            if ($inmuebles_usuario) {
-                header('Location: ../Vistas/inmueble.php');
-            } else {
-                header('Location: ../Vistas/perfil.php'); //mensajes de errores
-            }
+echo "<pre>";
+var_dump($inmueble1);
+var_dump($inmuebles_usuario);
+echo "</pre>";
+//    if (!$inmuebles_usuario) {
+//        $_SESSION["errores"]["inmuebles_usuario"] = "No se ha encontrado";
+//    }
+//    if ($inmuebles_usuario) {
+//        header('Location: ../Vistas/inmueble.php');
+//    } else {
+//        header('Location: ../Vistas/perfil.php'); //mensajes de errores
+//    }
 }

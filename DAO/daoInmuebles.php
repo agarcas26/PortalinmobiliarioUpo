@@ -52,8 +52,8 @@ class daoInmuebles {
     }
 
     public function read($nombre_usuario_duenyos) {
-
-
+        
+        
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new inmueble();
@@ -63,33 +63,33 @@ class daoInmuebles {
                 $objInmueble->setCp($objInmuebleAux["cp"]);
                 $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);
                 $objInmueble->setTipo_via($objInmuebleAux["tipo_via"]);
-                $objInmueble->setNombre_usuario_duenyos($objMySqlLi["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_usuario_duenyos($objInmuebleAux["nombre_usuario_duenyos"]);
                 $objInmueble->setNombre_localidad($objInmuebleAux["nombre_localidad"]);
                 $objInmueble->setNombre_provincia($objInmuebleAux["nombre_provincia"]);
                 $objInmueble->setNum_banyos($objInmuebleAux["num_banyos"]);
                 $objInmueble->setNum_hab($objInmuebleAux["num_hab"]);
                 $objInmueble->setCocina($objInmuebleAux["cocina"]);
-                $objInmueble->setNum_plantas($objInmuebleAux["num_plantas"]);
+                $objInmueble->setNumero_plantas($objInmuebleAux["numero_plantas"]);
                 $objInmueble->setPlanta($objInmuebleAux["planta"]);
                 $objInmueble->setMetros($objInmuebleAux["metros"]);
-                $objInmueble->setTipo_inmueble($objInmuebleAux["tipo_inmueble"]);
+                $objInmueble->setTipo_inmueble($objInmuebleAux["tipo"]);
                 $objInmueble->setFotos($objInmuebleAux["fotos"]);
 
-                array_push($arrayAux, $objInmueble);
+                array_push($objInmuebleAux, $objInmueble);
             }
-             return $arrayAux;
+            
         }
        
-        if ($this->conexion->query($sql) === true) {
+//        if ($this->conexion->query($sql) === true) {
+//
+//            echo "New record created successfully";
+//        } else {
+//
+//            echo "Error: " . $sql . "<br>" . $this->conexion->error;
+//        }
+//        mysqli_close($this->conexion);
 
-            echo "New record created successfully";
-        } else {
-
-            echo "Error: " . $sql . "<br>" . $this->conexion->error;
-        }
-        mysqli_close($this->conexion);
-
-        
+         return $objInmuebleAux;
     }
 
     public function eliminar($objInmueble) {
