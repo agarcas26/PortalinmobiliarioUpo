@@ -241,7 +241,7 @@ function listar_inmuebles_usuario() {
     $dao->destruct();
 
     //Listar  inmuebles by usuario
-    while (mysqli_fetch_array($inmuebles_usuario)) {
-        echo '<option>' . $inmuebles_usuario[0] . " - " . $inmuebles_usuario[1] . " - " . $inmuebles_usuario[2] . " - " . $inmuebles_usuario[3] . '</option>';
+    for($i = 0; $i < sizeof($inmuebles_usuario); $i++){
+        echo '<option>' . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . '</option>';
     }
 }
