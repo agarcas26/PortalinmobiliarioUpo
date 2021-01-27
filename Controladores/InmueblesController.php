@@ -283,8 +283,7 @@ function listar_inmuebles_usuario() {
         ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
         ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
 
-        echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
-
+     
 
     }
 //echo "<pre>";
