@@ -37,7 +37,7 @@ class daoBusqueda {
         return $result;
     }
     function listar_alertas_usuario($nombre_usuario) {
-        $sentence = "SELECT * FROM `busqueda` WHERE `alerta`='true AND `nombre_usuario`='" . $nombre_usuario . "';";
+        $sentence = "SELECT * FROM `busqueda` WHERE `alerta`='true' AND `nombre_usuario`='" . $nombre_usuario . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
