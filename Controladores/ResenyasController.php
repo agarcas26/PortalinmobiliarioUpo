@@ -25,14 +25,30 @@ function get_valoraciones_inmueble($direccion_inmueble) {
     $resenyas = $dao->read_by_inmueble($direccion_inmueble[0], $direccion_inmueble[1], $direccion_inmueble[2], $direccion_inmueble[3]);
     $dao->destruct();
     $media_valoraciones = 0;
-    
-    for($i = 0; $i < sizeof($resenyas); $i++){
+
+    for ($i = 0; $i < sizeof($resenyas); $i++) {
         $media_valoraciones = $resenyas[$i]->getValoracion();
     }
-    
+
     $media_valoraciones = $media_valoraciones / sizeof($resenyas);
 
     return $media_valoraciones;
+}
+
+function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion) {
+    $objResenyas = new Resenya();
+    $dao = new daoResenyas();
+    $objResenyas->setCp($direccion_inmueble[0]);
+    $objResenyas->setDescripcion("l");
+    $objResenyas->setFecha_resenya($fecha_resenya);
+    $objResenyas->setId_resenya(null);
+    $objResenyas->setNombre_usuario($nombre_usuario);
+    $objResenyas->setNombre_via($direccion_inmueble[1]);
+    $objResenyas->setNumero($direccion_inmueble[3]);
+    $objResenyas->setTipo_via($direccion_inmueble[2]);
+    $objResenyas->setValoracion($puntuacion);
+    $dao->escribirResenyas($objResenyas);
+    $dao->destruct();
 }
 
 function escribirResenyas() {
