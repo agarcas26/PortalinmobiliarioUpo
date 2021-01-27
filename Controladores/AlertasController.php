@@ -15,7 +15,7 @@ function get_alertas_usuario() {
         $nombre_usuario = $_SESSION['usuario_profesional'];
     }
 
-    $busquedas = listar_busquedas_usuario();
+    $busquedas = listar_alertas_usuario();
 
     if (mysqli_num_rows($busquedas) > 0) {
         while ($fila = mysqli_fetch_array($busquedas)) {
@@ -39,6 +39,8 @@ function get_alertas_usuario() {
         echo '<td>Número de habitaciones: ' . $alertas[$i][7] . '</td>';
         echo '</tr><tr>';
         echo '<td>Precio máximo: ' . $alertas[$i][6] . '€</td>';
+        echo '</tr><tr>';
+        echo '<td><a  href="../Controladores/busquedaController.php?id_busqueda='. $alertas[$i][0].'">Eliminar alerta</a></td>';
         echo '</tr>';
         echo '</table>';
     }

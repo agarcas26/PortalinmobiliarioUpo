@@ -166,3 +166,31 @@ function listar_busquedas_usuario() {
     $dao->destruct();
     return $busquedas_usuario;
 }
+
+function listar_alertas_usuario() {
+
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
+
+    $dao = new daoBusqueda();
+    $busquedas_usuario = $dao->listar_alertas_usuario($nombre_usuario);
+    $dao->destruct();
+    return $busquedas_usuario;
+}
+
+if(isset($_GET["id_busqueda"])){
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
+
+    $dao = new daoBusqueda();
+    $busquedas_usuario = $dao->eliminar_alerta_usuario($_GET["id_busqueda"]);
+    $dao->destruct();
+    unset($_GET["id_busqueda"]);
+     header("Location: ../Vistas/mis_alertas.php");
+}

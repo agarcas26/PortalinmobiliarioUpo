@@ -23,7 +23,7 @@ function sesion_iniciada() {
     . "<a href='../Controladores/logoutController.php'>Cerrar sesión</a>"
     . "</nav>"
     . "<br>"
-    . "<a href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
+    . "<a class='navbar-brand' href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
 function no_sesion_iniciada() {
@@ -32,7 +32,7 @@ function no_sesion_iniciada() {
     . "<a href='../Vistas/registro.php'>¡Regístrate gratis!</a>"
     . "</nav>"
     . "<br>"
-    . "<a href='../Vistas/index.php'><img src='../img/logo.png' alt='Logo'/></a>";
+    . "<a class='navbar-brand' href='../Vistas/index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
 
 function cabecera_admin() {
