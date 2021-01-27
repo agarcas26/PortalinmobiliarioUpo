@@ -27,22 +27,39 @@ function ver_detalle($id_anuncio) {
     header("Location: ../Vistas/detalle_anuncio.php");
 }
 
-function mostrar_detalle_anuncio() {
-    echo '<tr>'
-    . '<td></td>' //FOTOS
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>';
+function mostrar_detalle_anuncio($id_anuncio) {
+    $dao = new daoAnuncios();
+    $array_anuncios = $dao->listar();
+    $dao->destruct();
+    while ($fila = mysqli_fetch_array($array_anuncios)) {
+        if ($id_anuncio == $fila[2]) {
+            echo '<tr>'
+            . '<td></td>' //FOTOS
+            . '</tr>'
+            . '<tr>'
+            . '<td><h3>Titulo:' . $fila[9] . '</h3></td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Precio:' . $fila[7] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>CP:' . $fila[0] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Fecha:' . $fila[1] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Anunciante:' . $fila[4] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Direccion: ' . $fila[8] . ' ' . $fila[5] . ' numero ' . $fila[6] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
+            . '<button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>'
+            . '</tr>';
+        }
+    }
 }
 
 function insertAnuncio() {

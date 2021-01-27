@@ -35,7 +35,7 @@
                     </ul>
                     <table>
                         <?php
-                        //Datos del inmueble
+                                                listar_inmuebles_usuario();
                         ?>
                     </table>
                 </section>

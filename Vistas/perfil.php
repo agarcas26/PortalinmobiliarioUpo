@@ -36,7 +36,7 @@
             <main>
                 <article>
                     <section>
-                        <a href="../Vistas/alta_inmueble.php">¿Quieres registrar un nuevo inmueble?</a>
+                        <a href="../Vistas/alta_inmueble.php"><button class="btn btn-primary">¿Quieres registrar un nuevo inmueble?</button></a>
                     </section>
                     <h4>Mis favoritos</h4>
                     <!-- Mostramos vista previa favoritos -->
@@ -48,7 +48,7 @@
                             }
                             ?>
                             <form action="../Vistas/mis_favoritos.php" method="POST">
-                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                                <input class="btn btn-primary" type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
                     </section>
@@ -62,7 +62,7 @@
                             }
                             ?>
                             <form action="../Vistas/mis_alertas.php" method="POST">
-                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                                <input class="btn btn-primary" type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
                     </section>
@@ -76,7 +76,7 @@
                             }
                             ?>
                             <form action="../Vistas/mis_anuncios.php" method="POST">
-                                <input type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                                <input class="btn btn-primary" type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
                             </form>
                         </table>
                     </section>

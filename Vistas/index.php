@@ -50,7 +50,7 @@ and open the template in the editor.
                             </tr>
                             <tr>
                                 <td>
-                                    <button type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
+                                    <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
                                 </td>
                             </tr>
                         </table>
