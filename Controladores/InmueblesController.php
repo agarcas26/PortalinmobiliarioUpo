@@ -276,11 +276,8 @@ function listar_inmuebles_usuario() {
     $dao->destruct();
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
-<<<<<<< Updated upstream
         echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
-=======
-        echo '<option>' . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . '</option>';
->>>>>>> Stashed changes
+
     }
 echo "<pre>";
 var_dump($inmueble1);
