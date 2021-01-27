@@ -40,9 +40,9 @@ function mostrarVistaLista() {
             echo '<td>' . $fila[7] . '</td>';
             echo '<td>' . $fila[8] . '</td>';
             echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
+            . '  <button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
             . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="transaccion" id="transaccion" value="transaccion">Lo quiero</button></a></td>';
+            . '  <button name="transaccion" id="transaccion" value="transaccion">Lo quiero</button></a></td>';
             echo '</tr>';
         }
     }

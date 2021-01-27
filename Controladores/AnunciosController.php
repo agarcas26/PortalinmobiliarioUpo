@@ -27,22 +27,35 @@ function ver_detalle($id_anuncio) {
     header("Location: ../Vistas/detalle_anuncio.php");
 }
 
-function mostrar_detalle_anuncio() {
-    echo '<tr>'
-    . '<td></td>' //FOTOS
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td></td>'
-    . '</tr>';
+function mostrar_detalle_anuncio($id_anuncio) {
+    $dao = new daoAnuncios();
+    $array_anuncios = $dao->listar();
+    $dao->destruct();
+    while ($fila = mysqli_fetch_array($array_anuncios)) {
+        if ($id_anuncio == $array_anuncios[2]) {
+            echo '<tr>'
+            . '<td></td>' //FOTOS
+            . '</tr>'
+            . '<tr>'
+            . '<td><h3>Titulo:' . $array_anuncios[9] . '</h3></td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Precio:' . $array_anuncios[7] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>CP:' . $array_anuncios[0] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Fecha:' . $array_anuncios[1] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Anunciante:' . $array_anuncios[4] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>Direccion: ' . $array_anuncios[8] .' '. $array_anuncios[5] .' numero '. $array_anuncios[6] . '</td>'
+            . '</tr>';
+        }
+    }
 }
 
 function insertAnuncio() {
