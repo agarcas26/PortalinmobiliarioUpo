@@ -6,6 +6,7 @@
         <title>Pago</title>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/AnunciosController.php';
         ?>
         <script type="text/javascript">
             function datosTarjeta() {
@@ -47,14 +48,16 @@
                 <input type="hidden" name="business" value="PortalInmobiliarioUPO@gmail.com">
                 <input type="hidden" name="lc" value="US">
                 <input type="hidden" name="item_name" value="inmueble">
-                <input type="hidden" name="item_number" value=<?phpecho $_GET["id_anuncio"];?>>
+                <input type="hidden" name="item_number" value=<?php echo $_GET["id_anuncio"]; ?>>
+                <input type="hidden" name="amount" value=<?php echo getPrecio($_GET["id_anuncio"]); ?>>
                 <input type="hidden" name="button_subtype" value="services">
-                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="no_note" value="100">
                 <input type="hidden" name="currency_code" value="EUR">
                 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
                 <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
                 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
             </form>
+
             <form action="pagoController.php" method="POST">
                 <input class="btn btn-primary" type="submit" name="visa" onclick="datosTarjeta()" value="Visa" />
                 <table id="datos_visa">
@@ -65,7 +68,7 @@
                         <td><strong>Datos del usuario</strong></td>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td><?php mostrar_info_anuncio($_GET["id_anuncio"]);?></td>
                         <td><?php echo $usuario; ?></td>
                     </tr>
                 </table>

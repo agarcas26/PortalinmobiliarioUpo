@@ -1,10 +1,12 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include './utils/utilsProductos.php';
+include '../Controladores/InmueblesController.php';
+include '../Controladores/ResenyasController.php';
 
 if (isset($_GET["id_inmueble"])) {
 
@@ -30,10 +32,8 @@ if (isset($_GET["id_inmueble"])) {
             $valoracion_usuario = get_valoracion_usuario($usuario, $id_inmueble);
         }
         $media_valoraciones = get_valoraciones_inmueble($id_inmueble);
-        
-        
-        $puntuacion = obtenerPuntuacionProducto($idProducto);
-        $categorias = listarCategorias();
+//        $puntuacion = obtenerPuntuacionProducto($idProducto);
+//        $categorias = listarCategorias();
     } else {
         $error = "Este inmueble no está disponible temporalmente";
     }
@@ -43,7 +43,6 @@ if (isset($_GET["id_inmueble"])) {
 
 //Método para enviar una nueva valoración de un producto
 if (isset($_GET["enviarValoracion"])) {
-    
 
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
@@ -52,44 +51,48 @@ if (isset($_GET["enviarValoracion"])) {
     }
 
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
-    
+
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
 
-    valorarProducto($_SESSION["email"], $idProducto, $puntuacion_nueva, $valoracion_nueva);
+    set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
 
-    header("location:producto.php?idProducto=$idProducto");
+    //header("location:producto.php?idProducto=$idProducto");
 } else if (isset($_GET["editarValoracion"])) {//Método que controla la actualización de la opinión de un cliente sobre un producto
-    $idProducto = filter_var($_GET["idProducto"], FILTER_SANITIZE_NUMBER_INT);
+    
+    $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
 
-    actualizarValoracion($_SESSION["email"], $idProducto, $puntuacion_nueva, $valoracion_nueva);
-    header("location:producto.php?idProducto=$idProducto");
+    set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
+    //header("location:anuncio.php?id_anuncio=$id_anuncio");
 } else if (isset($_GET["eliminarValoracion"])) {//Eliminación de la valoración de un producto
-    $idProducto = filter_var($_GET["idProducto"], FILTER_SANITIZE_NUMBER_INT);
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    
+    $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
 
-    eliminarValoracion($_SESSION["email"], $idProducto);
-    header("location:producto.php?idProducto=$idProducto");
+    eliminarValoracion($usuario, $id_inmueble);
+    //header("location:anuncio.php?id_anuncio=$id_anuncio");
 }
 /*
  * Esta función muestra la media de las valoraciones en formato de estrellas
  */
 
 function mostrarValorar() {
-    ?>
-    <form id='formValoracionProducto' class="md-form mr-auto mb-4" method="GET">
-        <textarea class="form-control" name="valoracion" placeholder="Valora el producto" required></textarea>
-        <?php
-        for ($index = 1; $index <= 5; $index++) {
-            echo "<span id = 'puntuacion-$index' class = 'review fa fa-star unchecked'></span>";
-        }
-        ?>
-        <input id="puntuacion" type="number" name="puntuacion" hidden>
-        <input name="idProducto" type="number" value="<?php echo $_GET["idProducto"]
-    ?>" hidden>
-        <br>
-        <input id="btn-coment" type="submit" name="enviarValoracion" value="Enviar" class="btn btn-success">
-    </form>
-    <?php
+    echo '<form id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
+    . '<textarea class="form-control" name="valoracion" placeholder="Valora el inmueble" required></textarea>';
+
+    for ($index = 1; $index <= 5; $index++) {
+        echo "<span id = 'puntuacion-$index' class = 'review fa fa-star unchecked'></span>";
+    }
+
+    echo '<input id="puntuacion" type="number" name="puntuacion" hidden>'
+    . '<input name="id_inmueble" type="number" value="' . $_GET["id_inmueble"] . '" hidden>'
+    . '<br>'
+    . '<input id="btn-coment" type="submit" name="enviarValoracion" value="Enviar" class="btn btn-success">'
+    . '</form>';
 }
