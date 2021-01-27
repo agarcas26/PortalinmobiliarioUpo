@@ -58,17 +58,24 @@ if (isset($_GET["enviarValoracion"])) {
 
     //header("location:producto.php?idProducto=$idProducto");
 } else if (isset($_GET["editarValoracion"])) {//Método que controla la actualización de la opinión de un cliente sobre un producto
-    $idProducto = filter_var($_GET["idProducto"], FILTER_SANITIZE_NUMBER_INT);
+    
+    $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
 
-    actualizarValoracion($_SESSION["email"], $idProducto, $puntuacion_nueva, $valoracion_nueva);
-    header("location:producto.php?idProducto=$idProducto");
+    set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
+    //header("location:anuncio.php?id_anuncio=$id_anuncio");
 } else if (isset($_GET["eliminarValoracion"])) {//Eliminación de la valoración de un producto
-    $idProducto = filter_var($_GET["idProducto"], FILTER_SANITIZE_NUMBER_INT);
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    
+    $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
 
-    eliminarValoracion($_SESSION["email"], $idProducto);
-    header("location:producto.php?idProducto=$idProducto");
+    eliminarValoracion($usuario, $id_inmueble);
+    //header("location:anuncio.php?id_anuncio=$id_anuncio");
 }
 /*
  * Esta función muestra la media de las valoraciones en formato de estrellas
