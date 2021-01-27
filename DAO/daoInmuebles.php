@@ -144,8 +144,8 @@ class daoInmuebles {
         return $resultado;
     }
 
-    function get_imueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
-        $sentence = "SELECTO * FROM `inmueble` WHERE `inmueble`.`numero` = '" . $numero . "' "
+    function get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
+        $sentence = "SELECT * FROM `inmueble` WHERE `inmueble`.`numero` = '" . $numero . "' "
                 . "and `inmueble`.`cp`='" . $cp . "' and `inmueble`.`nombre_via`='" . $nombre_via . "' "
                 . "and `inmueble`.`tipo_via`='" . $tipo_via . "'";
         $result = mysqli_query($this->conexion, $sentence);

@@ -154,8 +154,5 @@ class inmueble {
         $this->fotos = $fotos;
     }
 
-    public function __toString() {
-        
-    }
 
 }
