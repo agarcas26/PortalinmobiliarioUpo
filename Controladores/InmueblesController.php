@@ -237,7 +237,7 @@ function listar_inmuebles_usuario() {
 
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-     $inmueble1 = new inmueble();
+    $inmueble1 = new inmueble();
     $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
 
     $dao = new daoInmuebles();
@@ -245,18 +245,56 @@ function listar_inmuebles_usuario() {
     $dao->destruct();
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
-        echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
+        echo '<option>'
+        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
+        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
+        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
+        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
     }
-echo "<pre>";
-var_dump($inmueble1);
-var_dump($inmuebles_usuario);
-echo "</pre>";
-//    if (!$inmuebles_usuario) {
-//        $_SESSION["errores"]["inmuebles_usuario"] = "No se ha encontrado";
-//    }
-//    if ($inmuebles_usuario) {
-//        header('Location: ../Vistas/inmueble.php');
-//    } else {
-//        header('Location: ../Vistas/perfil.php'); //mensajes de errores
-//    }
+//echo "<pre>";
+//var_dump($inmueble1);
+//var_dump($inmuebles_usuario);
+//echo "</pre>";
+}
+
+function listar_inmuebles_usuarioAll() {
+
+
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } else {
+
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
+    $inmueble1 = new inmueble();
+    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+
+    $dao = new daoInmuebles();
+    $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
+    $dao->destruct();
+    //Listar  inmuebles by usuario
+    for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
+        echo '<option>'
+      
+        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
+        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
+        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
+        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() .
+        ' - Usuario : ' . $inmuebles_usuario[$i]->getNombre_usuario_duenyos() .
+        ' - Localidad : ' . $inmuebles_usuario[$i]->getNombre_localidad() .
+        ' - Provincia : ' . $inmuebles_usuario[$i]->getNombre_provincia() .
+        ' - N.Baños : ' . $inmuebles_usuario[$i]->getNum_banyos() .
+        ' - N.Habitaciones : ' . $inmuebles_usuario[$i]->getNum_hab() .
+        ' - Cocina Amueblada : ' . $inmuebles_usuario[$i]->getCocina() .
+        ' - Tipo de oferta : ' . $inmuebles_usuario[$i]->getTipo_inmueble() .
+        ' - Numero de plantas : ' . $inmuebles_usuario[$i]->getNumero_plantas() .
+        ' - Planta (Edificios): ' . $inmuebles_usuario[$i]->getPlanta() .
+        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
+        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
+        '</option>';
+    }
+//echo "<pre>";
+//var_dump($inmueble1);
+//var_dump($inmuebles_usuario);
+//echo "</pre>";
 }

@@ -57,6 +57,7 @@ class daoInmuebles {
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new inmueble();
+       $arrayAux = [];
         if ($objMySqlLi->num_rows > 0) {
             while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
                 $objInmueble->setNumero($objInmuebleAux["numero"]);
@@ -75,7 +76,7 @@ class daoInmuebles {
                 $objInmueble->setTipo_inmueble($objInmuebleAux["tipo"]);
                 $objInmueble->setFotos($objInmuebleAux["fotos"]);
 
-                array_push($objInmuebleAux, $objInmueble);
+                array_push($arrayAux, $objInmueble);
             }
             
         }
@@ -89,7 +90,7 @@ class daoInmuebles {
 //        }
 //        mysqli_close($this->conexion);
 
-         return $objInmuebleAux;
+         return $arrayAux;
     }
 
     public function eliminar($objInmueble) {
