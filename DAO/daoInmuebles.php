@@ -63,7 +63,7 @@ class daoInmuebles {
                 $objInmueble->setCp($objInmuebleAux["cp"]);
                 $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);
                 $objInmueble->setTipo_via($objInmuebleAux["tipo_via"]);
-                $objInmueble->setNombre_usuario_duenyos($objInmuebleAux["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_usuario_duenyos($objMySqlLi["nombre_usuario_duenyos"]);
                 $objInmueble->setNombre_localidad($objInmuebleAux["nombre_localidad"]);
                 $objInmueble->setNombre_provincia($objInmuebleAux["nombre_provincia"]);
                 $objInmueble->setNum_banyos($objInmuebleAux["num_banyos"]);
@@ -75,19 +75,21 @@ class daoInmuebles {
                 $objInmueble->setTipo_inmueble($objInmuebleAux["tipo_inmueble"]);
                 $objInmueble->setFotos($objInmuebleAux["fotos"]);
 
-                array_push($objInmuebleAux, $objInmueble);
+                array_push($arrayAux, $objInmueble);
             }
+             return $arrayAux;
         }
-//        if ($this->conexion->query($sql) === true) {
-//
-//            echo "New record created successfully";
-//        } else {
-//
-//            echo "Error: " . $sql . "<br>" . $this->conexion->error;
-//        }
-//        mysqli_close($this->conexion);
+       
+        if ($this->conexion->query($sql) === true) {
 
-        return $arrayAux;
+            echo "New record created successfully";
+        } else {
+
+            echo "Error: " . $sql . "<br>" . $this->conexion->error;
+        }
+        mysqli_close($this->conexion);
+
+        
     }
 
     public function eliminar($objInmueble) {
