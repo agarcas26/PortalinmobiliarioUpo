@@ -12,6 +12,29 @@ $_SESSION["validacion"] = true;
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
 
+function get_valoracion_usuario($nombre_usuario, $direccion_inmueble) {
+    $dao = new daoResenyas();
+    $resenya = $dao->read_by_usuario_inmueble($nombre_usuario, $direccion_inmueble[0], $direccion_inmueble[1], $direccion_inmueble[2], $direccion_inmueble[3]);
+    $dao->destruct();
+
+    return $resenya->getValoracion();
+}
+
+function get_valoraciones_inmueble($direccion_inmueble) {
+    $dao = new daoResenyas();
+    $resenyas = $dao->read_by_inmueble($direccion_inmueble[0], $direccion_inmueble[1], $direccion_inmueble[2], $direccion_inmueble[3]);
+    $dao->destruct();
+    $media_valoraciones = 0;
+    
+    for($i = 0; $i < sizeof($resenyas); $i++){
+        $media_valoraciones = $resenyas[$i]->getValoracion();
+    }
+    
+    $media_valoraciones = $media_valoraciones / sizeof($resenyas);
+
+    return $media_valoraciones;
+}
+
 function escribirResenyas() {
     if ($_POST["btonEscribir"]) {
         if (empty($_POST["txtDescripcion"])) {

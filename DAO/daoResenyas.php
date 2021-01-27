@@ -22,6 +22,7 @@ class daoResenyas {
     }
 
     function escribirResenyas($objResenyas) {
+        $salida = true;
         //$id_resenyas = $objUsuario->getId_resenyas();
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
@@ -33,16 +34,16 @@ class daoResenyas {
         $valoracion = $objResenyas->getValoracion();
 
         $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
-//he añadido currentdate pero no estoy muy segura de que sea asi, andrea
+        //he añadido currentdate pero no estoy muy segura de que sea asi, andrea
         if (!$this->$conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
+            $salida = false;
         }
-        mysqli_close($this->conexion);
+
+        return $salida;
     }
 
     function modificarResenyas($objResenyas) {
+        $salida = true;
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
         $nombre_via = $objResenyas->getNombre_via();
@@ -55,101 +56,115 @@ class daoResenyas {
         $sql = "UPDATE `resenya` SET `nombre_usuario`='$nombre_usuario',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via',"
                 . "`numero`='$numero',`descripcion`='$descripcion',`fecha_resenya`='$fecha_resenya',`valoracion`='$valoracion'";
         if (!$this->conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
+            $salida = false;
         }
-        mysqli_close($this->conexion);
+
+        return $salida;
     }
 
     function eliminarResenyas($id_resenya) {
-     
+        $salida = true;
 
         $sql = "DELETE FROM `resenya` WHERE `id_resenya`='$id_resenya'";
         if (!$this->conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
+            $salida = false;
         }
-        mysqli_close($this->conexion);
+        return $salida;
     }
 
     function listarResenyas() {
         $sql = "SELECT * FROM `resenya`";
         $resultado = $this->conn->query($sql);
-        $arrayResenyas = array();
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            array_push($arrayResenyas, $fila);
-        }
-        mysqli_close($this->conexion);
-        return $arrayResenyas;
+
+        return $resultado;
     }
 
-//     function read($objResenyas) {
-//    $id_resenya = $objResenyas->getId_resenya();
-//    $sql = "SELECT * FROM `resenya` WHERE `id_resenya`='$id_resenya'";
-//    $objMySqlLi = $this->conn->query($sql);
-//
-//    if ($objMySqlLi->num_rows != 1) {
-//        return false;
-//    } else {
-//        $arrayAux = mysqli_fetch_assoc($objMySqlLi);
-//        $objResenyas->setId_resenya($arrayAux["id_resenya"]);
-//        $objResenyas->setNombre_usuario($arrayAux["nombre_usuario"]);
-//        $objResenyas->setCp($arrayAux["cp"]);
-//        $objResenyas->setNombre_via($arrayAux["nombre_via"]);
-//        $objResenyas->setTipo_via($arrayAux["tipo_via"]);
-//        $objResenyas->setNumero($arrayAux["numero"]);
-//        $objResenyas->setDescripcion($arrayAux["descripcion"]);
-//        $objResenyas->setFecha_resenya($arrayAux["fecha_resenya"]);
-//        $objResenyas->setValoracion($arrayAux["valoracion"]);
-//        return $objResenyas;
-//    }
-//    mysqli_close($this->conn);
-//}
+    function read($objResenyas) {
+        $id_resenya = $objResenyas->getId_resenya();
+        $sql = "SELECT * FROM `resenya` WHERE `id_resenya`='$id_resenya'";
+        $objMySqlLi = $this->conn->query($sql);
 
-    function read_by_user($id_resenya) {
+        if ($objMySqlLi->num_rows > 0) {
+            $arrayAux = mysqli_fetch_assoc($objMySqlLi);
+            $objResenyas = new Resenya();
+            $objResenyas->setId_resenya($arrayAux["id_resenya"]);
+            $objResenyas->setNombre_usuario($arrayAux["nombre_usuario"]);
+            $objResenyas->setCp($arrayAux["cp"]);
+            $objResenyas->setNombre_via($arrayAux["nombre_via"]);
+            $objResenyas->setTipo_via($arrayAux["tipo_via"]);
+            $objResenyas->setNumero($arrayAux["numero"]);
+            $objResenyas->setDescripcion($arrayAux["descripcion"]);
+            $objResenyas->setFecha_resenya($arrayAux["fecha_resenya"]);
+            $objResenyas->setValoracion($arrayAux["valoracion"]);
+        }
+        return $objResenyas;
+    }
+
+    function read_by_user($nombre_usuario) {
         $objMySqlLi = $this->conexion->query($sql);
-        $sql = "SELECT * FROM `resenya` r, usuarios u WHERE u.`nombre_usuario`  AND r.`id_resenya` = '$id_resenya'";
+        $sql = "SELECT * FROM `resenya` WHERE u.`nombre_usuario` = '" . $id_resenya . "'";
         //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
         if ($objMySqlLi->num_rows > 0) {
-            while (mysqli_fetch_assoc($objMySqlLi)) {
-                $objUser->setId_resenya($objMySqlLi["id_resenya"]);
-                $objUser->setNombre_usuario($objMySqlLi["nombre_usuario"]);
-                $objUser->setCp($objMySqlLi["cp"]);
-                $objUser->setNombre_via($objMySqlLi["nombre_via"]);
-                $objUser->setTipo_via($objMySqlLi["tipo_via"]);
-                $objUser->setNumero($objMySqlLi["numero"]);
-                $objUser->setDescripcion($objMySqlLi["descripcion"]);
-                $objUser->setFecha_resenya($objMySqlLi["fecha_resenya"]);
-                $objUser->setValoracion($objMySqlLi["valoracion"]);
-                array_push($arrayAux, $objUser);
+            $objResenya = new Resenya();
+            while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
+                $objResenya->setId_resenya($aux ["id_resenya"]);
+                $objResenya->setNombre_usuario($aux ["nombre_usuario"]);
+                $objResenya->setCp($aux ["cp"]);
+                $objResenya->setNombre_via($aux ["nombre_via"]);
+                $objResenya->setTipo_via($aux ["tipo_via"]);
+                $objResenya->setNumero($aux ["numero"]);
+                $objResenya->setDescripcion($aux ["descripcion"]);
+                $objResenya->setFecha_resenya($aux ["fecha_resenya"]);
+                $objResenya->setValoracion($aux["valoracion"]);
+                array_push($arrayAux, $objResenya);
             }
         }
-        //mysqli_close($this->conexion);
         return $arrayAux;
     }
 
-    function read_by_inmueble($id_resenya) {
-
+    function read_by_inmueble($numero, $cp, $nombre_via, $tipo_via) {
         $objMySqlLi = $this->conexion->query($sql);
-        $sql = "SELECT * FROM `resenya` r, inmueble i WHERE i.`numero`, i.cp , i.nombre_via, i.tipo_via  AND r.`id_resenya` = '$id_resenya'";
+        $sql = "SELECT * FROM `resenya` r WHERE r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
+        $arrayAux = [];
         //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
         if ($objMySqlLi->num_rows > 0) {
-            while(mysqli_fetch_assoc($objMySqlLi)){
-            $objInmueble->setId_resenya($arrayAux["id_resenya"]);
-            $objInmueble->setNombre_usuario($objMySqlLi["nombre_usuario"]);
-            $objInmueble->setCp($objMySqlLi["cp"]);
-            $objInmueble->setNombre_via($objMySqlLi["nombre_via"]);
-            $objInmueble->setTipo_via($objMySqlLi["tipo_via"]);
-            $objInmueble->setNumero($objMySqlLi["numero"]);
-            $objInmueble->setDescripcion($objMySqlLi["descripcion"]);
-            $objInmueble->setFecha_resenya($objMySqlLi["fecha_resenya"]);
-            $objInmueble->setValoracion($objMySqlLi["valoracion"]);
-            array_push($arrayAux, $objInmueble);
+            $objResenya = new Resenya();
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+                $objResenya->setId_resenya($arrayAux["id_resenya"]);
+                $objResenya->setNombre_usuario($objMySqlLi["nombre_usuario"]);
+                $objResenya->setCp($objMySqlLi["cp"]);
+                $objResenya->setNombre_via($objMySqlLi["nombre_via"]);
+                $objResenya->setTipo_via($objMySqlLi["tipo_via"]);
+                $objResenya->setNumero($objMySqlLi["numero"]);
+                $objResenya->setDescripcion($objMySqlLi["descripcion"]);
+                $objResenya->setFecha_resenya($objMySqlLi["fecha_resenya"]);
+                $objResenya->setValoracion($objMySqlLi["valoracion"]);
+                array_push($arrayAux, $objResenya);
+            }
         }
+        return $arrayAux;
+    }
+    
+    function read_by_usuario_inmueble($nombre_usuario,$numero, $cp, $nombre_via, $tipo_via) {
+        $objMySqlLi = $this->conexion->query($sql);
+        $sql = "SELECT * FROM `resenya` r WHERE r.`nombre_usuario`='$nombre_usuario' r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
+        $arrayAux = [];
+        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+        if ($objMySqlLi->num_rows > 0) {
+            $objResenya = new Resenya();
+            while (mysqli_fetch_assoc($objMySqlLi)) {
+                $objResenya->setId_resenya($arrayAux["id_resenya"]);
+                $objResenya->setNombre_usuario($objMySqlLi["nombre_usuario"]);
+                $objResenya->setCp($objMySqlLi["cp"]);
+                $objResenya->setNombre_via($objMySqlLi["nombre_via"]);
+                $objResenya->setTipo_via($objMySqlLi["tipo_via"]);
+                $objResenya->setNumero($objMySqlLi["numero"]);
+                $objResenya->setDescripcion($objMySqlLi["descripcion"]);
+                $objResenya->setFecha_resenya($objMySqlLi["fecha_resenya"]);
+                $objResenya->setValoracion($objMySqlLi["valoracion"]);
+                array_push($arrayAux, $objResenya);
+            }
         }
-        //mysqli_close($this->conexion);
         return $arrayAux;
     }
 

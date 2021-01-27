@@ -18,6 +18,37 @@ $url_error = "../Vistas/alta_inmueble.php";
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
+function getInmuebleByDireccion($direccion) {
+    $numero = $direccion[0];
+    $cp = $direccion[1];
+    $nombre_via = $direccion[2];
+    $tipo_via = $direccion[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_imueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+    $dao->destruct();
+
+    $inmueble = new inmueble();
+    if (mysqli_num_rows($aux) > 0) {
+        while ($fila = mysqli_fetch_array($aux)) {
+            $inmueble->setNumero($fila['numero']);
+            $inmueble->setCp($fila['cp']);
+            $inmueble->setCocina($fila['cocina']);
+            $inmueble->setFotos($fila['fotos']);
+            $inmueble->setMetros($fila['m2']);
+            $inmueble->setNombre_localidad($fila['nombre_localidad']);
+            $inmueble->setNombre_provincia($fila['nomnre_provincia']);
+            $inmueble->setNombre_usuario_duenyo($fila['nombre_usuario_duenyo']);
+            $inmueble->setNombre_via($fila['nombre_via']);
+            $inmueble->setNum_banyos($fila['num_banyos']);
+            $inmueble->setNum_hab($fila['num_hab']);
+            $inmueble->setPlanta($fila['planta']);
+            $inmueble->setNumero_plantas($fila['numero_plantas']);
+        }
+    }
+
+    return $inmueble;
+}
 
 function insertInmueble() {
     if ($_POST["btonInsertar"]) {
@@ -246,6 +277,7 @@ function listar_inmuebles_usuario() {
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
         echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
+
     }
 echo "<pre>";
 var_dump($inmueble1);
