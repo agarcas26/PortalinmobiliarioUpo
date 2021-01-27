@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <script src="../scripts.js"></script>
         <?php
-        include_once '../Vistas/header.php';
-        include_once '../Vistas/aside.php';
+        include_once 'header.php';
+        include_once 'aside.php';
         include_once '../Controladores/InmueblesController.php';
         include_once '../Controladores/ResenyasController.php';
         ?>
@@ -33,9 +33,12 @@
                         //Galería de imágenes del inmueble
                         ?>
                     </ul>
-                    <table>
+                    <table>  
+                      
+                       
                         <?php
-                                                listar_inmuebles_usuario();
+                       
+                                                listar_inmuebles_usuarioAll();
                         ?>
                     </table>
                 </section>
@@ -49,6 +52,6 @@
         </main>
     </body>
     <?php
-    include_once '../Vistas/footer.html';
+    include_once 'footer.html';
     ?>
 </html>

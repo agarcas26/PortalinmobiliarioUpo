@@ -80,6 +80,20 @@
                             </form>
                         </table>
                     </section>
+                    <h4>Mis Inmuebles</h4>
+                    <!-- Mostramos vista previa inmuebles -->
+                    <section>
+                        <table>
+                            <?php
+                            if (!isset($_POST['ver_todos_inmuebles'])) {
+                               listar_inmuebles_usuario();
+                            }
+                            ?>
+                            <form action="inmueble.php" method="POST">
+                                <input class="btn btn-primary" type="submit" name="ver_todos" id="ver_todos" value="Ver todos" />
+                            </form>
+                        </table>
+                    </section>
                 </article>
             </main>
         </body>
