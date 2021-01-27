@@ -6,6 +6,7 @@
         <title>Pago</title>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/AnunciosController.php';
         ?>
         <script type="text/javascript">
             function datosTarjeta() {
@@ -67,7 +68,7 @@
                         <td><strong>Datos del usuario</strong></td>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td><?php mostrar_info_anuncio($_GET["id_anuncio"]);?></td>
                         <td><?php echo $usuario; ?></td>
                     </tr>
                 </table>

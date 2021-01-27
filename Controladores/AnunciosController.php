@@ -62,6 +62,22 @@ function mostrar_detalle_anuncio($id_anuncio) {
     }
 }
 
+function mostrar_info_anuncio($id_anuncio) {
+    $dao = new daoAnuncios();
+    $array_anuncios = $dao->listar();
+    $dao->destruct();
+    while ($fila = mysqli_fetch_array($array_anuncios)) {
+        if ($id_anuncio == $fila[0]) {
+            echo '<h5>Titulo:' . $fila[9] . '</h5><br>'
+            . '<Precio:' . $fila[7] . '<br>'
+            . 'CP:' . $fila[4] . '<br>'
+            . 'Fecha:' . $fila[8] . '<br>'
+            . 'Anunciante:' . $fila[5] . '<br>'
+            . 'Direccion: ' . $fila[2] . ' ' . $fila[1] . ' numero ' . $fila[4];
+        }
+    }
+}
+
 function insertAnuncio() {
     if ($_POST["btonInsertar"]) {
         if (empty("txtPrecio")) {
