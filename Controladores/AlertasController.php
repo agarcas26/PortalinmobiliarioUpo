@@ -40,7 +40,7 @@ function get_alertas_usuario() {
         echo '</tr><tr>';
         echo '<td>Precio máximo: ' . $alertas[$i][6] . '€</td>';
         echo '</tr><tr>';
-        echo '<td><button onclick="eliminar_alerta('.$alertas[$i][0].');" type="button">Eliminar alerta</button></td>';
+        echo '<td><a  href="../Controladores/busquedaController.php?id_busqueda='. $alertas[$i][0].'"><Button>Eliminar alerta</Button></a></td>';
         echo '</tr>';
         echo '</table>';
     }
