@@ -78,6 +78,17 @@ function mostrar_info_anuncio($id_anuncio) {
     }
 }
 
+function getPrecio($id_anuncio) {
+    $dao = new daoAnuncios();
+    $array_anuncios = $dao->listar();
+    $dao->destruct();
+    while ($fila = mysqli_fetch_array($array_anuncios)) {
+        if ($id_anuncio == $fila[0]) {
+            return $fila[7];
+        }
+    }
+}
+
 function insertAnuncio() {
     if ($_POST["btonInsertar"]) {
         if (empty("txtPrecio")) {

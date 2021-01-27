@@ -49,7 +49,7 @@
                 <input type="hidden" name="lc" value="US">
                 <input type="hidden" name="item_name" value="inmueble">
                 <input type="hidden" name="item_number" value=<?php echo $_GET["id_anuncio"]; ?>>
-                <input type="hidden" name="amount" value="100.00">
+                <input type="hidden" name="amount" value=<?php echo getPrecio($_GET["id_anuncio"]); ?>>
                 <input type="hidden" name="button_subtype" value="services">
                 <input type="hidden" name="no_note" value="100">
                 <input type="hidden" name="currency_code" value="EUR">
