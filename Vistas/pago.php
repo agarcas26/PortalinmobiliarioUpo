@@ -1,8 +1,10 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <title>Pago</title>
-        <?php        
+        <?php
         include_once '../Vistas/header.php';
         ?>
         <script type="text/javascript">
@@ -23,19 +25,38 @@
     <body>
         <header class="masthead text-white text-center">
             <?php
-            if (isset($_SESSION['usuario'])) {
+            if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
+                $usuario = $_SESSION['admin'];
             } else {
                 no_sesion_iniciada();
+            }
+            if (isset($_SESSION['usuario_particular'])) {
+                $usuario = $_SESSION['usuario_particular'];
+            } else if (isset($_SESSION['usuario_profesional'])) {
+                $usuario = $_SESSION['usuario_profesional'];
             }
             ?>
         </header>
         <main>
+
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="PortalInmobiliarioUPO@gmail.com">
+                <input type="hidden" name="lc" value="US">
+                <input type="hidden" name="item_name" value="inmueble">
+                <input type="hidden" name="item_number" value=<?phpecho $_GET["id_anuncio"];?>>
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
             <form action="pagoController.php" method="POST">
-                <input type="submit" name="paypal" value="PayPal" />
-                <input type="submit" name="visa" onclick="datosTarjeta()" value="Visa" />
+                <input class="btn btn-primary" type="submit" name="visa" onclick="datosTarjeta()" value="Visa" />
                 <table id="datos_visa">
                 </table>
                 <table>
@@ -45,10 +66,10 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>
+                        <td><?php echo $usuario; ?></td>
                     </tr>
                 </table>
-                <input type="submit" name="guardar" value="Confirmar pago" />
+                <input class="btn-block btn-secondary" type="submit" name="guardar" value="Confirmar pago" />
             </form>
         </main>
     </body>
