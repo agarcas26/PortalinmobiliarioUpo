@@ -13,9 +13,9 @@
         <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
-                sesion_iniciada();
+                header("Location: ../Vistas/index.php");
             } elseif (isset($_SESSION['admin'])) {
-                cabecera_admin();
+                header("Location: ../Vistas/index.php");
             } else {
                 no_sesion_iniciada();
             }
