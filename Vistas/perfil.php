@@ -53,7 +53,7 @@
                         </table>
                     </section>
                     <!-- Mostramos vista previa alertas -->
-                    <h4 class="display-4">Mis alertas</h4>
+                    <h4>Mis alertas</h4>
                     <section>
                         <table>
                             <?php
