@@ -162,9 +162,9 @@ function modificarInmueble() {
             $inmueble1->setMetros($_POST["txtMetros"]);
             $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
             $inmueble1->setFotos($_POST["fileFotos"]);
-            $daoInmueble2 = new daoinmueble();
+            $daoInmueble2 = new daoInmuebles();
             $modifyOk = $daoInmueble2->modificar($inmueble1);
-            $daoInmueble->destruct();
+            $daoInmueble2->destruct();
             if (!$modifyOk) {
                 $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
             }
@@ -235,13 +235,22 @@ function listar_inmuebles_usuario() {
     } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
-    $dao->destruct();
+    //$dao->destruct();
+
 
     //Listar  inmuebles by usuario
-    for($i = 0; $i < sizeof($inmuebles_usuario); $i++){
+    for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
         echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
     }
+    
+    if (!$inmuebles_usuario) {
+                $_SESSION["errores"]["inmuebles_usuario"] = "No se ha encontrado";
+            }
+            if ($inmuebles_usuario) {
+                header('Location: ../Vistas/inmueble.php');
+            } else {
+                header('Location: ../Vistas/perfil.php'); //mensajes de errores
+            }
 }
