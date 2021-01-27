@@ -51,12 +51,13 @@ class daoInmuebles {
         mysqli_close($this->conexion);
     }
 
-    public function read($nombre_usuario_duenyos) {
+    public function read( $objInmueble) {
+        $nombre_usuario_duenyos= $objInmueble->getNombre_usuario_duenyo();
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
 
 
-        if ($objMySqlLi->num_rows > 0) {
+        if ($objMySqlLi->num_rows != 1) {
             while (mysqli_fetch_assoc($objMySqlLi)) {
                 $objInmueble->setNumero($objMySqlLi["numero"]);
                 $objInmueble->setCp($objMySqlLi["cp"]);
@@ -77,7 +78,7 @@ class daoInmuebles {
                 array_push($arrayAux, $objInmueble);
             }
         }
-        //mysqli_close($this->conexion);
+        mysqli_close($this->conexion);
         return $arrayAux;
     }
 

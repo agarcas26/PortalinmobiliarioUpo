@@ -178,7 +178,7 @@ function modificarInmueble() {
 }
 
 function listar() {
-    $daoinmueble = new daoinmueble();
+    $daoinmueble = new daoInmuebles();
     $inmuebles = $daoinmueble->listar();
     $daoInmueble->destruct();
 
@@ -236,9 +236,9 @@ function listar_inmuebles_usuario() {
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
 
-    $dao = new daoinmueble();
+    $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
-    $daoInmueble->destruct();
+    $dao->destruct();
 
     //Listar  inmuebles by usuario
     while (mysqli_fetch_array($inmuebles_usuario)) {
