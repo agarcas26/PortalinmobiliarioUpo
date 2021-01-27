@@ -242,6 +242,6 @@ function listar_inmuebles_usuario() {
 
     //Listar  inmuebles by usuario
     for($i = 0; $i < sizeof($inmuebles_usuario); $i++){
-        echo '<option>' . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . " - " . $inmuebles_usuario[$i]->get . '</option>';
+        echo '<option>' . $inmuebles_usuario[$i]->getNumero() . " - " . $inmuebles_usuario[$i]->getCp() . " - " . $inmuebles_usuario[$i]->getNombre_via() . " - " . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
     }
 }
