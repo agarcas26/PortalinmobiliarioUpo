@@ -52,7 +52,11 @@ function mostrar_detalle_anuncio($id_anuncio) {
             . '<td>Anunciante:' . $fila[4] . '</td>'
             . '</tr>'
             . '<tr>'
-            . '<td>Direccion: ' . $fila[8] .' '. $fila[5] .' numero '. $fila[6] . '</td>'
+            . '<td>Direccion: ' . $fila[8] . ' ' . $fila[5] . ' numero ' . $fila[6] . '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
+            . '<button name="transaccion" id="transaccion" value="transaccion">Lo quiero</button></a></td>'
             . '</tr>';
         }
     }
