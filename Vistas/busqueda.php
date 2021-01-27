@@ -30,8 +30,8 @@ and open the template in the editor.
             ?>
         </header>
         <main>
-            <button style="float: right;" id="mostrar_ocultar" class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
-
+            <button id="mostrar_ocultar" style="float: right;"  class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
+            <br><br>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
                 <form method="GET" action="../Controladores/busquedaController.php">
                     <table class="table-bordered">
@@ -105,14 +105,11 @@ and open the template in the editor.
                 </table>
             </article>
             <script type="text/javascript">
+                
                 $(document).ready(function () {
-                    $("mostrar_ocultar").click(function () {
-                        if ($("#filtros_aside:visible")) {
-                            $("#filtros_aside").hide();
-                        } else {
-                            $("#filtros_aside").show();
-                        }
-
+                    $("#filtros_aside").toggle("fast");
+                    $("#mostrar_ocultar").click(function () {
+                            $("#filtros_aside").toggle("fast");
                     });
                 });
             </script>
