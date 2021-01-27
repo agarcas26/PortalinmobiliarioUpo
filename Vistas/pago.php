@@ -53,6 +53,8 @@
                 <input type="hidden" name="button_subtype" value="services">
                 <input type="hidden" name="no_note" value="100">
                 <input type="hidden" name="currency_code" value="EUR">
+                <input type='hidden' name='rm' value='2'>
+                 <input type="hidden" name="return" value="http://174.138.6.73/Controladores/checkout_controller.php?id_anuncio=". <?php echo $_GET["id_anuncio"]; ?>>
                 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
                 <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
                 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
