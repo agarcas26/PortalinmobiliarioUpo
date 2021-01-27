@@ -32,7 +32,7 @@ function mostrar_detalle_anuncio($id_anuncio) {
     $array_anuncios = $dao->listar();
     $dao->destruct();
     while ($fila = mysqli_fetch_array($array_anuncios)) {
-        if ($id_anuncio == $fila[2]) {
+        if ($id_anuncio == $fila[0]) {
             echo '<tr>'
             . '<td></td>' //FOTOS
             . '</tr>'
@@ -43,20 +43,20 @@ function mostrar_detalle_anuncio($id_anuncio) {
             . '<td>Precio:' . $fila[7] . '</td>'
             . '</tr>'
             . '<tr>'
-            . '<td>CP:' . $fila[0] . '</td>'
+            . '<td>CP:' . $fila[4] . '</td>'
             . '</tr>'
             . '<tr>'
-            . '<td>Fecha:' . $fila[1] . '</td>'
+            . '<td>Fecha:' . $fila[8] . '</td>'
             . '</tr>'
             . '<tr>'
-            . '<td>Anunciante:' . $fila[4] . '</td>'
+            . '<td>Anunciante:' . $fila[5] . '</td>'
             . '</tr>'
             . '<tr>'
-            . '<td>Direccion: ' . $fila[8] . ' ' . $fila[5] . ' numero ' . $fila[6] . '</td>'
+            . '<td>Direccion: ' . $fila[2] . ' ' . $fila[1] . ' numero ' . $fila[4] . '</td>'
             . '</tr>'
             . '<tr>'
             . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="transaccion" id="transaccion" value="transaccion">Lo quiero</button></a></td>'
+            . '<button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>'
             . '</tr>';
         }
     }
