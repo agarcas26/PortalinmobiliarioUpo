@@ -35,5 +35,6 @@ if($_POST["payment_status"]!="VERIFIED"){
      $dao=new daoAnuncios();
     $dao->eliminar($_GET["id_anuncio"]);
     $dao->destruct();
+    header("Location: ../Vistas/index.php");
 }
 
