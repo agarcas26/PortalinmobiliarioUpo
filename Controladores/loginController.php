@@ -3,6 +3,7 @@
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuarios.php';
+session_destroy();
 session_start();
 
 if (isset($_POST['entrar'])) {
