@@ -274,13 +274,14 @@ function listar_inmuebles_usuarioAll() {
 //        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
 //        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
 //        '</option>';
-        $direccion = $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getTipoVia();
+        $direccion = $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getTipo_via();
 
         echo '<table id="inmuebles">';
         echo '</tr><tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
+        echo '<td>' . ' - Tipo vía : ' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
         echo '<a href="../Vistas/detalles_inmueble.php?direccion="' . $direccion . '"">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
         . '</td>'
