@@ -331,6 +331,31 @@ function get_inmueble_by_direccion() {
 
     echo "</pre>";
 }
+
+function getInmuebleByAnuncio($anuncio) {
+    $lista = listar();
+    $i = 0;
+    $encontrado = false;
+    $r = false;
+
+    while ($encontrado == false && i < sizeof($lista)) {
+        $aux = new inmueble();
+        if ($lista[$i]->getCp() == $anuncio->getCP()) {
+            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
+                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
+                    $r = $lista[$i];
+                    $encontrado = true;
+                }
+            }
+        }
+
+        $i++;
+    }
+
+    return $r;
+}
+
+
 //function listar() {
 //    $daoInmueble = new daoInmuebles();
 //    $inmuebles = $daoInmueble->listar();
@@ -357,26 +382,3 @@ function get_inmueble_by_direccion() {
 //    }
 //    return $anuncios;
 //}
-//function getInmuebleByAnuncio($anuncio) {
-//    $lista = listar();
-//    $i = 0;
-//    $encontrado = false;
-//    $r = false;
-//
-//    while ($encontrado == false && i < sizeof($lista)) {
-//        $aux = new inmueble();
-//        if ($lista[$i]->getCp() == $anuncio->getCP()) {
-//            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
-//                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
-//                    $r = $lista[$i];
-//                    $encontrado = true;
-//                }
-//            }
-//        }
-//
-//        $i++;
-//    }
-//
-//    return $r;
-//}
-
