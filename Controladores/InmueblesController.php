@@ -289,6 +289,10 @@ function listar_inmuebles_usuarioAll() {
         . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
         . '</td>'
         . '</a>';
+        echo '<a href="../Vistas/modInmueble.php">'
+        . '<input type="submit" name="mod_inmueble" id="mod_inmueble" value="Modificar datos" />'
+        . '</td>'
+        . '</a>';
         echo '</tr>';
         echo '</table>';
     }
@@ -337,7 +341,6 @@ function getInmuebleByAnuncio($anuncio) {
     $r = false;
 
     while ($encontrado == false && $i < sizeof($lista)) {
-        $aux = new Inmueble();
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
