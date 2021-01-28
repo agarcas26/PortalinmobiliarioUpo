@@ -52,12 +52,12 @@ class daoInmuebles {
     }
 
     public function read($nombre_usuario_duenyos) {
-        
-        
+
+
         $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new inmueble();
-       $arrayAux = [];
+        $arrayAux = [];
         if ($objMySqlLi->num_rows > 0) {
             while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
                 $objInmueble->setNumero($objInmuebleAux["numero"]);
@@ -78,9 +78,8 @@ class daoInmuebles {
 
                 array_push($arrayAux, $objInmueble);
             }
-            
         }
-       
+
 //        if ($this->conexion->query($sql) === true) {
 //
 //            echo "New record created successfully";
@@ -90,7 +89,7 @@ class daoInmuebles {
 //        }
 //        mysqli_close($this->conexion);
 
-         return $arrayAux;
+        return $arrayAux;
     }
 
     public function eliminar($objInmueble) {
@@ -144,11 +143,21 @@ class daoInmuebles {
         return $resultado;
     }
 
-    function get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
-        $sentence = "SELECT * FROM `inmueble` WHERE `inmueble`.`numero` = '" . $numero . "' "
+    function get_inmueble_by_direccion($objInmueble) {
+        $numero = $objInmueble->getNumero();
+        $cp = $objInmueble->getCp();
+        $nombre_via = $objInmueble->getNombre_via();
+        $tipo_via = $objInmueble->getTipo_via();
+
+        $sql = "SELECT * FROM `inmueble` WHERE `inmueble`.`numero` = '" . $numero . "' "
                 . "and `inmueble`.`cp`='" . $cp . "' and `inmueble`.`nombre_via`='" . $nombre_via . "' "
                 . "and `inmueble`.`tipo_via`='" . $tipo_via . "'";
-        $result = mysqli_query($this->conexion, $sentence);
+        if (!$this->conexion->query($sql)) {
+            return false;
+        } else {
+            return true;
+        }
+        mysqli_close($this->conexion);
     }
 
 }
