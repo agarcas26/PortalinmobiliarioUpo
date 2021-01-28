@@ -22,7 +22,7 @@ function ver_detalle($id_anuncio) {
     $anuncio = readAnuncio($id_anuncio);
     $tipo_anuncio = $daoAnuncios->get_tipo_anuncio($id_anuncio);
     $daoAnuncios->destruct();
-    $inmueble_anunciado = getInmuebleByAnuncio($anuncio[0]);
+    $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
 
     mostrar_detalle_anuncio();
     header("Location: ../Vistas/detalle_anuncio.php");
@@ -372,7 +372,7 @@ function anuncios_busqueda() {
             $anuncio_aux->setNombre_usuario_anuncio($anuncio[6]);
             $anuncio_aux->setPrecio($anuncio[7]);
             $anuncio_aux->setFecha_anuncio($anuncio[8]);
-            if (probarFiltros($filtros, $anuncio) ) {
+            if (probarFiltros($filtros, $anuncio_aux) ) {
                 $anuncios[] = $anuncio_aux;
             }
         }
