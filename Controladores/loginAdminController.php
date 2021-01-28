@@ -1,10 +1,38 @@
 <?php
 
+include_once '../Controladores/AdministradoresController.php';
+include_once '../Modelos/AdministradoresModel.php';
+include_once '../DAO/daoAdministradores.php';
+
+session_start();
+
 if (isset($_POST['entrar'])) {
-    if (iniciar_sesion_administrador($_POST['user'], $_POST['pass'])) {
-        $_SESSION['usuario'] = $_POST['user'];  //sesion distinta?
-        header("Location: index.php");
+    $dao = new daoAdministradores();
+    if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
+        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
+        $usuario = getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
+        
+            $_SESSION['admin'] = $_POST['nombre_usuario'];
+            
+        header("Location: ../Vistas/index.php");
     } else {
-        alert("Introduzca unas credenciales válidas");
+        header("Location: ../Vistas/login_admin.php");
     }
+
+    $dao->destruct();
+}
+
+function controllerInicioSesion($nombre_usuario, $pass) {
+    $r = false;
+    if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{0,15}/", $pass)) {
+        $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
+        $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+        $usuario = getUsuarioByUsuario($nombre_usuario, $pass);
+        if (isset($usuario)) {
+            if ($usuario->get_contrasenya_user() == $pass) {
+                $r = true;
+            }
+        }
+    }
+    return $r;
 }
