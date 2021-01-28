@@ -103,13 +103,14 @@ class daoInmuebles {
     }
 
     function get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
-
         $sql = "SELECT * FROM `inmueble` WHERE `numero` = '" . $numero . "' "
                 . "and `cp`='" . $cp . "' and `nombre_via`='" . $nombre_via . "' "
                 . "and `tipo_via`='" . $tipo_via . "'";
+        
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new inmueble();
         $arrayAux = [];
+        
         if ($objMySqlLi->num_rows > 0) {
             while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
                 $objInmueble->setNumero($objInmuebleAux["numero"]);

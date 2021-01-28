@@ -19,7 +19,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = preg_split("-", $direccion);
+    $direccion = preg_split("/-/", $direccion);
     
     $numero = $direccion[0];
     $cp = $direccion[1];
