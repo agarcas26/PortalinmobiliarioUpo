@@ -17,7 +17,7 @@ if (isset($_GET["id_inmueble"])) {
     }
 
     $inmueble = getInmuebleByDireccion($_GET["id_inmueble"]);
-    $id_inmueble = preg_split(" ", $_GET["id_inmueble"]);
+    $id_inmueble = preg_split("-", $_GET["id_inmueble"]);
 
     if ($inmueble) {
         if (file_exists($inmueble->getFotos())) {
