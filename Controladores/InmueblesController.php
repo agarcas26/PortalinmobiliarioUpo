@@ -361,6 +361,7 @@ function listar() {
     $anuncios = [];
     if (mysqli_num_rows($inmuebles) > 0) {
         while ($aux = mysqli_fetch_array($inmuebles)) {
+            print_r(mysqli_fetch_array($inmuebles));
             $inmueble_aux = new Inmueble();
             $inmueble_aux->setNumero($aux[0]);
             $inmueble_aux->setCp($aux[1]);
