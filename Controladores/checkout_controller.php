@@ -3,6 +3,8 @@ require_once '../Dao/daoAnuncios.php';
 require_once '../Dao/daoAlquiler.php';
 require_once '../Dao/daoCompra.php';
 require_once '../Dao/daoPago.php';
+require_once '../Dao/daoContrato_Alquiler.php';
+require_once '../Dao/daoContrato_Compra.php';
 require_once '../Modelos/AnunciosModel.php';
 require_once '../Modelos/AlquilerModel.php';
 require_once '../Modelos/CompraModel.php';
@@ -27,6 +29,7 @@ if($_POST["payment_status"]!="VERIFIED"){
         $dao->crear_compra($usuario, $anuncio, $señal);
         
         $dao->destruct();
+        $
     }else{
         $dao=new daoAlquiler();
         $dao->crear_alquileres($usuario, $anuncio);
