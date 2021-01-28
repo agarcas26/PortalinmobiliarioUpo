@@ -34,6 +34,7 @@
                         <li><a href="../Vistas/mis_anuncios.php">Mis anuncios</a></li>
                         <li><a href='../Vistas/mis_favoritos.php'>Mis favoritos</a></li>
                         <li><a href='../Vistas/mis_alertas.php'>Mis alertas</a></li>
+                         <li><a href='../Vistas/inmueble.php'>Mis inmuebles</a></li>
                     </ul>
                 </nav>
             </aside>
