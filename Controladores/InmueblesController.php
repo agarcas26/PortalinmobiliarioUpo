@@ -20,7 +20,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 
 function getInmuebleByDireccion($direccion) {
     $direccion = preg_split("/-/", $direccion);
-    
+
     $numero = $direccion[0];
     $cp = $direccion[1];
     $nombre_via = $direccion[2];
@@ -31,23 +31,22 @@ function getInmuebleByDireccion($direccion) {
     $dao->destruct();
 
     $inmueble = new inmueble();
-    if (mysqli_num_rows($aux) > 0) {
-        while ($fila = mysqli_fetch_array($aux)) {
-            $inmueble->setNumero($fila['numero']);
-            $inmueble->setCp($fila['cp']);
-            $inmueble->setCocina($fila['cocina']);
-            $inmueble->setFotos($fila['fotos']);
-            $inmueble->setMetros($fila['m2']);
-            $inmueble->setNombre_localidad($fila['nombre_localidad']);
-            $inmueble->setNombre_provincia($fila['nomnre_provincia']);
-            $inmueble->setNombre_usuario_duenyo($fila['nombre_usuario_duenyo']);
-            $inmueble->setNombre_via($fila['nombre_via']);
-            $inmueble->setNum_banyos($fila['num_banyos']);
-            $inmueble->setNum_hab($fila['num_hab']);
-            $inmueble->setPlanta($fila['planta']);
-            $inmueble->setNumero_plantas($fila['numero_plantas']);
-        }
+    for ($i = 0; $i < sizeof($aux); $i++) {
+        $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setCocina($aux[$i]->getCocina());
+        $inmueble->setFotos($aux[$i]->getFotos());
+        $inmueble->setMetros($aux[$i]->getMetros());
+        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
+        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
+        $inmueble->setNombre_usuario_duenyo($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
+        $inmueble->setNum_hab($aux[$i]->getNum_hab());
+        $inmueble->setPlanta($aux[$i]->getPlanta());
+        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
     }
+
 
     return $inmueble;
 }
@@ -224,7 +223,7 @@ function listar_inmuebles_usuario() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    //Listar  inmuebles by usuario
+//Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         echo '<table id="inmuebles">';
@@ -255,7 +254,7 @@ function listar_inmuebles_usuarioAll() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    //Listar  inmuebles by usuario
+//Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 //        echo '<option>'
 //        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
@@ -360,7 +359,7 @@ function listar() {
     $inmuebles = $daoInmueble->listar();
     $daoInmueble->destruct();
 
-    $anuncios = [] ;
+    $anuncios = [];
     while ($aux = mysqli_fetch_array($inmuebles)) {
         $inmueble_aux = new inmueble();
         $inmueble_aux->setCp($aux[1]);
