@@ -19,12 +19,13 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = explode("-", $direccion);
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
 
-    $numero = $direccion[0];
-    $cp = $direccion[1];
-    $nombre_via = $direccion[2];
-    $tipo_via = $direccion[3];
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
 
     $dao = new daoInmuebles();
     $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
@@ -41,7 +42,7 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setMetros($aux[$i]->getMetros());
         $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
         $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
-        $inmueble->setNombre_usuario_duenyo($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
         $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
         $inmueble->setNum_hab($aux[$i]->getNum_hab());
         $inmueble->setPlanta($aux[$i]->getPlanta());
@@ -281,7 +282,7 @@ function listar_inmuebles_usuarioAll() {
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
         echo '<td>' . ' - Tipo vía : ' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
-        echo '<a href="../Vistas/detalles_inmueble.php?direccion="' . $direccion . '"">'
+        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
         . '</td>'
         . '</a>';
@@ -340,7 +341,7 @@ function getInmuebleByAnuncio($anuncio) {
     $i = 0;
     $encontrado = false;
     $r = new Inmueble();
-    while (!$encontrado && $i < sizeof($lista)) {        
+    while (!$encontrado && $i < sizeof($lista)) {
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
