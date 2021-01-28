@@ -7,6 +7,7 @@
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/AnunciosController.php';
+        include_once '../DAO/daoAnuncios.php';
         ?>
         <script type="text/javascript">
             function datosTarjeta() {
@@ -47,9 +48,24 @@
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="PortalInmobiliarioUPO@gmail.com">
                 <input type="hidden" name="lc" value="US">
-                <input type="hidden" name="item_name" value="inmueble">
+                <input type="hidden" name="item_name" value=<?php
+                $dao=new daoAnuncios();
+                $tipo=$dao->get_tipo_anuncio($_GET["id_anuncio"]);
+                $dao->destruct;
+                if($tipo="compra"){
+                echo "Se&ntilde;al compra inmueble"; 
+                }else{
+                echo "Alquiler mensual";   
+                }
+                ?>>
                 <input type="hidden" name="item_number" value=<?php echo $_GET["id_anuncio"]; ?>>
-                <input type="hidden" name="amount" value=<?php echo getPrecio($_GET["id_anuncio"]); ?>>
+                <input type="hidden" name="amount" value=<?php
+                if($tipo="compra"){
+                echo getPrecio($_GET["id_anuncio"]*0.05); 
+                }else{
+                echo getPrecio($_GET["id_anuncio"]);   
+                }
+                ?>>
                 <input type="hidden" name="button_subtype" value="services">
                 <input type="hidden" name="no_note" value="100">
                 <input type="hidden" name="currency_code" value="EUR">
