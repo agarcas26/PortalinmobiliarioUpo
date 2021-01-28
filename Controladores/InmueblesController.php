@@ -19,7 +19,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = split("-", $direccion);
+    $direccion = explode("-", $direccion);
 
     $numero = $direccion[0];
     $cp = $direccion[1];
@@ -35,6 +35,7 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setNumero($aux[$i]->getNumero());
         $inmueble->setCp($aux[$i]->getCp());
         $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setTipo_via($aux[$i]->getTipo_via());
         $inmueble->setCocina($aux[$i]->getCocina());
         $inmueble->setFotos($aux[$i]->getFotos());
         $inmueble->setMetros($aux[$i]->getMetros());

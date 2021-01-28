@@ -14,7 +14,7 @@
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
                 if (isset($_SESSION['usuario_particular'])) {
-                    $usuario = getInmuebleByDireccion($direccion);
+                   // $usuario = getInmuebleByDireccion($direccion);
                 } else {
                     $usuario = $_SESSION['usuario_profesional'];
                 }
