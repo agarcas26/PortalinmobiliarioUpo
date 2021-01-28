@@ -19,7 +19,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = preg_split("/-/", $direccion);
+    $direccion = split("-", $direccion);
 
     $numero = $direccion[0];
     $cp = $direccion[1];
@@ -338,9 +338,8 @@ function getInmuebleByAnuncio($anuncio) {
     $lista = listar();
     $i = 0;
     $encontrado = false;
-    $r = false;
-
-    while ($encontrado == false && $i < sizeof($lista)) {
+    print_r($anuncio);
+    while (!$encontrado && $i < sizeof($lista)) {        
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {

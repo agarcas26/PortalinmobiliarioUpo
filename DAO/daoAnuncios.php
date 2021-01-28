@@ -53,24 +53,23 @@ class daoAnuncios {
 
 
         if ($objMySqlLi->num_rows > 0) {
-            while (mysqli_fetch_assoc($objMySqlLi)) {
-
-                $objAnuncio->setIdAnuncio($objMySqlLi["idAnuncio"]);
-                $objAnuncio->setNombre_via($objMySqlLi["nombre_via"]);
-                $objAnuncio->setTipo_via($objMySqlLi["tipo_via"]);
-                $objAnuncio->setCp($objMySqlLi["cp"]);
-                $objAnuncio->setNumero($objMySqlLi["numero"]);
-                $objAnuncio->setFecha_anuncio($objMySqlLi["fecha_anuncio"]);
-                $objAnuncio->setPrecio($objMySqlLi["precio"]);
-                $objAnuncio->setTitulo($objMySqlLi["titulo"]);
-                $objAnuncio->setNombre_usuario_publica($objMySqlLi["nombre_usuario_publica"]);
-                $objAnuncio->setNombre_usuario_anuncio($objMySqlLi["nombre_usuario_anuncio"]);
+            while ($aux = mysqli_fetch_assoc($aux)) {
+                $objAnuncio->setIdAnuncio($aux["idAnuncio"]);
+                $objAnuncio->setNombre_via($aux["nombre_via"]);
+                $objAnuncio->setTipo_via($aux["tipo_via"]);
+                $objAnuncio->setCp($aux["cp"]);
+                $objAnuncio->setNumero($aux["numero"]);
+                $objAnuncio->setFecha_anuncio($aux["fecha_anuncio"]);
+                $objAnuncio->setPrecio($aux["precio"]);
+                $objAnuncio->setTitulo($aux["titulo"]);
+                $objAnuncio->setNombre_usuario_publica($aux["nombre_usuario_publica"]);
+                $objAnuncio->setNombre_usuario_anuncio($aux["nombre_usuario_anuncio"]);
 
                 array_push($arrayAux, $objAnuncio);
             }
             //mysqli_close($this->conexion);
-            return $arrayAux;
         }
+        return $arrayAux;
     }
 
     public function eliminar($idAnuncio) {
@@ -125,10 +124,10 @@ class daoAnuncios {
 
         if (mysqli_num_rows($result) > 0) {
             $tipo_anuncio = "compra";
-        }else{
+        } else {
             $tipo_anuncio = "alquiler";
         }
-        
+
         return $tipo_anuncio;
     }
 
