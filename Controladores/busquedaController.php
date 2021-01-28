@@ -24,16 +24,7 @@ if (isset($_POST['aplicar_filtros'])) {
     $dao = new daoBusqueda();
     $dao->crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2);
     $dao->destruct();
-
-    mostrarVistaLista();
-}
-
-if (isset($_POST['lista'])) {
-    mostrarVistaLista();
-}
-
-if (isset($_POST['cuadricula'])) {
-    mostrarVistaCuadricula();
+    header("Location: ../Vistas/busqueda.php");
 }
 
 if (isset($_GET["id_busqueda"])) {
@@ -65,6 +56,7 @@ function mostrarVistaLista() {
         . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
         echo '</tr>';
     }
+    
 }
 
 function mostrarVistaCuadricula() {
