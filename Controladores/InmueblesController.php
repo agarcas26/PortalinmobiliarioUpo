@@ -289,8 +289,8 @@ function listar_inmuebles_usuarioAll() {
         . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
         . '</td>'
         . '</a>';
-        echo '<a href="../Vistas/mod.php">'
-        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+        echo '<a href="../Vistas/modInmueble.php">'
+        . '<input type="submit" name="mod_inmueble" id="mod_inmueble" value="Modificar datos" />'
         . '</td>'
         . '</a>';
         echo '</tr>';
