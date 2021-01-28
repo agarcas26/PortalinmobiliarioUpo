@@ -19,7 +19,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = preg_split(" ", $direccion);
+    $direccion = preg_split("-", $direccion);
     
     $numero = $direccion[0];
     $cp = $direccion[1];
@@ -274,7 +274,7 @@ function listar_inmuebles_usuarioAll() {
 //        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
 //        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
 //        '</option>';
-        $direccion = $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getTipo_via();
+        $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
         echo '<table id="inmuebles">';
         echo '</tr><tr>';
@@ -331,6 +331,31 @@ function get_inmueble_by_direccion() {
 
     echo "</pre>";
 }
+
+function getInmuebleByAnuncio($anuncio) {
+    $lista = listar();
+    $i = 0;
+    $encontrado = false;
+    $r = false;
+
+    while ($encontrado == false && i < sizeof($lista)) {
+        $aux = new inmueble();
+        if ($lista[$i]->getCp() == $anuncio->getCP()) {
+            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
+                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
+                    $r = $lista[$i];
+                    $encontrado = true;
+                }
+            }
+        }
+
+        $i++;
+    }
+
+    return $r;
+}
+
+
 //function listar() {
 //    $daoInmueble = new daoInmuebles();
 //    $inmuebles = $daoInmueble->listar();
@@ -357,26 +382,3 @@ function get_inmueble_by_direccion() {
 //    }
 //    return $anuncios;
 //}
-//function getInmuebleByAnuncio($anuncio) {
-//    $lista = listar();
-//    $i = 0;
-//    $encontrado = false;
-//    $r = false;
-//
-//    while ($encontrado == false && i < sizeof($lista)) {
-//        $aux = new inmueble();
-//        if ($lista[$i]->getCp() == $anuncio->getCP()) {
-//            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
-//                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
-//                    $r = $lista[$i];
-//                    $encontrado = true;
-//                }
-//            }
-//        }
-//
-//        $i++;
-//    }
-//
-//    return $r;
-//}
-
