@@ -249,8 +249,6 @@ function listar_inmuebles_usuarioAll() {
 
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-    $inmueble1 = new inmueble();
-    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
 
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
