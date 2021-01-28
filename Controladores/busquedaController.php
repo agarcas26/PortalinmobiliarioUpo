@@ -8,6 +8,11 @@ include_once '../Modelos/AnunciosModel.php';
 
 
 if (isset($_POST['aplicar_filtros'])) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = ($_SESSION['usuario_particular']);
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $nombre_usuario = ($_SESSION['usuario_rofesional']);
+    }
     $num_banyos = $_POST['num_banyos'];
     $tipo_inmueble = $_POST['tipo_inmueble'];
     $tipo_oferta = $_POST['tipo_oferta'];
@@ -16,9 +21,9 @@ if (isset($_POST['aplicar_filtros'])) {
     $m2 = $_POST['m2'];
     $fecha = $_POST['fecha'];
     $dao = new daoBusqueda();
-    $dao->crear_busqueda($num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2, $fecha);
+    $dao->crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2);
     $dao->destruct();
-    mostrarVistaLista();
+    mostrarVistaLista($fecha);
 }
 
 if (isset($_POST['lista'])) {
@@ -34,16 +39,18 @@ function mostrarVistaLista() {
         $array_anuncios = $dao->listar();
         $dao->destruct();
         while ($fila = mysqli_fetch_array($array_anuncios)) {
-            echo '<tr>';
-            echo '<td>' . '</td>';    //Insertar imágenes
-            echo '<td>' . $fila[1] . '</td>';
-            echo '<td>' . $fila[7] . '</td>';
-            echo '<td>' . $fila[8] . '</td>';
-            echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
-            . '  <button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
-            . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
-            . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
-            echo '</tr>';
+            if ($fila[8] > $fecha) {
+                echo '<tr>';
+                echo '<td>' . '</td>';    //Insertar imágenes
+                echo '<td>' . $fila[1] . '</td>';
+                echo '<td>' . $fila[7] . '</td>';
+                echo '<td>' . $fila[8] . '</td>';
+                echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $fila[0] . '">'
+                . '  <button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
+                . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
+                . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
+                echo '</tr>';
+            }
         }
     }
 }
