@@ -108,7 +108,7 @@ class daoInmuebles {
                 . "and `tipo_via`='" . $tipo_via . "'";
         
         $objMySqlLi = $this->conexion->query($sql);
-        $objInmueble = new inmueble();
+        $objInmueble = new Inmueble();
         $arrayAux = [];
         
         if ($objMySqlLi->num_rows > 0) {
@@ -142,7 +142,7 @@ class daoInmuebles {
         $arrayAux = [];
         if ($objMySqlLi->num_rows > 0) {
             while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
-                $objInmueble = new inmueble();
+                $objInmueble = new Inmueble();
                 $objInmueble->setNumero($objInmuebleAux["numero"]);
                 $objInmueble->setCp($objInmuebleAux["cp"]);
                 $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);

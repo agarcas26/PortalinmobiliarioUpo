@@ -31,7 +31,7 @@ function getInmuebleByDireccion($direccion) {
     $dao->destruct();
     $inmueble = [];
     for ($i = 0; $i < sizeof($aux); $i++) {
-        $inmueble = new inmueble();
+        $inmueble = new Inmueble();
         $inmueble->setNumero($aux[$i]->getNumero());
         $inmueble->setCp($aux[$i]->getCp());
         $inmueble->setNombre_via($aux[$i]->getNombre_via());
@@ -108,7 +108,7 @@ function insertInmueble() {
     }
     if ($_SESSION["validacion"]) {
 
-        $inmueble1 = new inmueble();
+        $inmueble1 = new Inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
         $inmueble1->setNombre_via($_POST["txtNombre_via"]);
@@ -184,7 +184,7 @@ function modificarInmueble() {
             $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
         }
         if ($_SESSION["validacion"]) {
-            $inmueble1 = new inmueble();
+            $inmueble1 = new Inmueble();
             $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
             $inmueble1->setNum_hab($_POST["txtNum_habitaciones"]);
             $inmueble1->setCocina($_POST["txtCocina"]);
@@ -216,7 +216,7 @@ function listar_inmuebles_usuario() {
 
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-    $inmueble1 = new inmueble();
+    $inmueble1 = new Inmueble();
     $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
 
     $dao = new daoInmuebles();
@@ -306,7 +306,7 @@ function get_inmueble_by_direccion() {
     if (isset($_SESSION['usuario_profesional'])) {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    $inmueble = new inmueble();
+    $inmueble = new Inmueble();
     $inmueble->setNumero($numero);
     $inmueble->setCp($cp);
     $inmueble->setNombre_via($nombre_via);
@@ -336,8 +336,8 @@ function getInmuebleByAnuncio($anuncio) {
     $encontrado = false;
     $r = false;
 
-    while ($encontrado == false && i < sizeof($lista)) {
-        $aux = new inmueble();
+    while ($encontrado == false && $i < sizeof($lista)) {
+        $aux = new Inmueble();
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
@@ -359,23 +359,26 @@ function listar() {
     $daoInmueble->destruct();
 
     $anuncios = [];
-    while ($aux = mysqli_fetch_array($inmuebles)) {
-        $inmueble_aux = new inmueble();
-        $inmueble_aux->setCp($aux[1]);
-        $inmueble_aux->setMetros($aux[13]);
-        $inmueble_aux->setNombre_localidad($aux[5]);
-        $inmueble_aux->setNombre_provincia($aux[6]);
-        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
-        $inmueble_aux->setNombre_via($aux[2]);
-        $inmueble_aux->setNum_banyos($aux[7]);
-        $inmueble_aux->setNumero($aux[0]);
-        $inmueble_aux->setNumero_plantas($aux[11]);
-        $inmueble_aux->setPlanta($aux[12]);
-        $inmueble_aux->setTipo($aux[10]);
-        $inmueble_aux->setCocina($aux[9]);
-        $inmueble_aux->setTipo_via($aux[3]);
-        $inmueble_aux->setFotos($aux[14]);
-        $inmueble_aux->setNum_hab($aux[8]);
+    if (mysqli_num_rows($inmuebles) > 0) {
+        while ($aux = mysqli_fetch_array($inmuebles)) {
+            $inmueble_aux = new Inmueble();
+            $inmueble_aux->setNumero($aux[0]);
+            $inmueble_aux->setCp($aux[1]);
+            $inmueble_aux->setNombre_via($aux[2]);
+            $inmueble_aux->setTipo_via($aux[3]);
+            $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+            $inmueble_aux->setNombre_localidad($aux[5]);
+            $inmueble_aux->setNombre_provincia($aux[6]);
+            $inmueble_aux->setNum_banyos($aux[7]);
+            $inmueble_aux->setNum_hab($aux[8]);
+            $inmueble_aux->setCocina($aux[9]);
+            $inmueble_aux->setTipo_inmueble($aux[10]);
+            $inmueble_aux->setNumero_plantas($aux[11]);
+            $inmueble_aux->setPlanta($aux[12]);
+            $inmueble_aux->setMetros($aux[13]);
+            $inmueble_aux->setFotos($aux[14]);
+            array_push($anuncios, $inmueble_aux);
+        }
     }
     return $anuncios;
 }

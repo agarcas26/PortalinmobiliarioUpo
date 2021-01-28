@@ -11,7 +11,7 @@
  *
  * @author agarc
  */
-class inmueble {
+class Inmueble {
 
     private $numero;
     private $cp;
