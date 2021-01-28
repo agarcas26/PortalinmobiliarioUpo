@@ -276,11 +276,14 @@ function listar_inmuebles_usuario() {
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
-        echo '<option>'
-        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
-        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
-        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
-        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() . '</option>';
+        echo '<table id="inmuebles">';
+        echo '</tr><tr>';
+        echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
+        echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
+        echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
+        
+        echo '</tr>';
+        echo '</table>';
     }
 //echo "<pre>";
 //var_dump($inmueble1);
@@ -346,6 +349,25 @@ function listar_inmuebles_usuarioAll() {
 //var_dump($inmuebles_usuario);
 //echo "</pre>";
 }
-function get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via){
+function get_inmueble_by_direccion(){
+    $daoInmuebles = new daoInmuebles();
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    }
+    if (isset($_SESSION['usuario_profesional'])) {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     
+    $inmueble = $daoInmuebles->get_inmueble_by_direccion($inmueble);
+    $daoInmuebles->destruct();
+    for ($i = 0; $i < sizeof( $inmueble); $i++) {
+        echo '<table id="inmuebles">';
+        echo '</tr><tr>';
+        echo '<td>' . ' Número : ' . $inmueble[$i]->getNumero() . " " . '</td>';
+        echo '<td>' . ' Código Postal :' . $inmueble[$i]->getCp() . '</td>';
+        echo '<td>' . ' - Nombre vía : ' . $inmueble[$i]->getNombre_via() . " " . '</td>';
+        
+        echo '</tr>';
+        echo '</table>';
+    }
 }

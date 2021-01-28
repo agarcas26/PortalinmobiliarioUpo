@@ -29,7 +29,7 @@ class daoPago {
         
     }
 
-    function crear_pago() {
+    function crear_pago($fecha) {
         $sentence = "INSERT INTO `pago`(`id_pago`, `id_contrato_senyal_compra`, `id_contrato_alquiler`, `fecha_pago`) VALUES ([value-1],[value-2],[value-3],[value-4])";
     }
 
