@@ -60,13 +60,15 @@ function mostrarVistaCuadricula() {
     $array_anuncios = $dao->listar();
     $dao->destruct();
     for ($i = 0; $i < sizeof($array_anuncios); $i++) {
-        echo '<tr>';
-        echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $array_anuncios[$i][7] . '</td>';
-        echo '<form>';
-        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>' . '</td>';
-        echo '</form>';
-        echo '</tr>';
+        if ($fila[8] > $fecha) {
+            echo '<tr>';
+            echo '<td>' . '</td>';    //Insertar imágenes
+            echo '<td>' . $array_anuncios[$i][7] . '</td>';
+            echo '<form>';
+            echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $array_anuncios[$i][0] . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>' . '</td>';
+            echo '</form>';
+            echo '</tr>';
+        }
     }
 }
 
