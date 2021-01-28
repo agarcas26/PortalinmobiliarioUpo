@@ -208,55 +208,6 @@ function modificarInmueble() {
     }
 }
 
-//function listar() {
-//    $daoInmueble = new daoInmuebles();
-//    $inmuebles = $daoInmueble->listar();
-//    $daoInmueble->destruct();
-//
-//    $anuncios = [] ;
-//    while ($aux = mysqli_fetch_array($inmuebles)) {
-//        $inmueble_aux = new inmueble();
-//        $inmueble_aux->setCp($aux[1]);
-//        $inmueble_aux->setMetros($aux[13]);
-//        $inmueble_aux->setNombre_localidad($aux[5]);
-//        $inmueble_aux->setNombre_provincia($aux[6]);
-//        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
-//        $inmueble_aux->setNombre_via($aux[2]);
-//        $inmueble_aux->setNum_banyos($aux[7]);
-//        $inmueble_aux->setNumero($aux[0]);
-//        $inmueble_aux->setNumero_plantas($aux[11]);
-//        $inmueble_aux->setPlanta($aux[12]);
-//        $inmueble_aux->setTipo($aux[10]);
-//        $inmueble_aux->setCocina($aux[9]);
-//        $inmueble_aux->setTipo_via($aux[3]);
-//        $inmueble_aux->setFotos($aux[14]);
-//        $inmueble_aux->setNum_hab($aux[8]);
-//    }
-//    return $anuncios;
-//}
-//function getInmuebleByAnuncio($anuncio) {
-//    $lista = listar();
-//    $i = 0;
-//    $encontrado = false;
-//    $r = false;
-//
-//    while ($encontrado == false && i < sizeof($lista)) {
-//        $aux = new inmueble();
-//        if ($lista[$i]->getCp() == $anuncio->getCP()) {
-//            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
-//                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
-//                    $r = $lista[$i];
-//                    $encontrado = true;
-//                }
-//            }
-//        }
-//
-//        $i++;
-//    }
-//
-//    return $r;
-//}
-
 function listar_inmuebles_usuario() {
 
     if (isset($_SESSION['usuario_particular'])) {
@@ -307,7 +258,6 @@ function listar_inmuebles_usuarioAll() {
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 //        echo '<option>'
-//      
 //        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
 //        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
 //        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
@@ -380,3 +330,52 @@ function get_inmueble_by_direccion() {
 
     echo "</pre>";
 }
+//function listar() {
+//    $daoInmueble = new daoInmuebles();
+//    $inmuebles = $daoInmueble->listar();
+//    $daoInmueble->destruct();
+//
+//    $anuncios = [] ;
+//    while ($aux = mysqli_fetch_array($inmuebles)) {
+//        $inmueble_aux = new inmueble();
+//        $inmueble_aux->setCp($aux[1]);
+//        $inmueble_aux->setMetros($aux[13]);
+//        $inmueble_aux->setNombre_localidad($aux[5]);
+//        $inmueble_aux->setNombre_provincia($aux[6]);
+//        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+//        $inmueble_aux->setNombre_via($aux[2]);
+//        $inmueble_aux->setNum_banyos($aux[7]);
+//        $inmueble_aux->setNumero($aux[0]);
+//        $inmueble_aux->setNumero_plantas($aux[11]);
+//        $inmueble_aux->setPlanta($aux[12]);
+//        $inmueble_aux->setTipo($aux[10]);
+//        $inmueble_aux->setCocina($aux[9]);
+//        $inmueble_aux->setTipo_via($aux[3]);
+//        $inmueble_aux->setFotos($aux[14]);
+//        $inmueble_aux->setNum_hab($aux[8]);
+//    }
+//    return $anuncios;
+//}
+//function getInmuebleByAnuncio($anuncio) {
+//    $lista = listar();
+//    $i = 0;
+//    $encontrado = false;
+//    $r = false;
+//
+//    while ($encontrado == false && i < sizeof($lista)) {
+//        $aux = new inmueble();
+//        if ($lista[$i]->getCp() == $anuncio->getCP()) {
+//            if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
+//                if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
+//                    $r = $lista[$i];
+//                    $encontrado = true;
+//                }
+//            }
+//        }
+//
+//        $i++;
+//    }
+//
+//    return $r;
+//}
+
