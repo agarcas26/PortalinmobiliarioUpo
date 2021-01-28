@@ -25,8 +25,7 @@
         </header>
         <?php
         if (!isset($_POST['ver_detalle'])) {
-            $dirección;
-            $datos;
+           
             ?>
             <main>
                 <article>
