@@ -101,15 +101,24 @@ and open the template in the editor.
                 <table>
                     <?php
                     mostrarVistaLista();
+                    if (isset($_POST['aplicar_filtros'])) {
+                        mostrarVistaLista();
+                    }
+                    if (isset($_POST['lista'])) {
+                        mostrarVistaLista();
+                    }
+                    if (isset($_POST['cuadricula'])) {
+                        mostrarVistaCuadricula();
+                    }
                     ?>
                 </table>
             </article>
             <script type="text/javascript">
-                
+
                 $(document).ready(function () {
                     $("#filtros_aside").toggle("fast");
                     $("#mostrar_ocultar").click(function () {
-                            $("#filtros_aside").toggle("fast");
+                        $("#filtros_aside").toggle("fast");
                     });
                 });
             </script>

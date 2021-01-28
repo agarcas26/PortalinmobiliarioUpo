@@ -341,7 +341,6 @@ function getInmuebleByAnuncio($anuncio) {
     $r = false;
 
     while ($encontrado == false && $i < sizeof($lista)) {
-        $aux = new Inmueble();
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
@@ -370,7 +369,7 @@ function listar() {
             $inmueble_aux->setCp($aux[1]);
             $inmueble_aux->setNombre_via($aux[2]);
             $inmueble_aux->setTipo_via($aux[3]);
-            $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+            $inmueble_aux->setNombre_usuario_duenyos($aux[4]);
             $inmueble_aux->setNombre_localidad($aux[5]);
             $inmueble_aux->setNombre_provincia($aux[6]);
             $inmueble_aux->setNum_banyos($aux[7]);

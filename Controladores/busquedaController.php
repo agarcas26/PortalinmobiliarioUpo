@@ -8,11 +8,13 @@ include_once '../Modelos/AnunciosModel.php';
 
 
 if (isset($_POST['aplicar_filtros'])) {
+    
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
     } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario = ($_SESSION['usuario_rofesional']);
     }
+    
     $num_banyos = $_POST['num_banyos'];
     $tipo_inmueble = $_POST['tipo_inmueble'];
     $tipo_oferta = $_POST['tipo_oferta'];
@@ -24,16 +26,8 @@ if (isset($_POST['aplicar_filtros'])) {
     $dao = new daoBusqueda();
     $dao->crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2);
     $dao->destruct();
-
-    mostrarVistaLista();
-}
-
-if (isset($_POST['lista'])) {
-    mostrarVistaLista();
-}
-
-if (isset($_POST['cuadricula'])) {
-    mostrarVistaCuadricula();
+    
+    header("Location: ../Vistas/busqueda.php");
 }
 
 if (isset($_GET["id_busqueda"])) {
@@ -65,6 +59,7 @@ function mostrarVistaLista() {
         . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
         echo '</tr>';
     }
+    
 }
 
 function mostrarVistaCuadricula() {
