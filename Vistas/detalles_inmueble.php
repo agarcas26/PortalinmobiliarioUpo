@@ -25,14 +25,13 @@
         </header>
         <?php
         if (!isset($_POST['ver_detalle'])) {
-           
             ?>
             <main>
                 <article>
                     <section id="ver_detalle">
                         <table>
                             <?php
-                           get_inmueble_by_direccion();
+                            getInmuebleByDireccion($_GET['direccion']);
                             ?>
                         </table>
                     </section>

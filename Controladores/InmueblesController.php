@@ -214,27 +214,26 @@ function modificarInmueble() {
 //    $daoInmueble->destruct();
 //
 //    $anuncios = [] ;
-//    while (mysqli_fetch_array($inmuebles)) {
+//    while ($aux = mysqli_fetch_array($inmuebles)) {
 //        $inmueble_aux = new inmueble();
-//        $inmueble_aux->setCp($inmuebles[1]);
-//        $inmueble_aux->setMetros($inmuebles[13]);
-//        $inmueble_aux->setNombre_localidad($inmuebles[5]);
-//        $inmueble_aux->setNombre_provincia($inmuebles[6]);
-//        $inmueble_aux->setNombre_usuario_duenyo($inmuebles[4]);
-//        $inmueble_aux->setNombre_via($inmuebles[2]);
-//        $inmueble_aux->setNum_banyos($inmuebles[7]);
-//        $inmueble_aux->setNumero($inmuebles[0]);
-//        $inmueble_aux->setNumero_plantas($inmuebles[11]);
-//        $inmueble_aux->setPlanta($inmuebles[12]);
-//        $inmueble_aux->setTipo($inmuebles[10]);
-//        $inmueble_aux->setCocina($inmuebles[9]);
-//        $inmueble_aux->setTipo_via($inmuebles[3]);
-//        $inmueble_aux->setFotos($inmuebles[14]);
-//        $inmueble_aux->setNum_hab($inmuebles[8]);
+//        $inmueble_aux->setCp($aux[1]);
+//        $inmueble_aux->setMetros($aux[13]);
+//        $inmueble_aux->setNombre_localidad($aux[5]);
+//        $inmueble_aux->setNombre_provincia($aux[6]);
+//        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+//        $inmueble_aux->setNombre_via($aux[2]);
+//        $inmueble_aux->setNum_banyos($aux[7]);
+//        $inmueble_aux->setNumero($aux[0]);
+//        $inmueble_aux->setNumero_plantas($aux[11]);
+//        $inmueble_aux->setPlanta($aux[12]);
+//        $inmueble_aux->setTipo($aux[10]);
+//        $inmueble_aux->setCocina($aux[9]);
+//        $inmueble_aux->setTipo_via($aux[3]);
+//        $inmueble_aux->setFotos($aux[14]);
+//        $inmueble_aux->setNum_hab($aux[8]);
 //    }
 //    return $anuncios;
 //}
-
 //function getInmuebleByAnuncio($anuncio) {
 //    $lista = listar();
 //    $i = 0;
@@ -260,7 +259,6 @@ function modificarInmueble() {
 
 function listar_inmuebles_usuario() {
 
-
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
     } else {
@@ -281,7 +279,7 @@ function listar_inmuebles_usuario() {
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
-        
+
         echo '</tr>';
         echo '</table>';
     }
@@ -290,9 +288,9 @@ function listar_inmuebles_usuario() {
 //var_dump($inmuebles_usuario);
 //echo "</pre>";
 }
+
 //EN CONSTRUCCION COMO LO TOQUES TE RAJO
 function listar_inmuebles_usuarioAll() {
-
 
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
@@ -326,13 +324,14 @@ function listar_inmuebles_usuarioAll() {
 //        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
 //        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
 //        '</option>';
+        $direccion = $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getTipoVia();
 
         echo '<table id="inmuebles">';
         echo '</tr><tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
-        echo '<a href="../Vistas/detalles_inmueble.php">'
+        echo '<a href="../Vistas/detalles_inmueble.php?direccion="' . $direccion . '"">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
         . '</td>'
         . '</a>';
@@ -349,7 +348,8 @@ function listar_inmuebles_usuarioAll() {
 //var_dump($inmuebles_usuario);
 //echo "</pre>";
 }
-function get_inmueble_by_direccion(){
+
+function get_inmueble_by_direccion() {
     $daoInmuebles = new daoInmuebles();
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
@@ -365,17 +365,18 @@ function get_inmueble_by_direccion(){
     $inmueble2 = $daoInmuebles->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
     $daoInmuebles->destruct();
     for ($i = 0; $i < sizeof($inmueble2); $i++) {
+
         echo '<table id="inmuebles">';
         echo '</tr><tr>';
         echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
-         echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
+        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
         echo '</tr>';
         echo '</table>';
     }
     echo "<pre>";
-var_dump($inmueble2);
+    var_dump($inmueble2);
 
-echo "</pre>";
+    echo "</pre>";
 }
