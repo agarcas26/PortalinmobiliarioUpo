@@ -7,7 +7,7 @@
  */
 include_once '../Persistencia/Conexion.php';
 
-class daoAlquiler {
+class dao_Contrato_Alquiler {
 
     public $conObj;
     public $conexion;

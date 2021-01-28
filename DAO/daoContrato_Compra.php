@@ -7,7 +7,7 @@
  */
 include_once '../Persistencia/Conexion.php';
 
-class daoAlquiler {
+class dao_Contrato_Compra {
 
     public $conObj;
     public $conexion;
@@ -23,14 +23,14 @@ class daoAlquiler {
         $this->conObj->cerrar_conexion();
     }
     
-    function listar_contrato_pago() {
+    function listar_contratos_compra() {
         $sentence = "SELECT * FROM `contrato_alquiler`";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
 
-    function crear_contrato_pago($nombre_usuario, $id_contrato_alquiler, $id_alquiler, $fecha_desde, $fecha_hasta, $precio_final) {
+    function crear_contrato_compra($nombre_usuario, $id_contrato_alquiler, $id_alquiler, $fecha_desde, $fecha_hasta, $precio_final) {
         //Creamos el alquiler
         $sentence = "INSERT INTO `contrato_alquiler` (`nombre_usuario`, `id_contrato_alquiler`, `id_alquiler`, `fecha_desde`, `fecha_hasta`, `precio_final`) VALUES (".$nombre_usuario.",". $id_contrato_alquiler.",". $id_alquiler.",". $fecha_desde.",". $fecha_hasta.",". $precio_final.")";
         $result = mysqli_query($this->conexion, $sentence);
