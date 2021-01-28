@@ -32,6 +32,7 @@ function getInmuebleByDireccion($direccion) {
 
     $inmueble = new inmueble();
     for ($i = 0; $i < sizeof($aux); $i++) {
+        $inmueble = new inmueble();
         $inmueble->setNumero($aux[$i]->getNumero());
         $inmueble->setCp($aux[$i]->getCp());
         $inmueble->setCocina($aux[$i]->getCocina());
@@ -46,7 +47,6 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setPlanta($aux[$i]->getPlanta());
         $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
     }
-
 
     return $inmueble;
 }
