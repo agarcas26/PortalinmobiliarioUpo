@@ -33,7 +33,7 @@ if (isset($_POST['cuadricula'])) {
     mostrarVistaCuadricula();
 }
 
-function mostrarVistaLista() {
+function mostrarVistaLista($fecha) {
     $dao = new daoAnuncios();
     if (mysqli_num_rows($dao->listar()) > 0) {
         $array_anuncios = $dao->listar();
