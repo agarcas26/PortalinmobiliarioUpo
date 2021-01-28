@@ -16,8 +16,8 @@ if (isset($_GET["id_inmueble"])) {
         $usuario = $_SESSION['usuario_profesional'];
     }
 
-    $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
-    $inmueble = getInmuebleByDireccion($id_inmueble);
+    $inmueble = getInmuebleByDireccion($_GET["id_inmueble"]);
+    $id_inmueble = preg_split(" ", $_GET["id_inmueble"]);
 
     if ($inmueble) {
         if (file_exists($inmueble->getFotos())) {
@@ -59,7 +59,6 @@ if (isset($_GET["enviarValoracion"])) {
 
     //header("location:producto.php?idProducto=$idProducto");
 } else if (isset($_GET["editarValoracion"])) {//Método que controla la actualización de la opinión de un cliente sobre un producto
-    
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
@@ -72,7 +71,7 @@ if (isset($_GET["enviarValoracion"])) {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    
+
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
 
     eliminarValoracion($usuario, $id_inmueble);
