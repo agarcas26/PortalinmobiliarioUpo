@@ -4,8 +4,6 @@ include_once '../Controladores/AdministradoresController.php';
 include_once '../Modelos/AdministradoresModel.php';
 include_once '../DAO/daoAdministradores.php';
 
-session_start();
-
 if (isset($_POST['entrar'])) {
     $dao = new daoAdministradores();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
