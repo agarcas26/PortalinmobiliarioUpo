@@ -2,6 +2,7 @@
 require_once '../Dao/daoAnuncios.php';
 require_once '../Dao/daoAlquiler.php';
 require_once '../Dao/daoCompra.php';
+require_once '../Dao/daoPago.php';
 require_once '../Modelos/AnunciosModel.php';
 require_once '../Modelos/AlquilerModel.php';
 require_once '../Modelos/CompraModel.php';
@@ -32,7 +33,11 @@ if($_POST["payment_status"]!="VERIFIED"){
         
         $dao->destruct();
     }
-     $dao=new daoAnuncios();
+    $dao=new daoPago();
+    $dao->crear_pago(date('d-m-Y'));
+    $dao->destruct();
+    
+    $dao=new daoAnuncios();
     $dao->eliminar($_GET["id_anuncio"]);
     $dao->destruct();
     header("Location: ../Vistas/index.php");
