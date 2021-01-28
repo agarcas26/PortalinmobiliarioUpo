@@ -30,7 +30,7 @@ if($_POST["payment_status"]!="VERIFIED"){
         $dao->destruct();
         
         $dao=new dao_Contrato_Compra;
-        $dao->crear_contrato_compra($nombre_usuario, $id_contrato_alquiler, $id_alquiler, date('d-m-Y'), date("d-m-Y",strtotime(date('d-m-Y')."+ 1 month")), $precio_final);
+        $dao->crear_contrato_compra($usuario, $id_contrato_compra, $id_alquiler, date('d-m-Y'), date("d-m-Y",strtotime(date('d-m-Y')."+ 1 month")), $precio_final);
         $dao->destruct();
     }else{
         $dao=new daoAlquiler();
@@ -38,7 +38,7 @@ if($_POST["payment_status"]!="VERIFIED"){
         $dao->destruct();
         
         $dao=new dao_Contrato_Alquiler;
-        $dao->crear_contrato_alquileres($nombre_usuario, $id_contrato_compra, $id_compra, date('d-m-Y'));
+        $dao->crear_contrato_alquiler($usuario, $id_contrato_alquiler, $id_compra, date('d-m-Y'));
         $dao->destruct();
     }
     $dao=new daoPago();

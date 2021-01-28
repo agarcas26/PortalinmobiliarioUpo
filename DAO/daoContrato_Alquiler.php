@@ -30,9 +30,9 @@ class dao_Contrato_Alquiler {
         return $result;
     }
 
-    function crear_contrato_alquileres($nombre_usuario, $id_contrato_compra, $id_compra, $fecha_contrato_senyal) {
+   function crear_contrato_alquiler($nombre_usuario, $id_contrato_alquiler, $id_alquiler, $fecha_desde, $fecha_hasta, $precio_final) {
         //Creamos el alquiler
-        $sentence = "INSERT INTO `contrato_alquiler` (`nombre_usuario`, `id_contrato_compra`, `id_compra`, `fecha_contrato_senyal`) VALUES (".$nombre_usuario.",". $id_contrato_compra.",". $id_compra.",". $fecha_contrato_senyal.")";
+        $sentence = "INSERT INTO `contrato_alquiler` (`nombre_usuario`, `id_contrato_alquiler`, `id_alquiler`, `fecha_desde`, `fecha_hasta`, `precio_final`) VALUES (".$nombre_usuario.",". $id_contrato_alquiler.",". $id_alquiler.",". $fecha_desde.",". $fecha_hasta.",". $precio_final.")";
         $result = mysqli_query($this->conexion, $sentence);
 
         //Recuperamos el id del alquiler
