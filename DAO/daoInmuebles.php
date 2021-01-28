@@ -51,7 +51,6 @@ class daoInmuebles {
         mysqli_close($this->conexion);
     }
 
-   
     public function eliminar($objInmueble) {
         $numero = $objInmueble->getNumero();
         $cp = $objInmueble->getCp();
@@ -103,42 +102,11 @@ class daoInmuebles {
         return $resultado;
     }
 
-    function get_inmueble_by_direccion($numero,$cp,$nombre_via,$tipo_via) {
-      
+    function get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via) {
+
         $sql = "SELECT * FROM `inmueble` WHERE `numero` = '" . $numero . "' "
                 . "and `cp`='" . $cp . "' and `nombre_via`='" . $nombre_via . "' "
                 . "and `tipo_via`='" . $tipo_via . "'";
-          $objMySqlLi = $this->conexion->query($sql);
-          $objInmueble = new inmueble();
-        $arrayAux = [];
-        if($objMySqlLi->num_rows > 0){
-            while($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)){
-                $objInmueble->setNumero($objInmuebleAux["numero"]);
-                $objInmueble->setCp($objInmuebleAux["cp"]);
-                $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);
-                $objInmueble->setTipo_via($objInmuebleAux["tipo_via"]);
-                $objInmueble->setNombre_usuario_duenyos($objInmuebleAux["nombre_usuario_duenyos"]);
-                $objInmueble->setNombre_localidad($objInmuebleAux["nombre_localidad"]);
-                $objInmueble->setNombre_provincia($objInmuebleAux["nombre_provincia"]);
-                $objInmueble->setNum_banyos($objInmuebleAux["num_banyos"]);
-                $objInmueble->setNum_hab($objInmuebleAux["num_hab"]);
-                $objInmueble->setCocina($objInmuebleAux["cocina"]);
-                $objInmueble->setNumero_plantas($objInmuebleAux["numero_plantas"]);
-                $objInmueble->setPlanta($objInmuebleAux["planta"]);
-                $objInmueble->setMetros($objInmuebleAux["metros"]);
-                $objInmueble->setTipo_inmueble($objInmuebleAux["tipo"]);
-                $objInmueble->setFotos($objInmuebleAux["fotos"]);
-                
-                 array_push($arrayAux, $objInmueble);
-            }
-        }
-        return $arrayAux;
-    }
-
-
- public function read($nombre_usuario_duenyos) {
-
-        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new inmueble();
         $arrayAux = [];
@@ -163,16 +131,38 @@ class daoInmuebles {
                 array_push($arrayAux, $objInmueble);
             }
         }
-
-//        if ($this->conexion->query($sql) === true) {
-//
-//            echo "New record created successfully";
-//        } else {
-//
-//            echo "Error: " . $sql . "<br>" . $this->conexion->error;
-//        }
-//        mysqli_close($this->conexion);
-
         return $arrayAux;
     }
+
+    public function read($nombre_usuario_duenyos) {
+
+        $sql = "SELECT * FROM `inmueble` WHERE `nombre_usuario_duenyos`='$nombre_usuario_duenyos'";
+        $objMySqlLi = $this->conexion->query($sql);
+        $arrayAux = [];
+        if ($objMySqlLi->num_rows > 0) {
+            while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
+                $objInmueble = new inmueble();
+                $objInmueble->setNumero($objInmuebleAux["numero"]);
+                $objInmueble->setCp($objInmuebleAux["cp"]);
+                $objInmueble->setNombre_via($objInmuebleAux["nombre_via"]);
+                $objInmueble->setTipo_via($objInmuebleAux["tipo_via"]);
+                $objInmueble->setNombre_usuario_duenyos($objInmuebleAux["nombre_usuario_duenyos"]);
+                $objInmueble->setNombre_localidad($objInmuebleAux["nombre_localidad"]);
+                $objInmueble->setNombre_provincia($objInmuebleAux["nombre_provincia"]);
+                $objInmueble->setNum_banyos($objInmuebleAux["num_banyos"]);
+                $objInmueble->setNum_hab($objInmuebleAux["num_hab"]);
+                $objInmueble->setCocina($objInmuebleAux["cocina"]);
+                $objInmueble->setNumero_plantas($objInmuebleAux["numero_plantas"]);
+                $objInmueble->setPlanta($objInmuebleAux["planta"]);
+                $objInmueble->setMetros($objInmuebleAux["metros"]);
+                $objInmueble->setTipo_inmueble($objInmuebleAux["tipo"]);
+                $objInmueble->setFotos($objInmuebleAux["fotos"]);
+
+                array_push($arrayAux, $objInmueble);
+            }
+        }
+        
+        return $arrayAux;
+    }
+
 }
