@@ -339,7 +339,7 @@ function getInmuebleByAnuncio($anuncio) {
     $lista = listar();
     $i = 0;
     $encontrado = false;
-    print_r($anuncio);
+    $r = new Inmueble();
     while (!$encontrado && $i < sizeof($lista)) {        
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
