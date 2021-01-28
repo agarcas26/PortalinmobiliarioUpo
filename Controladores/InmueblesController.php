@@ -361,13 +361,12 @@ function listar() {
     $anuncios = [];
     if (mysqli_num_rows($inmuebles) > 0) {
         while ($aux = mysqli_fetch_array($inmuebles)) {
-            print_r(mysqli_fetch_array($inmuebles));
             $inmueble_aux = new Inmueble();
             $inmueble_aux->setNumero($aux[0]);
             $inmueble_aux->setCp($aux[1]);
             $inmueble_aux->setNombre_via($aux[2]);
             $inmueble_aux->setTipo_via($aux[3]);
-            $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+            $inmueble_aux->setNombre_usuario_duenyos($aux[4]);
             $inmueble_aux->setNombre_localidad($aux[5]);
             $inmueble_aux->setNombre_provincia($aux[6]);
             $inmueble_aux->setNum_banyos($aux[7]);
