@@ -29,18 +29,18 @@ function getInmuebleByDireccion($direccion) {
     $dao = new daoInmuebles();
     $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
     $dao->destruct();
-
+    $inmueble = [];
     for ($i = 0; $i < sizeof($aux); $i++) {
         $inmueble = new Inmueble();
         $inmueble->setNumero($aux[$i]->getNumero());
         $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
         $inmueble->setCocina($aux[$i]->getCocina());
         $inmueble->setFotos($aux[$i]->getFotos());
         $inmueble->setMetros($aux[$i]->getMetros());
         $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
         $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
         $inmueble->setNombre_usuario_duenyo($aux[$i]->getNombre_usuario_duenyos());
-        $inmueble->setNombre_via($aux[$i]->getNombre_via());
         $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
         $inmueble->setNum_hab($aux[$i]->getNum_hab());
         $inmueble->setPlanta($aux[$i]->getPlanta());
