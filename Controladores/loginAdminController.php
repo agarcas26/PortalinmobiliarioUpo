@@ -22,7 +22,7 @@ if (isset($_POST['entrar'])) {
     $dao->destruct();
 }
 
-function controllerInicioSesion($nombre_usuario, $pass) {
+function controllerInicioSesionAdmin($nombre_usuario, $pass) {
     $r = false;
     if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{0,15}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
