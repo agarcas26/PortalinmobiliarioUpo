@@ -372,7 +372,7 @@ function listar() {
             $inmueble_aux->setNum_banyos($aux[7]);
             $inmueble_aux->setNum_hab($aux[8]);
             $inmueble_aux->setCocina($aux[9]);
-            $inmueble_aux->setTipo($aux[10]);
+            $inmueble_aux->setTipo_inmueble($aux[10]);
             $inmueble_aux->setNumero_plantas($aux[11]);
             $inmueble_aux->setPlanta($aux[12]);
             $inmueble_aux->setMetros($aux[13]);
