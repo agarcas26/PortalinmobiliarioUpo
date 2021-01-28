@@ -75,7 +75,7 @@ if ($_POST["btonInsertar"]) {
 }
 if ($_SESSION["validacion"]) {
 
-    $inmueble1 = new inmueble();
+    $inmueble1 = new Inmueble();
     $inmueble1->setNumero($_POST["txtNumero"]);
     $inmueble1->setCp($_POST["txtCp"]);
     $inmueble1->setNombre_via($_POST["txtNombre_via"]);
