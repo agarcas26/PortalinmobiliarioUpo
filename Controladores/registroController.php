@@ -36,7 +36,7 @@ function registroController($nombre_usuario, $nombre_apellidos, $pass, $tipo, $e
         filter_var($pass, FILTER_SANITIZE_ADD_SLASHES);
 
         if (getUsuarioByUsuario($nombre_usuario, $pass) == NULL) {
-            nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, false, $tipo, $empresa);
+            nuevoUsuario($nombre_apellidos, $nombre_usuario, $pass, "false", $tipo, $empresa);
         }
         header("Location: ../Vistas/login.php");
     } else {
