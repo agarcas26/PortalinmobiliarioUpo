@@ -26,7 +26,7 @@ if($_POST["payment_status"]!="VERIFIED"){
     $dao->destruct();
     if($anuncio=="Compra"){
         $dao=new daoCompra();
-        $dao->crear_compra($usuario, $_GET["id_anuncio"], getPrecio($_GET["id_anuncio"]*0.05);
+        $dao->crear_compra($usuario, $_GET["id_anuncio"], (getPrecio($_GET["id_anuncio"])*0.05));
         $dao->destruct();
         
         $dao=new dao_Contrato_Compra;
