@@ -6,6 +6,11 @@ class Administradores {
 
     private $nombre_usuario_admin;
     private $contrasenya_admin;
+    
+    function __construct($nombre_usuario, $pass) {
+        $this->setNombre_usuario_admin($nombre_usuario);
+        $this->setContrasenya_admin($pass);
+    }
 
     function getNombre_usuario_admin() {
         return $this->nombre_usuario_admin;

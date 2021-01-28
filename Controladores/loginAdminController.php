@@ -10,7 +10,7 @@ if (isset($_POST['entrar'])) {
     $dao = new daoAdministradores();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
-        $usuario = getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
+        $usuario = getAdminByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
         
             $_SESSION['admin'] = $_POST['nombre_usuario'];
             
@@ -27,9 +27,9 @@ function controllerInicioSesion($nombre_usuario, $pass) {
     if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{0,15}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-        $usuario = getUsuarioByUsuario($nombre_usuario, $pass);
+        $usuario = getAdminByUsuario($nombre_usuario, $pass);
         if (isset($usuario)) {
-            if ($usuario->get_contrasenya_user() == $pass) {
+            if ($usuario->getContrasenya_admin() == $pass) {
                 $r = true;
             }
         }
