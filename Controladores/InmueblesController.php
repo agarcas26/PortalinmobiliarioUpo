@@ -19,7 +19,7 @@ $url_error = "../Vistas/alta_inmueble.php";
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 function getInmuebleByDireccion($direccion) {
-    $direccion = preg_split("-", $direccion);
+    $direccion = preg_split("/-/", $direccion);
     
     $numero = $direccion[0];
     $cp = $direccion[1];
@@ -355,30 +355,29 @@ function getInmuebleByAnuncio($anuncio) {
     return $r;
 }
 
+function listar() {
+    $daoInmueble = new daoInmuebles();
+    $inmuebles = $daoInmueble->listar();
+    $daoInmueble->destruct();
 
-//function listar() {
-//    $daoInmueble = new daoInmuebles();
-//    $inmuebles = $daoInmueble->listar();
-//    $daoInmueble->destruct();
-//
-//    $anuncios = [] ;
-//    while ($aux = mysqli_fetch_array($inmuebles)) {
-//        $inmueble_aux = new inmueble();
-//        $inmueble_aux->setCp($aux[1]);
-//        $inmueble_aux->setMetros($aux[13]);
-//        $inmueble_aux->setNombre_localidad($aux[5]);
-//        $inmueble_aux->setNombre_provincia($aux[6]);
-//        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
-//        $inmueble_aux->setNombre_via($aux[2]);
-//        $inmueble_aux->setNum_banyos($aux[7]);
-//        $inmueble_aux->setNumero($aux[0]);
-//        $inmueble_aux->setNumero_plantas($aux[11]);
-//        $inmueble_aux->setPlanta($aux[12]);
-//        $inmueble_aux->setTipo($aux[10]);
-//        $inmueble_aux->setCocina($aux[9]);
-//        $inmueble_aux->setTipo_via($aux[3]);
-//        $inmueble_aux->setFotos($aux[14]);
-//        $inmueble_aux->setNum_hab($aux[8]);
-//    }
-//    return $anuncios;
-//}
+    $anuncios = [] ;
+    while ($aux = mysqli_fetch_array($inmuebles)) {
+        $inmueble_aux = new inmueble();
+        $inmueble_aux->setCp($aux[1]);
+        $inmueble_aux->setMetros($aux[13]);
+        $inmueble_aux->setNombre_localidad($aux[5]);
+        $inmueble_aux->setNombre_provincia($aux[6]);
+        $inmueble_aux->setNombre_usuario_duenyo($aux[4]);
+        $inmueble_aux->setNombre_via($aux[2]);
+        $inmueble_aux->setNum_banyos($aux[7]);
+        $inmueble_aux->setNumero($aux[0]);
+        $inmueble_aux->setNumero_plantas($aux[11]);
+        $inmueble_aux->setPlanta($aux[12]);
+        $inmueble_aux->setTipo($aux[10]);
+        $inmueble_aux->setCocina($aux[9]);
+        $inmueble_aux->setTipo_via($aux[3]);
+        $inmueble_aux->setFotos($aux[14]);
+        $inmueble_aux->setNum_hab($aux[8]);
+    }
+    return $anuncios;
+}
