@@ -36,9 +36,10 @@
                         <input type="password" id="contrasenya" name="contrasenya" class="form-text">
                     </div> 
                     <br>
-                    <div class="entrar" style="float: left;" >
+                    <div class="entrar" style="float: left; margin-left: 5%;" >
                         <input class="btn btn-primary" type="submit" name="entrar" value="Iniciar sesión" class="form-text" />
                     </div>
+                    <br>
                 </form>
                 <?php
             }

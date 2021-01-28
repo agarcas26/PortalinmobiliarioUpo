@@ -290,7 +290,7 @@ function listar_inmuebles_usuarioAll() {
         . '</td>'
         . '</a>';
         echo '<a href="../Vistas/modInmueble.php">'
-        . '<input type="submit" name="mod_inmueble" id="mod_inmueble" value="Modificar datos" />'
+        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
         echo '</tr>';
