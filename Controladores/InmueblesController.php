@@ -30,7 +30,6 @@ function getInmuebleByDireccion($direccion) {
     $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
     $dao->destruct();
 
-    $inmueble = new inmueble();
     for ($i = 0; $i < sizeof($aux); $i++) {
         $inmueble = new inmueble();
         $inmueble->setNumero($aux[$i]->getNumero());
