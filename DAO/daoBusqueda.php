@@ -36,18 +36,26 @@ class daoBusqueda {
 
         return $result;
     }
+
     function listar_alertas_usuario($nombre_usuario) {
         $sentence = "SELECT * FROM `busqueda` WHERE `alerta`='true' AND `nombre_usuario`='" . $nombre_usuario . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
     }
-    
+
     function eliminar_alerta_usuario($id) {
         $sentence = "UPDATE `busqueda` SET `alerta`='false'  WHERE `id_busqueda`='" . $id . "';";
         $result = mysqli_query($this->conexion, $sentence);
 
         return $result;
+    }
+
+    function crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2) {
+        $sentence = "INSERT INTO `busqueda`(`id_busqueda`, `nombre_usuario`, `num_banyos`, `alerta`, `tipo_inmueble`, `tipo_oferta`, `precio_max`, `num_hab`, `m2`)"
+        ."VALUES (NULL,'$nombre_usuario','$num_banyos','false','$tipo_inmueble','$tipo_oferta','$precio_max','$num_hab','$m2')";
+        $result = mysqli_query($this->conexion, $sentence);
+        
     }
 
 }
