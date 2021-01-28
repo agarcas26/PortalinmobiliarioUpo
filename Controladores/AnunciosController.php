@@ -63,10 +63,8 @@ function mostrar_detalle_anuncio($id_anuncio) {
 }
 
 function mostrar_info_anuncio($id_anuncio) {
-    $dao = new daoAnuncios();
-    $array_anuncios = $dao->listar();
-    $dao->destruct();
-    while ($fila = mysqli_fetch_array($array_anuncios)) {
+    $anuncio = readAnuncio($id_anuncio);
+    while ($fila = mysqli_fetch_array($anuncio)) {
         if ($id_anuncio == $fila[0]) {
             echo '<h5>Titulo:' . $fila[9] . '</h5><br>'
             . '<Precio:' . $fila[7] . '<br>'
@@ -180,7 +178,6 @@ function modifyAnuncio() {
 function readAnuncio($idAnuncio) {
     $anuncio1 = new Anuncio();
     $anuncio1->setIdAnuncio($idAnuncio);
-
     $daoAnuncio = new daoAnuncios();
     $anuncio1 = $daoAnuncio->read($anuncio1);
     $daoAnuncios->destruct();
@@ -243,9 +240,7 @@ function vista_previa_anuncios() {
 }
 
 function ver_todos_los_anuncios() {
-    $daoAnuncios = new daoAnuncios();
-    $anuncios = $daoAnuncios->listar();
-    $daoAnuncios->destruct();
+    $anuncios = listAllAnuncios();
     $i = 0;
 
     if (mysqli_num_rows($anuncios) > 0) {
@@ -271,18 +266,20 @@ function anuncios_barra_busqueda($barra_busqueda) {
     $anuncios = [];
     while (mysqli_fetch_array($all_anuncios)) {
         for ($i = 0; $i < sizeof($all_anuncios); $i++) {
-            if ($all_anuncios[i] == $barra_busqueda) {
-                $anuncio_aux = new Anuncio();
-                $anuncio_aux->setId_anuncio($all_anuncios[0]);
-                $anuncio_aux->setNombre_via($all_anuncios[1]);
-                $anuncio_aux->setTipo_via($all_anuncios[2]);
-                $anuncio_aux->setCp($all_anuncios[3]);
-                $anuncio_aux->setNumero($all_anuncios[4]);
-                $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
-                $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
-                $anuncio_aux->setPrecio($all_anuncios[7]);
-                $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
-                $anuncios[] = $anuncio_aux;
+            for ($j = 0; $j < sizeof($barra_busqueda); $j++) {
+                if ($all_anuncios[i] == $barra_busqueda[$j]) {
+                    $anuncio_aux = new Anuncio();
+                    $anuncio_aux->setId_anuncio($all_anuncios[0]);
+                    $anuncio_aux->setNombre_via($all_anuncios[1]);
+                    $anuncio_aux->setTipo_via($all_anuncios[2]);
+                    $anuncio_aux->setCp($all_anuncios[3]);
+                    $anuncio_aux->setNumero($all_anuncios[4]);
+                    $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
+                    $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
+                    $anuncio_aux->setPrecio($all_anuncios[7]);
+                    $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
+                    $anuncios[] = $anuncio_aux;
+                }
             }
         }
     }
@@ -343,17 +340,17 @@ function probarFiltros($filtros, $anuncio) {
 
     if ($filtros[0] == "notset" || $filtros[0] == $inmueble->getNum_banyos()) {
         if ($filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo()) {
-            //if ($filtros[2] == "notset" || $filtros[2] == $anuncio->getTipo()) {
-            if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {
-                //if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNumeroHabitaciones()) {
-                if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
-                    if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
-                        $r = true;
+            if ($filtros[2] == "notset" || $filtros[2] == $anuncio->getTipo()) {
+                if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {
+                    if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNum_hab()) {
+                        if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
+                            if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
+                                $r = true;
+                            }
+                        }
                     }
                 }
-                //}
             }
-            //}
         }
     }
 
@@ -364,20 +361,22 @@ function anuncios_busqueda() {
     $filtros = getFiltros();
     $all_anuncios = listAllAnuncios();
     $anuncios = [];
-    while (mysqli_fetch_array($all_anuncios)) {
-        for ($i = 0; $i < sizeof($all_anuncios); $i++) {
-            if (probarFiltros($filtros, $all_anuncios)) {
-                $anuncio_aux = new Anuncio();
-                $anuncio_aux->setId_anuncio($all_anuncios[0]);
-                $anuncio_aux->setNombre_via($all_anuncios[1]);
-                $anuncio_aux->setTipo_via($all_anuncios[2]);
-                $anuncio_aux->setCp($all_anuncios[3]);
-                $anuncio_aux->setNumero($all_anuncios[4]);
-                $anuncio_aux->setNombre_usuario_publica($all_anuncios[5]);
-                $anuncio_aux->setNombre_usuario_anuncio($all_anuncios[6]);
-                $anuncio_aux->setPrecio($all_anuncios[7]);
-                $anuncio_aux->setFecha_anuncio($all_anuncios[8]);
-                $anuncios[] = $anuncio_aux;
+    if (mysqli_num_rows($all_anuncios) > 0) {
+        while ($anuncio = mysqli_fetch_array($all_anuncios)) {
+            for ($i = 0; $i < sizeof($anuncio); $i++) {
+                if (probarFiltros($filtros, $anuncio)) {
+                    $anuncio_aux = new Anuncio();
+                    $anuncio_aux->setId_anuncio($anuncio[0]);
+                    $anuncio_aux->setNombre_via($anuncio[1]);
+                    $anuncio_aux->setTipo_via($anuncio[2]);
+                    $anuncio_aux->setCp($anuncio[3]);
+                    $anuncio_aux->setNumero($anuncio[4]);
+                    $anuncio_aux->setNombre_usuario_publica($anuncio[5]);
+                    $anuncio_aux->setNombre_usuario_anuncio($anuncio[6]);
+                    $anuncio_aux->setPrecio($anuncio[7]);
+                    $anuncio_aux->setFecha_anuncio($anuncio[8]);
+                    $anuncios[] = $anuncio_aux;
+                }
             }
         }
     }
