@@ -20,9 +20,9 @@ function ver_detalle($id_anuncio) {
     $daoAnuncios = new daoAnuncios();
     $id_anuncio = $_GET['id_anuncio'];
     $anuncio = readAnuncio($id_anuncio);
-    $tipo_anuncio = $dao->get_tipo_anuncio($id_anuncio);
+    $tipo_anuncio = $daoAnuncios->get_tipo_anuncio($id_anuncio);
     $daoAnuncios->destruct();
-    $inmueble_anunciado = getInmuebleByAnuncio($anuncio);
+    $inmueble_anunciado = getInmuebleByAnuncio($anuncio[0]);
 
     mostrar_detalle_anuncio();
     header("Location: ../Vistas/detalle_anuncio.php");
@@ -177,12 +177,10 @@ function modifyAnuncio() {
 //funcion consultar anuncios 
 
 function readAnuncio($idAnuncio) {
-    $anuncio1 = new Anuncio();
-    $anuncio1->setIdAnuncio($idAnuncio);
     $daoAnuncio = new daoAnuncios();
-    $anuncio1 = $daoAnuncio->read($anuncio1);
+    $anuncio = $daoAnuncio->read($idAnuncio);
     $daoAnuncios->destruct();
-    return $anuncio1;
+    return $anuncio;
 }
 
 //funcion listar anuncios
@@ -364,20 +362,18 @@ function anuncios_busqueda() {
     $anuncios = [];
     if (mysqli_num_rows($all_anuncios) > 0) {
         while ($anuncio = mysqli_fetch_array($all_anuncios)) {
-            for ($i = 0; $i < sizeof($anuncio); $i++) {
-                if (probarFiltros($filtros, $anuncio)) {
-                    $anuncio_aux = new Anuncio();
-                    $anuncio_aux->setId_anuncio($anuncio[0]);
-                    $anuncio_aux->setNombre_via($anuncio[1]);
-                    $anuncio_aux->setTipo_via($anuncio[2]);
-                    $anuncio_aux->setCp($anuncio[3]);
-                    $anuncio_aux->setNumero($anuncio[4]);
-                    $anuncio_aux->setNombre_usuario_publica($anuncio[5]);
-                    $anuncio_aux->setNombre_usuario_anuncio($anuncio[6]);
-                    $anuncio_aux->setPrecio($anuncio[7]);
-                    $anuncio_aux->setFecha_anuncio($anuncio[8]);
-                    $anuncios[] = $anuncio_aux;
-                }
+            $anuncio_aux = new Anuncio();
+            $anuncio_aux->setId_anuncio($anuncio[0]);
+            $anuncio_aux->setNombre_via($anuncio[1]);
+            $anuncio_aux->setTipo_via($anuncio[2]);
+            $anuncio_aux->setCp($anuncio[3]);
+            $anuncio_aux->setNumero($anuncio[4]);
+            $anuncio_aux->setNombre_usuario_publica($anuncio[5]);
+            $anuncio_aux->setNombre_usuario_anuncio($anuncio[6]);
+            $anuncio_aux->setPrecio($anuncio[7]);
+            $anuncio_aux->setFecha_anuncio($anuncio[8]);
+            if (probarFiltros($filtros, $anuncio) ) {
+                $anuncios[] = $anuncio_aux;
             }
         }
     }
