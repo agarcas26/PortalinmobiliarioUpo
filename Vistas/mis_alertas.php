@@ -16,7 +16,7 @@
             ?>
         </head>
         <body>
-            <header class="masthead">
+            <header class="masthead text-white text-center">
                 <?php sesion_iniciada(); ?>
             </header>
             <main>
