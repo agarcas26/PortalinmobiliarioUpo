@@ -6,7 +6,7 @@ include_once '../DAO/daoAdministradores.php';
 
 if (isset($_POST['entrar'])) {
     $dao = new daoAdministradores();
-    if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
+    if (controllerInicioSesionAdmin($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $usuario = getAdminByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
         
