@@ -270,7 +270,7 @@ function listar_inmuebles_usuario() {
 //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
-        echo '<table id="inmuebles">';
+        echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
         echo '</tr><tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
