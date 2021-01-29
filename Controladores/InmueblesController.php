@@ -67,9 +67,9 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-        $fotos = preg_split("-", $fotos);
+        $fotos = preg_split("/-/", $aux[$i]->getFotos());
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"/>"' . '</tr>';
+            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';   
         }
 
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
@@ -86,7 +86,12 @@ function getInmuebleByDireccion($direccion) {
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
-       
+        echo '<td>';
+        echo '<form action="../Controladores/InmueblesController.php" method="POST">'
+        . '<a href="../Controladores/InmueblesController.php?' . $direccion . '">'
+        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
+        . '</a></form>';
+
 
         echo '</table>';
     }
@@ -339,7 +344,7 @@ function listar_inmuebles_usuarioAll() {
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
-       
+
         echo '</tr>';
         echo '</table>';
     }
