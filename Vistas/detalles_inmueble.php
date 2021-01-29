@@ -39,7 +39,7 @@
                                     <table id="datos_visa" class="display table-bordered" style="width:50%">
                                         <tr>
                                             <td>
-                                                <label>¿Desea eliminar este inmueble?</label>
+                                                <a><button>¿Desea eliminar este inmueble?</button></a>
                                             </td>
                                         </tr>
                                         <?php
