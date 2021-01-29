@@ -88,6 +88,11 @@ function getInmuebleByDireccion($direccion) {
 
 if (isset($_POST["btonInsertar"])) {
 
+    function insertInmueble() {
+        $url_exito = "../Vistas/inmueble.php";
+//direccion en caso de error, por lo general será la vista del formulario que llamo
+//a este controlador
+        $url_error = "../Vistas/alta_inmueble.php";
         if (empty($_POST["txtNumero"])) {
             $_SESSION["validacion"] = false;
             $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
@@ -175,19 +180,18 @@ if (isset($_POST["btonInsertar"])) {
                 $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
             }
         }
-
+        echo "<pre>";
+        var_dump($inmueble1);
+        var_dump($insertOk);
+        echo "</pre>";
 //        if ($_SESSION["validacion"]) {
 //            header('Location: ' . $url_exito);
 //        } else {
 //            header('Location: ' . $url_error);
 //        }
-          echo "<pre>";
-        var_dump($inmueble1);
-        var_dump($insertOk);
-        echo "</pre>";
     }
 
-
+}
 
 function modificarInmueble() {
     if (empty($_POST["btonmodificar"])) {

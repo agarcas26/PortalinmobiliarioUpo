@@ -6,12 +6,8 @@ include_once '../DAO/daoAdministradores.php';
 
 if (isset($_POST['entrar'])) {
     if (controllerInicioSesionAdmin($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
-        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
-        $usuario = getAdminByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
-        
             $_SESSION['admin'] = $_POST['nombre_usuario'];
-            echo $_SESSION['admin'];
-        //header("Location: ../Vistas/index.php");
+       //header("Location: ../Vistas/index.php");
     } else {
         header("Location: ../Vistas/login_admin.php");
     }
@@ -24,7 +20,9 @@ function controllerInicioSesionAdmin($nombre_usuario, $pass) {
     if (preg_match("/[A-Za-z0-9_]{3,15}/", $nombre_usuario) && preg_match("/[A-Za-z0-9_]{0,15}/", $pass)) {
         $nombre_usuario = filter_var($nombre_usuario, FILTER_SANITIZE_STRING);
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+        echo $nombre_usuario . $pass;
         $usuario = getAdminByUsuario($nombre_usuario, $pass);
+        echo "a". $usuario;
         if (isset($usuario)) {
             if ($usuario->getContrasenya_admin() == $pass) {
                 $r = true;
