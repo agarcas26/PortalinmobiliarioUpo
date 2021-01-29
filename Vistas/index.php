@@ -34,7 +34,7 @@ and open the template in the editor.
         if (!isset($_POST['realizar_busqueda'])) {
             ?>
             <main>
-                <nav id="buscador" class="navbar navbar-light bg-light static-top">
+                <div id="buscador" class="navbar navbar-light bg-light static-top">
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
                         <table id="datos_visa" class="display table-bordered" style="width:100%">
                             <tr class="form-group">
@@ -58,7 +58,7 @@ and open the template in the editor.
                             </tr>
                         </table>
                     </form>
-                </nav>
+                </div>
                 <aside id="ultimas_busquedas">                    
                 </aside>
                 <?php if (isset($_SESSION['usuario_particular'])) { ?>
