@@ -32,7 +32,7 @@ function muestraEstrellas() {
 }
 
 $(document).ready(function () {
-    //$(".form-visa").hide();
+    $(".form-visa").hide();
     $("#visa").click(function () {
         $(".form-visa").toggle("fast");
     });
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    $("#filtros_aside").toggle("fast");
+    $("#filtros_aside").hide();
     $("#mostrar_ocultar").click(function () {
         $("#filtros_aside").toggle("fast");
     });
