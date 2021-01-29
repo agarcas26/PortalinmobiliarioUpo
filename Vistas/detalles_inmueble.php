@@ -5,6 +5,7 @@
         <title>Detalle inmueble</title>
         <link rel = "stylesheet" href = "../Bootstrap/css/landing-page.css"/>
         <link rel = "stylesheet" href = "../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+     
         <script src = "../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';

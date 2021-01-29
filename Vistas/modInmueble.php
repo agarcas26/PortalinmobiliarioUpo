@@ -3,6 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Modificar inmueble</title>
+        <link rel = "stylesheet" href = "../Bootstrap/css/landing-page.css"/>
+        <link rel = "stylesheet" href = "../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        
+        <script src = "../scripts.js"></script>
         <?php
         include_once '../Controladores/InmueblesController.php';
         include_once '../Vistas/header.php';
@@ -28,16 +32,7 @@
             ?>
         </header>
         <main>
-            <aside>
-                <nav>
-                    <ul>
-                        <li><a href="../Vistas/mis_anuncios.php">Mis anuncios</a></li>
-                        <li><a href='../Vistas/mis_favoritos.php'>Mis favoritos</a></li>
-                        <li><a href='../Vistas/mis_alertas.php'>Mis alertas</a></li>
-                        <li><a href='../Vistas/inmueble.php'>Mis inmuebles</a></li>
-                    </ul>
-                </nav>
-            </aside>
+         
             <form action="../Controladores/InmueblesController.php" method="POST">
                <!--<button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />-->
                 <input type="hidden" name="numero" value="<?php $usuario->getNumero(); ?>"/>
