@@ -4,6 +4,9 @@
         <title>Mis alertas</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
@@ -22,9 +25,9 @@
                 <article class="">
                     <section>
                         <h4>Mis alertas</h4>
-                            <?php
-                            get_alertas_usuario();
-                            ?>
+                        <?php
+                        get_alertas_usuario();
+                        ?>
                     </section>
                 </article>
             </main>

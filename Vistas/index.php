@@ -10,13 +10,16 @@ and open the template in the editor.
         <title>Bienvenido, ¿qué buscas?</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once 'header.php';
         include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
-        <header class="masthead">
+        <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
@@ -33,7 +36,7 @@ and open the template in the editor.
             <main>
                 <nav id="buscador" class="navbar navbar-light bg-light static-top">
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
-                        <table>
+                        <table id="datos_visa" class="display table-bordered" style="width:100%">
                             <tr class="form-group">
                                 <td>
                                     <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">

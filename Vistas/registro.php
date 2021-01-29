@@ -12,6 +12,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/registroController.php';
@@ -33,7 +36,7 @@ and open the template in the editor.
             <article>
                 <section class="align-content-center" >
                     <form action="../Controladores/registroController.php" method="POST">
-                        <table class="table-responsive-lg">
+                        <table class="display table-bordered" style="width:100%">
                             <thead><th>Formulario de registro</th></thead>
                             <tr>
                                 <td>Nombre y Apellidos:</td>
@@ -96,19 +99,6 @@ and open the template in the editor.
                     </form>
                 </section>
             </article>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#form_empresa").hide();
-                    $("input:radio").click(function () {
-                        if ($("input:radio[name=tipo]:checked").val() !== "profesional") {
-                            $("#form_empresa").hide();
-                        } else {
-                            $("#form_empresa").show();
-                        }
-
-                    });
-                });
-            </script>
         </main>
     </body>
     <?php

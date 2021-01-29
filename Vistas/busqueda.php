@@ -12,13 +12,16 @@ and open the template in the editor.
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
-        <header class="masthead">
+        <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
@@ -34,7 +37,7 @@ and open the template in the editor.
             <br><br>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
                 <form method="GET" action="../Controladores/busquedaController.php">
-                    <table class="table-bordered">
+                    <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td><label>Número de baños</label></td>
                             <td><input type="number" min="0" id="num_banyos" name="num_banyos" value="0"></td>
@@ -113,15 +116,6 @@ and open the template in the editor.
                     ?>
                 </table>
             </article>
-            <script type="text/javascript">
-
-                $(document).ready(function () {
-                    $("#filtros_aside").toggle("fast");
-                    $("#mostrar_ocultar").click(function () {
-                        $("#filtros_aside").toggle("fast");
-                    });
-                });
-            </script>
         </main>
         <?php
         ?>

@@ -4,6 +4,9 @@
         <title>Mis favoritos</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         include_once '../Vistas/aside.php';
@@ -13,7 +16,7 @@
             ?>
         </head>
         <body>
-            <header class="masthead">
+            <header class="masthead text-white text-center">
                 <?php sesion_iniciada(); ?>
             </header>
             <main>
@@ -22,9 +25,9 @@
                 <article>
                     <section>
                         <h4>Mis favoritos</h4>
-                            <?php
-                            get_favoritos_usuario();
-                            ?>
+                        <?php
+                        get_favoritos_usuario();
+                        ?>
                     </section>
                 </article>
             </main>

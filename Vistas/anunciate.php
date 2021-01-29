@@ -4,6 +4,9 @@
         <title>Publica ya tu anuncio</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         ?>
@@ -26,7 +29,7 @@
                 ?>
                 <h3>Alta de un nuevo anuncio </h3>
                 <form class="form-control-plaintext" action="../Controladores/AnunciosController.php" method="POST">
-                    <table class="table">
+                    <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
@@ -36,7 +39,7 @@
                             <td>
                                 <select>
                                     <?php
-                                        getInmuebleByDireccion($direccion);
+                                    getInmuebleByDireccion($direccion);
                                     ?>
                                 </select>
                             </td>
