@@ -48,4 +48,4 @@ function cabecera_admin() {
     . "<br>"
     . "<a class='navbar-brand' href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
-}
+
