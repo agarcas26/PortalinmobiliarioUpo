@@ -66,7 +66,7 @@ function mostrar_detalle_anuncio($id_anuncio) {
 }
 
 function mostrar_info_anuncio($id_anuncio) {
-    $anuncio = readAnuncio($id_anuncio);
+    $anuncio = listAllAnuncios();
     while ($fila = mysqli_fetch_array($anuncio)) {
         if ($id_anuncio == $fila[0]) {
             echo '<h5>Titulo:' . $fila[9] . '</h5><br>'
