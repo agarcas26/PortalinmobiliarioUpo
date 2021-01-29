@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+session_start(); //funciona el insertar con esto, sin eso no lo hace --_(-_-)_--
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
@@ -177,15 +177,15 @@ if (isset($_POST["btonInsertar"])) {
         }
     }
 
-//        if ($_SESSION["validacion"]) {
-//            header('Location: ' . $url_exito);
-//        } else {
-//            header('Location: ' . $url_error);
-//        }
-    echo "<pre>";
-    var_dump($inmueble1);
-    var_dump($insertOk);
-    echo "</pre>";
+        if ($_SESSION["validacion"]) {
+            header('Location: ' . $url_exito);
+        } else {
+            header('Location: ' . $url_error);
+        }
+//    echo "<pre>";
+//    var_dump($inmueble1);
+//    var_dump($insertOk);
+//    echo "</pre>";
 }
 
 function modificarInmueble() {
