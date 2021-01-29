@@ -24,7 +24,7 @@
                 <article>
                     <section>
                         <h1>Rellene el formulario para dar de alta un nuevo inmueble</h1>
-                        <form  action='../Controladores/insertInmuebles.php' method='POST' style="margin-left:20px;">
+                        <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:20px;">
                             <label>A continuación rellene la dirección del inmueble</label>
                             <br><br>
                             <label>Numero</label><br>
@@ -120,7 +120,7 @@
             </main>
         </body>
         <?php
-        include_once '../Vistas/footer.html';
+        include_once 'footer.html';
         ?>
         <?php
     } else {

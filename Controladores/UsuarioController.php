@@ -5,9 +5,9 @@ include_once '../DAO/daoParticular.php';
 include_once '../DAO/daoProfesional.php';
 include_once '../Modelos/UsuarioModel.php';
 
-function getUsuarioByUsuario($nombre_usuario, $contraseña_usuario) {
+function getUsuarioByUsuario($nombre_usuario) {
     $dao = new daoUsuarios();
-    $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario, $contraseña_usuario);
+    $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario);
     $daoProfesional = new daoProfesional();
     $usuario_datos = mysqli_fetch_row($usuario_datos);
     if (isset($usuario_datos[3])) {

@@ -3,25 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Mi Perfil</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Controladores/PerfilController.php';
         include_once '../Vistas/header.php';
         ?>
     </head>
     <body>
-        <header class="masthead text-white text-center">
+        <header class="masthead">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
-                if (isset($_SESSION['usuario_particular'])){
-                    $usuario=$_SESSION['usuario_particular'];
-                }
-                else{
-                    $usuario=$_SESSION['usuario_profesional'];
+                if (isset($_SESSION['usuario_particular'])) {
+                    $usuario = $_SESSION['usuario_particular'];
+                } else {
+                    $usuario = $_SESSION['usuario_profesional'];
                 }
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
-                $usuario=$_SESSION['admin'];
+                $usuario = $_SESSION['admin'];
             } else {
                 no_sesion_iniciada();
             }
@@ -29,41 +30,27 @@
         </header>
         <main>
             <aside>
-                <nav>
-                    <ul>
-                        <li><a href="../Vistas/mis_anuncios.php">Mis anuncios</a></li>
-                        <li><a href='../Vistas/mis_favoritos.php'>Mis favoritos</a></li>
-                        <li><a href='../Vistas/mis_alertas.php'>Mis alertas</a></li>
-                         <li><a href='../Vistas/inmueble.php'>Mis inmuebles</a></li>
-                    </ul>
-                </nav>
             </aside>
-            <form action="PerfilController.php" method="POST">
-                <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />
+            <form action="../Controladores/PerfilController.php" method="POST">
+                <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="" />Cerrar sesión</button>
                 <table>
-                    <tr>
                     <h1>Datos del perfil</h1>
-                    </tr>
+                    <?php
+                        $datos = getDatosPerfil();
+                    ?>
                     <tr>
-                        <?php
-                        if (!isset($_SESSION['searchuser'])) {
-                            $datos = getDatosPerfil($usuario);
-                        } else {
-                            $datos = getDatosPerfil($_SESSION['searchuser']);
-                        }
-                        ?>
-                        <td>
-                            <label>Imagen de perfil: </label>
-                            <img src="src" alt="Imagen de perfil"/>
-                        </td>
                         <td>
                             <label>Usuario: </label>
-                            <input type="type" name="usuario" value="<?php echo $datos[0]; ?>">
+                            <label><?php echo $datos[0]; ?></label>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <label>Nombre: </label>
-                            <input type="type" name="nombre" value="<?php echo $datos[1]; ?>">
+                            <label><?php echo $datos[1]; ?></label>
                         </td>
+                    </tr>
+                    <tr>
                         <?php
                         if (!isset($_SESSION['searchuser'])) {
                             ?>
@@ -73,10 +60,15 @@
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                         <?php } ?>
-                        <td>
+                    </tr>
+                    <tr>
+                        <td>                                
+                            <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             <label>Nueva contraseña: </label>
                             <input type="password" name="nueva_pass" value="">
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <label>Confirmar nueva contraseña: </label>
                             <input type="password" name="conf_nueva_pass" value="">

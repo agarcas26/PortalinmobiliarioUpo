@@ -27,7 +27,7 @@ class daoInmuebles {
         $cp = $objInmueble->getCp();
         $nombre_via = $objInmueble->getNombre_via();
         $tipo_via = $objInmueble->getTipo_via();
-        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyo();
+        $nombre_usuario_duenyos = $objInmueble->getNombre_usuario_duenyos();
         $nombre_localidad = $objInmueble->getNombre_localidad();
         $nombre_provincia = $objInmueble->getNombre_provincia();
         $num_banyos = $objInmueble->getNum_banyos();
