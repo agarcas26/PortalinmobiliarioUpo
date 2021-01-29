@@ -87,12 +87,12 @@ function mostrarValorar($id_anuncio) {
     echo '<form id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
     . '<textarea class="form-control" name="valoracion" placeholder="Valora el inmueble" required></textarea>';
 
-     echo '<span class="estrellado-val" id="'. $resenyas_inmueble[$i]->getValoracion() .'">'
-                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
-                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
-                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
-                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
-                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'. '</span>';
+     echo '<span class="estrellado-val" id="valorar">'
+                . '<img class="puntuacion-st" id="1" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" id="2" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" id="3" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" id="4" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" id="5" class="unchecked" src="../img/unchecked.png">'. '</span>';
 
     echo '<input id="puntuacion" type="number" name="puntuacion" value="0"  hidden>'
     . '<input name="id_anuncio" type="number" value="' . $id_anuncio . '" hidden>'
