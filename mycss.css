@@ -20,3 +20,7 @@ h1,h2,h3,h4{
     border-collapse: collapse;
     border: lavender;
 }
+
+.puntuacion , .puntuacion-st{
+    width: 1.5%;
+}
