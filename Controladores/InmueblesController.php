@@ -1,11 +1,10 @@
 <?php
 
-session_start(); //funciona el insertar con esto, sin eso no lo hace --_(-_-)_--
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+session_start(); //funciona el insertar con esto, sin eso no lo hace --_(-_-)_--
 //damos por correcto el formulario
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
@@ -65,7 +64,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/">' . $aux[$i]->getFotos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/'.$direccion.'">' . $aux[$i]->getFotos() . " " . '</tr>';
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
 //        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
 //        . '</td>'
@@ -177,11 +176,11 @@ if (isset($_POST["btonInsertar"])) {
         }
     }
 
-        if ($_SESSION["validacion"]) {
-            header('Location: ' . $url_exito);
-        } else {
-            header('Location: ' . $url_error);
-        }
+    if ($_SESSION["validacion"]) {
+        header('Location: ' . $url_exito);
+    } else {
+        header('Location: ' . $url_error);
+    }
 //    echo "<pre>";
 //    var_dump($inmueble1);
 //    var_dump($insertOk);
@@ -295,22 +294,22 @@ function listar_inmuebles_usuarioAll() {
 //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 //        echo '<option>'
-//        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
-//        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
-//        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
-//        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() .
-//        ' - Usuario : ' . $inmuebles_usuario[$i]->getNombre_usuario_duenyos() .
-//        ' - Localidad : ' . $inmuebles_usuario[$i]->getNombre_localidad() .
-//        ' - Provincia : ' . $inmuebles_usuario[$i]->getNombre_provincia() .
-//        ' - N.Baños : ' . $inmuebles_usuario[$i]->getNum_banyos() .
-//        ' - N.Habitaciones : ' . $inmuebles_usuario[$i]->getNum_hab() .
-//        ' - Cocina Amueblada : ' . $inmuebles_usuario[$i]->getCocina() .
-//        ' - Tipo de oferta : ' . $inmuebles_usuario[$i]->getTipo_inmueble() .
-//        ' - Numero de plantas : ' . $inmuebles_usuario[$i]->getNumero_plantas() .
-//        ' - Planta (Edificios): ' . $inmuebles_usuario[$i]->getPlanta() .
-//        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
-//        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
-//        '</option>';
+        //        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
+        //        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
+        //        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
+        //        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() .
+        //        ' - Usuario : ' . $inmuebles_usuario[$i]->getNombre_usuario_duenyos() .
+        //        ' - Localidad : ' . $inmuebles_usuario[$i]->getNombre_localidad() .
+        //        ' - Provincia : ' . $inmuebles_usuario[$i]->getNombre_provincia() .
+        //        ' - N.Baños : ' . $inmuebles_usuario[$i]->getNum_banyos() .
+        //        ' - N.Habitaciones : ' . $inmuebles_usuario[$i]->getNum_hab() .
+        //        ' - Cocina Amueblada : ' . $inmuebles_usuario[$i]->getCocina() .
+        //        ' - Tipo de oferta : ' . $inmuebles_usuario[$i]->getTipo_inmueble() .
+        //        ' - Numero de plantas : ' . $inmuebles_usuario[$i]->getNumero_plantas() .
+        //        ' - Planta (Edificios): ' . $inmuebles_usuario[$i]->getPlanta() .
+        //        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
+        //        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
+        //        '</option>';
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
         echo '<table id="inmuebles">';
@@ -324,10 +323,10 @@ function listar_inmuebles_usuarioAll() {
         . '</td>'
         . '</a>';
         echo " ";
-        echo '<a href="../Vistas/alta_resenya.php">'
-        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
-        . '</td>'
-        . '</a>';
+//        echo '<a href="../Vistas/alta_resenya.php">'
+//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+//        . '</td>'
+//        . '</a>';
         echo '<a href="../Vistas/modInmueble.php">'
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
@@ -395,12 +394,12 @@ function getInmuebleByAnuncio($anuncio) {
 //    for ($i = 0; $i < sizeof($inmueble2); $i++) {
 //
 //        echo '<table id="inmuebles">';
-//        echo '</tr><tr>';
-//        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
-//        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
-//        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
-//        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
-//        echo '</tr>';
+    //        echo '</tr><tr>';
+    //        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
+    //        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
+    //        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
+    //        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
+    //        echo '</tr>';
 //        echo '</table>';
 //    }
 //    echo "<pre>";

@@ -83,7 +83,7 @@ if (isset($_GET["enviarValoracion"])) {
  * Esta función muestra la media de las valoraciones en formato de estrellas
  */
 
-function mostrarValorar($id_inmueble) {
+function mostrarValorar($id_anuncio) {
     echo '<form id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
     . '<textarea class="form-control" name="valoracion" placeholder="Valora el inmueble" required></textarea>';
 
@@ -92,7 +92,7 @@ function mostrarValorar($id_inmueble) {
     }
 
     echo '<input id="puntuacion" type="number" name="puntuacion" hidden>'
-    . '<input name="id_inmueble" type="number" value="' . $id_inmueble . '" hidden>'
+    . '<input name="id_inmueble" type="number" value="' . $id_anuncio . '" hidden>'
     . '<br>'
     . '<input id="btn-coment" type="submit" name="enviarValoracion" value="Enviar" class="btn btn-success">'
     . '</form>';
