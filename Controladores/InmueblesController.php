@@ -69,7 +69,9 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
         $fotos = preg_split("-", $fotos);
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"/>"' . '</tr>';
+            echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
+            echo '../img/Inmueble/' . $direccion . '/' . $fotos[$i];
+            
         }
 
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
@@ -90,7 +92,6 @@ function getInmuebleByDireccion($direccion) {
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
         . '<a href="../Controladores/InmueblesController.php?' . $direccion . '">'
         . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
-        . '</td>'
         . '</a></form>';
 
 
