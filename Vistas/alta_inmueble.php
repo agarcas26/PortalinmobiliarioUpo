@@ -95,7 +95,8 @@
                            
                                 <label for="fileFotos">Suba imágenes del inmueble:</label>
                                 <br><br>-->
-                                <input type="file" name="fileFotos" accept="image/png, image/jpeg">
+                                <input type="file" name="fileFotos" accept="image/png, image/jpeg" >
+                             
                                 <br><br>
                                 <input type="submit" value="enviar" name="btonInsertar">
 

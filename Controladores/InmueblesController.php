@@ -65,7 +65,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Fotos : ' . $aux[$i]->getFotos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/">' . $aux[$i]->getFotos() . " " . '</tr>';
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
 //        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
 //        . '</td>'
