@@ -31,18 +31,12 @@ function muestraEstrellas() {
     }
 }
 
-function datosTarjeta() {
-    var tabla_datos = document.getElementById("datos_visa");
-    tabla_datos.innerHTML("<tr>"
-            + "<td><label>Nombre titular</label><input type='text' name='titular'/></td>"
-            + "</tr><tr>"
-            + "<td><label>Número tarjeta</label><input type='number' name='num_tarjeta'/></td>"
-            + "</tr>"
-            + "<tr>"
-            + "<td><label>Caducidad</label><input type='text' name='caducidad' /></td>"
-            + "<td><label>CVV</label><input type='password' name='cvv' /></td>"
-            + "</tr>");
-}
+$(document).ready(function () {
+    //$(".form-visa").hide();
+    $("#visa").click(function () {
+        $(".form-visa").toggle("fast");
+    });
+});
 
 $(document).ready(function () {
     $('table.display').DataTable();
