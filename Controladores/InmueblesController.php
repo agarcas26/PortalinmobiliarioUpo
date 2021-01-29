@@ -86,13 +86,7 @@ function getInmuebleByDireccion($direccion) {
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
-        echo '<td>';
-        echo '<form action="../Controladores/InmueblesController.php" method="POST">'
-        . '<a href="../Controladores/InmueblesController.php?' . $direccion . '">'
-        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
-        . '</td>'
-        . '</a></form>';
-
+       
 
         echo '</table>';
     }
@@ -345,7 +339,7 @@ function listar_inmuebles_usuarioAll() {
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
-
+       
         echo '</tr>';
         echo '</table>';
     }

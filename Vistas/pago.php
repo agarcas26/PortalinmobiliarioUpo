@@ -46,7 +46,7 @@
                 </tr>
             </table>    
             <button class="btn btn-primary" id="visa" name="visa" value="" />Visa</button>
-        <form class="form-visa" action="../Controladores/checkout_controller.php" method="POST">
+        <form class="form-visa" action="../Controladores/pagoController.php" method="POST">
             <table id="datos_visa" class="display table-bordered" style="width:100%">
                 <tr>
                     <td>
