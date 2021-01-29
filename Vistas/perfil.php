@@ -36,7 +36,10 @@
             <main>
                 <article>
                     <section>
-                        <a href="../Vistas/alta_inmueble.php"><button class="btn btn-primary">¿Quieres registrar un nuevo inmueble?</button></a>
+                        <a style="float:right;" href="../Vistas/alta_inmueble.php"><button class="btn btn-primary">¿Quieres registrar un nuevo inmueble?</button></a>
+                    </section>
+                    <section>
+                        <a style="float:right;" href="../Vistas/modificar_perfil.php"><button class="btn btn-primary">Configuración del perfil</button></a>
                     </section>
                     <h4>Mis favoritos</h4>
                     <!-- Mostramos vista previa favoritos -->
