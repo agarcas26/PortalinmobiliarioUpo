@@ -5,10 +5,10 @@
  */
 
 function animaEstrellas() {
-    $(".estrellado").click(function () {
+    $(".estrellado-val").click(function () {
         var id = $(this).attr('id');
         var puntuacion = parseInt(id);
-        var estrellas = $(".puntuacion");
+        var estrellas = $(".puntuacion-st");
         for (var i = 0; i < estrellas.length; i++) {
             if (i < puntuacion) {
                 $(estrellas[i]).attr("src","../img/checked.png");
@@ -16,6 +16,7 @@ function animaEstrellas() {
                 $(estrellas[i]).attr("src","../img/unchecked.png");
             }
         }
+        $(".puntuacion-st").attr("value",puntuacion);
     });
 }
 
