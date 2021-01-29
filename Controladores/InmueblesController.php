@@ -377,23 +377,20 @@ function get_inmueble_by_direccion() {
 
 function getInmuebleByAnuncio($anuncio) {
     $lista = listar();
-    $i = 0;
+    $i = -1;
     $encontrado = false;
-    $r = new Inmueble();
     while (!$encontrado && $i < sizeof($lista)) {
+        $i++;
         if ($lista[$i]->getCp() == $anuncio->getCP()) {
             if ($lista[$i]->getTipo_via() == $anuncio->getTipo_via()) {
                 if ($lista[$i]->getNumero() == $anuncio->getNumero()) {
-                    $r = $lista[$i];
                     $encontrado = true;
                 }
             }
         }
-
-        $i++;
     }
 
-    return $r;
+    return $lista[$i];
 }
 
 function listar() {
@@ -405,6 +402,7 @@ function listar() {
     if (mysqli_num_rows($inmuebles) > 0) {
         while ($aux = mysqli_fetch_array($inmuebles)) {
             $inmueble_aux = new Inmueble();
+            
             $inmueble_aux->setNumero($aux[0]);
             $inmueble_aux->setCp($aux[1]);
             $inmueble_aux->setNombre_via($aux[2]);
@@ -420,6 +418,7 @@ function listar() {
             $inmueble_aux->setPlanta($aux[12]);
             $inmueble_aux->setMetros($aux[13]);
             $inmueble_aux->setFotos($aux[14]);
+            
             array_push($anuncios, $inmueble_aux);
         }
     }
