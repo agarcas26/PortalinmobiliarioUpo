@@ -5,7 +5,7 @@
  */
 
 function animaEstrellas() {
-    $(".estrellado-val").click(function () {
+    $(".puntuacion-st").click(function () {
         var id = $(this).attr('id');
         var puntuacion = parseInt(id);
         var estrellas = $(".puntuacion-st");
