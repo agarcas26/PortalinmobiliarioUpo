@@ -30,13 +30,15 @@
         </header>
         <main>
             <aside>
-            </aside>
-            <form action="../Controladores/PerfilController.php" method="POST">
+            </aside>                
+            <form action="../Controladores/logoutController.php">
                 <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="" />Cerrar sesión</button>
+            </form>
+            <form action="../Controladores/PerfilController.php" method="POST">
                 <table>
                     <h1>Datos del perfil</h1>
                     <?php
-                        $datos = getDatosPerfil();
+                    $datos = getDatosPerfil();
                     ?>
                     <tr>
                         <td>
