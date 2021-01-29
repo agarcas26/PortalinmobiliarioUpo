@@ -5,6 +5,7 @@ include_once '../Modelos/AnunciosModel.php';
 include_once '../DAO/daoAnuncios.php';
 include_once '../Modelos/InmueblesModel.php';
 include_once '../Controladores/InmueblesController.php';
+include_once '../Controladores/busquedaController.php';
 include_once '../DAO/daoInmuebles.php';
 
 //FALTA INSERTAR ANUNCIOS
@@ -286,53 +287,6 @@ function anuncios_barra_busqueda($barra_busqueda) {
     return $anuncios;
 }
 
-function getFiltros() {
-    $filtros = [];
-    if (isset($_GET["num_banyos"])) {
-        $filtros[] = $_GET["num_banyos"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["tipo_inmueble"])) {
-        $filtros[] = $_GET["tipo_inmueble"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["tipo_oferta"])) {
-        $filtros[] = $_GET["tipo_oferta"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["precio_max"])) {
-        $filtros[] = $_GET["precio_max"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["num_hab"])) {
-        $filtros[] = $_GET["num_hab"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["m2"])) {
-        $filtros[] = $_GET["m2"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    if (isset($_GET["fecha"])) {
-        $filtros[] = $_GET["fecha"];
-    } else {
-        $filtros[] = "notset";
-    }
-
-    return $filtros;
-}
-
 function probarFiltros($filtros, $anuncio) {
     $r = false;
     $inmueble = getInmuebleByAnuncio($anuncio);
@@ -356,8 +310,7 @@ function probarFiltros($filtros, $anuncio) {
     return $r;
 }
 
-function anuncios_busqueda() {
-    $filtros = getFiltros();
+function anuncios_busqueda($filtros) {
     $all_anuncios = listAllAnuncios();
     $anuncios = [];
     if (mysqli_num_rows($all_anuncios) > 0) {
@@ -380,4 +333,3 @@ function anuncios_busqueda() {
 
     return $anuncios;
 }
-
