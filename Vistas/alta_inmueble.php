@@ -26,7 +26,7 @@
                 </aside>
                 <article>
                     <section>
-                        <h1>Rellene el formulario para dar de alta un nuevo inmueble</h1>
+                        <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
                         <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:20px;">
                             <table id="datos_visa" class="display table-bordered" style="width:100%">
                                 <tr>
