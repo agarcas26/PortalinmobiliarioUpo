@@ -34,52 +34,54 @@
         </header>
         <main>
 
-            <form action="pagoController.php" method="POST">                
-                <table class="display table-bordered" style="width:100%">
-                    <tr>
-                        <td><strong>Datos del inmueble</strong></td>
-                        <td><strong>Datos del usuario</strong></td>
-                    </tr>
-                    <tr>
-                        <td><?php mostrar_info_anuncio($_GET["id_anuncio"]); ?></td>
-                        <td><?php echo $usuario; ?></td>
-                    </tr>
-                </table>
-                <input class="btn-block btn-secondary" type="submit" name="guardar" value="Confirmar pago" />
-            </form>
-            <button class="btn btn-primary" type="submit" id="visa" name="visa" value="" />Visa</button>
-        <table id="datos_visa" class="display table-bordered" style="width:100%">
-            <tr>
-                <td>
-                    <label>Nombre titular</label>
-                </td>
-                <td>
-                    <input type='text' name='titular'/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Número tarjeta</label>
-                </td>
-                <td>
-                    <input type='number' name='num_tarjeta'/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Caducidad</label>
-                </td>
-                <td>
-                    <input type='text' name='caducidad' />
-                </td>
-                <td>
-                    <label>CVV</label>
-                </td>
-                <td>
-                    <input type='password' name='cvv' />
-                </td>
-            </tr>
-        </table>
+
+            <table class="display table-bordered" style="width:100%">
+                <tr>
+                    <td><strong>Datos del inmueble</strong></td>
+                    <td><strong>Datos del usuario</strong></td>
+                </tr>
+                <tr>
+                    <td><?php mostrar_info_anuncio($_GET["id_anuncio"]); ?></td>
+                    <td><?php echo $usuario; ?></td>
+                </tr>
+            </table>    
+            <button class="btn btn-primary" id="visa" name="visa" value="" />Visa</button>
+        <form class="form-visa" action="pagoController.php" method="POST">
+            <table id="datos_visa" class="display table-bordered" style="width:100%">
+                <tr>
+                    <td>
+                        <label>Nombre titular</label>
+                    </td>
+                    <td>
+                        <input type='text' name='titular'/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Número tarjeta</label>
+                    </td>
+                    <td>
+                        <input type='number' name='num_tarjeta'/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Caducidad</label>
+                    </td>
+                    <td>
+                        <input type='text' name='caducidad' />
+                    </td>
+                    <td>
+                        <label>CVV</label>
+                    </td>
+                    <td>
+                        <input type='password' name='cvv' />
+                    </td>
+                </tr>
+            </table>
+            <input class="btn-block btn-secondary" type="submit" name="guardar" value="Confirmar pago" /> 
+        </form>
+
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="PortalInmobiliarioUPO@gmail.com">
