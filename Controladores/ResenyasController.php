@@ -2,6 +2,8 @@
 
 include_once '../Modelos/ResenyaModel.php';
 include_once '../DAO/daoResenyas.php';
+include_once '../Controladores/AnunciosController.php';
+include_once '../Controladores/InmueblesController.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -11,6 +13,34 @@ $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
+
+function resenyas_anuncio($id_anuncio) {
+    $anuncio = readAnuncio($id_anuncio);
+    $inmueble = getInmuebleByAnuncio($anuncio);
+
+    $resenyas_inmueble = get_resenyas_inmueble($inmueble);
+    for ($i = 0; $i < sizeof($resenyas_inmueble); $i++) {
+        echo '<table>';
+        echo '<tr>';
+        echo '<td>' . $resenyas_inmueble[$i]->getFecha() . '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>' . $resenyas_inmueble[$i]->getValoracion() . '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>' . $resenyas_inmueble[$i]->getDescripcion() . '</td>';
+        echo '</tr>';
+        echo '</table>';
+    }
+}
+
+function get_resenyas_inmueble($inmueble) {
+    $daoResenyas = new daoResenyas();
+    $resenyas_inmueble = $daoResenyas->read_by_inmueble($inmueble->getNumero(), $inmueble->getCp(), $inmueble->getNombre_via(), $inmueble->getTipo_via());
+    $daoResenyas->destruct();
+
+    return $resenyas_inmueble;
+}
 
 function get_valoracion_usuario($nombre_usuario, $direccion_inmueble) {
     $dao = new daoResenyas();
@@ -162,12 +192,4 @@ function leerResenyasbyUsuarios() {
     $resenyas_usuario = $daoResenyas->read_by_user($user);
     $daoResenya->destruct();
     return $resenyas_usuario;
-}
-
-function leerResenyasbyInmuebles() {
-    $inmueble = new InmueblesModel();
-    $daoResenyas = new daoResenyas();
-    $resenyas_inmieble = $daoResenyas->read_by_inmueble($inmueble);
-    $daoResenya->destruct();
-    return $resenyas_inmieble;
 }

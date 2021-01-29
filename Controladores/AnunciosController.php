@@ -177,7 +177,6 @@ function modifyAnuncio() {
 }
 
 //funcion consultar anuncios 
-
 function readAnuncio($idAnuncio) {
     $daoAnuncio = new daoAnuncios();
     $anuncio = $daoAnuncio->read($idAnuncio);
@@ -382,3 +381,4 @@ function anuncios_busqueda() {
 
     return $anuncios;
 }
+
