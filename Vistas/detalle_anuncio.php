@@ -39,6 +39,7 @@
                     <section>
                         <?php
                         resenyas_anuncio($_GET["id_anuncio"]);
+                        mostrarValorar();
                         ?>
                     </section>
                 </article>
