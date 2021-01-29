@@ -33,7 +33,7 @@
                 cabecera_admin();
                 $usuario = $_SESSION['admin'];
             } else {
-                no_sesion_iniciada();
+                header("Location: ../Vistas/login.php");
             }
             if (isset($_SESSION['usuario_particular'])) {
                 $usuario = $_SESSION['usuario_particular'];

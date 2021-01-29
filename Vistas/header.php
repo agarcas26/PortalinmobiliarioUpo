@@ -20,6 +20,7 @@ function sesion_iniciada() {
     . "<a href='../Vistas/mis_alertas.php'>Mis alertas</a>"
     . "<a href='../Vistas/mis_favoritos.php'>Mis favoritos</a>"
     . "<a href='../Vistas/inmueble.php'>Mis inmuebles</a>"
+    . "<a href='../Vistas/busqueda_usuario_admin.php'>Mis inmuebles</a>"
     . "<a href='../Controladores/logoutController.php'>Cerrar sesión</a>"
     . "</nav>"
     . "<br>"

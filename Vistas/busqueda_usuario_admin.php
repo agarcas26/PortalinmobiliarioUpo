@@ -12,7 +12,7 @@
         <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
-                alert("No tiene acceso a esta seccion");
+                echo"No tiene acceso a esta seccion";
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
             } else {
