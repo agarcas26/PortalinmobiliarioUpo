@@ -43,3 +43,10 @@ nav{
 #foto_inmueble{
     width: 20%;
 }
+
+main{
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+}
