@@ -203,7 +203,7 @@ function listar_anuncios_usuario() {
     $daoAnuncios->destruct();
     if (mysqli_num_rows($anuncios_usuario) > 0) {
         while ($fila = mysqli_fetch_array($anuncios_usuario)) {
-            echo '<table id="anuncios">';
+            echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
             echo '</tr><tr>';
             echo '<td>' . $fila[1] . " " . $fila[3] . " " . $fila[2] . '</td>';
             echo '</tr><tr>';

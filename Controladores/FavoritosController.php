@@ -15,7 +15,7 @@ function get_favoritos_usuario() {
 
     if (sizeof($favoritos) > 0) {
         for ($i = 0; $i < sizeof($favoritos); $i++) {
-            echo '<table class="table-borderless">';
+            echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
             echo '<tr>';
             echo '<td>' . $favoritos[$i][0] . " Dirección:   " . $favoritos[$i][2] . " " . $favoritos[$i][1] . " " . $favoritos[$i][4] . " " . $favoritos[$i][3] . '</td>';
             echo '</tr><tr>';

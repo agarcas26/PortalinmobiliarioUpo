@@ -26,7 +26,7 @@ function get_alertas_usuario() {
     }
 
     for ($i = 0; $i < sizeof($alertas); $i++) {
-        echo '<table>';
+        echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
         echo '<tr>';
         echo '<td>Tipo de inmueble: ' . $alertas[$i][4] . '</td>';
         echo '</tr><tr>';

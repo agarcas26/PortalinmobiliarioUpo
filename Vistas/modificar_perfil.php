@@ -5,13 +5,16 @@
         <title>Mi Perfil</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Controladores/PerfilController.php';
         include_once '../Vistas/header.php';
         ?>
     </head>
     <body>
-        <header class="masthead">
+        <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
@@ -35,7 +38,7 @@
                 <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="" />Cerrar sesión</button>
             </form>
             <form action="../Controladores/PerfilController.php" method="POST">
-                <table>
+                <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <h1>Datos del perfil</h1>
                     <?php
                     $datos = getDatosPerfil();

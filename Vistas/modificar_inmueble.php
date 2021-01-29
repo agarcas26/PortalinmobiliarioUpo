@@ -5,7 +5,10 @@
         <title>Modificar inmueble</title>
         <link rel = "stylesheet" href = "../Bootstrap/css/landing-page.css"/>
         <link rel = "stylesheet" href = "../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-        
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
+
         <script src = "../scripts.js"></script>
         <?php
         include_once '../Controladores/InmueblesController.php';
@@ -32,9 +35,9 @@
             ?>
         </header>
         <main>
-         
+
             <form action="../Controladores/InmueblesController.php" method="POST">
-               <!--<button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />-->
+                <!--<button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />-->
                 <input type="hidden" name="numero" value="<?php $usuario->getNumero(); ?>"/>
                 <input type="hidden" name="cp" value="<?php $usuario->getCp(); ?>"/>
                 <input type="hidden" name="nombre_via" value="<?php $usuario->getNombre_via(); ?>"/>

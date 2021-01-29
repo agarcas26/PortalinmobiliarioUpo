@@ -4,6 +4,8 @@
         <title>Detalle inmueble</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
         <script src="../scripts.js"></script>
         <?php
         include_once 'header.php';
@@ -13,11 +15,11 @@
         ?>
     </head>
     <body>
-        <header class="masthead">
+        <header class="masthead text-white text-center">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
-            } elseif(isset($_SESSION['admin'])) {
+            } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
             } else {
                 no_sesion_iniciada();
@@ -33,20 +35,17 @@
                         //Galería de imágenes del inmueble
                         ?>
                     </ul>
-                    <table>  
-                      
-                       
+                    <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <?php
-                       
-                                                listar_inmuebles_usuarioAll();
+                        listar_inmuebles_usuarioAll();
                         ?>
                     </table>
                 </section>
 <!--                <section id="resenyas_inmueble">
                     <button id="nueva_resenya" onclick="nueva_resenya()">Escribir una reseña</button>
-                    <?php
-                    //Hacer una tabla por cada resenya asociada a este anuncio
-                    ?>
+                <?php
+                //Hacer una tabla por cada resenya asociada a este anuncio
+                ?>
                 </section>-->
             </article>
         </main>

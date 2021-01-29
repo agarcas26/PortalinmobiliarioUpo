@@ -87,12 +87,15 @@ function mostrarValorar($id_anuncio) {
     echo '<form id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
     . '<textarea class="form-control" name="valoracion" placeholder="Valora el inmueble" required></textarea>';
 
-    for ($index = 1; $index <= 5; $index++) {
-        echo "<span id = 'puntuacion-$index' class = 'review fa fa-star unchecked'></span>";
-    }
+     echo '<span class="estrellado-val" id="'. $resenyas_inmueble[$i]->getValoracion() .'">'
+                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion-st" class="unchecked" src="../img/unchecked.png">'. '</span>';
 
-    echo '<input id="puntuacion" type="number" name="puntuacion" hidden>'
-    . '<input name="id_inmueble" type="number" value="' . $id_anuncio . '" hidden>'
+    echo '<input id="puntuacion" type="number" name="puntuacion" value="0"  hidden>'
+    . '<input name="id_anuncio" type="number" value="' . $id_anuncio . '" hidden>'
     . '<br>'
     . '<input id="btn-coment" type="submit" name="enviarValoracion" value="Enviar" class="btn btn-success">'
     . '</form>';

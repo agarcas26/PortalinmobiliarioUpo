@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>Mis Alertas</title>
+        <link rel="stylesheet" href="../mycss.css"/>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
         ?>
@@ -23,7 +26,7 @@
             <label>Te avisaremos cuando haya alguna oferta disponible de las características que tú elijas</label>            
             <form>
                 <input type="submit" name="guardar_alerta" value="Guardar alerta" />
-                <table>
+                <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <tr>
                         <td>Nombre de la alerta</td>
                         <td><input type="text" name="nombre" /></td>
