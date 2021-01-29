@@ -42,7 +42,7 @@
                     <section>
                         <?php
                         resenyas_anuncio($_GET["id_anuncio"]);
-                        mostrarValorar($id_inmueble);
+                        mostrarValorar($_GET["id_anuncio"]);
                         ?>
                           <script type="text/javascript">
 
