@@ -373,7 +373,7 @@ function get_inmueble_by_direccion() {
     echo "</pre>";
 }
 
-function getInmuebleByAnuncio($anuncio_array) {
+function getInmuebleByAnuncio($anuncio) {
     $daoInmueble = new daoInmuebles();
     $inmuebles = $daoInmueble->listar();
     $daoInmueble->destruct();
@@ -382,7 +382,6 @@ function getInmuebleByAnuncio($anuncio_array) {
     $inmueble_aux = new Inmueble();
     if (mysqli_num_rows($inmuebles) > 0) {
         while ($aux = mysqli_fetch_array($inmuebles) and!$encontrado) {
-            $anuncio = $anuncio_array[0];
             if ($aux[1] == $anuncio->getCP()) {
                 if ($aux[3] == $anuncio->getTipo_via()) {
                     if ($aux[0] == $anuncio->getNumero()) {
