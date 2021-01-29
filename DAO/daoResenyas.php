@@ -129,23 +129,23 @@ class daoResenyas {
         //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
-            while (mysqli_fetch_assoc($objMySqlLi)) {
-                $objResenya->setId_resenya($arrayAux["id_resenya"]);
-                $objResenya->setNombre_usuario($objMySqlLi["nombre_usuario"]);
-                $objResenya->setCp($objMySqlLi["cp"]);
-                $objResenya->setNombre_via($objMySqlLi["nombre_via"]);
-                $objResenya->setTipo_via($objMySqlLi["tipo_via"]);
-                $objResenya->setNumero($objMySqlLi["numero"]);
-                $objResenya->setDescripcion($objMySqlLi["descripcion"]);
-                $objResenya->setFecha_resenya($objMySqlLi["fecha_resenya"]);
-                $objResenya->setValoracion($objMySqlLi["valoracion"]);
+            while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
+                $objResenya->setId_resenya($aux["id_resenya"]);
+                $objResenya->setNombre_usuario($aux["nombre_usuario"]);
+                $objResenya->setCp($aux["cp"]);
+                $objResenya->setNombre_via($aux["nombre_via"]);
+                $objResenya->setTipo_via($aux["tipo_via"]);
+                $objResenya->setNumero($aux["numero"]);
+                $objResenya->setDescripcion($aux["descripcion"]);
+                $objResenya->setFecha_resenya($aux["fecha_resenya"]);
+                $objResenya->setValoracion($aux["valoracion"]);
                 array_push($arrayAux, $objResenya);
             }
         }
         return $arrayAux;
     }
-    
-    function read_by_usuario_inmueble($nombre_usuario,$numero, $cp, $nombre_via, $tipo_via) {
+
+    function read_by_usuario_inmueble($nombre_usuario, $numero, $cp, $nombre_via, $tipo_via) {
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` r WHERE r.`nombre_usuario`='$nombre_usuario' r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
         $arrayAux = [];
