@@ -58,14 +58,16 @@ if (isset($_GET["enviarValoracion"])) {
     set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
 
     //header("location:producto.php?idProducto=$idProducto");
-} else if (isset($_GET["editarValoracion"])) {//Método que controla la actualización de la opinión de un cliente sobre un producto
+} else if (isset($_GET["editarValoracion"])) 
+{//Método que controla la actualización de la opinión de un cliente sobre un producto
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
 
     set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
     //header("location:anuncio.php?id_anuncio=$id_anuncio");
-} else if (isset($_GET["eliminarValoracion"])) {//Eliminación de la valoración de un producto
+} else if (isset($_GET["eliminarValoracion"])) {
+//Eliminación de la valoración de un producto
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
     } else {
