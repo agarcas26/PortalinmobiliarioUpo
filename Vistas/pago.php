@@ -51,7 +51,7 @@
                 <input type="hidden" name="item_name" value=<?php
                 $dao=new daoAnuncios();
                 $tipo=$dao->get_tipo_anuncio($_GET["id_anuncio"]);
-                $dao->destruct;
+                $dao->destruct();
                 if($tipo="compra"){
                 echo "Se&ntilde;al compra inmueble"; 
                 }else{
