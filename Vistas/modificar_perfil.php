@@ -3,13 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>Mi Perfil</title>
+        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <?php
         include_once '../Controladores/PerfilController.php';
         include_once '../Vistas/header.php';
         ?>
     </head>
     <body>
-        <header class="masthead text-white text-center">
+        <header class="masthead">
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();

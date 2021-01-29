@@ -1,16 +1,17 @@
 <?php
 
 include_once '../Controladores/UsuarioController.php';
-if (isset($_POST['logout'])) {
-    unset($_SESSION['user']);
-    header('Location: login.php');
-}
 
 if (isset($_POST['guardar'])) {
     salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
 }
 
 function getDatosPerfil($usuario) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } else {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
     $usuario = getUsuarioByUsuario($nombre_usuario);
 }
 
