@@ -20,7 +20,6 @@ function sesion_iniciada() {
     . "<a href='../Vistas/mis_alertas.php'>Mis alertas</a>"
     . "<a href='../Vistas/mis_favoritos.php'>Mis favoritos</a>"
     . "<a href='../Vistas/inmueble.php'>Mis inmuebles</a>"
-    . "<a href='../Vistas/busqueda_usuario_admin.php'>Mis inmuebles</a>"
     . "<a href='../Controladores/logoutController.php'>Cerrar sesión</a>"
     . "</nav>"
     . "<br>"
@@ -37,5 +36,16 @@ function no_sesion_iniciada() {
 }
 
 function cabecera_admin() {
-    
+     echo "<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
+    . "<a href='../Vistas/perfil.php'>¡Bienvenido " . $usuario . "! Mi perfil</a>"
+    . "<a href='../Vistas/mis_anuncios.php'>Mis anuncios</a>"
+    . "<a href='../Vistas/mis_alertas.php'>Mis alertas</a>"
+    . "<a href='../Vistas/mis_favoritos.php'>Mis favoritos</a>"
+    . "<a href='../Vistas/inmueble.php'>Mis inmuebles</a>"
+    . "<a href='../Vistas/busqueda_usuario_admin.php'>Administrar usuarios</a>"
+    . "<a href='../Controladores/logoutController.php'>Cerrar sesión</a>"
+    . "</nav>"
+    . "<br>"
+    . "<a class='navbar-brand' href='index.php'><img src='../img/logo.png' alt='Logo'/></a>";
 }
+
