@@ -32,7 +32,7 @@
                         <table>
                             <?php
                             getInmuebleByDireccion($_GET['direccion']);
-                            listar_inmuebles_usuarioAll();
+                            
                             ?>
                         </table>
                     </section>
