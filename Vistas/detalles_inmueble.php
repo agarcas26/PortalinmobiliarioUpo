@@ -37,11 +37,6 @@
                             <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                                 <table id="datos_visa" class="display table-bordered" style="width:50%">
                                     <table id="datos_visa" class="display table-bordered" style="width:50%">
-                                        <tr>
-                                            <td>
-                                                <a><button>¿Desea eliminar este inmueble?</button></a>
-                                            </td>
-                                        </tr>
                                         <?php
                                         getInmuebleByDireccion($_GET['direccion']);
                                         ?>
