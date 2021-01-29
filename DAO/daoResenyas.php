@@ -123,8 +123,8 @@ class daoResenyas {
     }
 
     function read_by_inmueble($numero, $cp, $nombre_via, $tipo_via) {
-        $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` r WHERE r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
+        $objMySqlLi = $this->conexion->query($sql);
         $arrayAux = [];
         //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
         if ($objMySqlLi->num_rows > 0) {

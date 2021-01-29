@@ -10,6 +10,7 @@
         include_once '../Vistas/header.php';
         include_once '../Controladores/AnunciosController.php';
         include_once '../Controladores/ResenyasController.php';
+        include_once '../Controladores/valoracionController.php';
         ?>
     </head>
     <body>

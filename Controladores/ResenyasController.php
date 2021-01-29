@@ -22,7 +22,7 @@ function resenyas_anuncio($id_anuncio) {
     for ($i = 0; $i < sizeof($resenyas_inmueble); $i++) {
         echo '<table>';
         echo '<tr>';
-        echo '<td>' . $resenyas_inmueble[$i]->getFecha() . '</td>';
+        echo '<td>' . $resenyas_inmueble[$i]->getFecha_resenya() . '</td>';
         echo '</tr>';
         echo '<tr>';
         echo '<td class="estrellado" id="'. $resenyas_inmueble[$i]->getValoracion() .'">'
