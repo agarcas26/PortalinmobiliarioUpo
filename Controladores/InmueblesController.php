@@ -1,5 +1,4 @@
 <?php
-
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
@@ -84,9 +83,10 @@ function getInmuebleByDireccion($direccion) {
     }
 
     return $inmueble;
-   
-    ?>
+    
+    
 }
+
 
 if (isset($_POST["btonInsertar"])) {
 
