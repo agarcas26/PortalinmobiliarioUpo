@@ -22,16 +22,22 @@ function resenyas_anuncio($id_anuncio) {
     for ($i = 0; $i < sizeof($resenyas_inmueble); $i++) {
         echo '<table>';
         echo '<tr>';
-        echo '<td>' . $resenyas_inmueble[$i]->getFecha() . '</td>';
+        echo '<td>' . $resenyas_inmueble[$i]->getFecha_resenya() . '</td>';
         echo '</tr>';
         echo '<tr>';
-        echo '<td>' . $resenyas_inmueble[$i]->getValoracion() . '</td>';
+        echo '<td class="estrellado" id="'. $resenyas_inmueble[$i]->getValoracion() .'">'
+                . '<img class="puntuacion" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion" class="unchecked" src="../img/unchecked.png">'
+                . '<img class="puntuacion" class="unchecked" src="../img/unchecked.png">'. '</td>';
         echo '</tr>';
         echo '<tr>';
         echo '<td>' . $resenyas_inmueble[$i]->getDescripcion() . '</td>';
         echo '</tr>';
         echo '</table>';
     }
+    
 }
 
 function get_resenyas_inmueble($inmueble) {

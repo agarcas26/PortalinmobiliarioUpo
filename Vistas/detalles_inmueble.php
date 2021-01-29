@@ -32,8 +32,7 @@
                     <section id="ver_detalle">
                         <table>
                             <?php
-                            getInmuebleByDireccion($_GET['direccion']);
-                            
+                            getInmuebleByDireccion($_GET['direccion']);                            
                             ?>
                         </table>
                     </section>
