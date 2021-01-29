@@ -32,7 +32,7 @@
             ?>
             <main>
                 <article>
-                    <section id="detalle_inmueble">
+                    <section id="detalle_anuncio">
                         <table>
                             <?php
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
