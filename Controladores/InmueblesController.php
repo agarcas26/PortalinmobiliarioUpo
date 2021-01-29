@@ -33,7 +33,7 @@ function getInmuebleByDireccion($direccion) {
     $inmueble = [];
     for ($i = 0; $i < sizeof($aux); $i++) {
         $inmueble = new Inmueble();
-       $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setNumero($aux[$i]->getNumero());
         $inmueble->setCp($aux[$i]->getCp());
         $inmueble->setNombre_via($aux[$i]->getNombre_via());
         $inmueble->setTipo_via($aux[$i]->getTipo_via());
@@ -49,28 +49,40 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setMetros($aux[$i]->getMetros());
         $inmueble->setFotos($aux[$i]->getFotos());
         echo '<table id="inmuebles">';
-    echo '</tr><tr>';
-    echo '<td>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</td>';
-    echo '<td>' . ' Código Postal :' . $aux[$i]->getCp() . '</td>';
-    echo '<td>' . ' - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</td>';
-    echo '<td>' . ' - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</td>';
+        echo '</tr><tr>';
+        echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
+        echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
+        echo '<tr>' . ' </br> - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Fotos : ' . $aux[$i]->getFotos() . " " . '</tr>';
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
 //        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
 //        . '</td>'
 //        . '</a>';
-    echo " ";
-    echo '<a href="../Vistas/alta_resenya.php">'
-    . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
-    . '</td>'
-    . '</a>';
-    echo '<a href="../Vistas/modInmueble.php">'
-    . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
-    . '</td>'
-    . '</a>';
-    echo '</tr>';
-    echo '</table>';
+        echo " ";
+//        echo '<a href="../Vistas/alta_resenya.php">'
+//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+//        . '</td>'
+//        . '</a>';
+        echo '<tr>';
+        echo '<a href="../Vistas/modInmueble.php">'
+        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
+        . '</tr>'
+        . '</a>';
+        echo '</tr>';
+        echo '</table>';
     }
-    
+
     return $inmueble;
 }
 
