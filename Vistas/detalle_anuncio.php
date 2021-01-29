@@ -54,6 +54,7 @@
         }
         ?>
     </body>
+    <br>
     <?php
     include_once '../Vistas/footer.html';
     ?>
