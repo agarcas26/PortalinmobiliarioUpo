@@ -8,13 +8,13 @@ include_once '../Modelos/AnunciosModel.php';
 
 
 if (isset($_POST['aplicar_filtros'])) {
-    
+
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
     } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario = ($_SESSION['usuario_rofesional']);
     }
-    
+
     $num_banyos = $_POST['num_banyos'];
     $tipo_inmueble = $_POST['tipo_inmueble'];
     $tipo_oferta = $_POST['tipo_oferta'];
@@ -26,7 +26,7 @@ if (isset($_POST['aplicar_filtros'])) {
     $dao = new daoBusqueda();
     $dao->crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2);
     $dao->destruct();
-    
+
     header("Location: ../Vistas/busqueda.php");
 }
 
@@ -54,12 +54,13 @@ function mostrarVistaLista() {
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
         echo '<td>' . $anuncios[$i]->getFecha_anuncio() . '</td>';
         echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $anuncios[$i]->getId_anuncio() . '">'
-        . '  <button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>'
-        . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $anuncios[$i]->getId_anuncio() . '">'
-        . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
+        . '  <button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a></td>';
+        if (!isset($_SESSION['usuario_profesional'])) {
+            echo '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $anuncios[$i]->getId_anuncio() . '">'
+            . '  <button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
+        }
         echo '</tr>';
     }
-    
 }
 
 function mostrarVistaCuadricula() {

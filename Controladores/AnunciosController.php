@@ -55,10 +55,12 @@ function mostrar_detalle_anuncio($id_anuncio) {
             . '<tr>'
             . '<td>Direccion: ' . $fila[2] . ' ' . $fila[1] . ' numero ' . $fila[4] . '</td>'
             . '</tr>'
-            . '<tr>'
-            . '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
-            . '<button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>'
-            . '</tr>';
+            . '<tr>';
+            if (!isset($_SESSION['usuario_profesional'])) {
+                echo '<td>' . '<a href="../Vistas/pago.php?id_anuncio=' . $fila[0] . '">'
+                . '<button name="transaccion" id="transaccion" value="transaccion">¡Lo quiero!</button></a></td>';
+            }
+            echo '</tr>';
         }
     }
 }
@@ -372,7 +374,7 @@ function anuncios_busqueda() {
             $anuncio_aux->setNombre_usuario_anuncio($anuncio[6]);
             $anuncio_aux->setPrecio($anuncio[7]);
             $anuncio_aux->setFecha_anuncio($anuncio[8]);
-            if (probarFiltros($filtros, $anuncio_aux) ) {
+            if (probarFiltros($filtros, $anuncio_aux)) {
                 $anuncios[] = $anuncio_aux;
             }
         }
