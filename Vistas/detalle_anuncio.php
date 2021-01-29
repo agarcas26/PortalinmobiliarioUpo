@@ -36,6 +36,11 @@
                             ?>
                         </table>
                     </section>
+                    <section>
+                        <?php
+                        resenyas_anuncio($_GET["id_anuncio"]);
+                        ?>
+                    </section>
                 </article>
             </main> 
             <?php

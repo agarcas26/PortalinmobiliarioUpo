@@ -9,9 +9,9 @@ if (isset($_POST['entrar'])) {
     if (controllerInicioSesionAdmin($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $usuario = getAdminByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
-        
-            $_SESSION['admin'] = $_POST['nombre_usuario'];
-            
+
+        $_SESSION['admin'] = $_POST['nombre_usuario'];
+
         header("Location: ../Vistas/index.php");
     } else {
         header("Location: ../Vistas/login_admin.php");
