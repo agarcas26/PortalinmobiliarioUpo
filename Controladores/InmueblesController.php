@@ -18,7 +18,73 @@ $url_error = "../Vistas/alta_inmueble.php";
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
+function getInmuebleByDireccion($direccion) {
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
 
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+    $dao->destruct();
+    $inmueble = [];
+    for ($i = 0; $i < sizeof($aux); $i++) {
+        $inmueble = new Inmueble();
+        $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setTipo_via($aux[$i]->getTipo_via());
+        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
+        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
+        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
+        $inmueble->setNum_hab($aux[$i]->getNum_hab());
+        $inmueble->setCocina($aux[$i]->getCocina());
+        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
+        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
+        $inmueble->setPlanta($aux[$i]->getPlanta());
+        $inmueble->setMetros($aux[$i]->getMetros());
+        $inmueble->setFotos($aux[$i]->getFotos());
+        echo '<table id="inmuebles">';
+        echo '</tr><tr>';
+        echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
+        echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
+        echo '<tr>' . ' </br> - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Fotos : ' . $aux[$i]->getFotos() . " " . '</tr>';
+//        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
+//        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
+//        . '</td>'
+//        . '</a>';
+        echo " ";
+//        echo '<a href="../Vistas/alta_resenya.php">'
+//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+//        . '</td>'
+//        . '</a>';
+        echo '<tr>';
+        echo '<a href="../Vistas/modInmueble.php">'
+        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
+        . '</tr>'
+        . '</a>';
+        echo '</tr>';
+        echo '</table>';
+    }
+
+    return $inmueble;
+}
 
 if (isset($_POST["btonInsertar"])) {
 
