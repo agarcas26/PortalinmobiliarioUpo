@@ -161,12 +161,13 @@ if (isset($_POST["btonInsertar"])) {
             $inmueble1->setMetros($_POST["txtMetros"]);
             $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
             $inmueble1->setFotos($_POST["fileFotos"]);
+            
             if (isset($_SESSION['usuario_particular'])) {
                 $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
             } else {
-
                 $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
             }
+            
             $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
             $daoInmueble = new daoInmuebles();
 

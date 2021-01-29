@@ -3,7 +3,11 @@
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuarios.php';
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 
 if (isset($_POST['entrar'])) {
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
