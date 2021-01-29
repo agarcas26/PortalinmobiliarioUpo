@@ -12,6 +12,7 @@ function getAdminByUsuario($nombre_usuario, $contraseña_usuario) {
         $usuario = null;
     }
     $dao->destruct();
+    
 
     return $usuario;
 }

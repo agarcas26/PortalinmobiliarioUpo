@@ -6,7 +6,6 @@ include_once '../DAO/daoUsuarios.php';
 session_start();
 
 if (isset($_POST['entrar'])) {
-    $dao = new daoUsuarios();
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         //LA SESION DEBE SER PARTICULAR O PROFESIONAL
         $usuario = getUsuarioByUsuario($_POST['nombre_usuario'], $_POST['contrasenya']);
@@ -20,8 +19,6 @@ if (isset($_POST['entrar'])) {
     } else {
         header("Location: ../Vistas/login.php");
     }
-
-    $dao->destruct();
 }
 
 if (isset($_POST['registro'])) {
