@@ -63,6 +63,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     muestraEstrellas();
+    animaEstrellas();
 });
 
 
