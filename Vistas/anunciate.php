@@ -24,7 +24,7 @@
             <?php
             if (!isset($_POST['guardar'])) {
                 ?>
-                <h3>Alta de un nuevo inmueble </h3>
+                <h3>Alta de un nuevo anuncio </h3>
                 <form class="form-control-plaintext" action="../Controladores/AnunciosController.php" method="POST">
                     <table class="table">
                         <tr>
@@ -36,7 +36,7 @@
                             <td>
                                 <select>
                                     <?php
-                                        listar_inmuebles_usuario();
+                                        getInmuebleByDireccion($direccion);
                                     ?>
                                 </select>
                             </td>
