@@ -4,7 +4,10 @@ include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-session_start(); //funciona el insertar con esto, sin eso no lo hace --_(-_-)_--
+
+if (!isset($_SESSION)) {
+    session_start();
+}
 //damos por correcto el formulario
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
