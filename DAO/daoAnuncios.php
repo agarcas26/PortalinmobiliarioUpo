@@ -48,24 +48,27 @@ class daoAnuncios {
 
     //leer anuncio por id
     public function read($idAnuncio) {
-   
+
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         $objMySqlLi = $this->conexion->query($sql);
+        $arrayAux = [];
         if ($objMySqlLi->num_rows > 0) {
-            $aux = mysqli_fetch_array($aux);
-            $objAnuncio = new Anuncio();
-            $objAnuncio->setIdAnuncio($aux["id_anuncio"]);
-            $objAnuncio->setNombre_via($aux["nombre_via"]);
-            $objAnuncio->setTipo_via($aux["tipo_via"]);
-            $objAnuncio->setCp($aux["cp"]);
-            $objAnuncio->setNumero($aux["numero"]);
-            $objAnuncio->setFecha_anuncio($aux["fecha_anuncio"]);
-            $objAnuncio->setPrecio($aux["precio"]);
-            $objAnuncio->setTitulo($aux["titulo"]);
-            $objAnuncio->setNombre_usuario_publica($aux["nombre_usuario_publica"]);
-            $objAnuncio->setNombre_usuario_anuncio($aux["nombre_usuario_anuncio"]);
+            while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
+                $objAnuncio = new Anuncio();
+                $objAnuncio->setId_anuncio($aux["id_anuncio"]);
+                $objAnuncio->setNombre_via($aux["nombre_via"]);
+                $objAnuncio->setTipo_via($aux["tipo_via"]);
+                $objAnuncio->setCp($aux["cp"]);
+                $objAnuncio->setNumero($aux["numero"]);
+                $objAnuncio->setFecha_anuncio($aux["fecha_anuncio"]);
+                $objAnuncio->setPrecio($aux["precio"]);
+                $objAnuncio->setTitulo($aux["titulo"]);
+                $objAnuncio->setNombre_usuario_publica($aux["nombre_usuario_publica"]);
+                $objAnuncio->setNombre_usuario_anuncio($aux["nombre_usuario_anuncio"]);
+                array_push($arrayAux, $objAnuncio);
+            }
         }
-        return $objAnuncio;
+        return $arrayAux;
     }
 
     public function eliminar($idAnuncio) {

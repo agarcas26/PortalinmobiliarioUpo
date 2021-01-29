@@ -181,7 +181,7 @@ function modifyAnuncio() {
 function readAnuncio($idAnuncio) {
     $daoAnuncio = new daoAnuncios();
     $anuncio = $daoAnuncio->read($idAnuncio);
-    $daoAnuncios->destruct();
+    $daoAnuncio->destruct();
     return $anuncio;
 }
 
