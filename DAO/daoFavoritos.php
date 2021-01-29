@@ -24,15 +24,14 @@ class daoFavoritos {
         $this->conObj->cerrar_conexion();
     }
 
+
     function listar_favoritos() {
         $favoritos = [];
         $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito`";
         $id_anuncios_favoritos = mysqli_query($this->conexion, $sentence);
 
         while ($id_anuncio = mysqli_fetch_row($id_anuncios_favoritos)) {
-            $daoAnuncios = new daoAnuncios();
-            $anuncios = $daoAnuncios->listar();
-            $daoAnuncios->destruct();
+        $anuncios = listAllAnuncios();
             while ($anuncio = mysqli_fetch_row($anuncios)) {
                 if ($anuncio[0] == $id_anuncio[0]) {
                     array_push($favoritos, $anuncio);
