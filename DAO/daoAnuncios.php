@@ -51,7 +51,6 @@ class daoAnuncios {
 
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
         $objMySqlLi = $this->conexion->query($sql);
-        $arrayAux = [];
         if ($objMySqlLi->num_rows > 0) {
             while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
                 $objAnuncio = new Anuncio();
@@ -65,10 +64,9 @@ class daoAnuncios {
                 $objAnuncio->setTitulo($aux["titulo"]);
                 $objAnuncio->setNombre_usuario_publica($aux["nombre_usuario_publica"]);
                 $objAnuncio->setNombre_usuario_anuncio($aux["nombre_usuario_anuncio"]);
-                array_push($arrayAux, $objAnuncio);
             }
         }
-        return $arrayAux;
+        return $objAnuncio;
     }
 
     public function eliminar($idAnuncio) {
