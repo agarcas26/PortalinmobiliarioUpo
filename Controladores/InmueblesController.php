@@ -47,27 +47,27 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setNum_hab($aux[$i]->getNum_hab());
         $inmueble->setPlanta($aux[$i]->getPlanta());
         $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
-//        echo '<table id="inmuebles">';
-//        echo '</tr><tr>';
-//        echo '<td>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</td>';
-//        echo '<td>' . ' Código Postal :' . $aux[$i]->getCp() . '</td>';
-//        echo '<td>' . ' - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</td>';
-//        echo '<td>' . ' - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</td>';
-////        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
-////        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-////        . '</td>'
-////        . '</a>';
-//        echo " ";
-//        echo '<a href="../Vistas/alta_resenya.php">'
-//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+        echo '<table id="inmuebles">';
+        echo '</tr><tr>';
+        echo '<td>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</td>';
+        echo '<td>' . ' Código Postal :' . $aux[$i]->getCp() . '</td>';
+        echo '<td>' . ' - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</td>';
+        echo '<td>' . ' - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</td>';
+//        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
+//        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
 //        . '</td>'
 //        . '</a>';
-//        echo '<a href="../Vistas/modInmueble.php">'
-//        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
-//        . '</td>'
-//        . '</a>';
-//        echo '</tr>';
-//        echo '</table>';
+        echo " ";
+        echo '<a href="../Vistas/alta_resenya.php">'
+        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+        . '</td>'
+        . '</a>';
+        echo '<a href="../Vistas/modInmueble.php">'
+        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
+        . '</td>'
+        . '</a>';
+        echo '</tr>';
+        echo '</table>';
     }
 
     return $inmueble;

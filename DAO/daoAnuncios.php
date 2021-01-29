@@ -48,8 +48,9 @@ class daoAnuncios {
 
     //leer anuncio por id
     public function read($idAnuncio) {
-        $objMySqlLi = $this->conexion->query($sql);
+   
         $sql = "SELECT * FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
+        $objMySqlLi = $this->conexion->query($sql);
         if ($objMySqlLi->num_rows > 0) {
             $aux = mysqli_fetch_array($aux);
             $objAnuncio = new Anuncio();
