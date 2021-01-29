@@ -379,18 +379,32 @@ function getInmuebleByAnuncio($anuncio) {
     $daoInmueble->destruct();
     $encontrado = false;
 
-    $inmueble;
+    $inmueble_aux = new Inmueble();
     if (mysqli_num_rows($inmuebles) > 0) {
-        while ($aux = mysqli_fetch_array($inmuebles) && !$encontrado) {
-            if ($aux[1]->getCp() == $anuncio->getCP()) {
-                if ($aux[3]->getTipo_via() == $anuncio->getTipo_via()) {
-                    if ($aux[0]->getNumero() == $anuncio->getNumero()) {
+        while ($aux = mysqli_fetch_array($inmuebles) and!$encontrado) {
+            if ($aux[1] == $anuncio->getCP()) {
+                if ($aux[3] == $anuncio->getTipo_via()) {
+                    if ($aux[0] == $anuncio->getNumero()) {
                         $encontrado = true;
-                        $inmueble = $aux;
+                        $inmueble_aux->setNumero($aux[0]);
+                        $inmueble_aux->setCp($aux[1]);
+                        $inmueble_aux->setNombre_via($aux[2]);
+                        $inmueble_aux->setTipo_via($aux[3]);
+                        $inmueble_aux->setNombre_usuario_duenyos($aux[4]);
+                        $inmueble_aux->setNombre_localidad($aux[5]);
+                        $inmueble_aux->setNombre_provincia($aux[6]);
+                        $inmueble_aux->setNum_banyos($aux[7]);
+                        $inmueble_aux->setNum_hab($aux[8]);
+                        $inmueble_aux->setCocina($aux[9]);
+                        $inmueble_aux->setTipo_inmueble($aux[10]);
+                        $inmueble_aux->setNumero_plantas($aux[11]);
+                        $inmueble_aux->setPlanta($aux[12]);
+                        $inmueble_aux->setMetros($aux[13]);
+                        $inmueble_aux->setFotos($aux[14]);
                     }
                 }
             }
         }
     }
-    return $inmueble;
+    return $inmueble_aux;
 }
