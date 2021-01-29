@@ -5,8 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include '../Controladores/InmueblesController.php';
-include '../Controladores/ResenyasController.php';
+include_once '../Controladores/InmueblesController.php';
+include_once '../Controladores/ResenyasController.php';
 
 if (isset($_GET["id_inmueble"])) {
 
