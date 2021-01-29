@@ -67,7 +67,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-        $fotos = preg_split("_", $fotos);
+       $fotos = preg_split("-", $fotos);
         for ($i = 0; $i < count($aux); $i++) {
               echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/'.$direccion.'">' . $aux[$i]->getFotos() . " " . '</tr>';
         }
