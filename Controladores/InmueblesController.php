@@ -84,8 +84,7 @@ function getInmuebleByDireccion($direccion) {
     }
 
     return $inmueble;
-    $identificador = fopen('img src="../img/"', 'r');
-    var_dump($identificador);
+   
     ?>
 }
 
