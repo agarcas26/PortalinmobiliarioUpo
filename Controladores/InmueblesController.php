@@ -340,39 +340,6 @@ function listar_inmuebles_usuarioAll() {
 //var_dump($inmuebles_usuario);
 //echo "</pre>";
 }
-
-function get_inmueble_by_direccion() {
-    $daoInmuebles = new daoInmuebles();
-    if (isset($_SESSION['usuario_particular'])) {
-        $usuario = $_SESSION['usuario_particular'];
-    }
-    if (isset($_SESSION['usuario_profesional'])) {
-        $usuario = $_SESSION['usuario_profesional'];
-    }
-    $inmueble = new Inmueble();
-    $inmueble->setNumero($numero);
-    $inmueble->setCp($cp);
-    $inmueble->setNombre_via($nombre_via);
-    $inmueble->setTipo_via($tipo_via);
-    $inmueble2 = $daoInmuebles->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
-    $daoInmuebles->destruct();
-    for ($i = 0; $i < sizeof($inmueble2); $i++) {
-
-        echo '<table id="inmuebles">';
-        echo '</tr><tr>';
-        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
-        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
-        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
-        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
-        echo '</tr>';
-        echo '</table>';
-    }
-    echo "<pre>";
-    var_dump($inmueble2);
-
-    echo "</pre>";
-}
-
 function getInmuebleByAnuncio($anuncio) {
     $daoInmueble = new daoInmuebles();
     $inmuebles = $daoInmueble->listar();
@@ -408,3 +375,36 @@ function getInmuebleByAnuncio($anuncio) {
     }
     return $inmueble_aux;
 }
+
+//function get_inmueble_by_direccion() {
+//    $daoInmuebles = new daoInmuebles();
+//    if (isset($_SESSION['usuario_particular'])) {
+//        $usuario = $_SESSION['usuario_particular'];
+//    }
+//    if (isset($_SESSION['usuario_profesional'])) {
+//        $usuario = $_SESSION['usuario_profesional'];
+//    }
+//    $inmueble = new Inmueble();
+//    $inmueble->setNumero($numero);
+//    $inmueble->setCp($cp);
+//    $inmueble->setNombre_via($nombre_via);
+//    $inmueble->setTipo_via($tipo_via);
+//    $inmueble2 = $daoInmuebles->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+//    $daoInmuebles->destruct();
+//    for ($i = 0; $i < sizeof($inmueble2); $i++) {
+//
+//        echo '<table id="inmuebles">';
+//        echo '</tr><tr>';
+//        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
+//        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
+//        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
+//        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
+//        echo '</tr>';
+//        echo '</table>';
+//    }
+//    echo "<pre>";
+//    var_dump($inmueble2);
+//
+//    echo "</pre>";
+//}
+
