@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    $("#filtros_aside").toggle("fast");
+    $("#filtros_aside").hide();
     $("#mostrar_ocultar").click(function () {
         $("#filtros_aside").toggle("fast");
     });
