@@ -14,13 +14,14 @@
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
                 if (isset($_SESSION['usuario_particular'])) {
+                    $usuario_S = $_SESSION['usuario_particular'];
                     $usuario = getInmuebleByDireccion($direccion);
                 } else {
-                    $usuario = $_SESSION['usuario_profesional'];
+                    $usuario_S = $_SESSION['usuario_profesional'];
                 }
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
-                $usuario = $_SESSION['admin'];
+                $usuario_S = $_SESSION['admin'];
             } else {
                 no_sesion_iniciada();
             }
@@ -46,7 +47,7 @@
                 <input type="hidden" name="nombre_localidad" value="<?php $usuario->getNombre_localidad(); ?>"/>
                 <input type="hidden" name="nombre_provincia" value="<?php $usuario->getNombre_provincia(); ?>"/>
                 <label> Numero de baños</label>
-                <input type="text" name="txtNum_banyos" value="<?php $usuario[6]; ?>">
+                <input type="text" name="txtNum_banyos" value="<?php $usuario->getNombre_via(); ?>">
 
                 <input type="submit" value="btonmodificar" name="btonModificar">
                 <input type="submit" value="cancelar" name="btonCancelar">
