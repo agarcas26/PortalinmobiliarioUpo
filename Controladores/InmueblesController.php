@@ -4,7 +4,10 @@ include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-session_start(); //funciona el insertar con esto, sin eso no lo hace --_(-_-)_--
+
+if (!isset($_SESSION)) {
+    session_start();
+}
 //damos por correcto el formulario
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
@@ -64,6 +67,10 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
+        $fotos = split(";",getFotos());
+        for ($i = 0; $i < count($array); $i++) {
+            
+        }
         echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/'.$direccion.'">' . $aux[$i]->getFotos() . " " . '</tr>';
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
 //        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
