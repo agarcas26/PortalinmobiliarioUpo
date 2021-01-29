@@ -16,7 +16,7 @@ function animaEstrellas() {
                 $(estrellas[i]).attr("src", "../img/unchecked.png");
             }
         }
-        $(".puntuacion").attr("value",puntuacion);
+        $("#input_puntuacion").attr("value",puntuacion);
     });
 }
 

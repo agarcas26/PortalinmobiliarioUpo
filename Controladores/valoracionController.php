@@ -94,7 +94,7 @@ function mostrarValorar($id_anuncio) {
                 . '<img class="puntuacion-st" id="4" class="unchecked" src="../img/unchecked.png">'
                 . '<img class="puntuacion-st" id="5" class="unchecked" src="../img/unchecked.png">'. '</span>';
 
-    echo '<input id="puntuacion" type="number" name="puntuacion" value="0"  hidden>'
+    echo '<input id="input_puntuacion" type="number" name="puntuacion" value="0"  hidden>'
     . '<input name="id_anuncio" type="number" value="' . $id_anuncio . '" hidden>'
     . '<br>'
     . '<input id="btn-coment" type="submit" name="enviarValoracion" value="Enviar" class="btn btn-success">'
