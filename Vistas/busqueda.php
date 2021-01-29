@@ -101,19 +101,8 @@ and open the template in the editor.
                     <input class="form-control"  type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
                 </section>
                 <!-- ANUNCIOS -->
-                <table>
-                    <?php
-                    mostrarVistaLista();
-                    if (isset($_POST['aplicar_filtros'])) {
-                        mostrarVistaLista();
-                    }
-                    if (isset($_POST['lista'])) {
-                        mostrarVistaLista();
-                    }
-                    if (isset($_POST['cuadricula'])) {
-                        mostrarVistaCuadricula();
-                    }
-                    ?>
+                <table class="display table-bordered" style="width:100%">
+                    
                 </table>
             </article>
         </main>

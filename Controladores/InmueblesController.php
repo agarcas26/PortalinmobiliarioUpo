@@ -67,11 +67,11 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
         echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-       $fotos = preg_split("-", $fotos);
-        for ($i = 0; $i < count($aux); $i++) {
-              echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/'.$direccion.'">' . $aux[$i]->getFotos() . " " . '</tr>';
+        $fotos = preg_split("-", $fotos);
+        for ($i = 0; $i < sizeof($fotos); $i++) {
+            echo '<tr>' . ' </br> - Fotos : ' . '<img src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"/>"' . '</tr>';
         }
-      
+
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
 //        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
 //        . '</td>'
@@ -82,10 +82,11 @@ function getInmuebleByDireccion($direccion) {
 //        . '</td>'
 //        . '</a>';
         echo '<td>';
-        echo '<a href="../Vistas/modInmueble.php">'
+        echo '<a href="../Vistas/modificar_inmueble.php">'
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
+       
 
         echo '</table>';
     }
@@ -270,7 +271,7 @@ function listar_inmuebles_usuario() {
 //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
-        echo '<table id="inmuebles">';
+        echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
         echo '</tr><tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
@@ -334,10 +335,11 @@ function listar_inmuebles_usuarioAll() {
 //        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
 //        . '</td>'
 //        . '</a>';
-        echo '<a href="../Vistas/modInmueble.php">'
+        echo '<a href="../Vistas/modificar_inmueble.php">'
         . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
         . '</td>'
         . '</a>';
+       
         echo '</tr>';
         echo '</table>';
     }
@@ -401,12 +403,12 @@ function getInmuebleByAnuncio($anuncio) {
 //    for ($i = 0; $i < sizeof($inmueble2); $i++) {
 //
 //        echo '<table id="inmuebles">';
-    //        echo '</tr><tr>';
-    //        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
-    //        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
-    //        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
-    //        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
-    //        echo '</tr>';
+//        echo '</tr><tr>';
+//        echo '<td>' . ' Número : ' . $inmueble2[$i]->getNumero() . " " . '</td>';
+//        echo '<td>' . ' Código Postal :' . $inmueble2[$i]->getCp() . '</td>';
+//        echo '<td>' . ' - Nombre vía : ' . $inmueble2[$i]->getNombre_via() . " " . '</td>';
+//        echo '<td>' . ' - Tipo vía : ' . $inmueble2[$i]->getTipo_via() . " " . '</td>';
+//        echo '</tr>';
 //        echo '</table>';
 //    }
 //    echo "<pre>";
@@ -415,3 +417,24 @@ function getInmuebleByAnuncio($anuncio) {
 //    echo "</pre>";
 //}
 
+
+function deleteInmueble() {
+    $inmueble1 = new Inmueble();
+
+    $inmueble1->setNumero($numero);
+    $inmueble1->setCp($cp);
+    $inmueble1->setNombre_via($nombre_via);
+    $inmueble1->setTipo_via($tipo_via);
+    $daoInmueble = new daoInmuebles();
+    $deleteOk = $daoInmueble->eliminar($inmueble1);
+    $daoInmueble->destruct();
+    if (!$deleteOk) {
+        $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
+    }
+
+    if ($_SESSION["errores"]) {
+        header('Location:../Vistas/inmueble.php ');
+    } else {
+        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
+    }
+}

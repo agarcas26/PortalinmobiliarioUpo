@@ -20,7 +20,7 @@ function resenyas_anuncio($id_anuncio) {
 
     $resenyas_inmueble = get_resenyas_inmueble($inmueble);
     for ($i = 0; $i < sizeof($resenyas_inmueble); $i++) {
-        echo '<table>';
+        echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
         echo '<tr>';
         echo '<td>' . $resenyas_inmueble[$i]->getFecha_resenya() . '</td>';
         echo '</tr>';

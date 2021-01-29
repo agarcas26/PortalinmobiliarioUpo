@@ -2,30 +2,26 @@
 
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/AnunciosController.php';
-include_once '../Controladores/busquedaController.php';
+include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
 
 if (isset($_POST['aplicar_filtros'])) {
-
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
     } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario = ($_SESSION['usuario_rofesional']);
     }
 
-    $num_banyos = $_POST['num_banyos'];
-    $tipo_inmueble = $_POST['tipo_inmueble'];
-    $tipo_oferta = $_POST['tipo_oferta'];
-    $precio_max = $_POST['precio_max'];
-    $num_hab = $_POST['num_hab'];
-    $m2 = $_POST['m2'];
-    $fecha = $_POST['fecha'];
-
     $dao = new daoBusqueda();
-    $dao->crear_busqueda($nombre_usuario, $num_banyos, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2);
+    $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
     $dao->destruct();
+
+    $filtros = getFiltros();
+    $anuncios = anuncios_busqueda($filtros);
+    
+    mostrarVistaLista($anuncios);
 
     header("Location: ../Vistas/busqueda.php");
 }
@@ -44,8 +40,55 @@ if (isset($_GET["id_busqueda"])) {
     header("Location: ../Vistas/mis_alertas.php");
 }
 
-function mostrarVistaLista() {
-    $anuncios = anuncios_busqueda();
+function getFiltros() {
+    $filtros = [];
+    if (isset($_GET["num_banyos"])) {
+        $filtros[] = $_GET["num_banyos"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["tipo_inmueble"])) {
+        $filtros[] = $_GET["tipo_inmueble"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["tipo_oferta"])) {
+        $filtros[] = $_GET["tipo_oferta"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["precio_max"])) {
+        $filtros[] = $_GET["precio_max"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["num_hab"])) {
+        $filtros[] = $_GET["num_hab"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["m2"])) {
+        $filtros[] = $_GET["m2"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    if (isset($_GET["fecha"])) {
+        $filtros[] = $_GET["fecha"];
+    } else {
+        $filtros[] = "notset";
+    }
+
+    return $filtros;
+}
+
+function mostrarVistaLista($anuncios) {
+    
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
@@ -63,7 +106,7 @@ function mostrarVistaLista() {
     }
 }
 
-function mostrarVistaCuadricula() {
+function mostrarVistaCuadricula($anuncios) {
     $anuncios = anuncios_busqueda();
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';

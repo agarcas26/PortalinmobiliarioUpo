@@ -14,7 +14,7 @@ function sesion_iniciada() {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    echo "<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
+    echo "<nav class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/perfil.php'>¡Bienvenido " . $usuario . "! Mi perfil</a>"
     . "<a href='../Vistas/mis_anuncios.php'>Mis anuncios</a>"
     . "<a href='../Vistas/mis_alertas.php'>Mis alertas</a>"
@@ -27,7 +27,7 @@ function sesion_iniciada() {
 }
 
 function no_sesion_iniciada() {
-    echo "<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
+    echo "<nav class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/login.php'>¿Ya tienes cuenta?Inicia sesión</a>"
     . "<a href='../Vistas/registro.php'>¡Regístrate gratis!</a>"
     . "</nav>"
@@ -36,7 +36,7 @@ function no_sesion_iniciada() {
 }
 
 function cabecera_admin() {
-     echo "<nav  style='width: 100%;position:absolute; top:0; left:0;' class='navbar navbar-light bg-light static-top'>"
+     echo "<nav class='navbar navbar-light bg-light static-top'>"
     . "<a href='../Vistas/perfil.php'>¡Bienvenido " . $_SESSION["admin"] . "! Mi perfil</a>"
     . "<a href='../Vistas/mis_anuncios.php'>Mis anuncios</a>"
     . "<a href='../Vistas/mis_alertas.php'>Mis alertas</a>"
