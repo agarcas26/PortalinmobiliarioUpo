@@ -12,5 +12,8 @@ if (isset($_SESSION['usuario_profesional'])) {
 if (isset($_SESSION['usuario_particular'])) {
     unset($_SESSION['usuario_particular']);
 }
+if (isset($_SESSION['admin'])) {
+    unset($_SESSION['admin']);
+}
 session_destroy();
 header("Location: ../Vistas/login.php");
