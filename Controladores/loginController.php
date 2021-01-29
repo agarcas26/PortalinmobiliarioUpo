@@ -4,9 +4,7 @@ include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 include_once '../DAO/daoUsuarios.php';
 
-if (!isset($_SESSION)) {
     session_start();
-}
 
 
 if (isset($_POST['entrar'])) {
