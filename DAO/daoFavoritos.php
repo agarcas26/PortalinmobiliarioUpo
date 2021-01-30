@@ -24,14 +24,35 @@ class daoFavoritos {
         $this->conObj->cerrar_conexion();
     }
 
-
     function listar_favoritos() {
         $favoritos = [];
         $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito`";
         $id_anuncios_favoritos = mysqli_query($this->conexion, $sentence);
 
         while ($id_anuncio = mysqli_fetch_row($id_anuncios_favoritos)) {
-        $anuncios = listAllAnuncios();
+            $anuncios = listAllAnuncios();
+            while ($anuncio = mysqli_fetch_row($anuncios)) {
+                if ($anuncio[0] == $id_anuncio[0]) {
+                    array_push($favoritos, $anuncio);
+                }
+            }
+        }
+
+        return $favoritos;
+    }
+
+    function listar_favoritos_user() {
+        if (isset($_SESSION['usuario_particular'])) {
+            $usuario = $_SESSION['usuario_particular'];
+        } else {
+            $usuario = $_SESSION['usuario_profesional'];
+        }
+        $favoritos = [];
+        $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito` WHERE `nombre_usuario`='" . $usuario . "';";
+        $id_anuncios_favoritos = mysqli_query($this->conexion, $sentence);
+
+        while ($id_anuncio = mysqli_fetch_row($id_anuncios_favoritos)) {
+            $anuncios = listAllAnuncios();
             while ($anuncio = mysqli_fetch_row($anuncios)) {
                 if ($anuncio[0] == $id_anuncio[0]) {
                     array_push($favoritos, $anuncio);

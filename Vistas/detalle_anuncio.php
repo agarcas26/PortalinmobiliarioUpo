@@ -14,6 +14,7 @@
         include_once '../Controladores/AnunciosController.php';
         include_once '../Controladores/ResenyasController.php';
         include_once '../Controladores/valoracionController.php';
+        include_once '../Controladores/FavoritosController.php';
         ?>
     </head>
     <body>
@@ -41,7 +42,12 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                         </table>
-                        <span class="favorito" val="inactiva">
+                        <span class="favorito" val="<?php
+                        if (esFavorito()) {
+                            echo"activa";
+                        } else
+                            "inactiva";
+                        ?>">
                             <img class="corazon" id="inactiva" src="../img/nofav.png">
                         </span>
                         <span class="alerta" val="inactiva">

@@ -10,7 +10,7 @@ include_once '../DAO/daoFavoritos.php';
 
 function get_favoritos_usuario() {
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos();
+    $favoritos = $daoFavoritos->listar_favoritos_user();
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -33,7 +33,7 @@ function get_favoritos_usuario() {
 
 function vista_previa_favoritos() {
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos();
+    $favoritos = $daoFavoritos->listar_favoritos_user();
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -46,3 +46,33 @@ function vista_previa_favoritos() {
         }
     }
 }
+
+
+function esFavorito($id_anuncio) {
+    $r=false;
+    $daoFavoritos = new daoFavoritos();
+    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $daoFavoritos->destruct();
+    $i=0;
+    while($i < sizeof($favoritos)&&!$r){
+        if($favoritos[$i][0]==$id_anuncio){
+            $r=true;
+        }
+        $i++;
+    }
+    
+   return $r; 
+}
+
+
+    
+    function toggle_favorito($id_anuncio, $nombre_usuario) {
+        $daoFavoritos = new daoFavoritos();
+        if(esFavorito($id_anuncio)){
+            $daoFavoritos->eliminar_favorito($id_anuncio);
+        }
+        else{
+            $daoFavoritos->crear_favorito($id_anuncio, $nombre_usuario);
+        }
+        $daoFavoritos->destruct();
+    }

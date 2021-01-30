@@ -204,10 +204,9 @@ function select_inmuebles_usuario() {
     $dao->destruct();
     //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
-        $direccion;
-        echo '<option value="">' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . ' '
-        . ' Código Postal :' . $inmuebles_usuario[$i]->getCp()
-        . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</option>';
+        $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
+        $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();
+        echo '<option value="' . $value . '">' . $direccion . '</option>';
     }
 }
 

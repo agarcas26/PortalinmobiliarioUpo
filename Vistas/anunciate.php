@@ -58,67 +58,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <input class="custom-file" type="file" value="Añade tus fotos"/></br>
-                                <label>Puedes subir varias imágenes a la vez. Recuerda subir fotos de todas las estancias.</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select id="tipo_inmueble" type="picker" label="Tipo de inmueble" display="" aria-invalid="false" class="dropdown-menu">
-                                    <option value="casa">Casa</option>
-                                    <option value="atico">Ático</option>
-                                    <option value="duplex">Dúplex</option>
-                                    <option value="piso">Piso</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select id="tipo_oferta" type="picker" label="Tipo de oferta" display="" aria-invalid="false" class="dropdown-menu">
-                                    <option value="alquiler">Alquiler</option>
-                                    <option value="comprar">Compra</option>
-                                    <option value="alquiler">Vacacional</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input placeholder="Precio de venta" id="precio" type="tel" label="Precio de venta" display="money" value=""></br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input placeholder="Precio de venta" id="superficie" type="tel" label="Superficie" display="surface" value=""></br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="" tabindex="-1" placeholder="Calle, número y población" value=""></br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Número de habitaciones</label>
-                                <span class="">
-                                    <button>-</button>
-                                    <input id="num_hab" name="num_hab" tabindex="0" readonly="" class="" value="2">
-                                    <button>+</button>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Número de baños</label>
-                                <span class="">
-                                    <button>-</button>
-                                    <input  id="num_banyos" name="num_banyos" tabindex="0" readonly="" class="" value="1">
-                                    <button>+</button>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
                         <input type="submit" name="guardar" class="btn-success" value="Guardar">
                         </tr>
                     </table>
