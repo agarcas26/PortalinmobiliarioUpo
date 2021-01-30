@@ -33,7 +33,6 @@ function muestraEstrellas() {
 
 
 $("#campana").click(function () {
-    var id = $(this).attr('id');
     if ($(".alerta").attr("val") == "activa") {
         $(".alerta").attr("val", "inactiva");
         $("#campana").attr("src", "../img/nofav.png");
