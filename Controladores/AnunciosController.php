@@ -100,6 +100,7 @@ function getPrecio($id_anuncio) {
 }
 
 function insertAnuncio() {
+    print_r($_POST['inmuebles_usuario']);
     $direccion = split('/-/', $_POST['inmuebles_usuario']);
     $anuncio1 = new Anuncio();
     $anuncio1->setPrecio($_POST["precio"]);
