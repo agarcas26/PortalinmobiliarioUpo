@@ -30,11 +30,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                         <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
                         <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                             <table id="datos_visa" class="display table-bordered" style="width:50%">
-                                <tr>
-                                    <td>
-                                        <label>A continuación rellene la dirección del inmueble</label>
-                                    </td>
-                                </tr>
+                                <label>A continuación rellene la dirección del inmueble</label>
                                 <tr>
                                     <td><label>Numero</label></td>
                                     <td><label><input type="number" name="txtNumero" /></label></td>
