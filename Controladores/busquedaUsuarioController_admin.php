@@ -8,7 +8,8 @@
 
 include_once '../DAO/daoUsuarios.php';
 include_once '../Controladores/UsuarioController.php';
-listar_usuarios();
+include_once '../Modelos/UsuarioModel.php';
+//listar_usuarios();
 
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
@@ -33,6 +34,8 @@ if (isset($_GET['busuario'])) {
         }
         echo '</table>';
     }
+    
+    unset($_GET['busuario']);
 }
 
 if(isset($_POST['eliminar'])){
@@ -40,12 +43,13 @@ if(isset($_POST['eliminar'])){
     $usuarios = $daoUsuario->eliminar_usuario($_POST['nombre_usuario']);
     $daoUsuario->destruct();
     
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 if(isset($_POST['modificar'])){
-    $_SESSION['searchuser'] = $_POST['nombre_usuario'];
-    
-    getDatosPerfil();
+    $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
+    header("Location: ../Vistas/modificar_usuario_admin.php");
+    unset($_POST['modificar']);
 }
 
 if(isset($_POST['guardar'])){
@@ -59,6 +63,9 @@ if(isset($_POST['guardar'])){
     $daoUsuario = new daoUsuarios();
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();
+    
+    unset($_SESSION['searchuser']);
+    unset($_POST['guardar']);
     
 }
 
@@ -87,6 +94,7 @@ function listar_usuarios() {
 function getDatosPerfil(){
     $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
     $datos = [];
+    
     array_push($datos,$usuario->get_nombre_usuario());
     array_push($datos,$usuario->get_nombre_apellidos());
     array_push($datos,$usuario->getContrasenya());
