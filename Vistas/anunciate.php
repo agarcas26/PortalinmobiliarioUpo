@@ -9,6 +9,7 @@
         <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/InmueblesController.php';
         ?>
     </head>
     <body>
@@ -34,6 +35,8 @@
                             <td>
                                 <label>Añade un título a tu anuncio</label>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <input type="text" name="txtTitulo" id="txtTitulo" />
                             </td>
@@ -45,7 +48,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select id="inmuebles_usuario" type="picker" label="Tus inmuebles" display="" aria-invalid="false" class="dropdown-menu">
+                                <select id="inmuebles_usuario" type="picker" label="" display="" aria-invalid="false" class="dropdown-menu">
                                     <?php
                                     select_inmuebles_usuario();
                                     ?>
@@ -58,7 +61,9 @@
                             </td>
                         </tr>
                         <tr>
-                        <input type="submit" name="guardar" class="btn-success" value="Guardar">
+                            <td>
+                        <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
+                            </td>
                         </tr>
                     </table>
                 </form>
