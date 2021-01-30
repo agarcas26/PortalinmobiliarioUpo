@@ -459,18 +459,20 @@ function getInmuebleByAnuncio($anuncio) {
 }
 
 if(isset($_POST["btonEliminar"])){
-  
+   
     $inmueble1 = new Inmueble();
+    $inmueble1->getNumero();
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
-    
-    if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/inmueble.php');
-    } else {
-        header('Location: ../Vistas/modificar_inmueble.php');
-    }
+    var_dump($deleteOk);
+    var_dump($inmueble1);
+//    if ($_SESSION["validacion"]) {
+//        header('Location: ../Vistas/inmueble.php');
+//    } else {
+//        header('Location: ../Vistas/modificar_inmueble.php');
+//    }
 }
