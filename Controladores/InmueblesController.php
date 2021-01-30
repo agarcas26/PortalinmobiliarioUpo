@@ -266,7 +266,6 @@ function getInmuebleByDireccion($direccion) {
         }
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
-        //. '<input type="submit"  name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo " ";
@@ -353,7 +352,7 @@ function listar_inmuebles_usuario() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-//Listar  inmuebles by usuario
+    //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
@@ -365,10 +364,6 @@ function listar_inmuebles_usuario() {
         echo '</tr>';
         echo '</table>';
     }
-//echo "<pre>";
-//var_dump($inmueble1);
-//var_dump($inmuebles_usuario);
-//echo "</pre>";
 }
 
 function listar_inmuebles_usuarioAll() {
@@ -383,7 +378,7 @@ function listar_inmuebles_usuarioAll() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-//Listar  inmuebles by usuario
+    //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();

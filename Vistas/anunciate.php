@@ -79,7 +79,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
+                                <button type="submit" id="guardar" name="guardar" class="btn-success" value="">Guardar</button>
                             </td>
                         </tr>
                     </table>
