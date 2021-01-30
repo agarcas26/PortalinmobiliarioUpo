@@ -7,7 +7,7 @@ include_once '../Modelos/AnunciosModel.php';
 
 
 
-if (isset($_POST['aplicar_filtros'])) {
+if (isset($_GET['aplicar_filtros'])) {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
     } elseif (isset($_SESSION['usuario_profesional'])) {
@@ -20,10 +20,24 @@ if (isset($_POST['aplicar_filtros'])) {
 
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
-    
+
     mostrarVistaLista($anuncios);
 
     header("Location: ../Vistas/busqueda.php");
+}
+
+if (isset($_POST['lista'])) {
+    $filtros = getFiltros();
+    $anuncios = anuncios_busqueda($filtros);
+
+    mostrarVistaLista($anuncios);
+}
+
+if (isset($_POST['cuadrcula'])) {
+    $filtros = getFiltros();
+    $anuncios = anuncios_busqueda($filtros);
+
+    mostrarVistaCuadricula($anuncios);
 }
 
 if (isset($_GET["id_busqueda"])) {
@@ -88,7 +102,6 @@ function getFiltros() {
 }
 
 function mostrarVistaLista($anuncios) {
-    
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
@@ -107,14 +120,15 @@ function mostrarVistaLista($anuncios) {
 }
 
 function mostrarVistaCuadricula($anuncios) {
-    $anuncios = anuncios_busqueda();
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
-        echo '<form>';
-        echo '<td>' . '<a href="../Vistas/detalle_anuncio.php?id_anuncio=' . $anuncios[$i]->getId_anuncio() . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>' . '</td>';
-        echo '</form>';
+        echo '<td>'
+        . '<a href="../Vistas/detalle_anuncio.php?id_anuncio='
+        . $anuncios[$i]->getId_anuncio()
+        . '"><button name="ver_detalle" id="ver_detalle" value="Ver detalle">Ver detalle</button></a>'
+        . '</td>';
         echo '</tr>';
     }
 }

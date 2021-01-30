@@ -90,7 +90,7 @@ and open the template in the editor.
                         <option value="baratos">Más baratos primero</option>
                     </select>
                     <!-- OPCION LISTA / CUADRICULA -->
-                    <form style="float: right;" action="busquedaController.php" method="GET">
+                    <form style="float: right;" action="../Controladores/busquedaController.php" method="POST">
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
                             <input class="btn btn-primary" type="submit" name="cuadricula" value="Cuadricula" />
