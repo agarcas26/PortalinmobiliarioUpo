@@ -90,7 +90,7 @@ function getPrecio($id_anuncio) {
     }
 }
 
-if ($_POST["guardar"]) {
+if (isset($_POST["guardar"])) {
     $aux = true;
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
