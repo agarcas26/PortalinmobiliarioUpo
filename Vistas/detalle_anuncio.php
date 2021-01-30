@@ -43,25 +43,27 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                         </table>
-                        <form id="form_corazon" action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
+                        <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
                             <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="favorito" val="<?php
                             if (esFavorito($_GET["id_anuncio"])) {
                                 echo"activa";
-                            } else
+                            } else {
                                 echo"inactiva";
+                            }
                             ?>">
                                 <input name="corazon" type="hidden" value="true" />
                                 <input name="corazon" type="image" class="corazon" src="../img/nofav.png">
                             </span>
                         </form>  
-                        <form id="form_campana" action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST"> 
-                             <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
+                        <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST"> 
+                            <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="alerta" val="<?php
                             if (hayAlerta($_GET["id_anuncio"])) {
                                 echo"activa";
-                            } else
+                            } else {
                                 echo"inactiva";
+                            }
                             ?>">
                                 <input name="campana" type="hidden" value="true" />
                                 <input name="campana" type="image"  class="campana" src="../img/noalerta.png">
