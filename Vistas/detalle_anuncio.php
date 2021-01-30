@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Detalle inmueble</title>
+        <title>Detalle anuncio</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" href="../mycss.css"/>
