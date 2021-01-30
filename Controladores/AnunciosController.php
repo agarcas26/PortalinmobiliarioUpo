@@ -20,6 +20,7 @@ if (isset($_POST["guardar"])) {
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
             insertAnuncio($_POST['inmuebles_usuario']);
+            // header("Location: ../Vistas/mis_anuncios.php");
         }
     }
 }
@@ -99,19 +100,23 @@ function getPrecio($id_anuncio) {
 }
 
 function insertAnuncio($direccion) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
     $direccion = preg_split('/-/', $direccion);
     $anuncio1 = new Anuncio();
     $anuncio1->setPrecio($_POST["precio"]);
     $anuncio1->setTitulo($_POST["txtTitulo"]);
     $anuncio1->setFecha_anuncio("CURRENT_DATE");
-    $anuncio1->setCp($direccion[0]);
+    $anuncio1->setCp($direccion[3]);
     $anuncio1->setNombre_via($direccion[1]);
     $anuncio1->setNumero($direccion[2]);
-    $anuncio1->setTipo_via($direccion[3]);
+    $anuncio1->setTipo_via($direccion[0]);
+    $anuncio1->setNombre_usuario_publica($nombre_usuario_duenyos);
     $daoAnuncio = new daoAnuncios();
     $insertOk = $daoAnuncio->insertar($anuncio1);
-
-    header("Location: ../Vistas/mis_anuncios.php");
 }
 
 function deleteAnuncio($idanuncio) {

@@ -37,13 +37,11 @@ class daoAnuncios {
         $nombre_usuario_anuncio = $objAnuncio->getNombre_usuario_anuncio();
         $titulo = $objAnuncio->getTitulo();
         //he añadido current date pero no estoy segura d que esté bien , andrea
-        $sql = "INSERT INTO `anuncio` (`id_anuncio`, `nombre_via`, `tipo_via`, `cp`, `numero`, `nombre_usuario_publica`, `nombre_usuario_anuncio`, `precio`, `fecha_anuncio`, `titulo`) VALUES (null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_anuncio','$precio',CURRENT_DATE,'$titulo')";
-        if (!$this->conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
-        }
-        mysqli_close($this->conexion);
+        $sql = "INSERT INTO `anuncio` (`id_anuncio`, `nombre_via`, `tipo_via`, `cp`, `numero`, `nombre_usuario_publica`, `nombre_usuario_anuncio`, `precio`, `fecha_anuncio`, `titulo`) VALUES (null,'$nombre_via','$tipo_via', '$cp','$numero','$nombre_usuario_publica','$nombre_usuario_publica','$precio',CURRENT_DATE,'$titulo')";
+        $result = $this->conexion->query($sql);
+        
+        print_r($sql);
+        
     }
 
     //leer anuncio por id
@@ -72,12 +70,8 @@ class daoAnuncios {
     public function eliminar($idAnuncio) {
 
         $sql = "DELETE FROM `anuncio` WHERE `id_anuncio`='$idAnuncio'";
-        if (!$this->conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
-        }
-        mysqli_close($this->conexion);
+        $result = $this->conexion->query($sql);
+        
     }
 
     public function modificar($objAnuncio) {
@@ -93,12 +87,8 @@ class daoAnuncios {
 
         $sql = "UPDATE `anuncio` SET `nombre_via`='$nombre_via',`tipo_via`='$tipo_via',`cp`='$cp',`numero`='$numero',`precio`='$precio',"
                 . "`fecha_anuncio`='$fecha_anuncio',`nombre_usuario_publica`='$nombre_usuario_publica',`nombre_usuario_anuncio`='$nombre_usuario_anuncio',`titulo`='$titulo'";
-        if (!$this->conexion->query($sql)) {
-            return false;
-        } else {
-            return true;
-        }
-        mysqli_close($this->conexion);
+        $result = $this->conexion->query($sql);
+        
     }
 
     public function listar() {
