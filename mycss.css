@@ -77,3 +77,6 @@ main{
 #inmueble{
     border: 1px solid black;
 }
+#form_corazon{
+    float: right;
+}

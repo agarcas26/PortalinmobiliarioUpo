@@ -43,7 +43,7 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                         </table>
-                        <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
+                        <form id="form_corazon" action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
                             <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="favorito" val="<?php
                             if (esFavorito($_GET["id_anuncio"])) {
@@ -55,7 +55,7 @@
                                 <input name="corazon" type="image" class="corazon" src="../img/nofav.png">
                             </span>
                         </form>  
-                        <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST"> 
+                        <form id="form_campana" action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST"> 
                              <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="alerta" val="<?php
                             if (hayAlerta($_GET["id_anuncio"])) {
