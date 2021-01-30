@@ -32,12 +32,20 @@
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td>
+                                <label>Añade un título a tu anuncio</label>
+                            </td>
+                            <td>
+                                <input type="text" name="txtTitulo" id="txtTitulo" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <select>
+                                <select id="inmuebles_usuario" type="picker" label="Tus inmuebles" display="" aria-invalid="false" class="dropdown-menu">
                                     <?php
                                     select_inmuebles_usuario();
                                     ?>
@@ -46,7 +54,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>O puedes dar de alta un nuevo inmueble</label>
+                                <label>O bien puedes <a href="../Vistas/alta_inmueble.php"><button>Dar de alta un nuevo inmueble</button></a></label>
                             </td>
                         </tr>
                         <tr>
@@ -95,7 +103,7 @@
                                 <label>Número de habitaciones</label>
                                 <span class="">
                                     <button>-</button>
-                                    <input tabindex="0" readonly="" class="" value="2">
+                                    <input id="num_hab" name="num_hab" tabindex="0" readonly="" class="" value="2">
                                     <button>+</button>
                                 </span>
                             </td>
@@ -105,7 +113,7 @@
                                 <label>Número de baños</label>
                                 <span class="">
                                     <button>-</button>
-                                    <input tabindex="0" readonly="" class="" value="1">
+                                    <input  id="num_banyos" name="num_banyos" tabindex="0" readonly="" class="" value="1">
                                     <button>+</button>
                                 </span>
                             </td>
