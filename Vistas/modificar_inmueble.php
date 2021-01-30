@@ -119,19 +119,24 @@
                                 <tr>
                                     <td>
                                         <label>Cocina amueblada</label>
-                                        <input type="radio" name="txtCocina" id="si" value="si" <?php if ($datos[9] === "si")echo "checked";?>/>
+                                        <input type="radio" name="txtCocina" id="si" value="si" <?php if ($datos[9] === "si") {
+                                                echo "checked";
+                                            }
+                                            ?>/>
                                         <label for="si">Si</label>
-                                        <input type="radio" name="txtCocina" id="no" value="no"<?php if ($datos[9] === "no") echo "checked"; ?>/>
+                                        <input type="radio" name="txtCocina" id="no" value="no"<?php  if ($datos[9] === "no") {
+                                                echo "checked";
+                                            }
+                                            ?>/>
                                         <label for="no">No</label> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>Tipo de inmueble</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"<?php if ($datos[10] === "alquiler")echo "checked";?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"<?php  if ($datos[10] === "alquiler") { echo "checked";}?>/>
                                         <label for="alquiler">Alquiler</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"<?php
-                                        if ($datos[10] === "compra") echo "checked";?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"<?php if ($datos[10] === "compra") { echo "checked";}?>/>
                                         <label for="compra">Compra</label>
                                     </td>
                                 </tr>
