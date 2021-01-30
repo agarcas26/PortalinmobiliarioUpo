@@ -13,15 +13,14 @@ if (isset($_GET['aplicar_filtros'])) {
         $nombre_usuario = ($_SESSION['usuario_rofesional']);
     }
 
+    $filtros = getFiltros();
     $dao = new daoBusqueda();
     $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
     $dao->destruct();
 
-    $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
     mostrarVistaLista($anuncios); 
-
     header("Location: ../Vistas/busqueda.php");
 }
 
