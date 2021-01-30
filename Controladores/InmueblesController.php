@@ -203,10 +203,16 @@ function select_inmuebles_usuario() {
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
     //Listar  inmuebles by usuario
-    for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
-        $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
-        $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();
-        echo '<option value="' . $value . '">' . $direccion . '</option>';
+    if (sizeof($inmuebles_usuario) > 0) {
+        echo '<td><select id="inmuebles_usuario" aria-invalid="false" class="dropdown-menu">';
+        for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
+            $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
+            $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();
+            echo '<option value="' . $value . '">' . $direccion . '</option>';
+        }
+        echo '</select></td>';
+    } else {
+        echo '<td><label>Aún no tienes inmuebles... ¡Anímate a crear el primero!</label></td>';
     }
 }
 

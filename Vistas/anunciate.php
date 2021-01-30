@@ -43,26 +43,22 @@
                             <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
                             </td>
-                            <td>
-                                <select id="inmuebles_usuario" type="picker" label="" display="" aria-invalid="false" class="dropdown-menu">
-                                    <?php
-                                    select_inmuebles_usuario();
-                                    ?>
-                                </select>
-                            </td>
+                            <?php
+                            select_inmuebles_usuario();
+                            ?>
                         </tr>
                         <tr>
                             <td>
                                 O bien puedes 
-                                
+
                             </td>
                             <td>
-                                <a href="../Vistas/alta_inmueble.php"><button>Dar de alta un nuevo inmueble</button></a>
+                                <a href="../Vistas/alta_inmueble.php">Dar de alta un nuevo inmueble</a>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                        <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
+                                <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
                             </td>
                         </tr>
                     </table>
