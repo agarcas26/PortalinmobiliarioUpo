@@ -41,11 +41,6 @@
                                 getInmuebleByDireccion($_GET['direccion']);
                                 ?>     
                                 
-                                <tr>
-                                    <td>
-                                        <label>¿Desea eliminar este inmueble?</label>
-                                    </td>
-                                </tr>
                             </table>
                         </form>
                     </section>
