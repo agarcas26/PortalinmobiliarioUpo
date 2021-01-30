@@ -174,6 +174,8 @@ if (isset($_POST["btonModificar"])) {
     } else {
         header('Location: ../Vistas/modificar_inmueble.php');
     }
+}elseif(isset($_POST["btonCancelar"])){
+    header('Location: ../Vistas/detalles_inmueble.php ');
 }
 
 function select_inmuebles_usuario() {
