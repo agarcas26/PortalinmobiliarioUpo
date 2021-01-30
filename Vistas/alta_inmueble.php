@@ -44,10 +44,20 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Codigo postal</label></td>
                                     <td><input type="text" name="txtCp" /></td>
                                 </tr>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtCp"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtCp"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Nombre de la vía</label></td>
                                     <td><input type="text" name="txtNombre_via" /></td>
                                 </tr>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_via"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label> Tipo de via</label></td>
                                 </tr>
@@ -68,18 +78,38 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Localidad</label></td>
                                     <td><input type="text" name="txtNombre_localidad" /></td>
                                 </tr>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_localidad"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_localidad"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Provincia</label></td>
                                     <td><input type="text" name="txtNombre_provincia" /></td>
                                 </tr>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_provincia"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_provincia"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Numero de baños</label></td>
                                     <td><input type="number" name="txtNum_banyos" /></td>
                                 </tr>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_banyos"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_banyos"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Numero de habitaciones</label></td>
                                     <td><input type="number" name="txtNum_habitaciones" /></td>
                                 </tr>
+                                   <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_habitaciones"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_habitaciones"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Cocina amueblada</label></td>
                                 </tr>
@@ -106,18 +136,38 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Numero de plantas</label></td>
                                     <td><input type="number" name="txtNum_Planta" /></td>
                                 </tr>
+                                   <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_Planta"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_Planta"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Planta</label></td>
                                     <td><input type="number" name="txtPlanta" /></td>
                                 </tr>
+                                   <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtPlanta"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["txtPlanta"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><label>Metros cuadrados</label></td>
                                     <td><input type="number" name="txtMetros" /></td>
                                 </tr>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtMetros"])) { ?>
                                 <tr>
-                                    <td><label for="fileFotos">Suba imágenes del inmueble:</label></td>
+                                        <td><?php echo $_SESSION["errores"]["txtMetros"]; ?></td>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td><label>Suba imágenes del inmueble:</label></td>
                                     <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
                                 </tr>
+                               <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
+                                <tr>
+                                        <td><?php echo $_SESSION["errores"]["fileFotos"]; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
                                     <td><input type="submit" value="enviar" name="btonInsertar"></td>
                                 </tr>
