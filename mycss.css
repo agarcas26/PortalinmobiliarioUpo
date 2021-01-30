@@ -65,13 +65,8 @@ main{
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
-    border-radius: 25px;
-    background: url(paper.gif);
-    background-position: left top;
-    background-repeat: repeat;
-    padding: 20px;
-    width: 200px;
-    height: 150px;
+    width: 80%;
+   
 
 }
 
