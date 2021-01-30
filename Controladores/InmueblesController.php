@@ -119,7 +119,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 }
 
-    if (isset($_POST["btonModificar"])) {
+if (isset($_POST["btonModificar"])) {
 
     if (empty($_POST["txtNum_banyos"])) {
         $validado = false;
@@ -194,7 +194,7 @@ function select_inmuebles_usuario() {
 
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-    } else {
+    } elseif (isset($_SESSION['usuario_profesional'])) {
 
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
