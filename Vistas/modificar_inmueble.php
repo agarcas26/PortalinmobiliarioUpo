@@ -125,7 +125,7 @@
                     <a href="../Vistas/modificar_inmueble.php?direccion='<?php
                     echo $datos[0] . "-" . $datos[1] . "-" . $datos[2] . "-" . $datos[3];
                     ?>'">
-                        <button name="btonModificar" id="btonModificar"> Modificar datos </button>
+                        <button  name="btonModificar" id="btonModificar"> Modificar D</button>
                     </a>
                     <button  value="btonCancelar" name="btonCancelar">Cancelar </button>
                 </form>

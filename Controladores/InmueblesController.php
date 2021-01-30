@@ -260,22 +260,12 @@ function getInmuebleByDireccion($direccion) {
         for ($i = 0; $i < sizeof($fotos); $i++) {
             echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
         }
-
-//        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
-//        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-//        . '</td>'
-//        . '</a>';
-        echo " ";
-//        echo '<a href="../Vistas/alta_resenya.php">'
-//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
-//        . '</td>'
-//        . '</a>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<button name="btonModificar" id="btonModificar"> Modificar datos </button>'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
-
+        echo " ";
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
         . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
@@ -406,7 +396,7 @@ function listar_inmuebles_usuarioAll() {
         . '</a>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar Datos" />'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo '</tr>';
