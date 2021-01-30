@@ -33,7 +33,7 @@ class daoUsuarios {
         $result = mysqli_query($this->conexion, $sentence);
     }
 
-    function eliminar_usuario($nombre_usuario, $contrasenya) {
+    function eliminar_usuario($nombre_usuario) {
         $sentence = "DELETE FROM `usuarios` (`nombre_usuario`,`contrasenya_user`,`nombre_apellidos`,`moroso`) VALUES ('" . $nombre_usuario . "','" . $contrasenya . "')";
         $result = mysqli_query($this->conexion, $sentence);
     }
