@@ -79,15 +79,17 @@ function getInmuebleByDireccion($direccion) {
 //        . '</td>'
 //        . '</a>';
         echo '<td>';
-        echo '<a href="../Vistas/modificar_inmueble.php?' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar datos" />'
-        . '</td>'
-        . '</a>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
+        . '<button name="btonModificar" id="btonModificar"> Modificar datos </button>'
+        . '</a>'
+        . '</td>';
+
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
-        . '<a href="../Controladores/InmueblesController.php?' . $direccion . '">'
+        . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
-        . '</a></form>';
+        . '</a></form>'
+        . '</td>';
 
 
         echo '</table>';
@@ -198,6 +200,8 @@ if (isset($_POST["btonInsertar"])) {
 }
 
 function get_datos_by_direccion($direccion) {
+   $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
     $numero = $direccion_array[0];
     $cp = $direccion_array[1];
     $nombre_via = $direccion_array[2];
@@ -207,7 +211,7 @@ function get_datos_by_direccion($direccion) {
     $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
     $dao->destruct();
 
-    $inmueble = [];
+
     $datos = [];
     for ($i = 0; $i < sizeof($aux); $i++) {
         array_push($datos, $aux[$i]);
@@ -234,8 +238,8 @@ function get_datos_by_direccion($direccion) {
 
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
-    $inmueble[0]->setNombre_usuario_duenyos($nombre_usuario_duenyos);
-    
+    $inmueble->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+
     return $datos;
 }
 
@@ -273,7 +277,7 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
     }
-    
+
     if ($_SESSION["validacion"]) {
         $inmueble2 = new Inmueble();
         $inmueble2->setNumero($_POST["txtNumero"]);
@@ -389,10 +393,11 @@ function listar_inmuebles_usuarioAll() {
 //        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
 //        . '</td>'
 //        . '</a>';
-        echo '<a href="../Vistas/modificar_inmueble.php">'
-        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
-        . '</td>'
-        . '</a>';
+        echo '<td>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
+        . '<button name="btonModificar" id="btonModificar"> Modificar datos </button>'
+        . '</a>'
+        . '</td>';
 
         echo '</tr>';
         echo '</table>';
