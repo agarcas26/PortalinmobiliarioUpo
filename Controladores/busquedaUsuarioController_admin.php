@@ -75,7 +75,6 @@ function listar_usuarios() {
             echo '<td>' . $aux[1] . '</td>';
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
-            echo '<td>' . $aux[4] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '</tr>';
