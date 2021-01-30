@@ -27,7 +27,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                     <?php aside_sesion_iniciada(); ?>
                 </aside>
                 <article>
-                    <section>
+                    <section id="alta_i">
                         <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
                         <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                             <table id="alta_inm" class="display table-bordered" style="overflow-x:auto;">
