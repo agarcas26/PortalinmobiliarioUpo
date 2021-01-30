@@ -50,7 +50,6 @@ if(isset($_POST['modificar'])){
     $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
     header("Location: ../Vistas/modificar_usuario_admin.php");
     
-    unset($_POST['modificar']);
 }
 
 if(isset($_POST['guardar'])){
