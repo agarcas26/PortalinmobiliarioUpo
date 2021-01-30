@@ -108,7 +108,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 }
 if (isset($_POST["btonModificar"])) {
-    if (empty($_POST["txtNumero"])) {
+if (empty($_POST["txtNumero"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
     }
@@ -188,11 +188,12 @@ if (isset($_POST["btonModificar"])) {
         $daoInmueble2 = new daoInmuebles();
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
-        if (!$modifyOk) {
+        if(!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
+       
     }
-
+   
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/inmueble.php');
     } else {
@@ -457,27 +458,9 @@ function getInmuebleByAnuncio($anuncio) {
     return $inmueble_aux;
 }
 
-if (isset($_POST["btonEliminar"])) {
-
-
+if(isset($_POST["btonEliminar"])){
+  
     $inmueble1 = new Inmueble();
-    $dao = new daoInmuebles();
-    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via)[0];
-    $inmueble->setNumero($aux->getNumero());
-    $inmueble->setCp($aux->getCp());
-    $inmueble->setNombre_via($aux->getNombre_via());
-    $inmueble->setTipo_via($aux->getTipo_via());
-    $inmueble->setNombre_usuario_duenyos($aux->getNombre_usuario_duenyos());
-    $inmueble->setNombre_localidad($aux->getNombre_localidad());
-    $inmueble->setNombre_provincia($aux->getNombre_provincia());
-    $inmueble->setNum_banyos($aux->getNum_banyos());
-    $inmueble->setNum_hab($aux->getNum_hab());
-    $inmueble->setCocina($aux->getCocina());
-    $inmueble->setTipo_inmueble($aux->getTipo_inmueble());
-    $inmueble->setNumero_plantas($aux->getNumero_plantas());
-    $inmueble->setPlanta($aux->getPlanta());
-    $inmueble->setMetros($aux->getMetros());
-    $inmueble->setFotos($aux->getFotos());
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
