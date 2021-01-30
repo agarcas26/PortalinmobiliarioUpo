@@ -19,7 +19,6 @@ $_SESSION["cancelado"] = false;
 if (isset($_POST["guardar"])) {
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
-            print_r($_POST['inmuebles_usuario']);
             insertAnuncio($_POST['inmuebles_usuario']);
         }
     }
@@ -100,7 +99,7 @@ function getPrecio($id_anuncio) {
 }
 
 function insertAnuncio($direccion) {
-    $direccion = split('/-/', $direccion);
+    $direccion = preg_split('/-/', $direccion);
     $anuncio1 = new Anuncio();
     $anuncio1->setPrecio($_POST["precio"]);
     $anuncio1->setTitulo($_POST["txtTitulo"]);
