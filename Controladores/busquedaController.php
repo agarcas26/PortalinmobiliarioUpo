@@ -20,7 +20,7 @@ if (isset($_GET['aplicar_filtros'])) {
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
-    mostrarVistaLista($anuncios);
+    mostrarVistaLista($anuncios); 
 
     header("Location: ../Vistas/busqueda.php");
 }
@@ -104,7 +104,7 @@ function mostrarVistaLista($anuncios) {
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $anuncios[$i]->getTipo_via() . '</td>';
+        echo '<td>' . $anuncios[$i]->getTipo_via() . ' </td>';
         echo '<td>' . $anuncios[$i]->getNombre_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
         echo '<td>' . $anuncios[$i]->getFecha_anuncio() . '</td>';
