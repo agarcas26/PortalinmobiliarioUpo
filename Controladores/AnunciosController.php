@@ -91,21 +91,25 @@ function getPrecio($id_anuncio) {
 }
 
 if ($_POST["guardar"]) {
-        if (empty("txtPrecio")) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
-        }
-        if (empty("txtTitulo")) {
-            $_SESSION["validacion"] = false;
-            $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
+    $aux = true;
+    if (isset($_POST['inmuebles_usuario'])) {
+        if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
+            insertAnuncio();
         }
     }
+}
+
 function insertAnuncio() {
-    
     if ($_SESSION["validacion"]) {
+        $direccion = split('/-/', $_GET['direccion']);
         $anuncio1 = new Anuncio();
-        $anuncio1->setPrecio($_POST["txtPrecio"]);
-        $anuncio1->getTitulo($_POST["txtTitulo"]);
+        $anuncio1->setPrecio($_POST["precio"]);
+        $anuncio1->setTitulo($_POST["txtTitulo"]);
+        $anuncio1->setFecha_anuncio("CURRENT_DATE");
+        $anuncio1->setCp($direccion[0]);
+        $anuncio1->setNombre_via($direccion[1]);
+        $anuncio1->setNumero($direccion[2]);
+        $anuncio1->setTipo_via($direccion[3]);
         $daoAnuncio = new daoAnuncios();
         $insertOk = $daoAnuncio->insertar($anuncio1);
         if (!$insertOk) {
