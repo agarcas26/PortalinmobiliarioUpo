@@ -39,9 +39,9 @@
                 <article>
                     <section>
                        
-                        <form action="../Controladores/InmueblesController.php" method="POST">
-                            <table id="modificar_inmueble" class="display table-bordered" style="width:100%">
-                                <h1>Datos del Inmueble</h1>
+                        <form action="../Controladores/InmueblesController.php" method="POST" style="margin-left:10px;">
+                            <table id="alta_inm" class="display table-bordered" style="width:50%">
+                                <label>Datos del Inmueble</label>
                                 <tr>
                                     <td>
                                         <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
