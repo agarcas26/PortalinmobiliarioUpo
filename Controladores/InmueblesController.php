@@ -268,7 +268,7 @@ function getInmuebleByDireccion($direccion) {
         }
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
+        . '<input type="submit" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo " ";
