@@ -19,10 +19,6 @@ $cancelado = false;
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 if (isset($_POST["btonInsertar"])) {
-
-
-    $validado = true;
-
     $_SESSION["errores"] = "";
     if (empty($_POST["txtNumero"])) {
         $validado  = false;
@@ -84,7 +80,6 @@ if (isset($_POST["btonInsertar"])) {
 
 
     if ($validado) {
-
         $inmueble1 = new Inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
@@ -125,35 +120,35 @@ if (isset($_POST["btonInsertar"])) {
 if (isset($_POST["btonModificar"])) {
     if (empty($_POST["txtNum_banyos"])) {
         $validado = false;
-        $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
+        $erroresNum_banyos = "Debe de completar el campo numero de baños.";
     }
     if (empty($_POST["txtNum_habitaciones"])) {
         $validado = false;
-        $_SESSION["errores"]["txtNum_habitaciones"] = "Debe de completar el campo numero de habitaciones.";
+        $erroresNum_habitaciones = "Debe de completar el campo numero de habitaciones.";
     }
     if (empty($_POST["txtCocina"])) {
         $validado = false;
-        $_SESSION["errores"]["txtCocina"] = "Debe de completar el campo cocina.";
+        $erroresCocina = "Debe de completar el campo cocina.";
     }
     if (empty($_POST["txtNum_Planta"])) {
         $validado = false;
-        $_SESSION["errores"]["txtNum_Planta"] = "Debe de completar el campo numero de plantas.";
+        $erroresNum_Planta = "Debe de completar el campo numero de plantas.";
     }
     if (empty($_POST["txtPlanta"])) {
         $validado = false;
-        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
+        $erroresPlanta = "Debe de completar el campo planta.";
     }
     if (empty($_POST["txtMetros"])) {
         $validado = false;
-        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
+        $errorestMetros = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["txtTipo_inmueble"])) {
+    if (empty($_POST["txtTipo_Inmueble"])) {
         $validado = false;
-        $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
+        $erroresTipo_Inmueble = "Debe de completar el campo tipo de inmueble.";
     }
     if (empty($_POST["fileFotos"])) {
         $validado = false;
-        $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
+        $erroresfileFotos = "Debe añadir una imagen del inmueble.";
     }
 
     if ($validado) {
