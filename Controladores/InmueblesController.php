@@ -399,7 +399,7 @@ function listar_inmuebles_usuarioAll() {
         . '</a>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar " />'
         . '</a>'
         . '</td>';
         echo '</tr>';
