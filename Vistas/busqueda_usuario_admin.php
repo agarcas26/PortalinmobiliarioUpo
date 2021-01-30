@@ -26,7 +26,7 @@
         </header>
         <main>
             <label>Mostrando resultados</label>
-            <form action="../Controladores/busquedaUsuarioController_admin.php" method="GET">
+            <form action="../Controladores/busqueda_usuario_admin.php" method="GET">
                 <input type="text" id="user" name="user" class="form-text">
                 <input type="submit" name="busuario" value="Buscar" />
             </form>
