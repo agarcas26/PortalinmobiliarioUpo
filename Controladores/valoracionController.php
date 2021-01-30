@@ -84,7 +84,7 @@ if (isset($_GET["enviarValoracion"])) {
  */
 
 function mostrarValorar($id_anuncio) {
-    echo '<form id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
+    echo '<form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="GET">'
     . '<textarea class="form-control" name="valoracion" placeholder="Valora el inmueble" required></textarea>';
 
      echo '<span class="estrellado-val" id="valorar">'
