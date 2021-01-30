@@ -36,9 +36,6 @@
                         
                             <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                                 <table id="inmuebles" class="display table-bordered" style="width:50%">
-                                    <tr>
-                                        
-                                    </tr>
                                     <?php
                                     getInmuebleByDireccion($_GET['direccion']);
                                     ?>                                       
