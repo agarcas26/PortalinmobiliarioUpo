@@ -56,6 +56,7 @@
                             </span>
                         </form>  
                         <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST"> 
+                             <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="alerta" val="<?php
                             if (hayAlerta($_GET["id_anuncio"])) {
                                 echo"activa";
