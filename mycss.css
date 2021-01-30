@@ -60,5 +60,21 @@ main{
     margin: 0.1%;
 }
 #alta_inm{
-    color: #FF0000;
+    border: 1px solid black;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    width: 80%;
+   
+
+}
+
+#realizar_busqueda{
+    float: right;
+
+}
+#alta_i.h3{
+       border-collapse: collapse;
+    border: lavender;
 }

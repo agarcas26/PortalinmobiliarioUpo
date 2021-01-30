@@ -27,11 +27,11 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                     <?php aside_sesion_iniciada(); ?>
                 </aside>
                 <article>
-                    <section>
+                    <section id="alta_i">
                         <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
                         <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
-                            <table id="alta_inm" class="display table-bordered" style="width:50%">
-                                <label>A continuación rellene la dirección del inmueble</label>
+                            <table id="alta_inm" class="display table-bordered" style="overflow-x:auto;">
+                               
                                 <tr>
                                     <td><label>Numero</label></td>
                                     <td><label><input type="number" name="txtNumero" /></label></td>
@@ -43,7 +43,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 <?php } ?>
                                 <tr>
                                     <td><label>Codigo postal</label></td>
-                                    <td><input type="text" name="txtCp" /></td>
+                                    <td><input type="number" name="txtCp" /></td>
                                 </tr>
                                 <?php if (isset($validado) && $validado === false && isset($erroresCp)) { ?>
                                     <tr>
