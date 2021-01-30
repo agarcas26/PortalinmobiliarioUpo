@@ -272,6 +272,11 @@ function getInmuebleByDireccion($direccion) {
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
         . '</a>'
         . '</td>';
+         echo '<td>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar" />'
+        . '</a>'
+        . '</td>';
         echo " ";
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
