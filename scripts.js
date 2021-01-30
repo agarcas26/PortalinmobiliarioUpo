@@ -31,29 +31,33 @@ function muestraEstrellas() {
     }
 }
 
+$(document).ready(function () {
+    $(".corazon").click(function () {
+        if ($(".favorito").attr("val") == "activa") {
+            $(".favorito").attr("val", "inactiva");
+            $(".corazon").attr("src", "../img/nofav.png");
+        }
+        if ($(".favorito").attr("val") == "inactiva") {
+            $(".favorito").attr("val", "activa");
+            $(".corazon").attr("src", "../img/fav.png");
+        }
 
-$(".corazon").click(function () {
-    if ($(".favorito").attr("val") == "activa") {
-        $(".favorito").attr("val", "inactiva");
-        $(".corazon").attr("src", "../img/nofav.png");
-    }
-    if ($(".favorito").attr("val") == "inactiva") {
-        $(".favorito").attr("val", "activa");
-        $(".corazon").attr("src", "../img/fav.png");
-    }
-
+    });
 });
 
-$(".campana").click(function () {
-    if ($(".alerta").attr("val") == "activa") {
-        $(".alerta").attr("val", "inactiva");
-        $(".campana").attr("src", "../img/noalerta.png");
-    }
-    if ($(".alerta").attr("val") == "inactiva") {
-        $(".alerta").attr("val", "activa");
-        $(".campana").attr("src", "../img/alerta.png");
-    }
 
+$(document).ready(function () {
+    $(".campana").click(function () {
+        if ($(".alerta").attr("val") == "activa") {
+            $(".alerta").attr("val", "inactiva");
+            $(".campana").attr("src", "../img/noalerta.png");
+        }
+        if ($(".alerta").attr("val") == "inactiva") {
+            $(".alerta").attr("val", "activa");
+            $(".campana").attr("src", "../img/alerta.png");
+        }
+
+    });
 });
 
 
