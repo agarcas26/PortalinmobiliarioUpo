@@ -15,7 +15,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 
 if (isset($_POST['busuario'])) {
     $daoUsuario = new daoUsuarios();
-    $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_POST['user']);
+    $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_GET['user']);
     $daoUsuario->destruct();
 
     if (mysqli_num_rows($usuarios) > 0) {
