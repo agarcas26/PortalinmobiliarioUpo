@@ -64,7 +64,7 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
-    if (empty($_POST["fileFotos"])) {
+    if (empty($_FILE["fileFotos"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
@@ -85,7 +85,19 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
-        $inmueble1->setFotos($_POST["fileFotos"]);
+        $ruta ="../img/Inmueble/ . $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i]";
+        $inmueble1->setFotos($_FILE["fileFotos"]);
+        if(!file_exists($ruta)){
+            mkdir($ruta,0777,true);
+            if(file_exists($ruta)){
+                if(move_uploaded_file($guardado, $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i])){
+                    echo "guardado";
+                }else{
+                    echo "no guardado";
+                }
+            }
+            var_dump($ruta);
+        }
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } else {
@@ -461,7 +473,8 @@ function getInmuebleByAnuncio($anuncio) {
 if (isset($_POST['btonEliminar'])) {
 
     $inmueble1 = new Inmueble();
-    
+    $traer= new daoInmuebles();
+    $datos = $traer->read($inmueble1);
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
