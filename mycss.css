@@ -62,3 +62,7 @@ main{
 #alta_inm{
     color: #FF0000;
 }
+
+#realizar_busqueda{
+    float: right;
+}
