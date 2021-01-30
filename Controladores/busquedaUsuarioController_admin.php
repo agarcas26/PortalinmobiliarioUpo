@@ -13,7 +13,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_POST['busuario'])) {
+if (isset($_GET['busuario'])) {
     $daoUsuario = new daoUsuarios();
     $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_GET['user']);
     $daoUsuario->destruct();
