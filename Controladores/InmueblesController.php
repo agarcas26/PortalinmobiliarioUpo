@@ -270,7 +270,6 @@ function getInmuebleByDireccion($direccion) {
         }
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
-        //. '<input type="submit"  name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo " ";
@@ -403,7 +402,7 @@ function listar_inmuebles_usuarioAll() {
         . '</a>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar" />'
         . '</a>'
         . '</td>';
         echo '</tr>';
@@ -464,6 +463,6 @@ function deleteInmueble() {
     if ($_SESSION["errores"]) {
         header('Location:../Vistas/inmueble.php ');
     } else {
-        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
+        header('Location:../Vistas/perfil.php ');
     }
 }
