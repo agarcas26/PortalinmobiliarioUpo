@@ -388,19 +388,19 @@ function listar_inmuebles_usuarioAll() {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
-        echo '<table id="inmuebles">';
+        echo '<table id="inmuebles" style="border: 3px dotted blue">';
         echo '<tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
         echo '<td>' . ' - Tipo vía : ' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
-         echo "</br>";
+         echo " ";
         echo '<td>';
         echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
         . '</a>'
         . '</td>';
-         echo "</br>";
+         echo "  ";
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar " />'
