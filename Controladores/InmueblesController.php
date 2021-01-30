@@ -19,7 +19,7 @@ $cancelado = false;
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
 if (isset($_POST["btonInsertar"])) {
-    $_SESSION["errores"] = "";
+
     if (empty($_POST["txtNumero"])) {
         $validado = false;
         $$erroresNum = "Debe de completar el campo numero.";
@@ -79,7 +79,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 
 
-    if ($validado) {
+    if ($validado === true) {
         $inmueble1 = new Inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
@@ -268,8 +268,6 @@ function getInmuebleByDireccion($direccion) {
         echo '</table>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
-
-
         . '</a>'
         . '</td>';
         echo " ";
@@ -365,7 +363,6 @@ function listar_inmuebles_usuario() {
         echo '</tr>';
         echo '</table>';
     }
-
 }
 
 function listar_inmuebles_usuarioAll() {
@@ -385,7 +382,7 @@ function listar_inmuebles_usuarioAll() {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
-          echo '<table id="inmuebles" style="border: 1px solid black">';
+        echo '<table id="inmuebles" style="border: 1px solid black">';
         echo '<tr>';
         echo '<td>' . '<strong> Número :</strong> ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . '<strong> Código Postal : </strong>' . $inmuebles_usuario[$i]->getCp() . '</td>';
