@@ -29,7 +29,7 @@ if (isset($_GET['busuario'])) {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input name="nombre_usuario" id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><a href="../Vistas/modificar_usuario_admin.php?nombre_usuario='.$aux[0].'" ><button>Modificar usuario</button></a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -46,11 +46,6 @@ if(isset($_POST['eliminar'])){
     header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
-if(isset($_POST['modificar'])){
-    $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
-    header("Location: ../Vistas/modificar_usuario_admin.php");
-    
-}
 
 if(isset($_POST['guardar'])){
     $usuario = new Usuario();
@@ -83,7 +78,7 @@ function listar_usuarios() {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
+            echo '<td><a href="../Vistas/modificar_usuario_admin.php?nombre_usuario='.$aux[0].'" ><button>Modificar usuario</button></a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -91,8 +86,8 @@ function listar_usuarios() {
 }
 
 
-function getDatosPerfil(){
-    $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
+function getDatosPerfil($nombre_usuario){
+    $usuario = getUsuarioByUsuario($nombre_usuario);
     $datos = [];    
     array_push($datos,$usuario->get_nombre_usuario());
     array_push($datos,$usuario->get_nombre_apellidos());
