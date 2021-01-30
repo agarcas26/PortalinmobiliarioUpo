@@ -87,6 +87,7 @@ function listar_usuarios() {
 function getDatosPerfil(){
     $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
     $datos = [];
+    
     array_push($datos,$usuario->get_nombre_usuario());
     array_push($datos,$usuario->get_nombre_apellidos());
     array_push($datos,$usuario->getContrasenya());
