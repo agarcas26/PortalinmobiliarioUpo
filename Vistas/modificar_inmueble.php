@@ -36,100 +36,104 @@
 //                    print_r($datos);
                 }
                 ?>
-                <!-- AÑADIR ARTICULO Y SECCION Y METER EN UNA TABLA COMO DIOS MANDA -->
-                <form action="../Controladores/InmueblesController.php" method="POST">
-                    <table id="modificar_inmueble" class="display table-bordered" style="width:100%">
-                        <h1>Datos del Inmueble</h1>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="cp" value="<?php echo $datos[1]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="nombre_via" value="<?php echo $datos[2]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="tipo_via" value="<?php echo $datos[3]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="nombre_localidad" value="<?php echo $datos[5]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="nombre_provincia" value="<?php echo $datos[6]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label> Numero de baños</label>
-                                <input type="text" name="txtNum_banyos" value="<?php echo $datos[7]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Numero de habitaciones</label>
-                                <input type="number" name="txtNum_habitaciones" value="<?php echo $datos[8]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Cocina amueblada</label>
-                                <input type="radio" name="txtCocina" id="si" value="<?php echo $datos[9]; ?>"/>
-                                <label for="si">Si</label>
-                                <input type="radio" name="txtCocina" id="no" value="<?php echo $datos[9]; ?>"/>
-                                <label for="no">No</label> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Tipo de inmueble</label>
-                                <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="<?php echo $datos[10]; ?>"/>
-                                <label for="alquiler">Alquiler</label>
-                                <input type="radio" name="txtTipo_Inmueble" id="compra" value="<?php echo $datos[10]; ?>"/>
-                                <label for="compra">Compra</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Numero de plantas</label>
-                                <input type="number" name="txtNum_Planta" value="<?php echo $datos[11]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Planta</label>
-                                <input type="number" name="txtPlanta" value="<?php echo $datos[12]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Metros cuadrados</label>
-                                <input type="number" name="txtMetros" value="<?php echo $datos[13]; ?>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="fileFotos">Imágenes del inmueble:</label>
+                <article>
+                    <section>
+                       
+                        <form action="../Controladores/InmueblesController.php" method="POST">
+                            <table id="modificar_inmueble" class="display table-bordered" style="width:100%">
+                                <h1>Datos del Inmueble</h1>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="cp" value="<?php echo $datos[1]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="nombre_via" value="<?php echo $datos[2]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="tipo_via" value="<?php echo $datos[3]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="nombre_localidad" value="<?php echo $datos[5]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="nombre_provincia" value="<?php echo $datos[6]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label> Numero de baños</label>
+                                        <input type="text" name="txtNum_banyos" value="<?php echo $datos[7]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Numero de habitaciones</label>
+                                        <input type="number" name="txtNum_habitaciones" value="<?php echo $datos[8]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Cocina amueblada</label>
+                                        <input type="radio" name="txtCocina" id="si" value="<?php echo $datos[9]; ?>"/>
+                                        <label for="si">Si</label>
+                                        <input type="radio" name="txtCocina" id="no" value="<?php echo $datos[9]; ?>"/>
+                                        <label for="no">No</label> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Tipo de inmueble</label>
+                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="<?php echo $datos[10]; ?>"/>
+                                        <label for="alquiler">Alquiler</label>
+                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="<?php echo $datos[10]; ?>"/>
+                                        <label for="compra">Compra</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Numero de plantas</label>
+                                        <input type="number" name="txtNum_Planta" value="<?php echo $datos[11]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Planta</label>
+                                        <input type="number" name="txtPlanta" value="<?php echo $datos[12]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Metros cuadrados</label>
+                                        <input type="number" name="txtMetros" value="<?php echo $datos[13]; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="fileFotos">Imágenes del inmueble:</label>
 
 
-                                <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
-                            </td>
-                        </tr>
-                    </table>
-                    <input type="submit" name="btonModificar" id="btonModificar" value=" Modificar D"/>
-                    <input type="submit" value="btonCancelar" name="btonCancelar" value="Cancelar"/>
-                </form>
+                                        <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="submit" name="btonModificar" id="btonModificar" value=" Modificar D"/>
+                            <input type="submit" value="btonCancelar" name="btonCancelar" value="Cancelar"/>
+                        </form>
+                    </section>
+                </article>
                 <?php
             }
             ?>
