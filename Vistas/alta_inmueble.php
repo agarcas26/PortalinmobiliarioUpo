@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Alta inmueble</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
-        <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-        <link rel="stylesheet" href="../mycss.css"/>
-        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-        <script src="../scripts.js"></script>
-        <?php
-        include_once '../Vistas/header.php';
-        include_once '../Vistas/aside.php';
+<?php
+include_once '../Vistas/header.php';
+include_once '../Vistas/aside.php';
 
-        if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
-            ?>
+if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional']) || isset($_SESSION['admin'])) {
+    ?>
+    <html>
+        <head>
+            <title>Alta inmueble</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
+            <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
+            <link rel="stylesheet" href="../mycss.css"/>
+            <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+            <script src="../scripts.js"></script>
+
         </head>
         <body>
             <header class="masthead text-white text-center">
@@ -62,6 +63,7 @@
                                     <td><input type="radio" name="txtTipo_via" id="via3" value="Carretera"></td>
                                     <td><label for="via3">Carretera</label> </td>
                                 </tr>
+                               
                                 <tr>
                                     <td><label>Localidad</label></td>
                                     <td><input type="text" name="txtNombre_localidad" /></td>
