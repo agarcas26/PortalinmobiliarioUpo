@@ -52,6 +52,6 @@ main{
 }
 
 .campana,.corazon{
-    width: 1.5%;
+    width: 1.5% !important;
     margin: 0.1%;
 }
