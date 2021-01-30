@@ -31,7 +31,6 @@
             </form>
             <?php
             include_once '../Controladores/busquedaUsuarioController_admin.php';
-            listar_usuarios();
             ?>
         </main>
     </body>
