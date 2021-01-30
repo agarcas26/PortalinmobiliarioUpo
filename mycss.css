@@ -60,8 +60,11 @@ main{
     margin: 0.1%;
 }
 #alta_inm{
-
    border: 1px solid black;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
 
 }
 
