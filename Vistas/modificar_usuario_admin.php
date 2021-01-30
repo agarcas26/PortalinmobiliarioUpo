@@ -35,7 +35,7 @@
                 <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <h1>Datos del perfil</h1>
                     <?php
-                    $datos = getDatosPerfil($_POST['nombre_usuario']);
+                    $datos = getDatosPerfil($_GET['nombre_usuario']);
                     ?>
                     <tr>
                         <td>
