@@ -8,6 +8,9 @@ include_once '../Controladores/InmueblesController.php';
 include_once '../Controladores/busquedaController.php';
 include_once '../DAO/daoInmuebles.php';
 
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
 //FALTA INSERTAR ANUNCIOS
 //funcion eliminar anuncios
 $_SESSION["errores"] = "";
@@ -17,10 +20,15 @@ $_SESSION["validacion"] = true;
 $_SESSION["cancelado"] = false;
 
 if (isset($_POST["guardar"])) {
-    $aux = true;
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
-            insertAnuncio();
+            if (isset($_SESSION['usuario_particular'])) {
+                $nombre_usuario_publica = $_SESSION['usuario_particular'];
+            } elseif (isset($_SESSION['usuario_profesional'])) {
+                $nombre_usuario_publica = $_SESSION['usuario_profesional'];
+            }
+            insertAnuncio($_POST['inmuebles_usuario'], $nombre_usuario_publica);
+            header("Location: ../Vistas/mis_anuncios.php");
         }
     }
 }
@@ -99,21 +107,19 @@ function getPrecio($id_anuncio) {
     }
 }
 
-function insertAnuncio() {
-    if ($_SESSION["validacion"]) {
-        $direccion = split('/-/', $_GET['direccion']);
-        $anuncio1 = new Anuncio();
-        $anuncio1->setPrecio($_POST["precio"]);
-        $anuncio1->setTitulo($_POST["txtTitulo"]);
-        $anuncio1->setFecha_anuncio("CURRENT_DATE");
-        $anuncio1->setCp($direccion[0]);
-        $anuncio1->setNombre_via($direccion[1]);
-        $anuncio1->setNumero($direccion[2]);
-        $anuncio1->setTipo_via($direccion[3]);
-        $daoAnuncio = new daoAnuncios();
-        $insertOk = $daoAnuncio->insertar($anuncio1);
-        header("Location: ../Vistas/mis_anuncios.php");
-    }
+function insertAnuncio($direccion, $nombre_usuario_publica) {
+    $direccion = preg_split('/-/', $direccion);
+    $anuncio1 = new Anuncio();
+    $anuncio1->setPrecio($_POST["precio"]);
+    $anuncio1->setTitulo($_POST["txtTitulo"]);
+    $anuncio1->setFecha_anuncio("CURRENT_DATE");
+    $anuncio1->setCp($direccion[3]);
+    $anuncio1->setNombre_via($direccion[1]);
+    $anuncio1->setNumero($direccion[2]);
+    $anuncio1->setTipo_via($direccion[0]);
+    $anuncio1->setNombre_usuario_publica($nombre_usuario_publica);
+    $daoAnuncio = new daoAnuncios();
+    $insertOk = $daoAnuncio->insertar($anuncio1);
 }
 
 function deleteAnuncio($idanuncio) {
