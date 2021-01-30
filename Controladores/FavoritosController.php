@@ -96,7 +96,7 @@ if (isset($_POST["corazon"])) {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
-
+    
     toggle_favorito($_POST["id_anuncio"], $usuario);
 
     unset($_POST["corazon"]);
