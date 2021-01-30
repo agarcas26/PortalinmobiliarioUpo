@@ -31,7 +31,7 @@
             </form>
             <?php
             include_once '../Controladores/busquedaUsuarioController_admin.php';
-            if(!isset($_POST['busuario'])){
+            if(!isset($_GET['busuario'])){
                 listar_usuarios();
             }
             ?>

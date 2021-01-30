@@ -18,14 +18,8 @@
             <?php
             if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                 sesion_iniciada();
-                if (isset($_SESSION['usuario_particular'])) {
-                    $usuario = $_SESSION['usuario_particular'];
-                } else {
-                    $usuario = $_SESSION['usuario_profesional'];
-                }
             } elseif (isset($_SESSION['admin'])) {
                 cabecera_admin();
-                $usuario = $_SESSION['admin'];
             } else {
                 no_sesion_iniciada();
             }

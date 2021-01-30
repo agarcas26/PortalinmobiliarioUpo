@@ -468,9 +468,9 @@ if(isset($_POST["btonEliminar"])){
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
     
-    if ($_SESSION["errores"]) {
-        header('Location:../Vistas/detalles_inmueble.php ');
+    if ($_SESSION["validacion"]) {
+        header('Location: ../Vistas/inmueble.php');
     } else {
-        header('Location:../Vistas/inmueble.php '); //muestra el mensaje de error de eliminacion
+        header('Location: ../Vistas/modificar_inmueble.php');
     }
 }
