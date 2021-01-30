@@ -43,9 +43,8 @@ if(isset($_POST['eliminar'])){
 }
 
 if(isset($_POST['modificar'])){
-    $_SESSION['searchuser'] = $_POST['nombre_usuario'];
-    
-    getDatosPerfil();
+    $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
+    header("Location: ../Vistas/modificar_usuario_admin.php");
 }
 
 if(isset($_POST['guardar'])){
