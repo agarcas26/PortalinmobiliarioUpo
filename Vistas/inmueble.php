@@ -41,8 +41,7 @@
                         ?>
                     </table>
                 </section>
-<
-                </section>-->
+                
             </article>
         </main>
     </body>
