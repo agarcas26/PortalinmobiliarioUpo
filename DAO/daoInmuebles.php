@@ -80,7 +80,7 @@ class daoInmuebles {
         $sql = "UPDATE `inmueble` SET `nombre_usuario_duenyos`='$nombre_usuario_duenyos',`nombre_localidad`='$nombre_localidad',"
                 . "`nombre_provincia`='$nombre_provincia',`num_banyos`='$num_banyos',`num_hab`='$num_hab',"
                 . "`cocina`='$cocina',`num_plantas`='$num_plantas',`planta`='$planta',`metros`='$metros',`tipo_inmueble`='$tipo_inmueble',`fotos`='$fotos' "
-                . "WHERE `numero`='$numero',`cp`='$cp',`nombre_via`='$nombre_via',`tipo_via`='$tipo_via'";
+                . "WHERE `numero`='$numero' and`cp`='$cp'and`nombre_via`='$nombre_via'and`tipo_via`='$tipo_via'";
 
         if (!$this->conexion->query($sql)) {
             return false;
