@@ -18,84 +18,6 @@ $_SESSION["cancelado"] = false;
 //direccion en caso de exito, sustituir vista.php por la vista correspondiente 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
-function getInmuebleByDireccion($direccion) {
-    $direccion = str_replace("%20", " ", $direccion);
-    $direccion_array = preg_split("/-/", $direccion);
-
-    $numero = $direccion_array[0];
-    $cp = $direccion_array[1];
-    $nombre_via = $direccion_array[2];
-    $tipo_via = $direccion_array[3];
-
-    $dao = new daoInmuebles();
-    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
-    $dao->destruct();
-    $inmueble = [];
-    for ($i = 0; $i < sizeof($aux); $i++) {
-        $inmueble = new Inmueble();
-        $inmueble->setNumero($aux[$i]->getNumero());
-        $inmueble->setCp($aux[$i]->getCp());
-        $inmueble->setNombre_via($aux[$i]->getNombre_via());
-        $inmueble->setTipo_via($aux[$i]->getTipo_via());
-        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
-        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
-        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
-        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
-        $inmueble->setNum_hab($aux[$i]->getNum_hab());
-        $inmueble->setCocina($aux[$i]->getCocina());
-        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
-        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
-        $inmueble->setPlanta($aux[$i]->getPlanta());
-        $inmueble->setMetros($aux[$i]->getMetros());
-        $inmueble->setFotos($aux[$i]->getFotos());
-        echo '<table id="inmuebles">';
-        echo '</tr><tr>';
-        echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
-        echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
-        echo '<tr>' . ' </br> - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
-        $fotos = preg_split("/-/", $aux[$i]->getFotos());
-        for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
-        }
-
-//        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
-//        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-//        . '</td>'
-//        . '</a>';
-        echo " ";
-//        echo '<a href="../Vistas/alta_resenya.php">'
-//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
-//        . '</td>'
-//        . '</a>';
-        echo '<td>';
-        echo '<a href="../Vistas/modificar_inmueble.php?' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar datos" />'
-        . '</td>'
-        . '</a>';
-        echo '<td>';
-        echo '<form action="../Controladores/InmueblesController.php" method="POST">'
-        . '<a href="../Controladores/InmueblesController.php?' . $direccion . '">'
-        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
-        . '</a></form>';
-
-
-        echo '</table>';
-    }
-
-    return $inmueble;
-}
-
 if (isset($_POST["btonInsertar"])) {
 
 
@@ -197,50 +119,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 }
 
-function get_datos_by_direccion($direccion) {
-    $numero = $direccion_array[0];
-    $cp = $direccion_array[1];
-    $nombre_via = $direccion_array[2];
-    $tipo_via = $direccion_array[3];
-
-    $dao = new daoInmuebles();
-    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
-    $dao->destruct();
-
-    $inmueble = [];
-    $datos = [];
-    for ($i = 0; $i < sizeof($aux); $i++) {
-        array_push($datos, $aux[$i]);
-        $inmueble = new Inmueble();
-        $inmueble->setNumero($aux[$i]->getNumero());
-        $inmueble->setCp($aux[$i]->getCp());
-        $inmueble->setNombre_via($aux[$i]->getNombre_via());
-        $inmueble->setTipo_via($aux[$i]->getTipo_via());
-        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
-        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
-        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
-        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
-        $inmueble->setNum_hab($aux[$i]->getNum_hab());
-        $inmueble->setCocina($aux[$i]->getCocina());
-        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
-        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
-        $inmueble->setPlanta($aux[$i]->getPlanta());
-        $inmueble->setMetros($aux[$i]->getMetros());
-        $inmueble->setFotos($aux[$i]->getFotos());
-    }
-    if (isset($_SESSION['usuario_particular'])) {
-        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-    } elseif (isset($_SESSION['usuario_profesional'])) {
-
-        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
-    }
-    $inmueble[0]->setNombre_usuario_duenyos($nombre_usuario_duenyos);
-    
-    return $datos;
-}
-
 if (isset($_POST["btonModificar"])) {
-
     if (empty($_POST["txtNum_banyos"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
@@ -273,7 +152,7 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
     }
-    
+
     if ($_SESSION["validacion"]) {
         $inmueble2 = new Inmueble();
         $inmueble2->setNumero($_POST["txtNumero"]);
@@ -307,6 +186,164 @@ if (isset($_POST["btonModificar"])) {
     } else {
         header('Location: ../Vistas/modificar_inmueble.php');
     }
+}
+
+function select_inmuebles_usuario() {
+
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } else {
+
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
+    $inmueble1 = new Inmueble();
+    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+
+    $dao = new daoInmuebles();
+    $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
+    $dao->destruct();
+    //Listar  inmuebles by usuario
+    for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
+        $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
+        $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();
+        echo '<option value="' . $value . '">' . $direccion . '</option>';
+    }
+}
+
+function getInmuebleByDireccion($direccion) {
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
+
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+    $dao->destruct();
+    $inmueble = [];
+    for ($i = 0; $i < sizeof($aux); $i++) {
+        $inmueble = new Inmueble();
+        $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setTipo_via($aux[$i]->getTipo_via());
+        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
+        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
+        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
+        $inmueble->setNum_hab($aux[$i]->getNum_hab());
+        $inmueble->setCocina($aux[$i]->getCocina());
+        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
+        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
+        $inmueble->setPlanta($aux[$i]->getPlanta());
+        $inmueble->setMetros($aux[$i]->getMetros());
+        $inmueble->setFotos($aux[$i]->getFotos());
+        echo '<table id="inmuebles">';
+        echo '</tr><tr>';
+        echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
+        echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
+        echo '<tr>' . ' </br> - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
+        echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
+        echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
+        $fotos = preg_split("/-/", $aux[$i]->getFotos());
+        for ($i = 0; $i < sizeof($fotos); $i++) {
+            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
+        }
+
+//        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
+//        . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
+//        . '</td>'
+//        . '</a>';
+        echo " ";
+//        echo '<a href="../Vistas/alta_resenya.php">'
+//        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
+//        . '</td>'
+//        . '</a>';
+        echo '<td>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
+        . '<button name="btonModificar" id="btonModificar"> Modificar datos </button>'
+        . '</a>'
+        . '</td>';
+
+        echo '<td>';
+        echo '<form action="../Controladores/InmueblesController.php" method="POST">'
+        . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
+        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
+        . '</a></form>'
+        . '</td>';
+
+
+        echo '</table>';
+    }
+
+    return $inmueble;
+}
+
+function get_datos_by_direccion($direccion) {
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
+
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via)[0];
+    $dao->destruct();
+    $datos = [];
+    array_push($datos, $aux->getNumero());
+    array_push($datos, $aux->getCp());
+    array_push($datos, $aux->getNombre_via());
+    array_push($datos, $aux->getTipo_via());
+    array_push($datos, $aux->getNombre_usuario_duenyos());
+    array_push($datos, $aux->getNombre_localidad());
+    array_push($datos, $aux->getNombre_localidad());
+    array_push($datos, $aux->getNombre_provincia());
+    array_push($datos, $aux->getNum_banyos());
+    array_push($datos, $aux->getNum_hab());
+    array_push($datos, $aux->getCocina());
+    array_push($datos, $aux->getTipo_inmueble());
+    array_push($datos, $aux->getNumero_plantas());
+    array_push($datos, $aux->getPlanta());
+    array_push($datos, $aux->getMetros());
+    array_push($datos, $aux->getFotos());
+    $inmueble = new Inmueble();
+    $inmueble->setNumero($aux->getNumero());
+    $inmueble->setCp($aux->getCp());
+    $inmueble->setNombre_via($aux->getNombre_via());
+    $inmueble->setTipo_via($aux->getTipo_via());
+    $inmueble->setNombre_usuario_duenyos($aux->getNombre_usuario_duenyos());
+    $inmueble->setNombre_localidad($aux->getNombre_localidad());
+    $inmueble->setNombre_provincia($aux->getNombre_provincia());
+    $inmueble->setNum_banyos($aux->getNum_banyos());
+    $inmueble->setNum_hab($aux->getNum_hab());
+    $inmueble->setCocina($aux->getCocina());
+    $inmueble->setTipo_inmueble($aux->getTipo_inmueble());
+    $inmueble->setNumero_plantas($aux->getNumero_plantas());
+    $inmueble->setPlanta($aux->getPlanta());
+    $inmueble->setMetros($aux->getMetros());
+    $inmueble->setFotos($aux->getFotos());
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
+    $inmueble->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+
+    return $datos;
 }
 
 function listar_inmuebles_usuario() {
@@ -389,10 +426,11 @@ function listar_inmuebles_usuarioAll() {
 //        . '<input type="submit" name="alta_resenya" id="alta_resenya" value="Escribir reseña" />'
 //        . '</td>'
 //        . '</a>';
-        echo '<a href="../Vistas/modificar_inmueble.php">'
-        . '<input type="submit" name="btonmodificar" id="btonmodificar" value="Modificar datos" />'
-        . '</td>'
-        . '</a>';
+        echo '<td>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
+        . '<button name="btonModificar" id="btonModificar"> Modificar datos </button>'
+        . '</a>'
+        . '</td>';
 
         echo '</tr>';
         echo '</table>';
