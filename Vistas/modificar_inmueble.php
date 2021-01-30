@@ -43,7 +43,7 @@
                                         <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($validado) && $validado === false && isset($$erroresNum)) { ?>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($$erroresNum)) { ?>
                                     <tr>
                                         <td><?php echo $$erroresNum; ?></td>
                                     </tr>
@@ -53,7 +53,7 @@
                                         <input type="hidden" name="cp" value="<?php echo $datos[1]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($validado) && $validado === false && isset($erroresCp)) { ?>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresCp)) { ?>
                                     <tr>
                                         <td><?php echo $erroresCp; ?></td>
                                     </tr>
@@ -63,7 +63,7 @@
                                         <input type="hidden" name="nombre_via" value="<?php echo $datos[2]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($validado) && $validado === false && isset($erroresNombre_via)) { ?>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNombre_via)) { ?>
                                     <tr>
                                     <td><?php echo $erroresNombre_via; ?></td> 
                                     </tr>
@@ -79,7 +79,7 @@
                                         <input type="hidden" name="nombre_localidad" value="<?php echo $datos[5]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($erroresLocalidad)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresLocalidad)) { ?>
                                     <tr>
                                         <td><?php echo $erroresLocalidad; ?></td>
                                     </tr>
@@ -89,7 +89,7 @@
                                         <input type="hidden" name="nombre_provincia" value="<?php echo $datos[6]; ?>"/>
                                     </td>
                                 </tr>
-                               <?php if (isset($validado) && $validado === false && isset($erroresProvincia)) { ?>
+                               <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresProvincia)) { ?>
                                     <tr>
                                         <td><?php echo $erroresProvincia; ?></td>
                                     </tr>
@@ -100,7 +100,7 @@
                                         <input type="number" name="txtNum_banyos" value="<?php echo $datos[7]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($validado) && $validado === false && isset($erroresNum_banyos)) { ?>
+                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_banyos)) { ?>
                                     <tr>
                                         <td><?php echo $erroresNum_banyos; ?></td>
                                     </tr>
@@ -111,7 +111,7 @@
                                         <input type="number" name="txtNum_habitaciones" value="<?php echo $datos[8]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($erroresNum_habitaciones)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_habitaciones)) { ?>
                                     <tr>
                                         <td><?php echo $erroresNum_habitaciones; ?></td>
                                     </tr>
@@ -140,7 +140,7 @@
                                         <input type="number" name="txtNum_Planta" value="<?php echo $datos[11]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($erroresNum_Planta)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_Planta)) { ?>
                                     <tr>
                                         <td><?php echo $erroresNum_Planta; ?></td>
                                     </tr>
@@ -151,7 +151,7 @@
                                         <input type="number" name="txtPlanta" value="<?php echo $datos[12]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($erroresPlanta)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresPlanta)) { ?>
                                     <tr>
                                         <td><?php echo $erroresPlanta; ?></td>
                                     </tr>
@@ -162,7 +162,7 @@
                                         <input type="number" name="txtMetros" value="<?php echo $datos[13]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($errorestMetros)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($errorestMetros)) { ?>
                                     <tr>
                                         <td><?php echo $errorestMetros; ?></td>
                                     </tr>
@@ -175,7 +175,7 @@
                                         <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
                                     </td>
                                 </tr>
-                                <?php if (isset($validado) && $validado === false && isset($erroresfileFotos)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresfileFotos)) { ?>
                                     <tr>
                                         <td><?php echo $erroresfileFotos; ?></td>
                                     </tr>
@@ -193,7 +193,7 @@
             <?php if (isset($NoModificado)) { ?>
                 <span><?php echo $NoModificado; ?></span>
             <?php } ?>
-            <?php if (isset($validado) && $validado === false) { ?>
+            <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
                 <section>
                     <h2>Error en el formulario:</h2>
                     <article>
