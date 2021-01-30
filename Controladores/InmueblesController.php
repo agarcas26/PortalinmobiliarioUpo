@@ -277,7 +277,7 @@ function getInmuebleByDireccion($direccion) {
         $fotos = preg_split("/;/", $aux[$i]->getFotos());
         
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
+            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '">' . '</tr>';
         }
 
         echo '</table>';
