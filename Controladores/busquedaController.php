@@ -255,8 +255,13 @@ function get_filtros_by_id($id_anuncio) {
 }
 
 function toggle_alerta($id_anuncio) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $dao = new daoBusqueda();
-    $busqueda = $dao->listar_busquedas_usuario();
+    $busqueda = $dao->listar_busquedas_usuario($usuario);
     $filtro= get_filtros_by_id($id_anuncio);
     while ($fila = mysqli_fetch_array($busqueda)) {
         if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[3]<$filtro[2] && $fila[7]==$filtro[3]
