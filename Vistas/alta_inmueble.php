@@ -36,7 +36,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Numero</label></td>
                                     <td><label><input type="number" name="txtNumero" /></label></td>
                                 </tr>       
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNumero"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNumero"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNumero"]; ?></td>
                                     </tr>
@@ -45,7 +45,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Codigo postal</label></td>
                                     <td><input type="text" name="txtCp" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtCp"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtCp"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtCp"]; ?></td>
                                     </tr>
@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Nombre de la vía</label></td>
                                     <td><input type="text" name="txtNombre_via" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
                                     <tr>
                                     <span><?php echo $_SESSION["errores"]["txtNombre_via"]; ?></span> 
                                     </tr>
@@ -63,23 +63,23 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label> Tipo de via</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="via1" value="Calle"></td>
-                                    <td><label for="via1">Calle</label></td>
+                                    <td><input type="radio" name="txtTipo_via" id="calle" <?php if (isset($txtTipo_via) && $txtTipo_via=="calle");?> value="calle"></td>
+                                    <td><label for="calle">Calle</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="via2" value="Avenida"></td>
-                                    <td><label for="via2">Avenida</label></td>
+                                    <td><input type="radio" name="txtTipo_via" id="avenida" <?php if (isset($txtTipo_via) && $txtTipo_via=="avenida");?> value="avenida"></td>
+                                    <td><label for="avenida">Avenida</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="via3" value="Carretera"></td>
-                                    <td><label for="via3">Carretera</label> </td>
+                                    <td><input type="radio" name="txtTipo_via" id="carretera" <?php if (isset($txtTipo_via) && $txtTipo_via=="carretera");?>value="carretera"></td>
+                                    <td><label for="carretera">Carretera</label> </td>
                                 </tr>
 
                                 <tr>
                                     <td><label>Localidad</label></td>
                                     <td><input type="text" name="txtNombre_localidad" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_localidad"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNombre_localidad"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNombre_localidad"]; ?></td>
                                     </tr>
@@ -88,7 +88,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Provincia</label></td>
                                     <td><input type="text" name="txtNombre_provincia" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_provincia"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNombre_provincia"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNombre_provincia"]; ?></td>
                                     </tr>
@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Numero de baños</label></td>
                                     <td><input type="number" name="txtNum_banyos" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_banyos"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNum_banyos"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNum_banyos"]; ?></td>
                                     </tr>
@@ -106,7 +106,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Numero de habitaciones</label></td>
                                     <td><input type="number" name="txtNum_habitaciones" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_habitaciones"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNum_habitaciones"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNum_habitaciones"]; ?></td>
                                     </tr>
@@ -137,7 +137,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Numero de plantas</label></td>
                                     <td><input type="number" name="txtNum_Planta" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_Planta"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtNum_Planta"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtNum_Planta"]; ?></td>
                                     </tr>
@@ -146,7 +146,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Planta</label></td>
                                     <td><input type="number" name="txtPlanta" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtPlanta"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtPlanta"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtPlanta"]; ?></td>
                                     </tr>
@@ -155,7 +155,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Metros cuadrados</label></td>
                                     <td><input type="number" name="txtMetros" /></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtMetros"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["txtMetros"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["txtMetros"]; ?></td>
                                     </tr>
@@ -164,7 +164,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Suba imágenes del inmueble:</label></td>
                                     <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
+                                <?php if (isset($validado) && $validado === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>
                                         <td><?php echo $_SESSION["errores"]["fileFotos"]; ?></td>
                                     </tr>
@@ -179,7 +179,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                 <?php if (isset($_SESSION["errores"]["insertOk"])) { ?>
                     <span><?php echo $_SESSION["errores"]["insertOk"]; ?></span>
                 <?php } ?>
-                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
+                <?php if (isset($validado) && $validado === false) { ?>
                     <section>
                         <h2>Error en el formulario:</h2>
                         <article>
@@ -187,7 +187,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                         </article>
                     </section>
                     <?php
-                    unset($_SESSION["validacion"]);
+                    unset($validado);
                     unset($_SESSION["errores"]);
                 }
                 ?>
