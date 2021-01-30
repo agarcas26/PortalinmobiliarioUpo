@@ -45,7 +45,7 @@ and open the template in the editor.
                                 <option>Vacacional</option>
                             </select>
 
-                            <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+                            <input type="text" style="width: 100%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
 
                             <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
 
