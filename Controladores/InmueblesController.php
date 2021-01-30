@@ -177,7 +177,7 @@ if (isset($_POST["btonInsertar"])) {
             // $inmueble1->setNombre_usuario_duenyos($_SESSION['usuario_particular']);
             if (isset($_SESSION['usuario_particular'])) {
                 $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-            } else {
+            } elseif(isset($_SESSION['usuario_profesional'])) {
 
                 $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
             }
