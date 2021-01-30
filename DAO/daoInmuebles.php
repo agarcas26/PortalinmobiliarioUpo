@@ -51,7 +51,7 @@ class daoInmuebles {
         $nombre_via = $objInmueble->getNombre_via();
         $tipo_via = $objInmueble->getTipo_via();
 
-        $sql = "DELETE FROM `inmueble` WHERE numero='$numero',cp='$cp',nombre_via='$nombre_via',tipo_via='$tipo_via'";
+        $sql = "DELETE FROM `inmueble` WHERE numero='$numero' and cp='$cp'and nombre_via='$nombre_via'and tipo_via='$tipo_via'";
 
         if (!$this->conexion->query($sql)) {
             return false;
