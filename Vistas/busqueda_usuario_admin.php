@@ -27,7 +27,7 @@
             <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
             <input type="text" id="user" name="user" class="form-text">
             
-            <form action="busquedaUsuarioController_admin.php" method="GET">
+            <form action="../Controladores/busquedaUsuarioController_admin.php" method="GET">
                 <input type="submit" name="busuario" value="Buscar" />
             </form>
 
