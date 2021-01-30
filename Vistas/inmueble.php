@@ -35,7 +35,7 @@
                         //Galería de imágenes del inmueble
                         ?>
                     </ul>
-                    <table id="datos_visa" class="display table-bordered" style="width:100%">
+                    <table id="id_inmueble" class="display table-bordered" style="width:100%">
                         <?php
                         listar_inmuebles_usuarioAll();
                         ?>
