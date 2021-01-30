@@ -27,8 +27,8 @@ if (isset($_POST['busuario'])) {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td>' . $aux[4] . '</td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input name="nombre_usuario" id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -87,8 +87,8 @@ function listar_usuarios() {
 function getDatosPerfil(){
     $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
     $datos = [];
-    array_push($datos,$usuario->getNombre_usuario());
-    array_push($datos,$usuario->getNombre_apellidos());
+    array_push($datos,$usuario->get_nombre_usuario());
+    array_push($datos,$usuario->get_nombre_apellidos());
     array_push($datos,$usuario->getContrasenya());
     array_push($datos,$usuario->getMoroso());
     array_push($datos,$usuario->getTipo());
