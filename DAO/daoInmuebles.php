@@ -72,7 +72,7 @@ class daoInmuebles {
         $num_banyos = $objInmueble->getNum_banyos();
         $num_hab = $objInmueble->getNum_hab();
         $cocina = $objInmueble->getCocina();
-        $num_plantas = $objInmueble->getNum_plantas();
+        $num_plantas = $objInmueble->getNumero_plantas();
         $planta = $objInmueble->getPlanta();
         $metros = $objInmueble->getMetros();
         $tipo_inmueble = $objInmueble->getTipo_inmueble();

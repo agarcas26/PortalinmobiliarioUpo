@@ -40,7 +40,7 @@
                                 <h1>Datos del Inmueble</h1>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
+                                        <input type="hidden" name="txtNumero" value="<?php echo $datos[0]; ?>"/>
                                     </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNumero"])) { ?>
@@ -50,7 +50,7 @@
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="cp" value="<?php echo $datos[1]; ?>"/>
+                                        <input type="hidden" name="txtCp" value="<?php echo $datos[1]; ?>"/>
                                     </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtCp"])) { ?>
@@ -60,7 +60,7 @@
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_via" value="<?php echo $datos[2]; ?>"/>
+                                        <input type="hidden" name="txtNombre_via" value="<?php echo $datos[2]; ?>"/>
                                     </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
@@ -70,13 +70,13 @@
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="tipo_via" value="<?php echo $datos[3]; ?>"/>
+                                        <input type="hidden" name="txtTipo_via" value="<?php echo $datos[3]; ?>"/>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_localidad" value="<?php echo $datos[5]; ?>"/>
+                                        <input type="hidden" name="txtNombre_localidad" value="<?php echo $datos[5]; ?>"/>
                                     </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_localidad"])) { ?>
@@ -86,7 +86,7 @@
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_provincia" value="<?php echo $datos[6]; ?>"/>
+                                        <input type="hidden" name="txtNombre_provincia" value="<?php echo $datos[6]; ?>"/>
                                     </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_provincia"])) { ?>
@@ -119,24 +119,20 @@
                                 <tr>
                                     <td>
                                         <label>Cocina amueblada</label>
-                                        <input type="radio" name="txtCocina" id="si" value="si" <?php if ($datos[9] === "si") {
-                                                echo "checked";
-                                            }
-                                            ?>/>
-                                        <label for="si">Si</label>
-                                        <input type="radio" name="txtCocina" id="no" value="no"<?php  if ($datos[9] === "no") {
-                                                echo "checked";
-                                            }
-                                            ?>/>
-                                        <label for="no">No</label> 
+                                        <input type="radio" name="txtCocina" id="si" value="si"
+
+                                               <label for="si">Si</label>
+                                        <input type="radio" name="txtCocina" id="no" value="no"
+
+                                               <label for="no">No</label> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>Tipo de inmueble</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"<?php  if ($datos[10] === "alquiler") { echo "checked";}?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"/>
                                         <label for="alquiler">Alquiler</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"<?php if ($datos[10] === "compra") { echo "checked";}?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"/>
                                         <label for="compra">Compra</label>
                                     </td>
                                 </tr>
@@ -174,12 +170,15 @@
                                     </tr>
                                 <?php } ?>
                                 <tr>
-                                    <td>
-                                        <label for="fileFotos">Imágenes del inmueble:</label>
+                                <tr>
+                                    <td><label>Suba imágenes del inmueble:</label></td>
+                                </tr>
+                                <td>
+                                    <label for="fileFotos">Imágenes del inmueble:</label>
 
-
-                                        <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
-                                    </td>
+                                <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
+                                <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
+                                </td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>
@@ -196,8 +195,8 @@
                 <?php
             }
             ?>
-            <?php if (isset($NoModificado)) { ?>
-                <span><?php echo $NoModificado; ?></span>
+            <?php if (isset($_SESSION["errores"]["modifyOk"])) { ?>
+                <span><?php echo $_SESSION["errores"]["modifyOk"]; ?></span>
             <?php } ?>
             <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
                 <section>
