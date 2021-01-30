@@ -30,8 +30,8 @@
                 <input type="submit" name="busuario" value="Buscar" />
             </form>
             <?php
-            listar_usuarios();
             include_once '../Controladores/busquedaUsuarioController_admin.php';
+            listar_usuarios();
             ?>
         </main>
     </body>
