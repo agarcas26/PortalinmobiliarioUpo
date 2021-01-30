@@ -9,6 +9,7 @@
         <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/InmueblesController.php';
         ?>
     </head>
     <body>
@@ -42,23 +43,23 @@
                             <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
                             </td>
+                            <?php
+                            select_inmuebles_usuario();
+                            ?>
                         </tr>
                         <tr>
                             <td>
-                                <select id="inmuebles_usuario" type="picker" label="Tus inmuebles" display="" aria-invalid="false" class="dropdown-menu">
-                                    <?php
-                                    select_inmuebles_usuario();
-                                    ?>
-                                </select>
+                                O bien puedes 
+
                             </td>
-                        </tr>
-                        <tr>
                             <td>
-                                <label>O bien puedes <a href="../Vistas/alta_inmueble.php"><button>Dar de alta un nuevo inmueble</button></a></label>
+                                <a href="../Vistas/alta_inmueble.php">Dar de alta un nuevo inmueble</a>
                             </td>
                         </tr>
                         <tr>
-                        <input type="submit" name="guardar" class="btn-success" value="Guardar">
+                            <td colspan="2">
+                                <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
+                            </td>
                         </tr>
                     </table>
                 </form>
