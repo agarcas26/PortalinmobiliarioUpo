@@ -69,7 +69,7 @@ if(isset($_POST['guardar'])){
     $daoUsuario->destruct();
     
     unset($_SESSION['searchuser']);
-    unset(isset($_POST['guardar']);
+    unset($_POST['guardar']);
     
 }
 
