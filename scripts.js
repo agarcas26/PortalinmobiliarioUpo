@@ -32,14 +32,14 @@ function muestraEstrellas() {
 }
 
 
-$("#campana").click(function () {
+$(".campana").click(function () {
     if ($(".alerta").attr("val") == "activa") {
         $(".alerta").attr("val", "inactiva");
-        $("#campana").attr("src", "../img/nofav.png");
+        $(".campana").attr("src", "../img/nofav.png");
     }
     if ($(".alerta").attr("val") == "activa") {
         $(".alerta").attr("val", "activa");
-        $("#campana").attr("src", "../img/fav.png");
+        $(".campana").attr("src", "../img/fav.png");
     }
 
 });
