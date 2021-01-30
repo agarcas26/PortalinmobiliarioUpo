@@ -21,19 +21,22 @@ $cancelado = false;
 if (isset($_POST["btonInsertar"])) {
 
 
+    $validado = true;
+
+    $_SESSION["errores"] = "";
     if (empty($_POST["txtNumero"])) {
-        $validado = false;
+        $validado  = false;
         $$erroresNum = "Debe de completar el campo numero.";
     }
     if (empty($_POST["txtCp"])) {
-        $validado = false;
+       $validado  = false;
         $erroresCp = "Debe de completar el campo cp.";
     }
     if (empty($_POST["txtNombre_via"])) {
-        $validado = false;
+        $validado  = false;
         $erroresNombre_via = "Debe de completar el campo nombre via.";
-    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["txtNombre_via"])) {
-        $validado = false;
+    }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$_POST["txtNombre_via"])){
+        $validado  = false;
         $erroresNombre_via = "formato incorrecto.";
     }
     if (empty($_POST["txtTipo_via"])) {
@@ -81,6 +84,7 @@ if (isset($_POST["btonInsertar"])) {
 
 
     if ($validado) {
+
         $inmueble1 = new Inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
@@ -120,40 +124,38 @@ if (isset($_POST["btonInsertar"])) {
 }
 
 if (isset($_POST["btonModificar"])) {
-
     if (empty($_POST["txtNum_banyos"])) {
         $validado = false;
-        $erroresNum_banyos = "Debe de completar el campo numero de baños.";
+        $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
     }
     if (empty($_POST["txtNum_habitaciones"])) {
         $validado = false;
-        $erroresNum_habitaciones = "Debe de completar el campo numero de habitaciones.";
+        $_SESSION["errores"]["txtNum_habitaciones"] = "Debe de completar el campo numero de habitaciones.";
     }
     if (empty($_POST["txtCocina"])) {
         $validado = false;
-        $erroresCocina = "Debe de completar el campo cocina.";
+        $_SESSION["errores"]["txtCocina"] = "Debe de completar el campo cocina.";
     }
     if (empty($_POST["txtNum_Planta"])) {
         $validado = false;
-        $erroresNum_Planta = "Debe de completar el campo numero de plantas.";
+        $_SESSION["errores"]["txtNum_Planta"] = "Debe de completar el campo numero de plantas.";
     }
     if (empty($_POST["txtPlanta"])) {
         $validado = false;
-        $erroresPlanta = "Debe de completar el campo planta.";
+        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
     }
     if (empty($_POST["txtMetros"])) {
         $validado = false;
-        $errorestMetros = "Debe de completar el campo metros.";
+        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["txtTipo_Inmueble"])) {
+    if (empty($_POST["txtTipo_inmueble"])) {
         $validado = false;
-        $erroresTipo_Inmueble = "Debe de completar el campo tipo de inmueble.";
+        $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
     if (empty($_POST["fileFotos"])) {
         $validado = false;
-        $erroresfileFotos = "Debe añadir una imagen del inmueble.";
+        $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
     }
-
 
     if ($validado) {
         $inmueble2 = new Inmueble();
@@ -180,7 +182,7 @@ if (isset($_POST["btonModificar"])) {
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
         if (!$modifyOk) {
-            $errorModificar = "No se ha modificado correctamente";
+            $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
     }
     if ($validado) {
@@ -191,9 +193,11 @@ if (isset($_POST["btonModificar"])) {
 }
 
 function select_inmuebles_usuario() {
+
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-    } elseif (isset($_SESSION['usuario_profesional'])) {
+    } else {
+
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
     }
     $inmueble1 = new Inmueble();
@@ -204,7 +208,7 @@ function select_inmuebles_usuario() {
     $dao->destruct();
     //Listar  inmuebles by usuario
     if (sizeof($inmuebles_usuario) > 0) {
-        echo '<td><select id="inmuebles_usuario" class="dropdown-menu">';
+        echo '<td><select id="inmuebles_usuario" aria-invalid="false" class="dropdown-menu">';
         for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
             $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
             $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();
@@ -266,9 +270,9 @@ function getInmuebleByDireccion($direccion) {
         for ($i = 0; $i < sizeof($fotos); $i++) {
             echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
         }
-       
-        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar" />'
+        echo '<td>';
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
+        //. '<input type="submit"  name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo " ";
@@ -401,7 +405,7 @@ function listar_inmuebles_usuarioAll() {
         . '</a>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar" />'
+        . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo '</tr>';
@@ -462,6 +466,6 @@ function deleteInmueble() {
     if ($_SESSION["errores"]) {
         header('Location:../Vistas/inmueble.php ');
     } else {
-        header('Location:../Vistas/perfil.php ');
+        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
     }
 }

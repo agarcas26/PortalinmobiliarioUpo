@@ -6,6 +6,7 @@ include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
+
 if (isset($_GET['aplicar_filtros'])) {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
@@ -13,15 +14,16 @@ if (isset($_GET['aplicar_filtros'])) {
         $nombre_usuario = ($_SESSION['usuario_rofesional']);
     }
 
+    $dao = new daoBusqueda();
+    $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
+    $dao->destruct();
+
     $filtros = getFiltros();
-    if (isset($nombre_usuario)) {
-        $dao = new daoBusqueda();
-        $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
-        $dao->destruct();
-    }
     $anuncios = anuncios_busqueda($filtros);
 
     mostrarVistaLista($anuncios);
+
+    header("Location: ../Vistas/busqueda.php");
 }
 
 if (isset($_POST['lista'])) {
@@ -31,7 +33,7 @@ if (isset($_POST['lista'])) {
     mostrarVistaLista($anuncios);
 }
 
-if (isset($_POST['cuadricula'])) {
+if (isset($_POST['cuadrcula'])) {
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
@@ -55,8 +57,7 @@ if (isset($_GET["id_busqueda"])) {
 function getFiltros() {
     $filtros = [];
     if (isset($_GET["num_banyos"])) {
-        //$filtros[] = ;
-        array_push($filtros, $_GET["num_banyos"]);
+        $filtros[] = $_GET["num_banyos"];
     } else {
         $filtros[] = "notset";
     }
@@ -104,7 +105,7 @@ function mostrarVistaLista($anuncios) {
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $anuncios[$i]->getTipo_via() . ' </td>';
+        echo '<td>' . $anuncios[$i]->getTipo_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getNombre_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
         echo '<td>' . $anuncios[$i]->getFecha_anuncio() . '</td>';

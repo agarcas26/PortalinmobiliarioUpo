@@ -17,6 +17,7 @@ and open the template in the editor.
         <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
+        include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
@@ -35,11 +36,11 @@ and open the template in the editor.
             <button id="mostrar_ocultar" style="float: right;"  class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
             <br><br>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
-                <form method="GET" action="../Vistas/busqueda.php">
+                <form method="GET" action="../Controladores/busquedaController.php">
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td><label>Número de baños</label></td>
-                            <td><input type="number" min="0" id="num_banyos" name="num_banyos" ></td>
+                            <td><input type="number" min="0" id="num_banyos" name="num_banyos" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Tipo de inmueble</label></td>
@@ -60,15 +61,15 @@ and open the template in the editor.
                         </tr>
                         <tr>
                             <td><label>Precio máximo</label></td>
-                            <td><input type="number" min="0" step="0.01" id="precio_max" name="precio_max" ></td>
+                            <td><input type="number" min="0" step="0.01" id="precio_max" name="precio_max" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Número de habitaciones</label></td>
-                            <td><input type="number" min="0" id="num_hab" name="num_hab"></td>
+                            <td><input type="number" min="0" id="num_hab" name="num_hab" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Metros cuadrados</label></td>
-                            <td><input type="number" min="0" id="m2" name="m2" value=""></td>
+                            <td><input type="number" min="0" id="m2" name="m2" value="0"></td>
                         </tr>
                         <tr>
                             <td><label>Anuncios posteriores al...</label></td>
@@ -89,7 +90,7 @@ and open the template in the editor.
                         <option value="baratos">Más baratos primero</option>
                     </select>
                     <!-- OPCION LISTA / CUADRICULA -->
-                    <form style="float: right;" action="../Vistas/busqueda.php" method="POST">
+                    <form style="float: right;" action="../Controladores/busquedaController.php" method="POST">
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
                             <input class="btn btn-primary" type="submit" name="cuadricula" value="Cuadricula" />
@@ -101,12 +102,12 @@ and open the template in the editor.
                 </section>
                 <!-- ANUNCIOS -->
                 <table class="display table-bordered" style="width:100%">
-                    <?php
-                    include_once '../Controladores/busquedaController.php';
-                    ?>
+                    
                 </table>
             </article>
         </main>
+        <?php
+        ?>
     </body>
     <?php
     include_once '../Vistas/footer.html';

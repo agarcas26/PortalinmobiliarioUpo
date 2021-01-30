@@ -4,7 +4,6 @@
         <title>Iniciar sesión</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
-        <link rel="stylesheet" href="../mycss.css"/>
         <?php
         include_once '../Controladores/loginAdminController.php';
         include_once '../Vistas/header.php';

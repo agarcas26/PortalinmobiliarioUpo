@@ -29,35 +29,47 @@
             }
             ?>
         </header>
-        <main>
-            <article>
-                <section id="detalle_anuncio">
-                    <table id="datos_visa" class="display table-bordered" style="width:100%">
+        <?php
+        if (!isset($_POST['realizar_busqueda'])) {
+            $dirección;
+            $datos;
+            ?>
+            <main>
+                <article>
+                    <section id="detalle_anuncio">
+                        <table id="datos_visa" class="display table-bordered" style="width:100%">
+                            <?php
+                            mostrar_detalle_anuncio($_GET["id_anuncio"]);
+                            ?>
+                        </table>
+                        <form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
+                             <input name="id_anuncio" value="<?phpecho $_GET["id_anuncio"];?> hidden">
+                            <span class="favorito" val="<?php
+                            if (esFavorito()) {
+                                echo"activa";
+                            } else
+                                "inactiva";
+                            ?>">
+                                <input name="corazon" type="image" class="corazon" id="inactiva" src="../img/nofav.png">
+                            </span>
+                            <span class="alerta" val="inactiva">
+                                <input name="campana" type="image"  class="campana" id="inactiva" src="../img/noalerta.png">
+                            </span>
+                        </form>  
+                    </section>
+                    <section>
                         <?php
-                        mostrar_detalle_anuncio($_GET["id_anuncio"]);
+                        resenyas_anuncio($_GET["id_anuncio"]);
+                        mostrarValorar($_GET["id_anuncio"]);
                         ?>
-                    </table>
-                    <span class="favorito" val="<?php
-                    if (esFavorito($_GET["id_anuncio"])) {
-                        echo"activa";
-                    } else
-                        "inactiva";
-                    ?>">
-                        <img class="corazon" id="inactiva" src="../img/nofav.png">
-                    </span>
-                    <span class="alerta" val="inactiva">
-                        <img class="campana" id="inactiva" src="../img/noalerta.png">
-                    </span>
-                </section>
-                <section>
-                    <?php
-                    resenyas_anuncio($_GET["id_anuncio"]);
-                    mostrarValorar($_GET["id_anuncio"]);
-                    ?>
-                </section>
-            </article>
-        </main> 
+                    </section>
+                </article>
+            </main> 
+            <?php
+        }
+        ?>
     </body>
+    <br>
     <?php
     include_once '../Vistas/footer.html';
     ?>
