@@ -8,7 +8,8 @@
 
 include_once '../DAO/daoUsuarios.php';
 include_once '../Controladores/UsuarioController.php';
-listar_usuarios();
+include_once '../Modelos/UsuarioModel.php';
+//listar_usuarios();
 
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
