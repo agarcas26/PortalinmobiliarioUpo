@@ -115,23 +115,23 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Cocina amueblada</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtCocina" id="si" value="Si"></td>
-                                    <td><label for="Si">Si</label></td>
+                                    <td><input type="radio" name="txtCocina" id="si"  <?php if (isset($txtCocina) && $txtCocina=="si");?> value="si" ></td>
+                                    <td><label for="si">Si</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtCocina" id="no" value="No"></td>
-                                    <td><label for="No">No</label> </td>
+                                    <td><input type="radio" name="txtCocina" id="no"  <?php if (isset($txtCocina) && $txtCocina=="no");?> value="no"></td>
+                                    <td><label for="no">No</label> </td>
                                 </tr>
                                 <tr>
                                     <td><label>Tipo de inmueble</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="alquiler" value="Alquiler"></td>
-                                    <td><label for="Alquiler">Alquiler</label></td>
+                                    <td><input type="radio" name="txtTipo_Inmueble" id="alquiler" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="alquiler");?> value="alquiler"></td>
+                                    <td><label for="alquiler">Alquiler</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="compra" value="Compra"></td>
-                                    <td><label for="Compra">Compra</label></td>
+                                    <td><input type="radio" name="txtTipo_Inmueble" id="compra" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="compra");?> value="compra"></td>
+                                    <td><label for="compra">Compra</label></td>
                                 </tr>
                                 <tr>
                                     <td><label>Numero de plantas</label></td>
