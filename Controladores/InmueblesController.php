@@ -174,7 +174,7 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
         $inmueble1->setFotos($_POST["fileFotos"]);
-        // $inmueble1->setNombre_usuario_duenyos($_SESSION['usuario_particular']);
+// $inmueble1->setNombre_usuario_duenyos($_SESSION['usuario_particular']);
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } elseif (isset($_SESSION['usuario_profesional'])) {
@@ -195,6 +195,48 @@ if (isset($_POST["btonInsertar"])) {
     } else {
         header('Location: ../Vistas/alta_inmueble.php');
     }
+}
+
+function get_datos_by_direccion($direccion) {
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+    $dao->destruct();
+
+    $inmueble = [];
+    $datos = [];
+    for ($i = 0; $i < sizeof($aux); $i++) {
+        array_push($datos, $aux[$i]);
+        $inmueble = new Inmueble();
+        $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setTipo_via($aux[$i]->getTipo_via());
+        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
+        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
+        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
+        $inmueble->setNum_hab($aux[$i]->getNum_hab());
+        $inmueble->setCocina($aux[$i]->getCocina());
+        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
+        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
+        $inmueble->setPlanta($aux[$i]->getPlanta());
+        $inmueble->setMetros($aux[$i]->getMetros());
+        $inmueble->setFotos($aux[$i]->getFotos());
+    }
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } elseif (isset($_SESSION['usuario_profesional'])) {
+
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
+    $inmueble[0]->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+    
+    return $datos;
 }
 
 if (isset($_POST["btonModificar"])) {
@@ -231,6 +273,7 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["fileFotos"] = "Debe de completar el campo fotos.";
     }
+    
     if ($_SESSION["validacion"]) {
         $inmueble2 = new Inmueble();
         $inmueble2->setNumero($_POST["txtNumero"]);
@@ -313,22 +356,22 @@ function listar_inmuebles_usuarioAll() {
 //Listar  inmuebles by usuario
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 //        echo '<option>'
-        //        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
-        //        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
-        //        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
-        //        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() .
-        //        ' - Usuario : ' . $inmuebles_usuario[$i]->getNombre_usuario_duenyos() .
-        //        ' - Localidad : ' . $inmuebles_usuario[$i]->getNombre_localidad() .
-        //        ' - Provincia : ' . $inmuebles_usuario[$i]->getNombre_provincia() .
-        //        ' - N.Baños : ' . $inmuebles_usuario[$i]->getNum_banyos() .
-        //        ' - N.Habitaciones : ' . $inmuebles_usuario[$i]->getNum_hab() .
-        //        ' - Cocina Amueblada : ' . $inmuebles_usuario[$i]->getCocina() .
-        //        ' - Tipo de oferta : ' . $inmuebles_usuario[$i]->getTipo_inmueble() .
-        //        ' - Numero de plantas : ' . $inmuebles_usuario[$i]->getNumero_plantas() .
-        //        ' - Planta (Edificios): ' . $inmuebles_usuario[$i]->getPlanta() .
-        //        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
-        //        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
-        //        '</option>';
+//        . ' Número : ' . $inmuebles_usuario[$i]->getNumero() .
+//        '   Código Postal :' . $inmuebles_usuario[$i]->getCp() .
+//        ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() .
+//        ' - Tipo de vía : ' . $inmuebles_usuario[$i]->getTipo_via() .
+//        ' - Usuario : ' . $inmuebles_usuario[$i]->getNombre_usuario_duenyos() .
+//        ' - Localidad : ' . $inmuebles_usuario[$i]->getNombre_localidad() .
+//        ' - Provincia : ' . $inmuebles_usuario[$i]->getNombre_provincia() .
+//        ' - N.Baños : ' . $inmuebles_usuario[$i]->getNum_banyos() .
+//        ' - N.Habitaciones : ' . $inmuebles_usuario[$i]->getNum_hab() .
+//        ' - Cocina Amueblada : ' . $inmuebles_usuario[$i]->getCocina() .
+//        ' - Tipo de oferta : ' . $inmuebles_usuario[$i]->getTipo_inmueble() .
+//        ' - Numero de plantas : ' . $inmuebles_usuario[$i]->getNumero_plantas() .
+//        ' - Planta (Edificios): ' . $inmuebles_usuario[$i]->getPlanta() .
+//        ' - Metros Cuadrados:  ' . $inmuebles_usuario[$i]->getMetros() .
+//        ' - Fotos:  ' . $inmuebles_usuario[$i]->getFotos() .
+//        '</option>';
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
         echo '<table id="inmuebles">';
