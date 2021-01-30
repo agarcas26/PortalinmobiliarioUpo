@@ -133,6 +133,19 @@
                 <?php
             }
             ?>
+            <?php if (isset($NoModificado)) { ?>
+                <span><?php echo $NoModificado; ?></span>
+            <?php } ?>
+            <?php if (isset($validado) && $validado === false) { ?>
+                <section>
+                    <h2>Error en el formulario:</h2>
+                    <article>
+                        <p>Debe de completar correctamente el formulario.</p>
+                    </article>
+                </section>
+                <?php
+            }
+            ?>
         </main>  
     </body>
     <?php

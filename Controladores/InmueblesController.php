@@ -176,7 +176,7 @@ if (isset($_POST["btonModificar"])) {
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
         if (!$modifyOk) {
-            $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
+            $NoModificado = "No se ha modificado correctamente";
         }
     }
     if ($validado) {
