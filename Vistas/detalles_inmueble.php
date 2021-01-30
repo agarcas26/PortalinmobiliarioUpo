@@ -41,7 +41,6 @@
                                 getInmuebleByDireccion($_GET['direccion']);
                                 ?>     
                                 
-                                
                             </table>
                         </form>
                     </section>

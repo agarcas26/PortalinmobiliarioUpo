@@ -37,7 +37,7 @@
                     <section>
 
                         <form action="../Controladores/InmueblesController.php" method="POST" style="margin-left:10px;">
-                            <table id="alta_inm" class="display table-bordered" style="width:70%">
+                            <table id="mod_inm" class="display table-bordered" style="width:70%">
                                 <h2>Datos del Inmueble</h2>
                                 <tr>
                                     <td>
