@@ -388,7 +388,7 @@ function listar_inmuebles_usuarioAll() {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
-        echo '<table id="inmuebles">';
+        echo '<table id="inmuebles" style="border: 1px solid black">';
         echo '<tr>';
         echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
