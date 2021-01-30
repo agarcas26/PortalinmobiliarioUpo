@@ -215,9 +215,18 @@ function listar_alertas_usuario() {
 
 function hayAlerta($id_anuncio) {
     $r = false;
-    $aletas = listar_alertas_usuario();
-    while ($fila = mysqli_fetch_array($aletas)) {
-        if (probarFiltros($aletas, readAnuncio($id_anuncio))) {
+    $filtros=[];
+    $alertas = listar_alertas_usuario();
+    $anuncio=readAnuncio($id_anuncio);
+    while ($fila = mysqli_fetch_array($alertas)) {
+    $filtros[0]=$fila[2];
+    $filtros[2]=$anuncio->getTitulo();
+    $filtros[3]=$anuncio->getPrecio();
+    $filtros[4]=$fila[7];
+    $filtros[5]=$fila[8];
+    $filtros[6]=$anuncio->getFecha_anuncio();
+    
+        if (probarFiltros($filtros, readAnuncio($id_anuncio))) {
             $r = true;
         }
     }
@@ -273,3 +282,15 @@ if (isset($_POST["campana"])) {
 
     unset($_POST["campana"]);
 }
+
+if (isset($_POST["campana"])) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+
+    toggle_favorito($_POST["id_anuncio"], $usuario);
+
+    unset($_POST["corazon"]);
+} 
