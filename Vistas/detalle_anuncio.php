@@ -43,7 +43,7 @@
                             ?>
                         </table>
                         <form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
-                             <input name="id_anuncio" value="<?phpecho $_GET["id_anuncio"];?> hidden">
+                             <input name="id_anuncio" value="<?phpecho $_GET["id_anuncio"];?> "hidden>
                             <span class="favorito" val="<?php
                             if (esFavorito($_GET["id_anuncio"])) {
                                 echo"activa";
