@@ -108,7 +108,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 }
 if (isset($_POST["btonModificar"])) {
-if (empty($_POST["txtNumero"])) {
+    if (empty($_POST["txtNumero"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
     }
@@ -188,12 +188,11 @@ if (empty($_POST["txtNumero"])) {
         $daoInmueble2 = new daoInmuebles();
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
-        if(!$modifyOk) {
+        if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
-       
     }
-   
+
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/inmueble.php');
     } else {
@@ -289,7 +288,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
         . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
+        . '<input type="submit" name="btonEliminar" id="btonEliminar" value="Eliminar inmueble" />'
         . '</a></form>'
         . '</td>';
     }
@@ -458,23 +457,28 @@ function getInmuebleByAnuncio($anuncio) {
     return $inmueble_aux;
 }
 
-function deleteInmueble() {
+if (isset($_POST["btonEliminar"])) {
+
+
     $inmueble1 = new Inmueble();
 
-    $inmueble1->setNumero($numero);
-    $inmueble1->setCp($cp);
-    $inmueble1->setNombre_via($nombre_via);
-    $inmueble1->setTipo_via($tipo_via);
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
+
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
-
-    if ($_SESSION["errores"]) {
-        header('Location:../Vistas/inmueble.php ');
-    } else {
-        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
-    }
+    var_dump($deleteOk);
+//    if ($_SESSION["errores"]) {
+//        header('Location:../Vistas/inmueble.php ');
+//    } else {
+//        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
+//    }
 }
