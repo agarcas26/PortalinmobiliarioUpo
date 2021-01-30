@@ -5,14 +5,19 @@ include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-
-session_start();
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 //damos por correcto el formulario
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
+//direccion en caso de exito, sustituir vista.php por la vista correspondiente 
+$url_exito = "../Vistas/inmueble.php";
+//direccion en caso de error, por lo general será la vista del formulario que llamo
+//a este controlador
+$url_error = "../Vistas/alta_inmueble.php";
 
 //validamos los campos y en caso de encontrar un error cambiamos la bandera validacion a false
 
@@ -64,7 +69,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
         $fotos = preg_split("/-/", $aux[$i]->getFotos());
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
+            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';   
         }
 
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
@@ -167,6 +172,7 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+//    $inmueble1->setNombre_usuario_duenyo($_SESSION['usuario_particular']);
         $inmueble1->setFotos($_POST["fileFotos"]);
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
@@ -184,9 +190,9 @@ if (isset($_POST["btonInsertar"])) {
     }
 
     if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/inmueble.php');
+        header('Location: ' . $url_exito);
     } else {
-        header('Location: ../Vistas/alta_inmueble.php');
+        header('Location: ' . $url_error);
     }
 //    echo "<pre>";
 //    var_dump($inmueble1);
