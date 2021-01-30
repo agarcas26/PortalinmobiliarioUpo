@@ -15,10 +15,6 @@ if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if(!isset($_GET['busuario']) && !isset($_POST['eliminar']) && !isset($_POST['guardar']) && !isset($_POST['modificar'])){
-    listar_usuarios();
-}
-
 if (isset($_GET['busuario'])) {
     $daoUsuario = new daoUsuarios();
     $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_GET['user']);
