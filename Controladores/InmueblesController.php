@@ -289,7 +289,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
         . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
-        . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
+        . '<input type="submit" name="btonEliminar" id="btonEliminar" value="Eliminar inmueble" />'
         . '</a></form>'
         . '</td>';
     }
@@ -458,7 +458,9 @@ function getInmuebleByAnuncio($anuncio) {
     return $inmueble_aux;
 }
 
-function deleteInmueble() {
+if(isset($_POST["btonEliminar"])){
+    
+  
     $inmueble1 = new Inmueble();
 
     $inmueble1->setNumero($numero);
@@ -471,10 +473,10 @@ function deleteInmueble() {
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
-
-    if ($_SESSION["errores"]) {
-        header('Location:../Vistas/inmueble.php ');
-    } else {
-        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
-    }
+    var_dump($deleteOk);
+//    if ($_SESSION["errores"]) {
+//        header('Location:../Vistas/inmueble.php ');
+//    } else {
+//        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
+//    }
 }
