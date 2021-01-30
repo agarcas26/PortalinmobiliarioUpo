@@ -100,7 +100,6 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
         $inmueble1->setFotos($_POST["fileFotos"]);
-// $inmueble1->setNombre_usuario_duenyos($_SESSION['usuario_particular']);
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } elseif (isset($_SESSION['usuario_profesional'])) {
