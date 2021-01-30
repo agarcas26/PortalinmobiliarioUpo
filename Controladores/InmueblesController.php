@@ -108,7 +108,7 @@ if (isset($_POST["btonInsertar"])) {
     }
 }
 if (isset($_POST["btonModificar"])) {
-if (empty($_POST["txtNumero"])) {
+    if (empty($_POST["txtNumero"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
     }
@@ -188,12 +188,11 @@ if (empty($_POST["txtNumero"])) {
         $daoInmueble2 = new daoInmuebles();
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
-        if(!$modifyOk) {
+        if (!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
-       
     }
-   
+
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/inmueble.php');
     } else {
@@ -289,6 +288,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<td>';
         echo '<form action="../Controladores/InmueblesController.php" method="POST">'
         . '<a href="../Controladores/InmueblesController.php?direccion=' . $direccion . '">'
+        . '<input type="hidden" id="direccion" name="direccion" value="' . $direccion . '" >'
         . '<input type="submit" name="btonEliminar" id="btonEliminar" value="Eliminar inmueble" />'
         . '</a></form>'
         . '</td>';
@@ -458,10 +458,10 @@ function getInmuebleByAnuncio($anuncio) {
     return $inmueble_aux;
 }
 
-if(isset($_POST["btonEliminar"])){
-   
+if (isset($_POST['btonEliminar'])) {
+
     $inmueble1 = new Inmueble();
-    $inmueble1->getNumero();
+    
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
