@@ -106,8 +106,6 @@ and open the template in the editor.
                 </table>
             </article>
         </main>
-        <?php
-        ?>
     </body>
     <?php
     include_once '../Vistas/footer.html';
