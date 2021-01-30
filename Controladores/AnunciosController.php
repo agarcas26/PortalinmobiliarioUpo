@@ -90,8 +90,7 @@ function getPrecio($id_anuncio) {
     }
 }
 
-function insertAnuncio() {
-    if ($_POST["btonInsertar"]) {
+if ($_POST["guardar"]) {
         if (empty("txtPrecio")) {
             $_SESSION["validacion"] = false;
             $_SESSION["errore"]["txtPrecio"] = "Debe completar el campo precio";
@@ -101,6 +100,8 @@ function insertAnuncio() {
             $_SESSION["errore"]["txtTitulo"] = "Debe completar el campo titulo";
         }
     }
+function insertAnuncio() {
+    
     if ($_SESSION["validacion"]) {
         $anuncio1 = new Anuncio();
         $anuncio1->setPrecio($_POST["txtPrecio"]);

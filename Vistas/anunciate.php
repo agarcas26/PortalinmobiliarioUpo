@@ -39,7 +39,7 @@
                             <td>
                                 <select>
                                     <?php
-                                    getInmuebleByDireccion($direccion);
+                                    select_inmuebles_usuario();
                                     ?>
                                 </select>
                             </td>

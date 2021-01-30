@@ -28,10 +28,13 @@
             ?>
         </header>
         <main>
-
+            <?php
+            $datos = get_datos_by_direccion($_GET['direccion']);
+            ?>
+            <!-- AÑADIR ARTICULO Y SECCION Y METER EN UNA TABLA COMO DIOS MANDA -->
             <form action="../Controladores/InmueblesController.php" method="POST">
                 <!--<button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="Cerrar sesión" />-->
-                <input type="hidden" name="numero" value="<?php echo $usuario_S->getNumero(); ?>"/>
+                <input type="hidden" name="numero" value="<?php echo $datos[0] /*$usuario_S->getNumero();*/ ?>"/>
                 <input type="hidden" name="cp" value="<?php echo $usuario_S->getCp(); ?>"/>
                 <input type="hidden" name="nombre_via" value="<?php echo $usuario_S->getNombre_via(); ?>"/>
                 <input type="hidden" name="tipo_via" value="<?php echo $usuario_S->getTipo_via(); ?>"/>
