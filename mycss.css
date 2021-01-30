@@ -60,5 +60,12 @@ main{
     margin: 0.1%;
 }
 #alta_inm{
+
    border: 1px solid black;
+
+}
+
+#realizar_busqueda{
+    float: right;
+
 }

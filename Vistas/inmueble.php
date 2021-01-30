@@ -29,7 +29,7 @@
         <main>
             <article>
                 <section id="detalle_inmueble">
-                    <h1>Mis inmuebles</h1>
+                    <h4>Mis inmuebles</h4>
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <?php
                         listar_inmuebles_usuarioAll();

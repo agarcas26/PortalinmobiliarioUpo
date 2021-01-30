@@ -37,27 +37,19 @@ and open the template in the editor.
                 <a style="float:right;" href="../Vistas/anunciate.php"><button class="btn btn-primary">¡Anúnciate!</button></a>
                 <div id="buscador" class="">
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
-                        <table id="datos_visa" class="display table-bordered" style="width:100%">
-                            <tr class="form-group">
-                                <td>
-                                    <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">
-                                        <option>Compra</option>
-                                        <option>Alquiler</option>
-                                        <option>Vacacional</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>
-                                    <input type="text" style="width: 250%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
-                                </td>
-                            </tr>
-                        </table>
+                        <div id="datos_visa" class="display table-bordered" style="width:100%">
+
+                            <select class="form-control form-control-lg" style="float: left;" type="multiple" class="dropdown-item" id="tipo_oferta">
+                                <option>Compra</option>
+                                <option>Alquiler</option>
+                                <option>Vacacional</option>
+                            </select>
+                            <div style="width: 100%;display: inline-block">
+                                <input type="text" style="width: 150%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
+
+                                <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <aside id="ultimas_busquedas">                    
