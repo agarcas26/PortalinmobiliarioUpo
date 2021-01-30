@@ -43,7 +43,6 @@ if(isset($_POST['eliminar'])){
     $usuarios = $daoUsuario->eliminar_usuario($_POST['nombre_usuario']);
     $daoUsuario->destruct();
     
-    listar_usuarios();
     header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 

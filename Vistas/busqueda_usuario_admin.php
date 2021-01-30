@@ -31,6 +31,9 @@
             </form>
             <?php
             include_once '../Controladores/busquedaUsuarioController_admin.php';
+            if(!isset($_POST['busuario'])){
+                listar_usuarios();
+            }
             ?>
         </main>
     </body>
