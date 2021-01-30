@@ -14,14 +14,14 @@ if (isset($_GET['aplicar_filtros'])) {
     }
 
     $filtros = getFiltros();
-    $dao = new daoBusqueda();
-    $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
-    $dao->destruct();
-
+    if (isset($nombre_usuario)) {
+        $dao = new daoBusqueda();
+        $dao->crear_busqueda($nombre_usuario, $filtros[0], $filtros[1], $filtros[2], $filtros[3], $filtros[4], $filtros[5]);
+        $dao->destruct();
+    }
     $anuncios = anuncios_busqueda($filtros);
 
-    mostrarVistaLista($anuncios); 
-    header("Location: ../Vistas/busqueda.php");
+    mostrarVistaLista($anuncios);
 }
 
 if (isset($_POST['lista'])) {
@@ -55,7 +55,8 @@ if (isset($_GET["id_busqueda"])) {
 function getFiltros() {
     $filtros = [];
     if (isset($_GET["num_banyos"])) {
-        $filtros[] = $_GET["num_banyos"];
+        //$filtros[] = ;
+        array_push($filtros, $_GET["num_banyos"]);
     } else {
         $filtros[] = "notset";
     }

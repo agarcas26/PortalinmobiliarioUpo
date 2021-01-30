@@ -35,7 +35,7 @@ and open the template in the editor.
             <button id="mostrar_ocultar" style="float: right;"  class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
             <br><br>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
-                <form method="GET" action="../Controladores/busquedaController.php">
+                <form method="GET" action="../Vistas/busqueda.php">
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td><label>Número de baños</label></td>

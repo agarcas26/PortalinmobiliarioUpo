@@ -44,11 +44,11 @@ and open the template in the editor.
                                 <option>Alquiler</option>
                                 <option>Vacacional</option>
                             </select>
+                            <div style="width: 100%;display: inline-block">
+                                <input type="text" style="width: 150%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
 
-                            <input type="text" style="width: 100%; float: left;" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" />
-
-                            <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
-
+                                <button class="btn btn-primary" type="submit" class="btn btn-block btn-lg btn-primary" id="realizar_busqueda" name="realizar_busqueda" >Buscar</button>
+                            </div>
                         </div>
                     </form>
                 </div>
