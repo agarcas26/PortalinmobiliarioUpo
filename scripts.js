@@ -37,7 +37,7 @@ $(document).ready(function () {
             $(".favorito").attr("val", "inactiva");
             $(".corazon").attr("src", "../img/nofav.png");
         }
-        if ($(".favorito").attr("val") == "inactiva") {
+        else if ($(".favorito").attr("val") == "inactiva") {
             $(".favorito").attr("val", "activa");
             $(".corazon").attr("src", "../img/fav.png");
         }
@@ -52,7 +52,7 @@ $(document).ready(function () {
             $(".alerta").attr("val", "inactiva");
             $(".campana").attr("src", "../img/noalerta.png");
         }
-        if ($(".alerta").attr("val") == "inactiva") {
+        else if ($(".alerta").attr("val") == "inactiva") {
             $(".alerta").attr("val", "activa");
             $(".campana").attr("src", "../img/alerta.png");
         }
