@@ -33,6 +33,26 @@
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td>
+                                <label>¿Quiere publicar un anuncio de vacacional, compra o alquiler?</label>
+                            </td>
+                            <td>
+                                <select>
+                                    <option value="alquiler">Vacacional</option>
+                                    <option value="alquiler">Alquiler</option>
+                                    <option value="compra">Compra</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Ponga un precio</label>
+                            </td>
+                            <td>
+                                <input type="number" name="precio" id="precio" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <label>Añade un título a tu anuncio</label>
                             </td>
                             <td>
@@ -43,14 +63,15 @@
                             <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
                             </td>
+                            <td>
                             <?php
                             select_inmuebles_usuario();
                             ?>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 O bien puedes 
-
                             </td>
                             <td>
                                 <a href="../Vistas/alta_inmueble.php">Dar de alta un nuevo inmueble</a>
