@@ -35,7 +35,7 @@
                     <section id="ver_detalle">
                         
                             <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
-                                <table id="datos_visa" class="display table-bordered" style="width:50%">
+                                <table id="inmuebles" class="display table-bordered" style="width:50%">
                                     <tr>
                                         
                                     </tr>

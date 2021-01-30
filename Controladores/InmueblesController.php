@@ -10,7 +10,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 }
 $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
-$_SESSION["errores"] = "";
+$_SESSION["errores"] = " ";
 $_SESSION["cancelado"] = false;
 
 
@@ -69,45 +69,66 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
 
-if ($_SESSION["validacion"]) {
+    if ($_SESSION["validacion"]) {
 
-    $inmueble1 = new Inmueble();
-    $inmueble1->setNumero($_POST["txtNumero"]);
-    $inmueble1->setCp($_POST["txtCp"]);
-    $inmueble1->setNombre_via($_POST["txtNombre_via"]);
-    $inmueble1->setTipo_via($_POST["txtTipo_via"]);
-    $inmueble1->setNombre_localidad($_POST["txtNombre_localidad"]);
-    $inmueble1->setNombre_provincia($_POST["txtNombre_provincia"]);
-    $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
-    $inmueble1->setNum_hab($_POST["txtNum_habitaciones"]);
-    $inmueble1->setCocina($_POST["txtCocina"]);
-    $inmueble1->setNumero_plantas($_POST["txtNum_Planta"]);
-    $inmueble1->setPlanta($_POST["txtPlanta"]);
-    $inmueble1->setMetros($_POST["txtMetros"]);
-    $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
-    $inmueble1->setFotos($_POST["fileFotos"]);
-    if (isset($_SESSION['usuario_particular'])) {
-        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+        $inmueble1 = new Inmueble();
+        $inmueble1->setNumero($_POST["txtNumero"]);
+        $inmueble1->setCp($_POST["txtCp"]);
+        $inmueble1->setNombre_via($_POST["txtNombre_via"]);
+        $inmueble1->setTipo_via($_POST["txtTipo_via"]);
+        $inmueble1->setNombre_localidad($_POST["txtNombre_localidad"]);
+        $inmueble1->setNombre_provincia($_POST["txtNombre_provincia"]);
+        $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
+        $inmueble1->setNum_hab($_POST["txtNum_habitaciones"]);
+        $inmueble1->setCocina($_POST["txtCocina"]);
+        $inmueble1->setNumero_plantas($_POST["txtNum_Planta"]);
+        $inmueble1->setPlanta($_POST["txtPlanta"]);
+        $inmueble1->setMetros($_POST["txtMetros"]);
+        $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+        $inmueble1->setFotos($_POST["fileFotos"]);
+        if (isset($_SESSION['usuario_particular'])) {
+            $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+        } else {
+
+            $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+        }
+        $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+        $daoInmueble = new daoInmuebles();
+
+        $insertOk = $daoInmueble->insertar($inmueble1);
+        if (!$insertOk) {
+            $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
+        }
+    }
+
+    if ($_SESSION["validacion"]) {
+        header('Location: ../Vistas/detalles_inmueble.php');
     } else {
-
-        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+        header('Location: ../Vistas/alta_inmueble.php');
     }
-    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
-    $daoInmueble = new daoInmuebles();
-
-    $insertOk = $daoInmueble->insertar($inmueble1);
-    if (!$insertOk) {
-        $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
-    }
-}
-
-if ($_SESSION["validacion"]) {
-    header('Location: ../Vistas/detalles_inmueble.php');
-} else {
-    header('Location: ../Vistas/alta_inmueble.php');
-}
 }
 if (isset($_POST["btonModificar"])) {
+if (empty($_POST["txtNumero"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNumero"] = "Debe de completar el campo numero.";
+    }
+    if (empty($_POST["txtCp"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtCp"] = "Debe de completar el campo cp.";
+    }
+    if (empty($_POST["txtNombre_via"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_via"] = "Debe de completar el campo nombre via.";
+    }if (empty($_POST["txtTipo_via"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtTipo_via"] = "Debe de completar el campo tipo de via.";
+    }if (empty($_POST["txtNombre_localidad"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_localidad"] = "Debe de completar el nombre de la localidad.";
+    }if (empty($_POST["txtNombre_provincia"])) {
+        $_SESSION["validacion"] = false;
+        $_SESSION["errores"]["txtNombre_provincia"] = "Debe de completar el nombre de la provincia.";
+    }
     if (empty($_POST["txtNum_banyos"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNum_banyos"] = "Debe de completar el campo numero de baños.";
@@ -147,10 +168,12 @@ if (isset($_POST["btonModificar"])) {
         $inmueble2->setCp($_POST["txtCp"]);
         $inmueble2->setNombre_via($_POST["txtNombre_via"]);
         $inmueble2->setTipo_via($_POST["txtTipo_via"]);
+        $inmueble2->setNombre_localidad($_POST["txtNombre_localidad"]);
+        $inmueble2->setNombre_provincia($_POST["txtNombre_provincia"]);
         $inmueble2->setNum_banyos($_POST["txtNum_banyos"]);
         $inmueble2->setNum_hab($_POST["txtNum_habitaciones"]);
         $inmueble2->setCocina($_POST["txtCocina"]);
-        $inmueble2->setNum_plantas($_POST["txtNum_Planta"]);
+        $inmueble2->setNumero_plantas($_POST["txtNum_Planta"]);
         $inmueble2->setPlanta($_POST["txtPlanta"]);
         $inmueble2->setMetros($_POST["txtMetros"]);
         $inmueble2->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
@@ -165,12 +188,14 @@ if (isset($_POST["btonModificar"])) {
         $daoInmueble2 = new daoInmuebles();
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
-        if (!$modifyOk) {
-           $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
+        if(!$modifyOk) {
+            $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
     }
+//    var_dump($modifyOk);
+//    var_dump($inmueble2);
     if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/detalles_inmueble.php ');
+        header('Location: ../Vistas/inmueble.php');
     } else {
         header('Location: ../Vistas/modificar_inmueble.php');
     }

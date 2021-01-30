@@ -26,7 +26,7 @@
             ?>
         </header>
         <main>
-          
+
             <?php
             if (!isset($_POST['btonModificar']) && !isset($_POST['btonCancelar'])) {
                 if (isset($_GET['direccion'])) {
@@ -40,58 +40,58 @@
                                 <h1>Datos del Inmueble</h1>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="numero" value="<?php echo $datos[0]; ?>"/>
+                                        <input type="hidden" name="txtNumero" value="<?php echo $datos[0]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($$erroresNum)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNumero"])) { ?>
                                     <tr>
-                                        <td><?php echo $$erroresNum; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNumero"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="cp" value="<?php echo $datos[1]; ?>"/>
+                                        <input type="hidden" name="txtCp" value="<?php echo $datos[1]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresCp)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtCp"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresCp; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtCp"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_via" value="<?php echo $datos[2]; ?>"/>
+                                        <input type="hidden" name="txtNombre_via" value="<?php echo $datos[2]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNombre_via)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
                                     <tr>
-                                    <td><?php echo $erroresNombre_via; ?></td> 
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_via"]; ?></td> 
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="tipo_via" value="<?php echo $datos[3]; ?>"/>
+                                        <input type="hidden" name="txtTipo_via" value="<?php echo $datos[3]; ?>"/>
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_localidad" value="<?php echo $datos[5]; ?>"/>
+                                        <input type="hidden" name="txtNombre_localidad" value="<?php echo $datos[5]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresLocalidad)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_localidad"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresLocalidad; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_localidad"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="nombre_provincia" value="<?php echo $datos[6]; ?>"/>
+                                        <input type="hidden" name="txtNombre_provincia" value="<?php echo $datos[6]; ?>"/>
                                     </td>
                                 </tr>
-                               <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresProvincia)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_provincia"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresProvincia; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_provincia"]; ?></td>
                                     </tr>
                                 <?php } ?> 
                                 <tr>
@@ -100,9 +100,9 @@
                                         <input type="number" name="txtNum_banyos" value="<?php echo $datos[7]; ?>"/>
                                     </td>
                                 </tr>
-                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_banyos)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_banyos"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresNum_banyos; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_banyos"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
@@ -111,28 +111,28 @@
                                         <input type="number" name="txtNum_habitaciones" value="<?php echo $datos[8]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_habitaciones)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_habitaciones"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresNum_habitaciones; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_habitaciones"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td>
                                         <label>Cocina amueblada</label>
-                                        <input type="radio" name="txtCocina" id="si" value="si" <?php if($datos[9]=="si") echo "checked"; ?>/>
-                                        <label for="si">Si</label>
-                                        <input type="radio" name="txtCocina" id="no" value="no"<?php if($datos[9]=="no") echo "checked"; ?>
-                                        
-                                        />
-                                        <label for="no">No</label> 
+                                        <input type="radio" name="txtCocina" id="si" value="si"
+
+                                               <label for="si">Si</label>
+                                        <input type="radio" name="txtCocina" id="no" value="no"
+
+                                               <label for="no">No</label> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>Tipo de inmueble</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"<?php if($datos[10]=="alquiler")echo "checked"; ?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"/>
                                         <label for="alquiler">Alquiler</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"<?php if($datos[10]=="compra")echo "checked"; ?>/>
+                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"/>
                                         <label for="compra">Compra</label>
                                     </td>
                                 </tr>
@@ -142,9 +142,9 @@
                                         <input type="number" name="txtNum_Planta" value="<?php echo $datos[11]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresNum_Planta)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNum_Planta"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresNum_Planta; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtNum_Planta"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
@@ -153,9 +153,9 @@
                                         <input type="number" name="txtPlanta" value="<?php echo $datos[12]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresPlanta)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtPlanta"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresPlanta; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtPlanta"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
@@ -164,22 +164,25 @@
                                         <input type="number" name="txtMetros" value="<?php echo $datos[13]; ?>"/>
                                     </td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($errorestMetros)) { ?>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtMetros"])) { ?>
                                     <tr>
-                                        <td><?php echo $errorestMetros; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["txtMetros"]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
-                                    <td>
-                                        <label for="fileFotos">Imágenes del inmueble:</label>
-
-
-                                        <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
-                                    </td>
+                                <tr>
+                                    <td><label>Suba imágenes del inmueble:</label></td>
                                 </tr>
-                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($erroresfileFotos)) { ?>
+                                <td>
+                                    <label for="fileFotos">Imágenes del inmueble:</label>
+
+                                <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
+                                <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '"   value="<?php echo $datos[14]; ?>"/>;
+                                </td>
+                                </tr>
+                                <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>
-                                        <td><?php echo $erroresfileFotos; ?></td>
+                                        <td><?php echo $_SESSION["errores"]["fileFotos"]; ?></td>
                                     </tr>
                                 <?php } ?>
                             </table>
@@ -192,8 +195,8 @@
                 <?php
             }
             ?>
-            <?php if (isset($NoModificado)) { ?>
-                <span><?php echo $NoModificado; ?></span>
+            <?php if (isset($_SESSION["errores"]["modifyOk"])) { ?>
+                <span><?php echo $_SESSION["errores"]["modifyOk"]; ?></span>
             <?php } ?>
             <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
                 <section>
