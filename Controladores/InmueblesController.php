@@ -267,8 +267,8 @@ function getInmuebleByDireccion($direccion) {
             echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
         }
         echo '<td>';
-        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
-        . '<input type="submit" value="Modificar d" />'
+        echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
+        //. '<input type="submit"  name="btonModificar" id="btonModificar" value="Modificar d" />'
         . '</a>'
         . '</td>';
         echo " ";

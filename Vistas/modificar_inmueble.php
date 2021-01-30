@@ -31,7 +31,10 @@
             </form>
             <?php
             if (!isset($_POST['btonModificar']) && !isset($_POST['btonCancelar'])) {
-                $datos = get_datos_by_direccion($_GET["direccion"]);
+                if (isset($_GET['direccion'])) {
+                    $datos = get_datos_by_direccion($_GET["direccion"]);
+                    print_r($datos);
+                }
                 ?>
                 <!-- AÑADIR ARTICULO Y SECCION Y METER EN UNA TABLA COMO DIOS MANDA -->
                 <form action="../Controladores/InmueblesController.php" method="POST">
@@ -70,7 +73,7 @@
                         <tr>
                             <td>
                                 <label> Numero de baños</label>
-                                <input type="number" name="txtNum_banyos" value="<?php echo $datos[6] ?>"/>
+                                <input type="number" name="txtNum_banyos" value="<?php $datos[6]; ?>"/>
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +126,7 @@
                         </tr>
                     </table>
                     <input type="submit" name="btonModificar" id="btonModificar" value=" Modificar D"/>
-                   <input type="submit" value="btonCancelar" name="btonCancelar" value="Cancelar"/>
+                    <input type="submit" value="btonCancelar" name="btonCancelar" value="Cancelar"/>
                 </form>
                 <?php
             }
