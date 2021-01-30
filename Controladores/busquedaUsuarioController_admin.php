@@ -8,6 +8,7 @@
 
 include_once '../DAO/daoUsuarios.php';
 include_once '../Controladores/UsuarioController.php';
+listar_usuarios();
 
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
@@ -26,7 +27,6 @@ if (isset($_GET['busuario'])) {
             echo '<td>' . $aux[1] . '</td>';
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
-            echo '<td>' . $aux[4] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input name="nombre_usuario" id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '</tr>';
