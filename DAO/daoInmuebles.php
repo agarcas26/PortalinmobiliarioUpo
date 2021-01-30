@@ -39,16 +39,10 @@ class daoInmuebles {
         $tipo_inmueble = $objInmueble->getTipo_inmueble();
         $fotos = $objInmueble->getFotos();
         //tengo que pedirle al usuario la direccion y guardarla como pk
-        $sql = "INSERT INTO inmueble (numero,cp,nombre_via,tipo_via,nombre_usuario_duenyos,nombre_localidad,nombre_provincia,num_banyos,num_hab,cocina,tipo,numero_plantas,planta,metros,fotos) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
+        $sql = "INSERT INTO `inmueble`(`numero`, `cp`, `nombre_via`, `tipo_via`, `nombre_usuario_duenyos`, `nombre_localidad`, `nombre_provincia`, `num_banyos`, `num_hab`, `cocina`, `tipo`, `numero_plantas`, `planta`, `metros`, `fotos`) VALUES('$numero','$cp','$nombre_via','$tipo_via','$nombre_usuario_duenyos','$nombre_localidad','$nombre_provincia','$num_banyos','$num_hab','$cocina','$tipo_inmueble','$num_plantas','$planta','$metros','$fotos')";
+        $result = $this->conexion->query($sql);
 
-        if ($this->conexion->query($sql) === true) {
-
-            echo "New record created successfully";
-        } else {
-
-            echo "Error: " . $sql . "<br>" . $this->conexion->error;
-        }
-        mysqli_close($this->conexion);
+        return $result;
     }
 
     public function eliminar($objInmueble) {
@@ -106,11 +100,11 @@ class daoInmuebles {
         $sql = "SELECT * FROM `inmueble` WHERE `numero` = '" . $numero . "' "
                 . "and `cp`='" . $cp . "' and `nombre_via`='" . $nombre_via . "' "
                 . "and `tipo_via`='" . $tipo_via . "'";
-        
+
         $objMySqlLi = $this->conexion->query($sql);
         $objInmueble = new Inmueble();
         $arrayAux = [];
-        
+
         if ($objMySqlLi->num_rows > 0) {
             while ($objInmuebleAux = mysqli_fetch_assoc($objMySqlLi)) {
                 $objInmueble->setNumero($objInmuebleAux["numero"]);
@@ -162,7 +156,7 @@ class daoInmuebles {
                 array_push($arrayAux, $objInmueble);
             }
         }
-        
+
         return $arrayAux;
     }
 
