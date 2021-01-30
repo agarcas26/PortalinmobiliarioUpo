@@ -60,6 +60,8 @@ if(isset($_POST['guardar'])){
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();
     
+    unset($_SESSION['searchuser']);
+    
 }
 
 function listar_usuarios() {
