@@ -85,7 +85,7 @@
 
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="PortalInmobiliarioUPO@gmail.com">
+            <input type="hidden" name="business" value="sb-am6se4945054@business.example.com">
             <input type="hidden" name="lc" value="US">
             <input type="hidden" name="item_name" value=<?php
             $dao = new daoAnuncios();
