@@ -467,10 +467,10 @@ if(isset($_POST["btonEliminar"])){
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
     }
-    var_dump($deleteOk);
-//    if ($_SESSION["errores"]) {
-//        header('Location:../Vistas/inmueble.php ');
-//    } else {
-//        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
-//    }
+    
+    if ($_SESSION["errores"]) {
+        header('Location:../Vistas/detalles_inmueble.php ');
+    } else {
+        header('Location:../Vistas/inmueble.php '); //muestra el mensaje de error de eliminacion
+    }
 }
