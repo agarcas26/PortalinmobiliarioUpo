@@ -191,9 +191,9 @@ if (empty($_POST["txtNumero"])) {
         if(!$modifyOk) {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
+       
     }
-//    var_dump($modifyOk);
-//    var_dump($inmueble2);
+   
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/inmueble.php');
     } else {

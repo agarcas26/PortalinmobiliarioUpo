@@ -13,9 +13,9 @@ if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_POST['busuario'])) {
+if (isset($_GET['busuario'])) {
     $daoUsuario = new daoUsuarios();
-    $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_POST['user']);
+    $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_GET['user']);
     $daoUsuario->destruct();
 
     if (mysqli_num_rows($usuarios) > 0) {
@@ -27,8 +27,8 @@ if (isset($_POST['busuario'])) {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td>' . $aux[4] . '</td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input name="nombre_usuario" id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -39,6 +39,7 @@ if(isset($_POST['eliminar'])){
     $daoUsuario = new daoUsuarios();
     $usuarios = $daoUsuario->eliminar_usuario($_POST['nombre_usuario']);
     $daoUsuario->destruct();
+    
 }
 
 if(isset($_POST['modificar'])){
@@ -59,7 +60,6 @@ if(isset($_POST['guardar'])){
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();
     
-    headr("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 function listar_usuarios() {
@@ -75,9 +75,8 @@ function listar_usuarios() {
             echo '<td>' . $aux[1] . '</td>';
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
-            echo '<td>' . $aux[4] . '</td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -88,8 +87,8 @@ function listar_usuarios() {
 function getDatosPerfil(){
     $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
     $datos = [];
-    array_push($datos,$usuario->getNombre_usuario());
-    array_push($datos,$usuario->getNombre_apellidos());
+    array_push($datos,$usuario->get_nombre_usuario());
+    array_push($datos,$usuario->get_nombre_apellidos());
     array_push($datos,$usuario->getContrasenya());
     array_push($datos,$usuario->getMoroso());
     array_push($datos,$usuario->getTipo());

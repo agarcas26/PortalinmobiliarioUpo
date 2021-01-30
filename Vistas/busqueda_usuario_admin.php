@@ -24,16 +24,16 @@
             ?>
         </header>
         <main>
-            <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
-            <form action="../Controladores/busquedaUsuarioController_admin.php" method="GET">
+            <label>Mostrando resultados</label>
+            <form action="../Vistas/busqueda_usuario_admin.php" method="GET">
                 <input type="text" id="user" name="user" class="form-text">
                 <input type="submit" name="busuario" value="Buscar" />
             </form>
-
-            <!-- ANUNCIOS -->
+            <?php
+            include_once '../Controladores/busquedaUsuarioController_admin.php';
+            listar_usuarios();
+            ?>
         </main>
-        <?php
-        ?>
     </body>
     <?php
     include_once '../Vistas/footer.html';
