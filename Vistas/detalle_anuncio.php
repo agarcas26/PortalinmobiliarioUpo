@@ -41,8 +41,13 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                             <button>
-                                <span class="alerta" id="valorar">
-                                    <img class="campana" id="inactiva" src="../img/nofav.png">
+                                <span class="favorito">
+                                    <img class="corazon" id="inactiva" src="../img/nofav.png">
+                                </span>
+                            </button>
+                            <button>
+                                <span class="alerta">
+                                    <img class="campana" id="inactiva" src="../img/noalerta.png">
                                 </span>
                             </button>
                         </table>
