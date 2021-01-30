@@ -32,7 +32,7 @@ function muestraEstrellas() {
 }
 
 $(document).ready(function () {
-    $(".corazon").click(function () {
+    //$(".corazon").click(function () {
         if ($(".favorito").attr("val") == "activa") {
             $(".favorito").attr("val", "inactiva");
             $(".corazon").attr("src", "../img/nofav.png");
@@ -42,12 +42,12 @@ $(document).ready(function () {
             $(".corazon").attr("src", "../img/fav.png");
         }
 
-    });
+    //});
 });
 
 
 $(document).ready(function () {
-    $(".campana").click(function () {
+    //$(".campana").click(function () {
         if ($(".alerta").attr("val") == "activa") {
             $(".alerta").attr("val", "inactiva");
             $(".campana").attr("src", "../img/noalerta.png");
@@ -57,7 +57,7 @@ $(document).ready(function () {
             $(".campana").attr("src", "../img/alerta.png");
         }
 
-    });
+    //});
 });
 
 
