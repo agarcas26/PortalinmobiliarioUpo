@@ -461,14 +461,22 @@ if (isset($_POST["btonEliminar"])) {
 
 
     $inmueble1 = new Inmueble();
-
-    $direccion = str_replace("%20", " ", $direccion);
-    $direccion_array = preg_split("/-/", $direccion);
-
-    $numero = $direccion_array[0];
-    $cp = $direccion_array[1];
-    $nombre_via = $direccion_array[2];
-    $tipo_via = $direccion_array[3];
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via)[0];
+    $inmueble->setNumero($aux->getNumero());
+    $inmueble->setCp($aux->getCp());
+    $inmueble->setNombre_via($aux->getNombre_via());
+    $inmueble->setTipo_via($aux->getTipo_via());
+    $inmueble->setNombre_usuario_duenyos($aux->getNombre_usuario_duenyos());
+    $inmueble->setNombre_localidad($aux->getNombre_localidad());
+    $inmueble->setNombre_provincia($aux->getNombre_provincia());
+    $inmueble->setNum_banyos($aux->getNum_banyos());
+    $inmueble->setNum_hab($aux->getNum_hab());
+    $inmueble->setCocina($aux->getCocina());
+    $inmueble->setTipo_inmueble($aux->getTipo_inmueble());
+    $inmueble->setNumero_plantas($aux->getNumero_plantas());
+    $inmueble->setPlanta($aux->getPlanta());
+    $inmueble->setMetros($aux->getMetros());
+    $inmueble->setFotos($aux->getFotos());
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
