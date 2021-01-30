@@ -35,8 +35,6 @@
                             <td>
                                 <label>Añade un título a tu anuncio</label>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <input type="text" name="txtTitulo" id="txtTitulo" />
                             </td>
@@ -45,8 +43,6 @@
                             <td>
                                 <label>Puedes seleccionar uno de tus inmuebles</label>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <select id="inmuebles_usuario" type="picker" label="" display="" aria-invalid="false" class="dropdown-menu">
                                     <?php
@@ -57,11 +53,15 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>O bien puedes <a href="../Vistas/alta_inmueble.php"><button>Dar de alta un nuevo inmueble</button></a></label>
+                                O bien puedes 
+                                
+                            </td>
+                            <td>
+                                <a href="../Vistas/alta_inmueble.php"><button>Dar de alta un nuevo inmueble</button></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colspan="2">
                         <button type="submit" name="guardar" class="btn-success" value="">Guardar</button>
                             </td>
                         </tr>
