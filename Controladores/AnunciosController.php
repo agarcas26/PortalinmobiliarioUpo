@@ -15,6 +15,14 @@ $_SESSION["validacion"] = true;
 //como es correcto eliminamos todos los errores
 
 $_SESSION["cancelado"] = false;
+if (isset($_POST["guardar"])) {
+    $aux = true;
+    if (isset($_POST['inmuebles_usuario'])) {
+        if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
+            insertAnuncio();
+        }
+    }
+}
 
 function ver_detalle($id_anuncio) {
     $daoAnuncios = new daoAnuncios();
@@ -86,15 +94,6 @@ function getPrecio($id_anuncio) {
     while ($fila = mysqli_fetch_array($array_anuncios)) {
         if ($id_anuncio == $fila[0]) {
             return $fila[7];
-        }
-    }
-}
-
-if (isset($_POST["guardar"])) {
-    $aux = true;
-    if (isset($_POST['inmuebles_usuario'])) {
-        if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
-            insertAnuncio();
         }
     }
 }

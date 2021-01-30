@@ -33,7 +33,7 @@ if (isset($_POST['lista'])) {
     mostrarVistaLista($anuncios);
 }
 
-if (isset($_POST['cuadrcula'])) {
+if (isset($_POST['cuadricula'])) {
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
