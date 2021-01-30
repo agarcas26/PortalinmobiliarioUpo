@@ -43,10 +43,10 @@
                             ?>
                         </table>
                         <span class="favorito" val="<?php
-                        if(esFavorito()){
+                        if (esFavorito()) {
                             echo"activa";
-                        }
-                        else "inactiva";
+                        } else
+                            "inactiva";
                         ?>">
                             <img class="corazon" id="inactiva" src="../img/nofav.png">
                         </span>
