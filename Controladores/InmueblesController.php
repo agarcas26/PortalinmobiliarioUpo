@@ -202,7 +202,7 @@ function select_inmuebles_usuario() {
     $dao->destruct();
     //Listar  inmuebles by usuario
     if (sizeof($inmuebles_usuario) > 0) {
-        echo '<select id="inmuebles_usuario" aria-invalid="false">';
+        echo '<select id="inmuebles_usuario" name="inmuebles_usuario" aria-invalid="false">';
         for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
             $direccion = $inmuebles_usuario[$i]->getTipo_via() . " " . $inmuebles_usuario[$i]->getNombre_via() . " " . $inmuebles_usuario[$i]->getNumero() . " " . $inmuebles_usuario[$i]->getCp();
             $value = $inmuebles_usuario[$i]->getTipo_via() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp();

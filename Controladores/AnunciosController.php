@@ -17,7 +17,7 @@ $_SESSION["validacion"] = true;
 $_SESSION["cancelado"] = false;
 
 if (isset($_POST["guardar"])) {
-    print_r(isset($_POST['inmuebles_usuario']));
+    print_r($_POST['inmuebles_usuario']);
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
             print_r($_POST['inmuebles_usuario']);
