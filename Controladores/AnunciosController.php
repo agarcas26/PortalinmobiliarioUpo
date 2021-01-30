@@ -17,10 +17,11 @@ $_SESSION["validacion"] = true;
 $_SESSION["cancelado"] = false;
 
 if (isset($_POST["guardar"])) {
-    $aux = true;
+    print_r(isset($_POST['inmuebles_usuario']));
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
-            insertAnuncio();
+            print_r($_POST['inmuebles_usuario']);
+            insertAnuncio($_POST['inmuebles_usuario']);
         }
     }
 }
@@ -99,21 +100,20 @@ function getPrecio($id_anuncio) {
     }
 }
 
-function insertAnuncio() {
-    if ($_SESSION["validacion"]) {
-        $direccion = split('/-/', $_GET['direccion']);
-        $anuncio1 = new Anuncio();
-        $anuncio1->setPrecio($_POST["precio"]);
-        $anuncio1->setTitulo($_POST["txtTitulo"]);
-        $anuncio1->setFecha_anuncio("CURRENT_DATE");
-        $anuncio1->setCp($direccion[0]);
-        $anuncio1->setNombre_via($direccion[1]);
-        $anuncio1->setNumero($direccion[2]);
-        $anuncio1->setTipo_via($direccion[3]);
-        $daoAnuncio = new daoAnuncios();
-        $insertOk = $daoAnuncio->insertar($anuncio1);
-        header("Location: ../Vistas/mis_anuncios.php");
-    }
+function insertAnuncio($direccion) {
+    $direccion = split('/-/', $direccion);
+    $anuncio1 = new Anuncio();
+    $anuncio1->setPrecio($_POST["precio"]);
+    $anuncio1->setTitulo($_POST["txtTitulo"]);
+    $anuncio1->setFecha_anuncio("CURRENT_DATE");
+    $anuncio1->setCp($direccion[0]);
+    $anuncio1->setNombre_via($direccion[1]);
+    $anuncio1->setNumero($direccion[2]);
+    $anuncio1->setTipo_via($direccion[3]);
+    $daoAnuncio = new daoAnuncios();
+    $insertOk = $daoAnuncio->insertar($anuncio1);
+
+    header("Location: ../Vistas/mis_anuncios.php");
 }
 
 function deleteAnuncio($idanuncio) {

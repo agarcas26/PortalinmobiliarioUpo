@@ -48,7 +48,7 @@
                                 <label>Ponga un precio</label>
                             </td>
                             <td>
-                                <input type="number" name="precio" id="precio" />
+                                <input type="number" step="0.01" name="precio" id="precio" />
                             </td>
                         </tr>
                         <tr>
