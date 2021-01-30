@@ -38,7 +38,7 @@ class daoUsuarios {
         $result = mysqli_query($this->conexion, $sentence);
     }
 
-    function modificar_usuario($nuevos_datos) {
+    function modificar_usuario($usuario) {
         $sentence = "UPDATE `usuarios` SET **** WHERE";
         $result = mysqli_query($this->conexion, $sentence);
     }

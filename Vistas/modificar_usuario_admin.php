@@ -2,15 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Mi Perfil</title>
+        <title>Modificar perfil usuario</title>
         <link rel="stylesheet" href="../Bootstrap/css/landing-page.css"/>
         <link rel="stylesheet" href="../Bootstrap/vendor/bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" href="../mycss.css"/>
         <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
         <script src="../scripts.js"></script>
         <?php
-        include_once '../Controladores/PerfilController.php';
         include_once '../Vistas/header.php';
+        include_once '../Controladores/busquedaUsuarioController_admin.php';
         ?>
     </head>
     <body>
@@ -61,22 +61,21 @@
                             ?>
                             <td>
                                 <label>Contraseña: </label>
-                                <input type="password" name="pass" value="">
+                                <input type="password" name="pass" value="<?php echo $datos[2]; ?>">
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                         <?php } ?>
                     </tr>
                     <tr>
-                        <td>                                
-                            <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
-                            <label>Nueva contraseña: </label>
-                            <input type="password" name="nueva_pass" value="">
+                        <td>
+                            <label>Moroso </label>
+                            <input type="text" name="moroso" value="<?php echo $datos[3]; ?>">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Confirmar nueva contraseña: </label>
-                            <input type="password" name="conf_nueva_pass" value="">
+                            <label>Tipo </label>
+                            <input type="text" name="tipo" value="<?php echo $datos[4]; ?>">
                         </td>
                     </tr>
                 </table>
