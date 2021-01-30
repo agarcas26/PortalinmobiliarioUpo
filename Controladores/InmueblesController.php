@@ -461,6 +461,7 @@ if (isset($_POST["btonEliminar"])) {
 
 
     $inmueble1 = new Inmueble();
+    $dao = new daoInmuebles();
     $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via)[0];
     $inmueble->setNumero($aux->getNumero());
     $inmueble->setCp($aux->getCp());
