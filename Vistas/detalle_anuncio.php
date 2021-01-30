@@ -45,14 +45,19 @@
                         <form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
                              <input name="id_anuncio" value="<?phpecho $_GET["id_anuncio"];?> hidden">
                             <span class="favorito" val="<?php
-                            if (esFavorito()) {
+                            if (esFavorito($_GET["id_anuncio"])) {
                                 echo"activa";
                             } else
                                 "inactiva";
                             ?>">
                                 <input name="corazon" type="image" class="corazon" id="inactiva" src="../img/nofav.png">
                             </span>
-                            <span class="alerta" val="inactiva">
+                            <span class="alerta" val="<?php
+                            if (hayAlerta($_GET["id_anuncio"])) {
+                                echo"activa";
+                            } else
+                                "inactiva";
+                            ?>">">
                                 <input name="campana" type="image"  class="campana" id="inactiva" src="../img/noalerta.png">
                             </span>
                         </form>  
