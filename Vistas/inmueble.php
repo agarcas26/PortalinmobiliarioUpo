@@ -41,11 +41,7 @@
                         ?>
                     </table>
                 </section>
-<!--                <section id="resenyas_inmueble">
-                    <button id="nueva_resenya" onclick="nueva_resenya()">Escribir una reseña</button>
-                <?php
-                //Hacer una tabla por cada resenya asociada a este anuncio
-                ?>
+<
                 </section>-->
             </article>
         </main>
