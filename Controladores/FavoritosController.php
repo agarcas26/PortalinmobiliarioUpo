@@ -9,8 +9,13 @@
 include_once '../DAO/daoFavoritos.php';
 
 function get_favoritos_usuario() {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -28,12 +33,19 @@ function get_favoritos_usuario() {
             echo '</tr><tr>';
             echo '</table>';
         }
+    } else {
+        echo 'Vaya... aún no tienes favoritos... Prueba a añadir alguno';
     }
 }
 
 function vista_previa_favoritos() {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -47,32 +59,33 @@ function vista_previa_favoritos() {
     }
 }
 
-
 function esFavorito($id_anuncio) {
-    $r=false;
+    $r = false;
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
-    $i=0;
-    while($i < sizeof($favoritos)&&!$r){
-        if($favoritos[$i][0]==$id_anuncio){
-            $r=true;
+    $i = 0;
+    while ($i < sizeof($favoritos) && !$r) {
+        if ($favoritos[$i][0] == $id_anuncio) {
+            $r = true;
         }
         $i++;
     }
-    
-   return $r; 
+
+    return $r;
 }
 
-
-    
-    function toggle_favorito($id_anuncio, $nombre_usuario) {
-        $daoFavoritos = new daoFavoritos();
-        if(esFavorito($id_anuncio)){
-            $daoFavoritos->eliminar_favorito($id_anuncio);
-        }
-        else{
-            $daoFavoritos->crear_favorito($id_anuncio, $nombre_usuario);
-        }
-        $daoFavoritos->destruct();
+function toggle_favorito($id_anuncio, $nombre_usuario) {
+    $daoFavoritos = new daoFavoritos();
+    if (esFavorito($id_anuncio)) {
+        $daoFavoritos->eliminar_favorito($id_anuncio);
+    } else {
+        $daoFavoritos->crear_favorito($id_anuncio, $nombre_usuario);
     }
+    $daoFavoritos->destruct();
+}

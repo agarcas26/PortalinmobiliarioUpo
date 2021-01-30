@@ -29,24 +29,13 @@
         <main>
             <article>
                 <section id="detalle_inmueble">
-                    <h1></h1>
-                    <ul class="img-fluid">
-                        <?php
-                        //Galería de imágenes del inmueble
-                        ?>
-                    </ul>
+                    <h1>Mis inmuebles</h1>
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <?php
                         listar_inmuebles_usuarioAll();
                         ?>
                     </table>
                 </section>
-<!--                <section id="resenyas_inmueble">
-                    <button id="nueva_resenya" onclick="nueva_resenya()">Escribir una reseña</button>
-                <?php
-                //Hacer una tabla por cada resenya asociada a este anuncio
-                ?>
-                </section>-->
             </article>
         </main>
     </body>

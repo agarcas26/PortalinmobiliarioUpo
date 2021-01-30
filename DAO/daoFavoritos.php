@@ -41,12 +41,7 @@ class daoFavoritos {
         return $favoritos;
     }
 
-    function listar_favoritos_user() {
-        if (isset($_SESSION['usuario_particular'])) {
-            $usuario = $_SESSION['usuario_particular'];
-        } else {
-            $usuario = $_SESSION['usuario_profesional'];
-        }
+    function listar_favoritos_user($usuario) {
         $favoritos = [];
         $sentence = "SELECT `favorito`.`id_anuncio` FROM `favorito` WHERE `nombre_usuario`='" . $usuario . "';";
         $id_anuncios_favoritos = mysqli_query($this->conexion, $sentence);

@@ -39,7 +39,7 @@ and open the template in the editor.
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td><label>Número de baños</label></td>
-                            <td><input type="number" min="0" id="num_banyos" name="num_banyos" value=""></td>
+                            <td><input type="number" min="0" id="num_banyos" name="num_banyos" ></td>
                         </tr>
                         <tr>
                             <td><label>Tipo de inmueble</label></td>
@@ -60,11 +60,11 @@ and open the template in the editor.
                         </tr>
                         <tr>
                             <td><label>Precio máximo</label></td>
-                            <td><input type="number" min="0" step="0.01" id="precio_max" name="precio_max" value=""></td>
+                            <td><input type="number" min="0" step="0.01" id="precio_max" name="precio_max" ></td>
                         </tr>
                         <tr>
                             <td><label>Número de habitaciones</label></td>
-                            <td><input type="number" min="0" id="num_hab" name="num_hab" value=""></td>
+                            <td><input type="number" min="0" id="num_hab" name="num_hab"></td>
                         </tr>
                         <tr>
                             <td><label>Metros cuadrados</label></td>
