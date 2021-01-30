@@ -42,17 +42,20 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                         </table>
-                        <span class="favorito" val="<?php
-                        if (esFavorito()) {
-                            echo"activa";
-                        } else
-                            "inactiva";
-                        ?>">
-                            <img class="corazon" id="inactiva" src="../img/nofav.png">
-                        </span>
-                        <span class="alerta" val="inactiva">
-                            <img class="campana" id="inactiva" src="../img/noalerta.png">
-                        </span>
+                        <form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">
+                             <input name="id_anuncio" value="<?phpecho $_GET["id_anuncio"];?> hidden">
+                            <span class="favorito" val="<?php
+                            if (esFavorito()) {
+                                echo"activa";
+                            } else
+                                "inactiva";
+                            ?>">
+                                <input name="corazon" type="image" class="corazon" id="inactiva" src="../img/nofav.png">
+                            </span>
+                            <span class="alerta" val="inactiva">
+                                <input name="campana" type="image"  class="campana" id="inactiva" src="../img/noalerta.png">
+                            </span>
+                        </form>  
                     </section>
                     <section>
                         <?php

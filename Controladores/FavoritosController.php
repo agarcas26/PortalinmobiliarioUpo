@@ -47,32 +47,40 @@ function vista_previa_favoritos() {
     }
 }
 
-
 function esFavorito($id_anuncio) {
-    $r=false;
+    $r = false;
     $daoFavoritos = new daoFavoritos();
     $favoritos = $daoFavoritos->listar_favoritos_user();
     $daoFavoritos->destruct();
-    $i=0;
-    while($i < sizeof($favoritos)&&!$r){
-        if($favoritos[$i][0]==$id_anuncio){
-            $r=true;
+    $i = 0;
+    while ($i < sizeof($favoritos) && !$r) {
+        if ($favoritos[$i][0] == $id_anuncio) {
+            $r = true;
         }
         $i++;
     }
-    
-   return $r; 
+
+    return $r;
 }
 
-
-    
-    function toggle_favorito($id_anuncio, $nombre_usuario) {
-        $daoFavoritos = new daoFavoritos();
-        if(esFavorito($id_anuncio)){
-            $daoFavoritos->eliminar_favorito($id_anuncio);
-        }
-        else{
-            $daoFavoritos->crear_favorito($id_anuncio, $nombre_usuario);
-        }
-        $daoFavoritos->destruct();
+function toggle_favorito($id_anuncio, $nombre_usuario) {
+    $daoFavoritos = new daoFavoritos();
+    if (esFavorito($id_anuncio)) {
+        $daoFavoritos->eliminar_favorito($id_anuncio);
+    } else {
+        $daoFavoritos->crear_favorito($id_anuncio, $nombre_usuario);
     }
+    $daoFavoritos->destruct();
+}
+
+if (isset($_POST["corazon"])) {
+    if (isset($_SESSION['usuario_particular'])) {
+            $usuario = $_SESSION['usuario_particular'];
+        } else {
+            $usuario = $_SESSION['usuario_profesional'];
+        }
+        
+    toggle_favorito($_POST["id_anuncio"], $usuario);
+    
+    unset($_POST["corazon"]);
+}
