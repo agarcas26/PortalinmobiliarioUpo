@@ -18,6 +18,7 @@ if (isset($_GET['busuario'])) {
     $usuarios = $daoUsuario->get_usuario_by_nombre_usuario($_GET['user']);
     $daoUsuario->destruct();
 
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
     if (mysqli_num_rows($usuarios) > 0) {
         echo '<table>';
         while ($aux = mysqli_fetch_array($usuarios)) {
@@ -39,6 +40,8 @@ if(isset($_POST['eliminar'])){
     $daoUsuario = new daoUsuarios();
     $usuarios = $daoUsuario->eliminar_usuario($_POST['nombre_usuario']);
     $daoUsuario->destruct();
+    
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 if(isset($_POST['modificar'])){
@@ -59,7 +62,7 @@ if(isset($_POST['guardar'])){
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();
     
-    headr("Location: ../Vistas/busqueda_usuario_admin.php");
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 function listar_usuarios() {
