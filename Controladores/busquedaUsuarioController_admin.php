@@ -15,7 +15,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if(!isset($_GET['busuario'])){
+if(!isset($_GET['busuario']) && !isset($_POST['eliminar']) && !isset($_POST['guardar']) && !isset($_POST['modificar'])){
     listar_usuarios();
 }
 
@@ -38,6 +38,8 @@ if (isset($_GET['busuario'])) {
         }
         echo '</table>';
     }
+    
+    unset($_GET['busuario']);
 }
 
 if(isset($_POST['eliminar'])){
@@ -51,6 +53,7 @@ if(isset($_POST['eliminar'])){
 if(isset($_POST['modificar'])){
     $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
     header("Location: ../Vistas/modificar_usuario_admin.php");
+    unset($_POST['modificar']);
 }
 
 if(isset($_POST['guardar'])){
@@ -66,6 +69,7 @@ if(isset($_POST['guardar'])){
     $daoUsuario->destruct();
     
     unset($_SESSION['searchuser']);
+    unset(isset($_POST['guardar']);
     
 }
 
