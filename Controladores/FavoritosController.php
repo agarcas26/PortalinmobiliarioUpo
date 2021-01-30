@@ -9,8 +9,13 @@
 include_once '../DAO/daoFavoritos.php';
 
 function get_favoritos_usuario() {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -28,12 +33,19 @@ function get_favoritos_usuario() {
             echo '</tr><tr>';
             echo '</table>';
         }
+    } else {
+        echo 'Vaya... aún no tienes favoritos... Prueba a añadir alguno';
     }
 }
 
 function vista_previa_favoritos() {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
 
     if (sizeof($favoritos) > 0) {
@@ -49,8 +61,13 @@ function vista_previa_favoritos() {
 
 function esFavorito($id_anuncio) {
     $r = false;
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
     $daoFavoritos = new daoFavoritos();
-    $favoritos = $daoFavoritos->listar_favoritos_user();
+    $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
     $daoFavoritos->destruct();
     $i = 0;
     while ($i < sizeof($favoritos) && !$r) {
@@ -75,12 +92,12 @@ function toggle_favorito($id_anuncio, $nombre_usuario) {
 
 if (isset($_POST["corazon"])) {
     if (isset($_SESSION['usuario_particular'])) {
-            $usuario = $_SESSION['usuario_particular'];
-        } else {
-            $usuario = $_SESSION['usuario_profesional'];
-        }
-        
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+
     toggle_favorito($_POST["id_anuncio"], $usuario);
-    
+
     unset($_POST["corazon"]);
-}
+}    
