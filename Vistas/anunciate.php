@@ -36,7 +36,7 @@
                                 <label>¿Quiere publicar un anuncio de vacacional, compra o alquiler?</label>
                             </td>
                             <td>
-                                <select>
+                                <select name="tipo_oferta" id="tipo_oferta">
                                     <option value="alquiler">Vacacional</option>
                                     <option value="alquiler">Alquiler</option>
                                     <option value="compra">Compra</option>
