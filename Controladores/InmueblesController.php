@@ -394,9 +394,11 @@ function listar_inmuebles_usuarioAll() {
         echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
         echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
         echo '<td>' . ' - Tipo vía : ' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
+        echo '<td>';
         echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
-        . '</a>';
+        . '</a>'
+        . '</td>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar " />'
