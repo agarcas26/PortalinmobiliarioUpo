@@ -127,7 +127,7 @@
                     ?>'">
                         <button name="btonModificar" id="btonModificar"> Modificar datos </button>
                     </a>
-                    <button type="submit" value="btonCancelar" name="btonCancelar">Cancelar </button>
+                    <button  value="btonCancelar" name="btonCancelar">Cancelar </button>
                 </form>
                 <?php
             }
