@@ -51,7 +51,7 @@
                             } else
                                 echo"inactiva";
                             ?>">
-                                <input name="corazon" type="image" class="corazon" id="inactiva" src="../img/nofav.png">
+                                <input name="corazon" type="image" class="corazon" src="../img/nofav.png">
                             </span>
                              
                             <span class="alerta" val="<?php
@@ -60,7 +60,7 @@
                             } else
                                 echo"inactiva";
                             ?>">
-                                <input name="campana" type="image"  class="campana" id="inactiva" src="../img/noalerta.png">
+                                <input name="campana" type="image"  class="campana" src="../img/noalerta.png">
                             </span>
                         </form>  
                     </section>

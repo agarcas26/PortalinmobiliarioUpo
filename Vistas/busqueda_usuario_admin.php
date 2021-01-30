@@ -9,7 +9,6 @@
         <title></title>
         <?php
         include_once '../Vistas/header.php';
-        include_once '../Controladores/busquedaUsuarioController_admin.php';
         ?>
     </head>
     <body>   
@@ -26,12 +25,12 @@
         </header>
         <main>
             <label>Mostrando resultados</label>
-            <form action="../Controladores/busquedaUsuarioController_admin.php" method="GET">
+            <form action="../Vistas/busqueda_usuario_admin.php" method="GET">
                 <input type="text" id="user" name="user" class="form-text">
                 <input type="submit" name="busuario" value="Buscar" />
             </form>
             <?php
-            listar_usuarios();
+            include_once '../Controladores/busquedaUsuarioController_admin.php';
             ?>
         </main>
     </body>
