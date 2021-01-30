@@ -21,18 +21,18 @@ $cancelado = false;
 if (isset($_POST["btonInsertar"])) {
     $_SESSION["errores"] = "";
     if (empty($_POST["txtNumero"])) {
-        $validado  = false;
+        $validado = false;
         $$erroresNum = "Debe de completar el campo numero.";
     }
     if (empty($_POST["txtCp"])) {
-       $validado  = false;
+        $validado = false;
         $erroresCp = "Debe de completar el campo cp.";
     }
     if (empty($_POST["txtNombre_via"])) {
-        $validado  = false;
+        $validado = false;
         $erroresNombre_via = "Debe de completar el campo nombre via.";
-    }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$_POST["txtNombre_via"])){
-        $validado  = false;
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["txtNombre_via"])) {
+        $validado = false;
         $erroresNombre_via = "formato incorrecto.";
     }
     if (empty($_POST["txtTipo_via"])) {
@@ -244,7 +244,7 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setPlanta($aux[$i]->getPlanta());
         $inmueble->setMetros($aux[$i]->getMetros());
         $inmueble->setFotos($aux[$i]->getFotos());
-        echo '<table id="inmuebles">';
+        echo '<table id="inmuebles" style="border: 1px solid black">';
         echo '</tr><tr>';
         echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
         echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
@@ -264,9 +264,11 @@ function getInmuebleByDireccion($direccion) {
         for ($i = 0; $i < sizeof($fotos); $i++) {
             echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
         }
+
+        echo '</table>';
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">Modificar datos'
-        //. '<input type="submit"  name="btonModificar" id="btonModificar" value="Modificar d" />'
+        
         . '</a>'
         . '</td>';
         echo " ";
@@ -276,9 +278,6 @@ function getInmuebleByDireccion($direccion) {
         . '<input type="submit" name="btoneliminar" id="btoneliminar" value="Eliminar inmueble" />'
         . '</a></form>'
         . '</td>';
-
-
-        echo '</table>';
     }
 
     return $inmueble;
@@ -365,10 +364,7 @@ function listar_inmuebles_usuario() {
         echo '</tr>';
         echo '</table>';
     }
-//echo "<pre>";
-//var_dump($inmueble1);
-//var_dump($inmuebles_usuario);
-//echo "</pre>";
+
 }
 
 function listar_inmuebles_usuarioAll() {
@@ -388,26 +384,28 @@ function listar_inmuebles_usuarioAll() {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
 
-        echo '<table id="inmuebles" style="border: 3px dotted blue">';
+          echo '<table id="inmuebles" style="border: 1px solid black">';
         echo '<tr>';
-        echo '<td>' . ' Número : ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
-        echo '<td>' . ' Código Postal :' . $inmuebles_usuario[$i]->getCp() . '</td>';
-        echo '<td>' . ' - Nombre vía : ' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
-        echo '<td>' . ' - Tipo vía : ' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
-         echo " ";
+        echo '<td>' . '<strong> Número :</strong> ' . $inmuebles_usuario[$i]->getNumero() . " " . '</td>';
+        echo '<td>' . '<strong> Código Postal : </strong>' . $inmuebles_usuario[$i]->getCp() . '</td>';
+        echo '<td>' . '<strong> Nombre vía : </strong>' . $inmuebles_usuario[$i]->getNombre_via() . " " . '</td>';
+        echo '<td>' . '<strong> Tipo vía : </strong>' . $inmuebles_usuario[$i]->getTipo_via() . " " . '</td>';
+
+        echo '</table>';
+        echo "<br>";
         echo '<td>';
         echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="ver_detalle" id="ver_detalle" value="Ver detalle" />'
         . '</a>'
         . '</td>';
-         echo "  ";
+
+        echo "  ";
         echo '<td>';
         echo '<a href="../Vistas/modificar_inmueble.php?direccion=' . $direccion . '">'
         . '<input type="submit" name="btonModificar" id="btonModificar" value="Modificar " />'
         . '</a>'
         . '</td>';
         echo '</tr>';
-        echo '</table>';
     }
 }
 
