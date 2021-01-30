@@ -78,7 +78,7 @@ function listar_usuarios() {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input type="hidden" id="nombre_usuario" value="' . $aux[0] . '" /></form></td>';
+            echo '<td><a href="../Vistas/modificar_usuario_admin.php?nombre_usuario='.$aux[0].'" ><button>Modificar usuario</button></a></td>';
             echo '</tr>';
         }
         echo '</table>';
