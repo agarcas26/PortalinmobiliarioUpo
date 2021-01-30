@@ -22,7 +22,7 @@ h1,h2,h3,h4{
 }
 
 .puntuacion , .puntuacion-st{
-    width: 1.5%;
+    width: 2%;
     margin: 0.1%;
 }
 
@@ -49,4 +49,13 @@ main{
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
+}
+
+.campana{
+    width: 3% !important;
+    margin: 0.1%;
+}
+.corazon{
+    width: 3% !important;
+    margin: 0.1%;
 }

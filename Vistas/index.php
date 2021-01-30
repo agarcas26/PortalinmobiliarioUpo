@@ -33,7 +33,8 @@ and open the template in the editor.
         <?php
         if (!isset($_POST['realizar_busqueda'])) {
             ?>
-            <main>
+            <main>                        
+                <a style="float:right;" href="../Vistas/anunciate.php"><button class="btn btn-primary">¡Anúnciate!</button></a>
                 <div id="buscador" class="">
                     <form style="display: inline-block" action="../Controladores/indexController.php" method="POST">
                         <table id="datos_visa" class="display table-bordered" style="width:100%">
