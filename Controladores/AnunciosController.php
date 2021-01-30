@@ -8,6 +8,9 @@ include_once '../Controladores/InmueblesController.php';
 include_once '../Controladores/busquedaController.php';
 include_once '../DAO/daoInmuebles.php';
 
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
 //FALTA INSERTAR ANUNCIOS
 //funcion eliminar anuncios
 $_SESSION["errores"] = "";
@@ -25,7 +28,7 @@ if (isset($_POST["guardar"])) {
                 $nombre_usuario_publica = $_SESSION['usuario_profesional'];
             }
             insertAnuncio($_POST['inmuebles_usuario'], $nombre_usuario_publica);
-            // header("Location: ../Vistas/mis_anuncios.php");
+            header("Location: ../Vistas/mis_anuncios.php");
         }
     }
 }
