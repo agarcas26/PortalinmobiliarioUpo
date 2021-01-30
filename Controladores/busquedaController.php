@@ -283,7 +283,7 @@ if (isset($_POST["campana"])) {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    toggle_alerta($_POST["id_anuncio"]);
+    toggle_alerta($_GET["id_anuncio"]);
 
     unset($_POST["campana"]);
 }
