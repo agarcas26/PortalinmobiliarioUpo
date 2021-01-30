@@ -469,8 +469,8 @@ if(isset($_POST["btonEliminar"])){
     }
     
     if ($_SESSION["errores"]) {
-        header('Location:../Vistas/detalles_inmueble.php ');
+        header('Location:../Vistas/inmueble.php ');
     } else {
-        header('Location:../Vistas/inmueble.php '); //muestra el mensaje de error de eliminacion
+        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
     }
 }

@@ -33,12 +33,12 @@ function muestraEstrellas() {
 
 $(document).ready(function () {
     //$(".corazon").click(function () {
-        if ($(".favorito").attr("val") == "activa") {
-            $(".favorito").attr("val", "inactiva");
+        if ($(".favorito").attr("val") == "inactiva") {
+            //$(".favorito").attr("val", "inactiva");
             $(".corazon").attr("src", "../img/nofav.png");
         }
-        else if ($(".favorito").attr("val") == "inactiva") {
-            $(".favorito").attr("val", "activa");
+        else if ($(".favorito").attr("val") == "activa") {
+            //$(".favorito").attr("val", "activa");
             $(".corazon").attr("src", "../img/fav.png");
         }
 
@@ -48,12 +48,12 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     //$(".campana").click(function () {
-        if ($(".alerta").attr("val") == "activa") {
-            $(".alerta").attr("val", "inactiva");
+        if ($(".alerta").attr("val") == "inactiva") {
+            //$(".alerta").attr("val", "inactiva");
             $(".campana").attr("src", "../img/noalerta.png");
         }
-        else if ($(".alerta").attr("val") == "inactiva") {
-            $(".alerta").attr("val", "activa");
+        else if ($(".alerta").attr("val") == "activa") {
+            //$(".alerta").attr("val", "activa");
             $(".campana").attr("src", "../img/alerta.png");
         }
 
