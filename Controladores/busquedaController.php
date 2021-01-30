@@ -2,7 +2,6 @@
 
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/AnunciosController.php';
-include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
@@ -213,42 +212,13 @@ function listar_alertas_usuario() {
     return $busquedas_usuario;
 }
 
-//function print_resultados_busqueda() {
-//    $barra_busqueda = $_POST["barra_busqueda"];
-//    $anuncios[] = anuncios_barra_busqueda($barra_busqueda);
-//    echo"<tr>"
-//    . "<th>Titulo<th>"
-//    . "<th>Fecha Publicacion<th>"
-//    . "<th>Publicado por<th>"
-//    . "<th>Direccion<th>";
-//    for ($i = 0; $i < siceof($anuncios); $i++) {
-//        echo "<td>" . $anuncios[$i]->getPrecio() . "</td>"
-//        . "<td>" . $anuncios[$i]->getTitulo() . "</td>"
-//        . "<td>" . $anuncios[$i]->getFecha_anuncio() . "</td>"
-//        . "<td>" . $anuncios[$i]->getNombre_usuario_publica() . "</td>"
-//        . "<td>" . $anuncios[$i]->getNombre_via() . " "
-//        . $anuncios[$i]->getNumero() . " "
-//        . $anuncios[$i]->getCp() . "</td>";
-//    }
-//    echo "</tr>";
-//}
-
-//function print_resultados_filtros() {
-//    $anuncios[] = anuncios_busqueda();
-//    echo"<tr>"
-//    . "<th>Titulo<th>"
-//    . "<th>Fecha Publicacion<th>"
-//    . "<th>Publicado por<th>"
-//    . "<th>Direccion<th>";
-//    for ($i = 0; $i < siceof($anuncios); $i++) {
-//        echo "<td>" . $anuncios[$i]->getPrecio() . "</td>"
-//        . "<td>" . $anuncios[$i]->getTitulo() . "</td>"
-//        . "<td>" . $anuncios[$i]->getFecha_anuncio() . "</td>"
-//        . "<td>" . $anuncios[$i]->getNombre_usuario_publica() . "</td>"
-//        . "<td>" . $anuncios[$i]->getNombre_via() . " "
-//        . $anuncios[$i]->getNumero() . " "
-//        . $anuncios[$i]->getCp() . "</td>";
-//    }
-//    echo "</tr>";
-//}
-
+function hayAlerta($id_anuncio) {
+    $r=false;
+    $aletas = listar_alertas_usuario();
+    while ($fila = mysqli_fetch_array($aletas)) {
+        if (probarFiltros($aletas, readAnuncio($id_anuncio))) {
+            $r=true;
+        }
+    }
+    return $r;
+}
