@@ -259,25 +259,24 @@ function getInmuebleByDireccion($direccion) {
         $inmueble->setMetros($aux[$i]->getMetros());
         $inmueble->setFotos($aux[$i]->getFotos());
         echo '<table id="inmuebles" style="border: 1px solid black">';
-        echo '</tr><tr>';
         echo '<tr>' . ' Número : ' . $aux[$i]->getNumero() . " " . '</tr>';
-        echo '<tr>' . '  - Código Postal :' . $aux[$i]->getCp() . '</tr>';
-        echo '<tr>' . ' </br> - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
-        echo '<tr>' . ' </br> - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
-        echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
+        echo '<tr>' . ' - Código Postal :' . $aux[$i]->getCp() . '</tr>';
+        echo '<tr>' . ' - Nombre vía : ' . $aux[$i]->getNombre_via() . " " . '</tr>';
+        echo '<tr>' . ' - Tipo vía : ' . $aux[$i]->getTipo_via() . " " . '</tr>';
+        echo '<tr>' . ' - Usuario : ' . $aux[$i]->getNombre_usuario_duenyos() . " " . '</tr>';
+        echo '<tr>' . ' - Localidad : ' . $aux[$i]->getNombre_localidad() . " " . '</tr>';
+        echo '<tr>' . ' - Provincia : ' . $aux[$i]->getNombre_provincia() . " " . '</tr>';
+        echo '<tr>' . ' - N.Baños : ' . $aux[$i]->getNum_banyos() . " " . '</tr>';
+        echo '<tr>' . ' - N.Habitaciones : ' . $aux[$i]->getNum_hab() . " " . '</tr>';
+        echo '<tr>' . ' - Cocina : ' . $aux[$i]->getCocina() . " " . '</tr>';
+        echo '<tr>' . ' - Tipo Inmueble : ' . $aux[$i]->getTipo_inmueble() . " " . '</tr>';
+        echo '<tr>' . ' - N.Plantas : ' . $aux[$i]->getNumero_plantas() . " " . '</tr>';
+        echo '<tr>' . ' - Planta : ' . $aux[$i]->getPlanta() . " " . '</tr>';
+        echo '<tr>' . ' - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
         $fotos = preg_split("/;/", $aux[$i]->getFotos());
         
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr></br> - Fotos : <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/></tr>';
+            echo '<tr> - Fotos : <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/></tr>';
         }
 
         echo '</table>';
