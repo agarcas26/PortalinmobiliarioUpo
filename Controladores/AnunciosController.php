@@ -16,6 +16,15 @@ $_SESSION["validacion"] = true;
 
 $_SESSION["cancelado"] = false;
 
+if (isset($_POST["guardar"])) {
+    $aux = true;
+    if (isset($_POST['inmuebles_usuario'])) {
+        if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
+            insertAnuncio();
+        }
+    }
+}
+
 function ver_detalle($id_anuncio) {
     $daoAnuncios = new daoAnuncios();
     $id_anuncio = $_GET['id_anuncio'];
@@ -90,15 +99,6 @@ function getPrecio($id_anuncio) {
     }
 }
 
-if (isset($_POST["guardar"])) {
-    $aux = true;
-    if (isset($_POST['inmuebles_usuario'])) {
-        if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
-            insertAnuncio();
-        }
-    }
-}
-
 function insertAnuncio() {
     if ($_SESSION["validacion"]) {
         $direccion = split('/-/', $_GET['direccion']);
@@ -112,14 +112,7 @@ function insertAnuncio() {
         $anuncio1->setTipo_via($direccion[3]);
         $daoAnuncio = new daoAnuncios();
         $insertOk = $daoAnuncio->insertar($anuncio1);
-        if (!$insertOk) {
-            $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
-        }
-    }
-    if ($_SESSION["validacion"]) {
-        header('Location:../Vistas/anunciate.php'); //se va a la pantalla sin errores
-    } else {
-        header('Location:../Vistas/anunciate.php'); //muestra un error
+        header("Location: ../Vistas/mis_anuncios.php");
     }
 }
 
