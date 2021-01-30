@@ -17,7 +17,6 @@ and open the template in the editor.
         <script src="../scripts.js"></script>
         <?php
         include_once '../Vistas/header.php';
-        include_once '../Controladores/busquedaController.php';
         ?>
     </head>
     <body>
@@ -36,7 +35,7 @@ and open the template in the editor.
             <button id="mostrar_ocultar" style="float: right;"  class="btn-block btn-secondary">Mostrar/Ocultar filtros</button>
             <br><br>
             <aside id="filtros_aside" style="position: sticky; top: 20px;">
-                <form method="GET" action="../Vistas/busqueda.php">
+                <form method="GET" action="../Controladores/busquedaController.php">
                     <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <tr>
                             <td><label>Número de baños</label></td>
@@ -102,7 +101,9 @@ and open the template in the editor.
                 </section>
                 <!-- ANUNCIOS -->
                 <table class="display table-bordered" style="width:100%">
-                    
+                    <?php
+                    include_once '../Controladores/busquedaController.php';
+                    ?>
                 </table>
             </article>
         </main>
