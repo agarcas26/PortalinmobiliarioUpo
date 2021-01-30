@@ -1,6 +1,7 @@
 <?php
 
 include_once '../DAO/daoBusqueda.php';
+include_once '../Controladores/InmueblesController.php';
 include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
@@ -213,12 +214,62 @@ function listar_alertas_usuario() {
 }
 
 function hayAlerta($id_anuncio) {
-    $r=false;
+    $r = false;
     $aletas = listar_alertas_usuario();
     while ($fila = mysqli_fetch_array($aletas)) {
         if (probarFiltros($aletas, readAnuncio($id_anuncio))) {
-            $r=true;
+            $r = true;
         }
     }
     return $r;
+}
+
+function get_filtros_by_id($id_anuncio) {
+    $filtros = [];
+    $direccion = [];
+    $daoanuncio = new daoAnuncios();
+    $anuncio = $daoanuncio->read($id_anuncio);
+    $direccion[] = $anuncio->getNumero();
+    $direccion[] = $anuncio->getCp();
+    $direccion[] = $anuncio->getNombre_via();
+    $direccion[] = $anuncio->getTipo_via();
+    $inmueble = getInmuebleByDireccion($direccion);
+    $filtros[]=$inmueble->getNum_banyos();
+    $filtros[]=$inmueble->getTipo_inmueble();
+    $filtros[]=$anuncio->getPrecio();
+    $filtros[]=$inmueble->getNum_hab();
+    $filtros[]=$inmueble->getMetros();
+    $filtros[]=$anuncio->getFecha_anuncio();
+    $daoanuncio->destruct();
+    
+    return $filtros;
+}
+
+function toggle_alerta($id_anuncio) {
+    $dao = new daoBusqueda();
+    $busqueda = $dao->listar_busquedas_usuario();
+    $filtro= get_filtros_by_id($id_anuncio);
+    while ($fila = mysqli_fetch_array($busqueda)) {
+        if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[3]<$filtro[2] && $fila[7]==$filtro[3]
+                 && $fila[8]==$filtro[4]){
+            if (hayAlerta($id_anuncio)) {
+                $fila[3] = false;
+            } else {
+                $fila[3] = true;
+            }
+        }
+    }
+
+    $dao->destruct();
+}
+
+if (isset($_POST["campana"])) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+    toggle_alerta($_POST["id_anuncio"]);
+
+    unset($_POST["campana"]);
 }
