@@ -6,7 +6,6 @@ include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
-
 if (isset($_GET['aplicar_filtros'])) {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
