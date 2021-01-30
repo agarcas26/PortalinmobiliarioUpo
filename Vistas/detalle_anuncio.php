@@ -40,6 +40,11 @@
                             <?php
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
+                            <button>
+                                <span class="alerta" id="valorar">
+                                    <img class="campana" id="inactiva" src="../img/nofav.png">
+                                </span>
+                            </button>
                         </table>
                     </section>
                     <section>

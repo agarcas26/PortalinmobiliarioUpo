@@ -2,10 +2,11 @@
 
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-if (!isset($_SESSION)) {
+if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 //damos por correcto el formulario
@@ -69,7 +70,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr>' . ' </br> - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</tr>';
         $fotos = preg_split("/-/", $aux[$i]->getFotos());
         for ($i = 0; $i < sizeof($fotos); $i++) {
-            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';   
+            echo '<tr>' . ' </br> - Fotos : ' . '<img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/>' . '</tr>';
         }
 
 //        echo '<a href="../Vistas/detalles_inmueble.php?direccion=' . $direccion . '">'
