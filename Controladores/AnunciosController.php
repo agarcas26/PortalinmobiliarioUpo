@@ -20,7 +20,7 @@ if (isset($_POST["guardar"])) {
     if (isset($_POST['inmuebles_usuario'])) {
         if (isset($_POST['precio']) && isset($_POST['tipo_oferta'])) {
             insertAnuncio($_POST['inmuebles_usuario']);
-           // header("Location: ../Vistas/mis_anuncios.php");
+            // header("Location: ../Vistas/mis_anuncios.php");
         }
     }
 }
@@ -117,7 +117,6 @@ function insertAnuncio($direccion) {
     $anuncio1->setNombre_usuario_publica($nombre_usuario_duenyos);
     $daoAnuncio = new daoAnuncios();
     $insertOk = $daoAnuncio->insertar($anuncio1);
-
 }
 
 function deleteAnuncio($idanuncio) {
