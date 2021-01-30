@@ -29,7 +29,7 @@ if (isset($_GET['busuario'])) {
             echo '<td>' . $aux[2] . '</td>';
             echo '<td>' . $aux[3] . '</td>';
             echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Eliminar usuario"/><input name="nombre_usuario" id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
-            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="eliminar" name="eliminar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
+            echo '<td><form action="../Controladores/busquedaUsuarioController_admin.php" method="POST" ><input type="submit" id="modificar" name="modificar" value="Modificar usuario"/><input name="nombre_usuario"  id="nombre_usuario" value="' . $aux[0] . '" hidden /></form></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -49,6 +49,7 @@ if(isset($_POST['eliminar'])){
 if(isset($_POST['modificar'])){
     $_SESSION['searchuser'] = $_POST['nombre_usuario'];    
     header("Location: ../Vistas/modificar_usuario_admin.php");
+    
     unset($_POST['modificar']);
 }
 
@@ -93,8 +94,7 @@ function listar_usuarios() {
 
 function getDatosPerfil(){
     $usuario = getUsuarioByUsuario($_SESSION['searchuser']);
-    $datos = [];
-    
+    $datos = [];    
     array_push($datos,$usuario->get_nombre_usuario());
     array_push($datos,$usuario->get_nombre_apellidos());
     array_push($datos,$usuario->getContrasenya());
