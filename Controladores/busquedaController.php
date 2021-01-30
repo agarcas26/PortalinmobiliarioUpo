@@ -6,7 +6,6 @@ include_once '../Controladores/AnunciosController.php';
 include_once '../Modelos/AnunciosModel.php';
 
 
-
 if (isset($_GET['aplicar_filtros'])) {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = ($_SESSION['usuario_particular']);
@@ -21,7 +20,7 @@ if (isset($_GET['aplicar_filtros'])) {
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
-    mostrarVistaLista($anuncios);
+    mostrarVistaLista($anuncios); 
 
     header("Location: ../Vistas/busqueda.php");
 }
@@ -33,7 +32,7 @@ if (isset($_POST['lista'])) {
     mostrarVistaLista($anuncios);
 }
 
-if (isset($_POST['cuadrcula'])) {
+if (isset($_POST['cuadricula'])) {
     $filtros = getFiltros();
     $anuncios = anuncios_busqueda($filtros);
 
@@ -105,7 +104,7 @@ function mostrarVistaLista($anuncios) {
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
         echo '<td>' . '</td>';    //Insertar imágenes
-        echo '<td>' . $anuncios[$i]->getTipo_via() . '</td>';
+        echo '<td>' . $anuncios[$i]->getTipo_via() . ' </td>';
         echo '<td>' . $anuncios[$i]->getNombre_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
         echo '<td>' . $anuncios[$i]->getFecha_anuncio() . '</td>';
