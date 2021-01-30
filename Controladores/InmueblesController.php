@@ -193,13 +193,12 @@ if (empty($_POST["txtNumero"])) {
         }
        
     }
-    var_dump($modifyOk);
-    var_dump($inmueble2);
-//    if ($_SESSION["validacion"]) {
-//        header('Location: ../Vistas/inmueble.php');
-//    } else {
-//        header('Location: ../Vistas/modificar_inmueble.php');
-//    }
+   
+    if ($_SESSION["validacion"]) {
+        header('Location: ../Vistas/inmueble.php');
+    } else {
+        header('Location: ../Vistas/modificar_inmueble.php');
+    }
 }
 
 function select_inmuebles_usuario() {
