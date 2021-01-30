@@ -29,44 +29,35 @@
             }
             ?>
         </header>
-        <?php
-        if (!isset($_POST['realizar_busqueda'])) {
-            $dirección;
-            $datos;
-            ?>
-            <main>
-                <article>
-                    <section id="detalle_anuncio">
-                        <table id="datos_visa" class="display table-bordered" style="width:100%">
-                            <?php
-                            mostrar_detalle_anuncio($_GET["id_anuncio"]);
-                            ?>
-                        </table>
-                        <span class="favorito" val="<?php
-                        if (esFavorito()) {
-                            echo"activa";
-                        } else
-                            "inactiva";
-                        ?>">
-                            <img class="corazon" id="inactiva" src="../img/nofav.png">
-                        </span>
-                        <span class="alerta" val="inactiva">
-                            <img class="campana" id="inactiva" src="../img/noalerta.png">
-                        </span>
-                    </section>
-                    <section>
+        <main>
+            <article>
+                <section id="detalle_anuncio">
+                    <table id="datos_visa" class="display table-bordered" style="width:100%">
                         <?php
-                        resenyas_anuncio($_GET["id_anuncio"]);
-                        mostrarValorar($_GET["id_anuncio"]);
+                        mostrar_detalle_anuncio($_GET["id_anuncio"]);
                         ?>
-                    </section>
-                </article>
-            </main> 
-            <?php
-        }
-        ?>
+                    </table>
+                    <span class="favorito" val="<?php
+                    if (esFavorito($_GET["id_anuncio"])) {
+                        echo"activa";
+                    } else
+                        "inactiva";
+                    ?>">
+                        <img class="corazon" id="inactiva" src="../img/nofav.png">
+                    </span>
+                    <span class="alerta" val="inactiva">
+                        <img class="campana" id="inactiva" src="../img/noalerta.png">
+                    </span>
+                </section>
+                <section>
+                    <?php
+                    resenyas_anuncio($_GET["id_anuncio"]);
+                    mostrarValorar($_GET["id_anuncio"]);
+                    ?>
+                </section>
+            </article>
+        </main> 
     </body>
-    <br>
     <?php
     include_once '../Vistas/footer.html';
     ?>

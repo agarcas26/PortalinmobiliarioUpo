@@ -21,7 +21,7 @@ if (isset($_GET['aplicar_filtros'])) {
     $anuncios = anuncios_busqueda($filtros);
 
     mostrarVistaLista($anuncios); 
-
+    header("Location: ../Vistas/busqueda.php");
 }
 
 if (isset($_POST['lista'])) {
