@@ -508,7 +508,7 @@ if (isset($_POST['btonEliminar'])) {
 
     $inmueble1 = new Inmueble();
     $traer= new daoInmuebles();
-    $datos = $traer->read($inmueble1);
+    $datos = $traer->read($_POST['direccion']);
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($inmueble1);
     $daoInmueble->destruct();
