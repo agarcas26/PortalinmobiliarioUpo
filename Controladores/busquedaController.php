@@ -3,7 +3,9 @@
 include_once '../DAO/daoBusqueda.php';
 include_once '../Controladores/InmueblesController.php';
 include_once '../Controladores/AnunciosController.php';
+include_once '../Controladores/AlertasController.php';
 include_once '../Modelos/AnunciosModel.php';
+include_once '../Modelos/BusquedaModel.php';
 
 
 
@@ -266,11 +268,11 @@ function toggle_alerta($id_anuncio) {
     while ($fila = mysqli_fetch_array($busqueda)) {
         if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[6]<($filtro[2]+100) && $fila[7]==$filtro[3]
                  && $fila[8]==$filtro[4]){
-            eliminarAlerta();
+            //eliminarAlerta();
         }
         else{
             
-            crearAlerta();
+            //crearAlerta();
         }
     }
 

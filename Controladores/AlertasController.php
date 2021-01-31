@@ -79,3 +79,11 @@ function vista_previa_alertas() {
 function ver_todas_las_alertas() {
     get_alertas_usuario();
 }
+
+function crearAlerta() {
+    get_alertas_usuario();
+}
+
+function eliminarAlerta() {
+    get_alertas_usuario();
+}

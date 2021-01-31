@@ -17,6 +17,19 @@ class Busqueda{
     private $num_hab;
     private $m2;
     
+    function __construct($id_busqueda, $nombre_usuario, $num_banyos, $alerta, $tipo_inmueble, $tipo_oferta, $precio_max, $num_hab, $m2) {
+        $this->id_busqueda = $id_busqueda;
+        $this->nombre_usuario = $nombre_usuario;
+        $this->num_banyos = $num_banyos;
+        $this->alerta = $alerta;
+        $this->tipo_inmueble = $tipo_inmueble;
+        $this->tipo_oferta = $tipo_oferta;
+        $this->precio_max = $precio_max;
+        $this->num_hab = $num_hab;
+        $this->m2 = $m2;
+    }
+
+    
     function getId_busqueda() {
         return $this->id_busqueda;
     }
