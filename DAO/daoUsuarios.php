@@ -39,7 +39,7 @@ class daoUsuarios {
     }
 
     function modificar_usuario($usuario) {
-        $sentence = "UPDATE `usuarios` SET`contrasenya_user`='$usuario->get_contrasenya_user()' WHERE `nombre_usuario`='$usuario->get_nombre_usuario()'";
+        $sentence = "UPDATE `usuarios` SET`contrasenya_user`='" . $usuario->get_contrasenya_user() . "' WHERE `nombre_usuario`='" . $usuario->get_nombre_usuario() . "'";
         $result = mysqli_query($this->conexion, $sentence);
     }
 
