@@ -87,8 +87,9 @@ if (isset($_POST["btonInsertar"])) {
     $file = opendir($ruta);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
+            print_r($_FILES);
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            copy($_FILES['fileFotos']['name'][$i], $ruta);
+            move_uploaded_file($_FILES['fileFotos']['name'][$i], $ruta);
         }
     }
     closedir($file);
@@ -103,12 +104,6 @@ if (isset($_POST["btonInsertar"])) {
     $daoInmueble = new daoInmuebles();
 
     $insertOk = $daoInmueble->insertar($inmueble1);
-    print_r($insertOk);
-    if (!$insertOk) {
-        $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
-    }
-
-
 
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/detalles_inmueble.php');
