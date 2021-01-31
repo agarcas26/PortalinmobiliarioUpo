@@ -126,12 +126,14 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Tipo de inmueble</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="alquiler" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="alquiler")  echo "checked";?> value="alquiler"></td>
-                                    <td><label for="alquiler">Alquiler</label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="compra" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="compra") echo "checked";?> value="compra"></td>
-                                    <td><label for="compra">Compra</label></td>
+                                    <td>
+                                        <select id="tipo_inmueble" name="tipo_inmueble">
+                                            <option value="piso">Piso</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="duplex">Dúplex</option>
+                                            <option value="chalet">Chalet</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label>Numero de plantas</label></td>

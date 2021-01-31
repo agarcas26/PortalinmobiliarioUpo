@@ -84,7 +84,7 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setNumero_plantas($_POST["txtNum_Planta"]);
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setMetros($_POST["txtMetros"]);
-        $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+        $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
         $ruta = '../img/Inmueble/' . $direccion;
 
         $file = fopen($ruta, "w");
