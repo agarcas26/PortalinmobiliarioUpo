@@ -43,9 +43,6 @@
                     <?php
                     $datos = getDatosPerfil();
                     ?>
-                    <input hidden name="datos" value="<?php
-                    echo($datos);
-                    ?>">
                     <tr>
                         <td>
                             <label>Usuario: </label>
