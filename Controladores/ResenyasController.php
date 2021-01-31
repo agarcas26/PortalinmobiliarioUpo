@@ -14,6 +14,27 @@ $_SESSION["validacion"] = true;
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
 
+if(isset($_POST["enviarValoracion"])){
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } else {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
+    $puntuacion=$_POST["puntuacion"];
+    $descripcion=$_POST["valoracion"];
+    
+    $anuncio= readAnuncio($_POST["id_anuncio"]);
+    
+    $direccion_inmueble[] = $anuncio->getNumero();
+    $direccion_inmueble[] = $anuncio->getCp();
+    $direccion_inmueble[] = $anuncio->getNombre_via();
+    $direccion_inmueble[] = $anuncio->getTipo_via();
+    
+    set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion);
+    
+    //header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
+}
+
 function resenyas_anuncio($id_anuncio) {
     $anuncio = readAnuncio($id_anuncio);
     $inmueble = getInmuebleByAnuncio($anuncio);
@@ -86,6 +107,7 @@ function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $desc
     $dao->escribirResenyas($objResenyas);
     $dao->destruct();
 }
+
 
 function escribirResenyas() {
     if ($_POST["btonEscribir"]) {
@@ -185,6 +207,7 @@ function modificarResenya() {
     }
 }
 
+
 function listarResenyas() {
     $daoResenyas = new daoResenyas();
     $resenyas = $daoResenyas->listarResenyas();
@@ -200,23 +223,3 @@ function leerResenyasbyUsuarios() {
     return $resenyas_usuario;
 }
 
-if(isset($_POST["enviarValoracion"])){
-    if (isset($_SESSION['usuario_particular'])) {
-        $nombre_usuario = $_SESSION['usuario_particular'];
-    } else {
-        $nombre_usuario = $_SESSION['usuario_profesional'];
-    }
-    $puntuacion=$_POST["puntuacion"];
-    $descripcion=$_POST["valoracion"];
-    
-    $anuncio= readAnuncio($_POST["id_anuncio"]);
-    
-    $direccion_inmueble[] = $anuncio->getNumero();
-    $direccion_inmueble[] = $anuncio->getCp();
-    $direccion_inmueble[] = $anuncio->getNombre_via();
-    $direccion_inmueble[] = $anuncio->getTipo_via();
-    
-    set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion);
-    
-    header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
-}
