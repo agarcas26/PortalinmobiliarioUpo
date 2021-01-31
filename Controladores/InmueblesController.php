@@ -200,7 +200,11 @@ if (isset($_POST["btonModificar"])) {
     $daoInmueble2->destruct();
 
     header('Location: ../Vistas/inmueble.php');
+}elseif(isset ($_POST["btonCancelar"])){
+    header('Location: ../Vistas/inmueble.php');
 }
+   
+    
 
 function select_inmuebles_usuario() {
 
