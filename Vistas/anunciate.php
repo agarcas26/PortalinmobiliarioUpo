@@ -89,12 +89,12 @@
                     <?php
                 }
             } else {
-                header("Location: ../Vistas/login.php");
+                header("Location: login.php");
             }
             ?>
         </main>
     </body>
     <?php
-    include_once '../Vistas/footer.html';
+    include_once 'footer.html';
     ?>
 </html>

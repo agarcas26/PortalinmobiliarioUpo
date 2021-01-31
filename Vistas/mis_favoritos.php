@@ -33,7 +33,7 @@
             </main>
         </body>
         <footer>
-            <?php include_once '../Vistas/footer.html'; ?>
+            <?php include_once 'footer.html'; ?>
         </footer>
         <?php
     } else {

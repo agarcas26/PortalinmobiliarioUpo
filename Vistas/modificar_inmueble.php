@@ -161,9 +161,7 @@
                 <?php
             }
             ?>
-            <?php if (isset($_SESSION["errores"]["modifyOk"])) { ?>
-                <span><?php echo $_SESSION["errores"]["modifyOk"]; ?></span>
-            <?php } ?>
+            
             <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
                 <section>
                     <h2>Error en el formulario:</h2>
@@ -177,6 +175,6 @@
         </main>  
     </body>
     <?php
-    include_once '../Vistas/footer.html';
+    include_once 'footer.html';
     ?>
 </html>

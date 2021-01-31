@@ -6,11 +6,7 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of pago
- *
- * @author agarc
- */
+
 class pago {
     private $id_pago;
     private $fecha_pago;

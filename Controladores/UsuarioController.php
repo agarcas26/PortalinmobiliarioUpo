@@ -49,6 +49,6 @@ function actualizarDatosUsuario($datos) {
         filter_var($datos[0], FILTER_SANITIZE_STRING);
         filter_var($datos[1], FILTER_SANITIZE_STRING);
 
-        //Duda sobre como se actualizarían los datos del usuario
+       
     }
 }

@@ -4,6 +4,7 @@ include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 
 if (isset($_POST['guardar'])) {
+    $datos= getDatosPerfil();
     if (isset($_SESSION['admin'])) {
         salvarCambiosController_admin();
     }else{        
@@ -17,7 +18,7 @@ function getDatosPerfil() {
     } else {
         $nombre_usuario = $_SESSION['usuario_profesional'];
     }
-    $datos = $_POST["datos"];
+    $datos =[];
     $usuario = getUsuarioByUsuario($nombre_usuario);
     array_push($datos, $usuario->get_nombre_usuario());
     array_push($datos, $usuario->get_nombre_apellidos());
@@ -26,11 +27,11 @@ function getDatosPerfil() {
 }
 
 function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
-    //Comprobamos que la contraseña actual introducida concuerda con la registrada en la bbdd
+
     if ($datos[sizeof($datos) - 1] == $pass) {
         if ($nueva_pass != NULL) {
             if ($nueva_pass == $conf_nueva_pass) {
-                //Filtrar y sanear las entradas
+                
                 $datos[sizeof($datos) - 1] = $nueva_pass;
                 salvarCambios($datos);
             }
@@ -43,7 +44,7 @@ function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
 }
 
 function salvarCambiosController_admin() {
-    //Comprobamos que la contraseña actual introducida concuerda con la registrada en la bbdd
+   
     $usuario = new Usuario();
     $usuario->setTipo($_POST['tipo']);
     $usuario->set_contrasenya_user($_POST['pass']);

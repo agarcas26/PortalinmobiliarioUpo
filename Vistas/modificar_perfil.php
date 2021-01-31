@@ -43,9 +43,6 @@
                     <?php
                     $datos = getDatosPerfil();
                     ?>
-                    <input hidden name="datos" value="<?php
-                    echo($datos);
-                    ?>">
                     <tr>
                         <td>
                             <label>Usuario: </label>
@@ -88,6 +85,6 @@
         </main>  
     </body>
     <?php
-    include_once '../Vistas/footer.html';
+    include_once 'footer.html';
     ?>
 </html>

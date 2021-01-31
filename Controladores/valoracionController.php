@@ -21,27 +21,24 @@ if (isset($_GET["id_inmueble"])) {
 
     if ($inmueble) {
         if (file_exists($inmueble->getFotos())) {
-            $img = $inmueble->getFotos();   //Conseguir fotos inmueble
+            $img = $inmueble->getFotos();  
         } else {
             $img = "../img/productDefaultImage.jpg";
         }
-//        Características inmuebles
-//        $caracteristicas = listarCaracteristicasProducto($idProducto);
+
 
         if ($usuario) {
             $valoracion_usuario = get_valoracion_usuario($usuario, $id_inmueble);
         }
         $media_valoraciones = get_valoraciones_inmueble($id_inmueble);
-//        $puntuacion = obtenerPuntuacionProducto($idProducto);
-//        $categorias = listarCategorias();
+
     } else {
         $error = "Este inmueble no está disponible temporalmente";
     }
 } else {
-    //header("Location: principal.php");
+  ;
 }
 
-//Método para enviar una nueva valoración de un producto
 if (isset($_GET["enviarValoracion"])) {
 
     if (isset($_SESSION['usuario_particular'])) {
@@ -57,17 +54,17 @@ if (isset($_GET["enviarValoracion"])) {
 
     set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
 
-    //header("location:producto.php?idProducto=$idProducto");
+   
 } else if (isset($_GET["editarValoracion"])) 
-{//Método que controla la actualización de la opinión de un cliente sobre un producto
+{
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
     $puntuacion_nueva = filter_var($_GET["puntuacion"], FILTER_SANITIZE_NUMBER_INT);
     $valoracion_nueva = trim(filter_var($_GET["valoracion"], FILTER_SANITIZE_STRING));
 
     set_valoracion($usuario, $id_inmueble, $puntuacion_nueva);
-    //header("location:anuncio.php?id_anuncio=$id_anuncio");
+  
 } else if (isset($_GET["eliminarValoracion"])) {
-//Eliminación de la valoración de un producto
+
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
     } else {
@@ -77,11 +74,9 @@ if (isset($_GET["enviarValoracion"])) {
     $id_inmueble = preg_split(" - ", $_GET["id_inmueble"]);
 
     eliminarValoracion($usuario, $id_inmueble);
-    //header("location:anuncio.php?id_anuncio=$id_anuncio");
+ 
 }
-/*
- * Esta función muestra la media de las valoraciones en formato de estrellas
- */
+
 
 function mostrarValorar($id_anuncio) {
     echo '<form action="../Controladores/ResenyasController.php" id="formValoracionInmueble" class="md-form mr-auto mb-4" method="POST">'

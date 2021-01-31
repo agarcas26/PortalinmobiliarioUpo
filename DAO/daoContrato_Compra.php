@@ -33,12 +33,10 @@ class dao_Contrato_Compra {
     
 
          function crear_contrato_compra($nombre_usuario, $id_contrato_compra, $id_compra, $fecha_contrato_senyal) {
-        //Creamos el alquiler
+    
         $sentence = "INSERT INTO `contrato_alquiler` (`nombre_usuario`, `id_contrato_compra`, `id_compra`, `fecha_contrato_senyal`) VALUES (".$nombre_usuario.",". $id_contrato_compra.",". $id_compra.",". $fecha_contrato_senyal.")";
         $result = mysqli_query($this->conexion, $sentence);
-        //Recuperamos el id del alquiler
-   
-        //Creamos el contrato_alquiler
+       
         
     }
 }

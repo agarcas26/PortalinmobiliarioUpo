@@ -31,15 +31,15 @@ class daoCompra {
     }
 
     function crear_compra($nombre_usuario, $id_anuncio, $señal) {
-        //Creamos la compra
+    
         $sentence = "INSERT INTO `compra`(`id_compra`, `id_anuncio`, `senyal`) VALUES (NULL,'$id_anuncio','$señal')";
         $result = mysqli_query($this->conexion, $sentence);
 
-        //Recuperamos el id de la compra
+       
         $sentence = "SELECT `id_compra` FROM `compra` WHERE `compra`.`id_anuncio`='$id_anuncio'";
         $result = mysqli_query($this->conexion, $sentence);
 
-        //Creamos el contrato_senyal_compra
+    
         $sentence = "INSERT INTO `contrato_senyal_compra`(`id_contrato_compra`, `nombre_usuario`, `id_compra`, `fecha_contrato_senyal`) "
                 . "VALUES (NULL,'$nombre_usuario','" . mysqli_fetch_row($result)[0] . "',CURRENT_DATE)";
         $result = mysqli_query($this->conexion, $sentence);

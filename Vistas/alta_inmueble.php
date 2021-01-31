@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
             <script src="../scripts.js"></script>
 
         </head>
-       
+
         <body>
             <header class="masthead text-white text-center">
                 <?php sesion_iniciada(); ?>
@@ -31,7 +31,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                         <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
                         <form  enctype="multipart/form-data" action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                             <table id="alta_inm" class="display table-bordered" style="overflow-x:auto;">
-                               
+
                                 <tr>
                                     <td><label>Numero</label></td>
                                     <td><label><input type="number" name="txtNumero" /></label></td>
@@ -56,22 +56,34 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtNombre_via"])) { ?>
                                     <tr>
-                                    <td><?php echo $_SESSION["errores"]["txtNombre_via"]; ?></td> 
+                                        <td><?php echo $_SESSION["errores"]["txtNombre_via"]; ?></td> 
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td><label> Tipo de via</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="calle" <?php if (isset($txtTipo_via) && $txtTipo_via=="calle") echo "checked";?> value="calle"></td>
+                                    <td><input type="radio" name="txtTipo_via" id="calle" <?php
+                                        if (isset($txtTipo_via) && $txtTipo_via == "calle") {
+                                            echo "checked";
+                                        }
+                                        ?> value="calle"></td>
                                     <td><label for="calle">Calle</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="avenida" <?php if (isset($txtTipo_via) && $txtTipo_via=="avenida")echo "checked";?> value="avenida"></td>
+                                    <td><input type="radio" name="txtTipo_via" id="avenida" <?php
+                                        if (isset($txtTipo_via) && $txtTipo_via == "avenida") {
+                                            echo "checked";
+                                        }
+                                        ?> value="avenida"></td>
                                     <td><label for="avenida">Avenida</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtTipo_via" id="carretera" <?php if (isset($txtTipo_via) && $txtTipo_via=="carretera")echo "checked";?>value="carretera"></td>
+                                    <td><input type="radio" name="txtTipo_via" id="carretera" <?php
+                                        if (isset($txtTipo_via) && $txtTipo_via == "carretera") {
+                                            echo "checked";
+                                        }
+                                        ?>value="carretera"></td>
                                     <td><label for="carretera">Carretera</label> </td>
                                 </tr>
 
@@ -115,11 +127,19 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                     <td><label>Cocina amueblada</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtCocina" id="si"  <?php if (isset($txtCocina) && $txtCocina=="si") echo "checked";?> value="si" ></td>
+                                    <td><input type="radio" name="txtCocina" id="si"  <?php
+                                        if (isset($txtCocina) && $txtCocina == "si") {
+                                            echo "checked";
+                                        }
+                                        ?> value="si" ></td>
                                     <td><label for="si">Si</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="txtCocina" id="no"  <?php if (isset($txtCocina) && $txtCocina=="no") echo "checked";?> value="no"></td>
+                                    <td><input type="radio" name="txtCocina" id="no"  <?php
+                                        if (isset($txtCocina) && $txtCocina == "no") {
+                                            echo "checked";
+                                        }
+                                        ?> value="no"></td>
                                     <td><label for="no">No</label> </td>
                                 </tr>
                                 <tr>
@@ -176,9 +196,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                         </form>
                     </section>
                 </article>
-                <?php if (isset($NoInsertado)) { ?>
-                    <span><?php echo $NoInsertado; ?></span>
-                <?php } ?>
+
                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false) { ?>
                     <section>
                         <h2>Error en el formulario:</h2>
@@ -187,7 +205,6 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                         </article>
                     </section>
                     <?php
-                   
                 }
                 ?>
             </main>

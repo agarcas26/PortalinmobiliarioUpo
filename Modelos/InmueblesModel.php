@@ -6,11 +6,7 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of inmueble
- *
- * @author agarc
- */
+
 class Inmueble {
 
     private $numero;

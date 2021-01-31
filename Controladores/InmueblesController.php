@@ -1,15 +1,12 @@
 <?php
-
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
-
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 $_SESSION["validacion"] = true;
-//como es correcto eliminamos todos los errores
 $_SESSION["errores"] = " ";
 $_SESSION["cancelado"] = false;
 
@@ -54,11 +51,11 @@ if (isset($_POST["btonInsertar"])) {
     }
     if (empty($_POST["txtPlanta"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
+        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
     }
     if (empty($_POST["txtMetros"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
+        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
     if (empty($_POST["tipo_inmueble"])) {
         $_SESSION["validacion"] = false;
@@ -66,7 +63,7 @@ if (isset($_POST["btonInsertar"])) {
     }
     if (empty($_FILES["fileFotos"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
+        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
     $inmueble1 = new Inmueble();
     $inmueble1->setNumero($_POST["txtNumero"]);
@@ -150,11 +147,11 @@ if (isset($_POST["btonModificar"])) {
     }
     if (empty($_POST["txtPlanta"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
+        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
     }
     if (empty($_POST["txtMetros"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
+        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
     if (empty($_POST["tipo_inmueble"])) {
         $_SESSION["validacion"] = false;
@@ -162,7 +159,7 @@ if (isset($_POST["btonModificar"])) {
     }
     if (empty($_FILES["fileFotos"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
+        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
     $inmueble2 = new Inmueble();
     $inmueble2->setNumero($_POST["txtNumero"]);
@@ -219,7 +216,7 @@ function select_inmuebles_usuario() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    //Listar  inmuebles by usuario
+    
     if (sizeof($inmuebles_usuario) > 0) {
         echo '<select id="inmuebles_usuario" name="inmuebles_usuario" aria-invalid="false">';
         for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
@@ -405,7 +402,7 @@ function listar_inmuebles_usuario() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    //Listar  inmuebles by usuario
+
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         echo '<table id="datos_visa" class="display table-bordered" style="width:100%">';
@@ -431,7 +428,7 @@ function listar_inmuebles_usuarioAll() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    //Listar  inmuebles by usuario
+    
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();

@@ -82,13 +82,13 @@ and open the template in the editor.
             </aside>
             <article>
                 <section>
-                    <label>Mostrando <!-- Insertar numero de resultados --> resultados</label>
+                    <label>Mostrando  resultados</label>
                     <select class="form-control" id="ordenar_por">
                         <option value="fecha">Los más actualizados</option>
                         <option value="valoracion">Mejor valorados</option>
                         <option value="baratos">Más baratos primero</option>
                     </select>
-                    <!-- OPCION LISTA / CUADRICULA -->
+                    
                     <form style="float: right;" action="../Vistas/busqueda.php" method="POST">
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name="lista" value="Lista" />
@@ -99,7 +99,7 @@ and open the template in the editor.
                 <section id="filtros">
                     <input class="form-control"  type="text" id="barra_buscador" class="" name="barra_buscador" value="" maxlength="100" /></br>
                 </section>
-                <!-- ANUNCIOS -->
+                
                 <table class="display table-bordered" style="width:100%">
                     <?php
                     include_once '../Controladores/busquedaController.php';
@@ -111,6 +111,6 @@ and open the template in the editor.
         ?>
     </body>
     <?php
-    include_once '../Vistas/footer.html';
+    include_once 'footer.html';
     ?>
 </html>

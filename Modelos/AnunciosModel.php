@@ -13,7 +13,7 @@
  */
 class Anuncio {
 
-    //put your code here
+   
 
     private $id_anuncio;
     private $titulo;

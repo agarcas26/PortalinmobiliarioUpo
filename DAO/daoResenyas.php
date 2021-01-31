@@ -102,7 +102,7 @@ class daoResenyas {
     function read_by_user($nombre_usuario_duenyos) {
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` WHERE u.`nombre_usuario_duenyos` = '" . $id_resenya . "'";
-        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+     
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
@@ -125,7 +125,7 @@ class daoResenyas {
         $sql = "SELECT * FROM `resenya` r WHERE r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
         $objMySqlLi = $this->conexion->query($sql);
         $arrayAux = [];
-        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+     
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
@@ -148,7 +148,7 @@ class daoResenyas {
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` r WHERE r.`nombre_usuario`='$nombre_usuario' r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
         $arrayAux = [];
-        //seleccioname de la tabla reseña y la tabla usuario, las reseñas del usuario cuyo id usuario e id reseña coinciden
+     
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while (mysqli_fetch_assoc($objMySqlLi)) {

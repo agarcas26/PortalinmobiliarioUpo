@@ -123,7 +123,7 @@ function getFiltros() {
 function mostrarVistaLista($anuncios) {
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
-        echo '<td>' . '</td>';    //Insertar imágenes
+        echo '<td>' . '</td>';    
         echo '<td>' . $anuncios[$i]->getTipo_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getNombre_via() . '</td>';
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
@@ -141,7 +141,7 @@ function mostrarVistaLista($anuncios) {
 function mostrarVistaCuadricula($anuncios) {
     for ($i = 0; $i < sizeof($anuncios); $i++) {
         echo '<tr>';
-        echo '<td>' . '</td>';    //Insertar imágenes
+        echo '<td>' . '</td>';    
         echo '<td>' . $anuncios[$i]->getPrecio() . '</td>';
         echo '<td>'
         . '<a href="../Vistas/detalle_anuncio.php?id_anuncio='
@@ -160,7 +160,7 @@ function get_ultimas_busquedas() {
     if (mysqli_num_rows($ultimas_busquedas) > 0) {
         while ($fila_busqueda = mysqli_fetch_array($ultimas_busquedas)) {
             echo '<tr>';
-            echo '<td class="td"></td>';       //imagenes
+            echo '<td class="td"></td>';      
             echo '</tr>';
             echo '<tr>';
             echo '<td class="td">' . $fila_busqueda[8] . ' m2      </td>';
@@ -189,7 +189,7 @@ function get_ultimas_busquedas_usuario() {
         $i = 0;
         while ($fila = mysqli_fetch_array($ultimas_busquedas) and $i < 3) {
             echo '<tr>';
-            echo '<td class="td"></td>';       //imagenes
+            echo '<td class="td"></td>';     
             echo '</tr>';
             echo '<tr>';
             echo '<td class="td">' . $fila[8] . ' m2      </td>';

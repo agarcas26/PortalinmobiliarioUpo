@@ -6,7 +6,7 @@ class Usuario {
     private $nombre_apellidos;
     private $contrasenya_user;
     private $moroso = false;
-    private $tipo; //Se refiere a particular o profesional
+    private $tipo;
 
     function getTipo() {
         return $this->tipo;

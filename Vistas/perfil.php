@@ -27,15 +27,7 @@
                 }
                 ?>
             </header>
-            <aside>
-                <?php
-//                if (isset($_SESSION['usuario_particular'])) {
-//                    aside_sesion_iniciada();
-//                } else {
-//                    aside_sesion_no_iniciada();
-//                }
-                ?>
-            </aside>
+
             <main>
                 <article>
                     <section>
@@ -58,7 +50,7 @@
                             </form>
                         </table>
                     </section>
-                    <!-- Mostramos vista previa alertas -->
+                   
                     <h4>Mis alertas</h4>
                     <section>
                         <table class="display table-bordered" style="width:100%">
@@ -73,7 +65,7 @@
                         </table>
                     </section>
                     <h4>Mis anuncios</h4>
-                    <!-- Mostramos vista previa anuncios -->
+                    
                     <section>
                         <table class="display table-bordered" style="width:100%">
                             <?php
@@ -87,7 +79,7 @@
                         </table>
                     </section>
                     <h4>Mis Inmuebles</h4>
-                    <!-- Mostramos vista previa inmuebles -->
+                  
                     <section>
                         <table class="display table-bordered" style="width:100%">
                             <?php
@@ -104,7 +96,7 @@
             </main>
         </body>
         <?php
-        include_once '../Vistas/footer.html';
+        include_once 'footer.html';
         ?>
         <?php
     } else {
