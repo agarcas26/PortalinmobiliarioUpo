@@ -3,6 +3,10 @@
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if (isset($_POST['guardar'])) {
     $datos= getDatosPerfil();
     if (isset($_SESSION['admin'])) {
