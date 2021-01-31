@@ -32,8 +32,8 @@ class daoResenyas {
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
-
+        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp','$nombre_via',$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
+        print_r($sql);
         if (!$this->conexion->query($sql)) {
             $salida = false;
         }
