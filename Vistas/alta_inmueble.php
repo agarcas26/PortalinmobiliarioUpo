@@ -124,14 +124,14 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 </tr>
                                 <tr>
                                     <td><label>Tipo de inmueble</label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="alquiler" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="alquiler")  echo "checked";?> value="alquiler"></td>
-                                    <td><label for="alquiler">Alquiler</label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="radio" name="txtTipo_Inmueble" id="compra" <?php if (isset($txtTipo_Inmueble) && $txtTipo_Inmueble=="compra") echo "checked";?> value="compra"></td>
-                                    <td><label for="compra">Compra</label></td>
+                                    <td>
+                                        <select id="tipo_inmueble" name="tipo_inmueble">
+                                            <option value="piso">Piso</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="duplex">Dúplex</option>
+                                            <option value="chalet">Chalet</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label>Numero de plantas</label></td>
@@ -162,7 +162,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 <?php } ?>
                                 <tr>
                                     <td><label>Suba imágenes del inmueble:</label></td>
-                                    <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
+                                    <td><input type="file" name="fileFotos[]" accept="image/png, image/jpeg" ></td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>
