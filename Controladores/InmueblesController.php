@@ -505,12 +505,10 @@ function getInmuebleByAnuncio($anuncio) {
 }
 
 if (isset($_POST['btonEliminar'])) {
-
-    $inmueble1 = new Inmueble();
     $traer= new daoInmuebles();
-    $datos = $traer->read($_POST['direccion']);
+    $datos = $traer->get_inmueble_by_direccion($_POST['direccion'][1],$_POST['direccion'][2],$_POST['direccion'][3],$_POST['direccion'][4]);
     $daoInmueble = new daoInmuebles();
-    $deleteOk = $daoInmueble->eliminar($inmueble1);
+    $deleteOk = $daoInmueble->eliminar($datos);
     $daoInmueble->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
