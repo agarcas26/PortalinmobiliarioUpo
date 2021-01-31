@@ -11,7 +11,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 
 if (isset($_POST['entrar'])) {
     if (controllerInicioSesion($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
-        //LA SESION DEBE SER PARTICULAR O PROFESIONAL
+        
         $usuario = getUsuarioByUsuario($_POST['nombre_usuario']);
 
         if ($usuario->getTipo() == "profesional") {

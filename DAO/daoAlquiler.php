@@ -31,13 +31,11 @@ class daoAlquiler {
     }
 
     function crear_alquileres($nombre_usuario, $id_anuncio) {
-        //Creamos el alquiler
+
         $sentence = "INSERT INTO `alquiler`(`id_alquiler`, `id_anuncio`) VALUES (NULL,'$id_anuncio')";
         $result = mysqli_query($this->conexion, $sentence);
 
-        //Recuperamos el id del alquiler
-   
-        //Creamos el contrato_alquiler
+      
         
     }
 }

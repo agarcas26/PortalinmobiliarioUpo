@@ -8,9 +8,9 @@ include_once '../Controladores/InmueblesController.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-//damos por correcto el formulario
+
 $_SESSION["validacion"] = true;
-//como es correcto eliminamos todos los errores
+
 $_SESSION["errores"] = "";
 $_SESSION["cancelado"] = false;
 
@@ -110,9 +110,9 @@ function escribirResenyas() {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
         if ($_SESSION["validacion"]) {
-            header('Location:../Vistas/Inmuebles.php'); //sin errores
+            header('Location:../Vistas/Inmuebles.php'); 
         } else {
-            header('Location:../Vistas/Inmuebles.php'); //con errores
+            header('Location:../Vistas/Inmuebles.php'); 
         }
     }
 }
@@ -143,9 +143,9 @@ function eliminarResenyas() {
         }
     }
     if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/Inmuebles.php'); //sin errores
+        header('Location: ../Vistas/Inmuebles.php'); 
     } else {
-        header('Location: ../Vistas/Inmuebles.php'); //con errores
+        header('Location: ../Vistas/Inmuebles.php'); 
     }
 }
 
@@ -178,7 +178,7 @@ function modificarResenya() {
             $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
         }
         if ($_SESSION["validacion"] || $_SESSION["cancelado"]) {
-            header('Location: ../Vistas/Inmuebles.php'); //modificacion cancelada vuelve al formulario 
+            header('Location: ../Vistas/Inmuebles.php'); 
         } else {
             header('Location: ../Vistas/Inmuebles.php');
         }

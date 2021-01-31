@@ -26,11 +26,11 @@ function getDatosPerfil() {
 }
 
 function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
-    //Comprobamos que la contraseña actual introducida concuerda con la registrada en la bbdd
+
     if ($datos[sizeof($datos) - 1] == $pass) {
         if ($nueva_pass != NULL) {
             if ($nueva_pass == $conf_nueva_pass) {
-                //Filtrar y sanear las entradas
+                
                 $datos[sizeof($datos) - 1] = $nueva_pass;
                 salvarCambios($datos);
             }
@@ -43,7 +43,7 @@ function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
 }
 
 function salvarCambiosController_admin() {
-    //Comprobamos que la contraseña actual introducida concuerda con la registrada en la bbdd
+   
     $usuario = new Usuario();
     $usuario->setTipo($_POST['tipo']);
     $usuario->set_contrasenya_user($_POST['pass']);

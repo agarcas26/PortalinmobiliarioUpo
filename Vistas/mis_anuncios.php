@@ -20,9 +20,7 @@
                 <?php sesion_iniciada(); ?>
             </header>
             <main>
-                <aside>
-                    <?php //aside_sesion_iniciada(); ?>
-                </aside>
+            
                 <article>
                     <section>
                         <h4>Mis anuncios</h4>
@@ -34,7 +32,7 @@
             </main>
         </body>
         <?php
-        include_once '../Vistas/footer.html';
+        include_once 'footer.html';
         ?>
         <?php
     } else {

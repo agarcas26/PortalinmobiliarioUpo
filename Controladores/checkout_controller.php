@@ -9,18 +9,13 @@ require_once '../Dao/daoContrato_Compra.php';
 require_once '../Modelos/AnunciosModel.php';
 require_once '../Modelos/AlquilerModel.php';
 require_once '../Modelos/CompraModel.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 if (isset($_POST["payment_status"]))
     if ($_POST["payment_status"] != "VERIFIED") {
         header("Location: ../Vistas/busqueda.php");
     } else {
         $validate = true;
     }
-    
 if (isset($_POST["guardar"])) {
     if ($_POST["guardar"] != "Confirmar pago") {
         header("Location: ../Vistas/busqueda.php");
