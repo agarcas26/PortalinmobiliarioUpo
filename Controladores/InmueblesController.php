@@ -85,7 +85,7 @@ if (isset($_POST["btonInsertar"])) {
     $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
     mkdir($ruta);
     $file = fopen($ruta, "w");
-    chmod($ruta, 0755);
+    chmod($ruta, 0600);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
             echo 'aaa';
