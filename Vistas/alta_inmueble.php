@@ -162,7 +162,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 <?php } ?>
                                 <tr>
                                     <td><label>Suba imágenes del inmueble:</label></td>
-                                    <td><input type="file" name="fileFotos" accept="image/png, image/jpeg" ></td>
+                                    <td><input type="file" name="fileFotos[]" accept="image/png, image/jpeg" ></td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>

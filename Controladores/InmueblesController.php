@@ -85,19 +85,18 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
-        $ruta ="../img/Inmueble/ . $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i]";
-        $inmueble1->setFotos($_FILE["fileFotos"]);
-        if(!file_exists($ruta)){
-            mkdir($ruta,0777,true);
-            if(file_exists($ruta)){
-                if(move_uploaded_file($guardado, $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i])){
-                    echo "guardado";
-                }else{
-                    echo "no guardado";
-                }
+        $ruta = '../img/Inmueble/' . $direccion;
+
+        $file = fopen($ruta, "w");
+        if (sizeof($_FILES['fileFotos']['name']) > 0) {
+            for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
+                $inmueble1->setFotos($_FILE["fileFotos"]['name'][$i]);
+                fwrite($file, $_FILES['fileFotos']['name'][$i]);
             }
-            var_dump($ruta);
         }
+        fwrite($file, PHP_EOL);
+        fclose($file);
+
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } else {
@@ -286,7 +285,7 @@ function getInmuebleByDireccion($direccion) {
         echo '<tr><td>' . ' - Planta : ' . $aux[$i]->getPlanta() . " " . '</td></tr>';
         echo '<tr><td>' . ' - Metros cuadrados : ' . $aux[$i]->getMetros() . " " . '</td></tr>';
         $fotos = preg_split("/;/", $aux[$i]->getFotos());
-        
+
         for ($i = 0; $i < sizeof($fotos); $i++) {
             echo '<tr><td> - Fotos : <img id="foto_inmueble" src="../img/Inmueble/' . $direccion . '/' . $fotos[$i] . '" alt="' . $fotos[$i] . '"/></td></tr>';
         }
@@ -505,23 +504,23 @@ function getInmuebleByAnuncio($anuncio) {
 }
 
 if (isset($_POST['btonEliminar'])) {
-    $traer= new daoInmuebles();
-    
+    $traer = new daoInmuebles();
+
     $direccion_array = preg_split("/-/", $_POST["direccion"]);
 
     $numero = $direccion_array[0];
     $cp = $direccion_array[1];
     $nombre_via = $direccion_array[2];
     $tipo_via = $direccion_array[3];
-    
-    $datos = $traer->get_inmueble_by_direccion($numero,$cp,$nombre_via,$tipo_via);
+
+    $datos = $traer->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($datos[0]);
     $daoInmueble->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
         header('Location: ../Vistas/inmueble.php');
-    }else{
+    } else {
         header('Location: ../Vistas/inmueble.php');
     }
 }
