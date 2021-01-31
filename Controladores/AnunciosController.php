@@ -11,11 +11,10 @@ include_once '../DAO/daoInmuebles.php';
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
-//FALTA INSERTAR ANUNCIOS
-//funcion eliminar anuncios
+
 $_SESSION["errores"] = "";
 $_SESSION["validacion"] = true;
-//como es correcto eliminamos todos los errores
+
 
 $_SESSION["cancelado"] = false;
 
@@ -52,7 +51,7 @@ function mostrar_detalle_anuncio($id_anuncio) {
     while ($fila = mysqli_fetch_array($array_anuncios)) {
         if ($id_anuncio == $fila[0]) {
             echo '<tr>'
-            . '<td></td>' //FOTOS
+            . '<td></td>' 
             . '</tr>'
             . '<tr>'
             . '<td><h3>Titulo:' . $fila[9] . '</h3></td>'
@@ -136,11 +135,10 @@ function deleteAnuncio($idanuncio) {
     if ($_SESSION["errores"]) {
         header('Location:../Vistas/perfil.php ');
     } else {
-        header('Location:../Vistas/perfil.php '); //muestra el mensaje de error de eliminacion
+        header('Location:../Vistas/perfil.php '); 
     }
 }
 
-//funcion modificar anuncios
 function modifyAnuncio() {
     if ($_POST["btonmodificar"]) {
         if (empty($_POST["txtPrecio"])) {
@@ -175,12 +173,12 @@ function modifyAnuncio() {
 
             header('Location: ../Vistas/perfil.php');
         } else {
-            header('Location: ../Vistas/perfil.php'); //mensajes de errores
+            header('Location: ../Vistas/perfil.php'); 
         }
     }
 }
 
-//funcion consultar anuncios 
+
 function readAnuncio($idAnuncio) {
     $daoAnuncio = new daoAnuncios();
     $anuncio = $daoAnuncio->read($idAnuncio);
@@ -188,7 +186,7 @@ function readAnuncio($idAnuncio) {
     return $anuncio;
 }
 
-//funcion listar anuncios
+
 function listAllAnuncios() {
     $daoAnuncios = new daoAnuncios();
     $anuncios = $daoAnuncios->listar();
