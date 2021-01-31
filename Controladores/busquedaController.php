@@ -264,13 +264,13 @@ function toggle_alerta($id_anuncio) {
     $busqueda = $dao->listar_busquedas_usuario($usuario);
     $filtro= get_filtros_by_id($id_anuncio);
     while ($fila = mysqli_fetch_array($busqueda)) {
-        if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[3]<$filtro[2] && $fila[7]==$filtro[3]
+        if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[6]<($filtro[2]+100) && $fila[7]==$filtro[3]
                  && $fila[8]==$filtro[4]){
-            if (hayAlerta($id_anuncio)) {
-                $fila[3] = false;
-            } else {
-                $fila[3] = true;
-            }
+            eliminarAlerta();
+        }
+        else{
+            
+            crearAlerta();
         }
     }
 
