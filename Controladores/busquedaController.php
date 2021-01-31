@@ -242,7 +242,7 @@ function get_filtros_by_id($id_anuncio) {
     $direccion .= $anuncio->getCp()." ";
     $direccion .= $anuncio->getNombre_via()." ";
     $direccion .= $anuncio->getTipo_via()." ";
-    $inmueble = getInmuebleByDireccion($direccion);
+    $inmueble = getInmuebleByDireccionnoprint($direccion);
     $filtros[]=$inmueble->getNum_banyos();
     $filtros[]=$inmueble->getTipo_inmueble();
     $filtros[]=$anuncio->getPrecio();
