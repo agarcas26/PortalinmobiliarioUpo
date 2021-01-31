@@ -32,7 +32,7 @@ if(isset($_POST["enviarValoracion"])){
     
     set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion);
     
-    //header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
+    header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
 }
 
 function resenyas_anuncio($id_anuncio) {
