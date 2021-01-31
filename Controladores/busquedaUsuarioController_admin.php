@@ -52,10 +52,10 @@ if (isset($_POST['guardar'])) {
 
     $usuario->setTipo($_POST['tipo']);
     $nuevos_datos = [];
-    array_push($_POST['nombre_apellidos']);
-    array_push($_POST['nombre_usuario']);
-    array_push($_POST['contrasenya']);
-    array_push($_POST['moroso']);
+    array_push($nuevos_datos,$_POST['nombre_apellidos']);
+    array_push($nuevos_datos,$_POST['nombre_usuario']);
+    array_push($nuevos_datos,$_POST['contrasenya']);
+    array_push($nuevos_datos,$_POST['moroso']);
     $daoUsuario = new daoUsuarios();
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();
