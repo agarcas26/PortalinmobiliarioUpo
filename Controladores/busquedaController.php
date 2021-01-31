@@ -238,10 +238,10 @@ function get_filtros_by_id($id_anuncio) {
     $direccion = "";
     $daoanuncio = new daoAnuncios();
     $anuncio = $daoanuncio->read($id_anuncio);
-    $direccion .= $anuncio->getNumero()." ";
-    $direccion .= $anuncio->getCp()." ";
-    $direccion .= $anuncio->getNombre_via()." ";
-    $direccion .= $anuncio->getTipo_via()." ";
+    $direccion .= $anuncio->getNumero()."-";
+    $direccion .= $anuncio->getCp()."-";
+    $direccion .= $anuncio->getNombre_via()."-";
+    $direccion .= $anuncio->getTipo_via();
     $inmueble = getInmuebleByDireccionnoprint($direccion);
     $filtros[]=$inmueble->getNum_banyos();
     $filtros[]=$inmueble->getTipo_inmueble();
