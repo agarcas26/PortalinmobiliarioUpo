@@ -55,6 +55,18 @@ if (isset($_GET["id_busqueda"])) {
     header("Location: ../Vistas/mis_alertas.php");
 }
 
+if (isset($_POST["campana"])) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
+
+    toggle_alerta($_GET["id_anuncio"]);
+
+    unset($_POST["campana"]);
+}
+
 function getFiltros() {
     $filtros = [];
     if (isset($_GET["num_banyos"])) {
