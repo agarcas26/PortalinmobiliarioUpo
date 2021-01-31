@@ -59,12 +59,9 @@ if (isset($_POST['guardar'])) {
     $daoUsuario->modificar_usuario($usuario);
     $daoUsuario->destruct();
 
-    print_r($_SESSION);
-    print_r($_POST);
-
     unset($_SESSION['searchuser']);
     unset($_POST['guardar']);
-    //header("Location: ../Vistas/busqueda_usuario_admin.php");
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 function listar_usuarios() {
