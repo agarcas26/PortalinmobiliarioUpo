@@ -64,7 +64,7 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
-    if (empty($_FILE["fileFotos"])) {
+    if (empty($_POST["fileFotos"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
@@ -85,6 +85,7 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setPlanta($_POST["txtPlanta"]);
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+         $inmueble1->setFotos($_POST["fileFotos"]);
 //        $ruta ="../img/Inmueble/ . $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i]";
 //        $inmueble1->setFotos($_FILE["fileFotos"]);
 //        if(!file_exists($ruta)){
