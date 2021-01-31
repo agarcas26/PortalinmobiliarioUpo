@@ -80,14 +80,3 @@ main{
 #form_corazon{
     float: right;
 }
-#formValoracionInmueble{
-    margin: 0;
-}
-
-.favorito, .alerta{
-    float: left;
-}
-
-#alerta_favorito{
-    display: inline-flex;
-}
