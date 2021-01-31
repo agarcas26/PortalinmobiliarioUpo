@@ -86,11 +86,10 @@ if (isset($_POST["btonInsertar"])) {
 
     mkdir($ruta);
     $file = opendir($ruta);
-    chmod($file,777);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            print_r(move_uploaded_file($_FILES['fileFotos']['tmp_name'][$i], $file));
+            move_uploaded_file($_FILES['fileFotos']['tmp_name'][$i], $ruta . "/" . $_FILES['fileFotos']['name'][$i]);
         }
     }
     closedir($file);
@@ -106,7 +105,7 @@ if (isset($_POST["btonInsertar"])) {
 
     $insertOk = $daoInmueble->insertar($inmueble1);
 
-    //header('Location: ../Vistas/inmueble.php');
+    header('Location: ../Vistas/inmueble.php');
 }
 if (isset($_POST["btonModificar"])) {
     if (empty($_POST["txtNumero"])) {
