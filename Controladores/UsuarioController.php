@@ -7,10 +7,10 @@ include_once '../Modelos/UsuarioModel.php';
 
 function getUsuarioByUsuario($nombre_usuario) {
     $dao = new daoUsuarios();
-    $usuario_datos = $dao->get_usuario_by_nombre_usuario($nombre_usuario);
+    $aux = $dao->get_usuario_by_nombre_usuario($nombre_usuario);
     $daoProfesional = new daoProfesional();
-    $usuario_datos = mysqli_fetch_row($usuario_datos);
-    if (isset($usuario_datos[3])) {
+    if (mysqli_num_rows($aux) > 0) {
+        $usuario_datos = mysqli_fetch_row($aux);
         $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
         if ($daoProfesional->get_usuario_by_nombre_usuario($nombre_usuario) > 0) {
             $usuario->setTipo("profesional");
@@ -22,7 +22,6 @@ function getUsuarioByUsuario($nombre_usuario) {
     }
     $dao->destruct();
     $daoProfesional->destruct();
-
     return $usuario;
 }
 
@@ -48,7 +47,5 @@ function actualizarDatosUsuario($datos) {
     if (preg_match($pattern, $datos[0]) && preg_match($pattern, $datos[1])) {
         filter_var($datos[0], FILTER_SANITIZE_STRING);
         filter_var($datos[1], FILTER_SANITIZE_STRING);
-
-       
     }
 }
