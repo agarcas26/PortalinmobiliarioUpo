@@ -3,12 +3,16 @@
 include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if (isset($_POST['guardar'])) {
-    $datos= getDatosPerfil();
+    $datos = getDatosPerfil();
     if (isset($_SESSION['admin'])) {
         salvarCambiosController_admin();
-    }else{        
-    salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
+    } else {
+        salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
     }
     header("Location: ../Vistas/perfil.php");
 }
@@ -19,7 +23,7 @@ function getDatosPerfil() {
     } else {
         $nombre_usuario = $_SESSION['usuario_profesional'];
     }
-    $datos =[];
+    $datos = [];
     $usuario = getUsuarioByUsuario($nombre_usuario);
     array_push($datos, $usuario->get_nombre_usuario());
     array_push($datos, $usuario->get_nombre_apellidos());
@@ -32,7 +36,7 @@ function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
     if ($datos[sizeof($datos) - 1] == $pass) {
         if ($nueva_pass != NULL) {
             if ($nueva_pass == $conf_nueva_pass) {
-                
+
                 $datos[sizeof($datos) - 1] = $nueva_pass;
                 salvarCambios($datos);
             }
@@ -45,16 +49,16 @@ function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
 }
 
 function salvarCambiosController_admin() {
-   
+
     $usuario = new Usuario();
     $usuario->setTipo($_POST['tipo']);
     $usuario->set_contrasenya_user($_POST['pass']);
     $usuario->set_moroso($_POST['moroso']);
     $usuario->set_nombre_usuario($_GET['nombre_usuario']);
-    
+
     $dao = new daoUsuarios();
     $dao->modificar_usuario($usuario);
     $dao->destruct();
-    
+
     header("Location: ../Vistas/busqueda_usuario_admin.php");
 }

@@ -32,7 +32,7 @@ if(isset($_POST["enviarValoracion"])){
     
     set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion);
     
-    //header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
+    header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
 }
 
 function resenyas_anuncio($id_anuncio) {
@@ -95,14 +95,14 @@ function get_valoraciones_inmueble($direccion_inmueble) {
 function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion) {
     $objResenyas = new Resenya();
     $dao = new daoResenyas();
-    $objResenyas->setCp($direccion_inmueble[0]);
+    $objResenyas->setCp($direccion_inmueble[1]);
     $objResenyas->setDescripcion($descripcion);
     $objResenyas->setFecha_resenya("CURRENT_DATE");
     $objResenyas->setId_resenya(null);
     $objResenyas->setNombre_usuario($nombre_usuario);
-    $objResenyas->setNombre_via($direccion_inmueble[1]);
-    $objResenyas->setNumero($direccion_inmueble[3]);
-    $objResenyas->setTipo_via($direccion_inmueble[2]);
+    $objResenyas->setNombre_via($direccion_inmueble[2]);
+    $objResenyas->setNumero($direccion_inmueble[0]);
+    $objResenyas->setTipo_via($direccion_inmueble[3]);
     $objResenyas->setValoracion($puntuacion);
     $dao->escribirResenyas($objResenyas);
     $dao->destruct();
