@@ -4,9 +4,10 @@ include_once '../Controladores/UsuarioController.php';
 include_once '../Modelos/UsuarioModel.php';
 
 if (isset($_POST['guardar'])) {
-    salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
     if (isset($_SESSION['admin'])) {
         salvarCambiosController_admin();
+    }else{        
+    salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
     }
 }
 

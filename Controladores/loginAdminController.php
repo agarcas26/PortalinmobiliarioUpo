@@ -11,7 +11,6 @@ if (!isset($_SESSION)) {
 if (isset($_POST['entrar'])) {
     if (controllerInicioSesionAdmin($_POST['nombre_usuario'], $_POST['contrasenya']) == true) {
         $_SESSION['admin'] = $_POST['nombre_usuario'];
-        print_r($_SESSION['admin']);
         header("Location: ../Vistas/index.php");
     } else {
         header("Location: ../Vistas/login_admin.php");
