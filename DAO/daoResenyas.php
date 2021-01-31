@@ -26,7 +26,7 @@ class daoResenyas {
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
         $nombre_via = '"' . $objResenyas->getNombre_via() . '"';
-        $tipo_via = '"' . $objResenyas->getTipo_via() . '"';
+        $tipo_via = ' "' . $objResenyas->getTipo_via() . '" ';
         $numero = $objResenyas->getNumero();
         $descripcion = '"' . $objResenyas->getDescripcion() . '"';
         $fecha_resenya = $objResenyas->getFecha_resenya();
