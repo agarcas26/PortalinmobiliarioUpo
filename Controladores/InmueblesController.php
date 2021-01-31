@@ -83,6 +83,8 @@ if (isset($_POST["btonInsertar"])) {
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
     $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
+    
+    chmod("../img/Inmueble/", 0755);
     mkdir($ruta);
     $file = fopen($ruta, "w");
     chmod($ruta, 0755);
