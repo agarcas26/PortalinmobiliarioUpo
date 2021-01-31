@@ -58,6 +58,7 @@ if (isset($_POST['guardar'])) {
 
     unset($_SESSION['searchuser']);
     unset($_POST['guardar']);
+    header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 function listar_usuarios() {
