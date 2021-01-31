@@ -58,7 +58,7 @@
                             ?>
                             <td>
                                 <label>Contraseña: </label>
-                                <input type="password" name="contrasenya" value="<?php echo $datos[2]; ?>">
+                                <input type="password" name="contrasenya" id="contrasenya" value="<?php echo $datos[2]; ?>">
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                         <?php } ?>
