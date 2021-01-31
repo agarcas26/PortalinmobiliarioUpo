@@ -32,7 +32,7 @@
             <form action="../Controladores/logoutController.php">
                 <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="" />Cerrar sesión</button>
             </form>
-            <form action="../Vistas/modificar_usuario_admin.php" method="POST">
+            <form action="../Controladores/PerfilController.php" method="POST">
                 <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <h1>Datos del perfil</h1>
                     <?php
