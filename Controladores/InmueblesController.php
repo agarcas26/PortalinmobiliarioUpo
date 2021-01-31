@@ -86,10 +86,11 @@ if (isset($_POST["btonInsertar"])) {
 
     mkdir($ruta);
     $file = opendir($ruta);
+    chmod($file,0777);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            move_uploaded_file($_FILES['fileFotos']['tmpname'][$i], $_FILES['fileFotos']['name'][$i], $file);
+            move_uploaded_file($_FILES['fileFotos']['tmp_name'][$i], $file);
         }
     }
     closedir($file);
