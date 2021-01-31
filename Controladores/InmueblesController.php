@@ -60,9 +60,9 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["txtTipo_Inmueble"])) {
+    if (empty($_POST["tipo_Inmueble"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
+        $_SESSION["errores"]["tipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
     if (empty($_FILE["fileFotos"])) {
         $_SESSION["validacion"] = false;
@@ -70,7 +70,8 @@ if (isset($_POST["btonInsertar"])) {
     }
 
     if ($_SESSION["validacion"]) {
-
+        echo '$_POST</br>';
+        print_r($_POST);
         $inmueble1 = new Inmueble();
         $inmueble1->setNumero($_POST["txtNumero"]);
         $inmueble1->setCp($_POST["txtCp"]);
@@ -107,15 +108,17 @@ if (isset($_POST["btonInsertar"])) {
         $daoInmueble = new daoInmuebles();
 
         $insertOk = $daoInmueble->insertar($inmueble1);
+        print_r($insertOk);
         if (!$insertOk) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
+        
     }
 
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/detalles_inmueble.php');
     } else {
-        header('Location: ../Vistas/alta_inmueble.php');
+        //header('Location: ../Vistas/alta_inmueble.php');
     }
 }
 if (isset($_POST["btonModificar"])) {
