@@ -124,8 +124,6 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 </tr>
                                 <tr>
                                     <td><label>Tipo de inmueble</label></td>
-                                </tr>
-                                <tr>
                                     <td>
                                         <select id="tipo_inmueble" name="tipo_inmueble">
                                             <option value="piso">Piso</option>
