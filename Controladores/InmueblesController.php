@@ -68,8 +68,6 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
-    print_r($_POST);
-    print_r($_FILES);
     if ($_SESSION["validacion"]) {
         echo '$_POST</br>';
         print_r($_POST);
@@ -92,6 +90,7 @@ if (isset($_POST["btonInsertar"])) {
         $file = fopen($ruta, "w");
         if (sizeof($_FILES['fileFotos']['name']) > 0) {
             for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
+                echo 'aaa';
                 $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
                 fwrite($file, $_FILES['fileFotos']['name'][$i]);
             }
