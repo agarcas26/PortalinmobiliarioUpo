@@ -177,7 +177,7 @@ if (isset($_POST["btonModificar"])) {
         $inmueble2->setMetros($_POST["txtMetros"]);
         $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
 
-        $inmueble2->setFotos($_FILES["fileFotos"]);
+      
 
         $inmueble2->setFotos($_POST["fileFotos"]);
         $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
