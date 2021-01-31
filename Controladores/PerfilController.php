@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_POST['guardar'])) {
-    $datos = getDatosPerfil_admin();
+    $datos = getDatosPerfil();
     if (isset($_SESSION['admin'])) {
         salvarCambiosController_admin();
     } else {
