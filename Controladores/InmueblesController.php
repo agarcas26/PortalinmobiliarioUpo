@@ -68,53 +68,49 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
-    if ($_SESSION["validacion"]) {
-        echo '$_POST</br>';
-        print_r($_POST);
-        $inmueble1 = new Inmueble();
-        $inmueble1->setNumero($_POST["txtNumero"]);
-        $inmueble1->setCp($_POST["txtCp"]);
-        $inmueble1->setNombre_via($_POST["txtNombre_via"]);
-        $inmueble1->setTipo_via($_POST["txtTipo_via"]);
-        $inmueble1->setNombre_localidad($_POST["txtNombre_localidad"]);
-        $inmueble1->setNombre_provincia($_POST["txtNombre_provincia"]);
-        $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
-        $inmueble1->setNum_hab($_POST["txtNum_habitaciones"]);
-        $inmueble1->setCocina($_POST["txtCocina"]);
-        $inmueble1->setNumero_plantas($_POST["txtNum_Planta"]);
-        $inmueble1->setPlanta($_POST["txtPlanta"]);
-        $inmueble1->setMetros($_POST["txtMetros"]);
-        $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
-        $ruta = '../img/Inmueble/' . $direccion;
-
-        print_r(($_FILES));
-        $file = fopen($ruta, "w");
-        if (sizeof($_FILES['fileFotos']['name']) > 0) {
-            for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
-                echo 'aaa';
-                $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-                fwrite($file, $_FILES['fileFotos']['name'][$i]);
-            }
+    $inmueble1 = new Inmueble();
+    $inmueble1->setNumero($_POST["txtNumero"]);
+    $inmueble1->setCp($_POST["txtCp"]);
+    $inmueble1->setNombre_via($_POST["txtNombre_via"]);
+    $inmueble1->setTipo_via($_POST["txtTipo_via"]);
+    $inmueble1->setNombre_localidad($_POST["txtNombre_localidad"]);
+    $inmueble1->setNombre_provincia($_POST["txtNombre_provincia"]);
+    $inmueble1->setNum_banyos($_POST["txtNum_banyos"]);
+    $inmueble1->setNum_hab($_POST["txtNum_habitaciones"]);
+    $inmueble1->setCocina($_POST["txtCocina"]);
+    $inmueble1->setNumero_plantas($_POST["txtNum_Planta"]);
+    $inmueble1->setPlanta($_POST["txtPlanta"]);
+    $inmueble1->setMetros($_POST["txtMetros"]);
+    $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
+    $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
+    chmod("../img/Inmueble/", 0755);
+    $file = fopen($ruta, "w+");
+    if (sizeof($_FILES['fileFotos']['name']) > 0) {
+        for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
+            echo 'aaa';
+            $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
+            fwrite($file, $_FILES['fileFotos']['name'][$i]);
         }
-        fwrite($file, PHP_EOL);
-        fclose($file);
-
-        if (isset($_SESSION['usuario_particular'])) {
-            $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-        } else {
-
-            $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
-        }
-        $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
-        $daoInmueble = new daoInmuebles();
-
-        $insertOk = $daoInmueble->insertar($inmueble1);
-        print_r($insertOk);
-        if (!$insertOk) {
-            $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
-        }
-        
     }
+    fwrite($file, PHP_EOL);
+    fclose($file);
+
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
+    } else {
+
+        $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    }
+    $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
+    $daoInmueble = new daoInmuebles();
+
+    $insertOk = $daoInmueble->insertar($inmueble1);
+    print_r($insertOk);
+    if (!$insertOk) {
+        $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
+    }
+
+
 
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/detalles_inmueble.php');
