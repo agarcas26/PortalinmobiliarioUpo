@@ -10,6 +10,7 @@ if (isset($_POST['guardar'])) {
     }else{        
     salvarCambiosController($datos, $_POST['pass'], $_POST['nueva_pass'], $_POST['conf_nueva_pass']);
     }
+    header("Location: ../Vistas/perfil.php");
 }
 
 function getDatosPerfil() {
