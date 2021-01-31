@@ -40,7 +40,7 @@ function get_alertas_usuario() {
         echo '</tr><tr>';
         echo '<td>Precio máximo: ' . $alertas[$i][6] . '€</td>';
         echo '</tr><tr>';
-        echo '<td><a  href="../Controladores/busquedaController.php?id_busqueda='. $alertas[$i][0].'"><Button>Eliminar alerta</Button></a></td>';
+        echo '<td><a  href="../Controladores/busquedaController.php?id_busqueda=' . $alertas[$i][0] . '"><Button>Eliminar alerta</Button></a></td>';
         echo '</tr>';
         echo '</table>';
     }
@@ -51,8 +51,10 @@ function vista_previa_alertas() {
 
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
-    } else {
+    } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario = $_SESSION['usuario_profesional'];
+    } else {
+        $nombre_usuario = $_SESSION['admin'];
     }
 
     $alertas = $daoAlertas->listar_busquedas_usuario($nombre_usuario);

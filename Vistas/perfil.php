@@ -22,6 +22,8 @@
                 <?php
                 if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesional'])) {
                     sesion_iniciada();
+                } elseif (isset($_SESSION['admin'])) {
+                    cabecera_admin();
                 } else {
                     no_sesion_iniciada();
                 }
@@ -50,7 +52,7 @@
                             </form>
                         </table>
                     </section>
-                   
+
                     <h4>Mis alertas</h4>
                     <section>
                         <table class="display table-bordered" style="width:100%">
@@ -65,7 +67,7 @@
                         </table>
                     </section>
                     <h4>Mis anuncios</h4>
-                    
+
                     <section>
                         <table class="display table-bordered" style="width:100%">
                             <?php
@@ -79,7 +81,7 @@
                         </table>
                     </section>
                     <h4>Mis Inmuebles</h4>
-                  
+
                     <section>
                         <table class="display table-bordered" style="width:100%">
                             <?php

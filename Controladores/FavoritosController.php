@@ -41,8 +41,10 @@ function get_favoritos_usuario() {
 function vista_previa_favoritos() {
     if (isset($_SESSION['usuario_particular'])) {
         $usuario = $_SESSION['usuario_particular'];
-    } else {
+    } elseif (isset($_SESSION['usuario_profesional'])) {
         $usuario = $_SESSION['usuario_profesional'];
+    } else {
+        $usuario = $_SESSION['admin'];
     }
     $daoFavoritos = new daoFavoritos();
     $favoritos = $daoFavoritos->listar_favoritos_user($usuario);
@@ -96,7 +98,7 @@ if (isset($_POST["corazon"])) {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
-    
+
     toggle_favorito($_POST["id_anuncio"], $usuario);
 
     unset($_POST["corazon"]);

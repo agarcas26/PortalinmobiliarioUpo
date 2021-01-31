@@ -1,4 +1,5 @@
 <?php
+
 include_once '../DAO/daoInmuebles.php';
 include_once '../Modelos/InmueblesModel.php';
 error_reporting(E_ALL);
@@ -175,7 +176,7 @@ if (isset($_POST["btonModificar"])) {
     $inmueble2->setPlanta($_POST["txtPlanta"]);
     $inmueble2->setMetros($_POST["txtMetros"]);
     $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
-    
+
     $ruta = '../img/Inmueble/' . $inmueble2->getNumero() . "-" . $inmueble2->getCp() . "-" . $inmueble2->getNombre_via() . "-" . $inmueble2->getTipo_via();
     mkdir($ruta);
     $file = opendir($ruta);
@@ -216,7 +217,7 @@ function select_inmuebles_usuario() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    
+
     if (sizeof($inmuebles_usuario) > 0) {
         echo '<select id="inmuebles_usuario" name="inmuebles_usuario" aria-invalid="false">';
         for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
@@ -392,9 +393,10 @@ function listar_inmuebles_usuario() {
 
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
-    } else {
-
+    } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_profesional'];
+    } else {
+        $nombre_usuario_duenyos = $_SESSION['admin'];
     }
     $inmueble1 = new Inmueble();
     $inmueble1->setNombre_usuario_duenyos($nombre_usuario_duenyos);
@@ -428,7 +430,7 @@ function listar_inmuebles_usuarioAll() {
     $dao = new daoInmuebles();
     $inmuebles_usuario = $dao->read($nombre_usuario_duenyos);
     $dao->destruct();
-    
+
     for ($i = 0; $i < sizeof($inmuebles_usuario); $i++) {
 
         $direccion = $inmuebles_usuario[$i]->getNumero() . "-" . $inmuebles_usuario[$i]->getCp() . "-" . $inmuebles_usuario[$i]->getNombre_via() . "-" . $inmuebles_usuario[$i]->getTipo_via();
