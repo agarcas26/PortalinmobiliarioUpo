@@ -20,8 +20,10 @@ if (isset($_POST['guardar'])) {
 function getDatosPerfil() {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
-    } else {
+    } elseif (isset($_SESSION['usuario_profesional'])) {
         $nombre_usuario = $_SESSION['usuario_profesional'];
+    } else {
+        $nombre_usuario = $_SESSION['admin'];
     }
     $datos = [];
     $usuario = getUsuarioByUsuario($nombre_usuario);
