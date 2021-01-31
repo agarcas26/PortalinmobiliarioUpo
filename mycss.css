@@ -83,3 +83,8 @@ main{
 #formValoracionInmueble{
     margin: 0;
 }
+
+.favorito, .alerta{
+    float: left;
+    width: 50%;
+}
