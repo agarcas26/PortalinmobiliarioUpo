@@ -17,7 +17,7 @@ function getDatosPerfil() {
     } else {
         $nombre_usuario = $_SESSION['usuario_profesional'];
     }
-    $datos = [];
+    $datos = $_POST["datos"];
     $usuario = getUsuarioByUsuario($nombre_usuario);
     array_push($datos, $usuario->get_nombre_usuario());
     array_push($datos, $usuario->get_nombre_apellidos());
