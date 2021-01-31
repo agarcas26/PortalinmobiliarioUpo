@@ -54,8 +54,6 @@ if (isset($_GET["id_busqueda"])) {
     unset($_GET["id_busqueda"]);
     header("Location: ../Vistas/mis_alertas.php");
 }
-<<<<<<< Updated upstream
-=======
 
 if (isset($_POST["campana"])) {
     if (isset($_SESSION['usuario_particular'])) {
@@ -68,7 +66,6 @@ if (isset($_POST["campana"])) {
 
     unset($_POST["campana"]);
 }
->>>>>>> Stashed changes
 
 function getFiltros() {
     $filtros = [];
