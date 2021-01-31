@@ -295,20 +295,8 @@ function probarFiltros($filtros, $anuncio) {
     $r = false;
     $inmueble = getInmuebleByAnuncio($anuncio);
 
-    if ($filtros[0] == "notset" || $filtros[0] == $inmueble->getNum_banyos()) {
-        if ($filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo()) {
-            if ($filtros[2] == "notset" || $filtros[2] == $anuncio->getTipo()) {
-                if ($filtros[3] == "notset" || $filtros[3] < $anuncio->getPrecio()) {
-                    if ($filtros[4] == "notset" || $filtros[4] == $inmueble->getNum_hab()) {
-                        if ($filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
-                            if ($filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()) {
-                                $r = true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    if ($filtros[0] == "notset" || $filtros[0] == $inmueble->getNum_banyos() ||$filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo() || $filtros[3] == "notset" || $filtros[3] > $anuncio->getPrecio() || $filtros[4] == "notset" || $filtros[4] == $inmueble->getNum_hab() || $filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros() || $filtros[6] == "notset" || $filtros[6] > $anuncio->getFecha_anuncio()|| $filtros[0] == $inmueble->getNum_banyos() ||$filtros[1] == "notset" || $filtros[1] == $inmueble->getTipo() || $filtros[3] == "notset" || $filtros[3] > $anuncio->getPrecio() || $filtros[4] == "notset" || $filtros[4] == $inmueble->getNum_hab() || $filtros[5] == "notset" || $filtros[5] == $inmueble->getMetros()) {
+        $r = true;
     }
 
     return $r;
