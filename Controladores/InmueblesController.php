@@ -162,7 +162,6 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
 
-    if ($_SESSION["validacion"]) {
         $inmueble2 = new Inmueble();
         $inmueble2->setNumero($_POST["txtNumero"]);
         $inmueble2->setCp($_POST["txtCp"]);
@@ -204,17 +203,12 @@ if (isset($_POST["btonModificar"])) {
         $daoInmueble2 = new daoInmuebles();
         $modifyOk = $daoInmueble2->modificar($inmueble2);
         $daoInmueble2->destruct();
-        if (!$modifyOk) {
-            $_SESSION["errores"]["modifyOk"] = "No se ha modificado correctamente";
-        }
+        
+           header('Location: ../Vistas/inmueble.php');
     }
 
-    if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/inmueble.php');
-    } else {
-        header('Location: ../Vistas/modificar_inmueble.php');
-    }
-}
+  
+
 
 function select_inmuebles_usuario() {
 
