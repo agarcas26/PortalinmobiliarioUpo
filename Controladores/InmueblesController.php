@@ -309,6 +309,40 @@ function getInmuebleByDireccion($direccion) {
     return $inmueble;
 }
 
+function getInmuebleByDireccionnoprint($direccion) {
+    $direccion = str_replace("%20", " ", $direccion);
+    $direccion_array = preg_split("/-/", $direccion);
+
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+
+    $dao = new daoInmuebles();
+    $aux = $dao->get_inmueble_by_direccion($numero, $cp, $nombre_via, $tipo_via);
+    $dao->destruct();
+    $inmueble = [];
+    for ($i = 0; $i < sizeof($aux); $i++) {
+        $inmueble = new Inmueble();
+        $inmueble->setNumero($aux[$i]->getNumero());
+        $inmueble->setCp($aux[$i]->getCp());
+        $inmueble->setNombre_via($aux[$i]->getNombre_via());
+        $inmueble->setTipo_via($aux[$i]->getTipo_via());
+        $inmueble->setNombre_usuario_duenyos($aux[$i]->getNombre_usuario_duenyos());
+        $inmueble->setNombre_localidad($aux[$i]->getNombre_localidad());
+        $inmueble->setNombre_provincia($aux[$i]->getNombre_provincia());
+        $inmueble->setNum_banyos($aux[$i]->getNum_banyos());
+        $inmueble->setNum_hab($aux[$i]->getNum_hab());
+        $inmueble->setCocina($aux[$i]->getCocina());
+        $inmueble->setTipo_inmueble($aux[$i]->getTipo_inmueble());
+        $inmueble->setNumero_plantas($aux[$i]->getNumero_plantas());
+        $inmueble->setPlanta($aux[$i]->getPlanta());
+        $inmueble->setMetros($aux[$i]->getMetros());
+        $inmueble->setFotos($aux[$i]->getFotos());
+    }
+    return $inmueble;
+}
+
 function get_datos_by_direccion($direccion) {
     $direccion = str_replace("%20", " ", $direccion);
     $direccion_array = preg_split("/-/", $direccion);
