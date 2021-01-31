@@ -176,17 +176,13 @@ if (isset($_POST["btonModificar"])) {
         $inmueble2->setPlanta($_POST["txtPlanta"]);
         $inmueble2->setMetros($_POST["txtMetros"]);
         $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
-
-      
-
         $inmueble2->setFotos($_POST["fileFotos"]);
         $ruta = '../img/Inmueble/' . $inmueble2->getNumero() . "-" . $inmueble2->getCp() . "-" . $inmueble2->getNombre_via() . "-" . $inmueble2->getTipo_via();
-
         mkdir($ruta);
         $file = opendir($ruta);
         if (sizeof($_FILES['fileFotos']['name']) > 0) {
             for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
-                $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
+                $inmueble2->setFotos($_FILES["fileFotos"]['name'][$i]);
                 move_uploaded_file($_FILES['fileFotos']['tmp_name'][$i], $ruta . "/" . $_FILES['fileFotos']['name'][$i]);
             }
         }
