@@ -86,19 +86,7 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setMetros($_POST["txtMetros"]);
         $inmueble1->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
          $inmueble1->setFotos($_POST["fileFotos"]);
-//        $ruta ="../img/Inmueble/ . $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i]";
-//        $inmueble1->setFotos($_FILE["fileFotos"]);
-//        if(!file_exists($ruta)){
-//            mkdir($ruta,0777,true);
-//            if(file_exists($ruta)){
-//                if(move_uploaded_file($guardado, $direccion . '/' . $fotos[$i] . ' alt=' . $fotos[$i])){
-//                    echo "guardado";
-//                }else{
-//                    echo "no guardado";
-//                }
-//            }
-//            var_dump($ruta);
-//        }
+
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } else {
@@ -113,7 +101,7 @@ if (isset($_POST["btonInsertar"])) {
             $_SESSION["errores"]["insertOk"] = "No se ha insertado correctamente";
         }
     }
-
+   
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/detalles_inmueble.php');
     } else {
