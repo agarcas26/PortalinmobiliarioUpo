@@ -48,13 +48,14 @@ if (isset($_POST['eliminar'])) {
 
 
 if (isset($_POST['guardar'])) {
-    $usuario = new Usuario();
-    $usuario->set_moroso($_POST['moroso']);
-    $usuario->setTipo($_POST['tipo']);
-    $usuario->set_contrasenya_user($_POST['contrasenya']);
-    $usuario->set_nombre_apellidos($_POST['nombre_apellidos']);
-    $usuario->set_nombre_usuario($_POST['nombre_usuario']);
+    $usuario = new Usuario($_POST['nombre_apellidos'],$_POST['nombre_usuario'],$_POST['contrasenya'],$_POST['moroso']);
 
+    $usuario->setTipo($_POST['tipo']);
+    $nuevos_datos = [];
+    array_push($_POST['nombre_apellidos']);
+    array_push($_POST['nombre_usuario']);
+    array_push($_POST['contrasenya']);
+    array_push($_POST['moroso']);
     $daoUsuario = new daoUsuarios();
     $daoUsuario->modificar_usuario($nuevos_datos);
     $daoUsuario->destruct();

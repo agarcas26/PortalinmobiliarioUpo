@@ -11,6 +11,7 @@
         <?php
         include_once '../Vistas/header.php';
         include_once '../Controladores/busquedaUsuarioController_admin.php';
+        include_once '../Controladores/PerfilController.php';
         ?>
     </head>
     <body>
@@ -31,11 +32,13 @@
             <form action="../Controladores/logoutController.php">
                 <button class="btn btn-block btn-lg btn-primary" type="submit" name="logout" value="" />Cerrar sesión</button>
             </form>
-            <form action="../Controladores/PerfilController.php" method="POST">
+            <form action="../Vistas/modificar_usuario_admin.php" method="POST">
                 <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <h1>Datos del perfil</h1>
                     <?php
                     $datos = getDatosPerfil_admin($_GET['nombre_usuario']);
+                    echo '<input hidden type="text" name="nombre_usuario" value="'.$datos[0].'">';
+                    echo '<input hidden type="text" name="nombre_apellidos" value="'.$datos[1].'">';
                     ?>
                     <tr>
                         <td>
@@ -55,7 +58,7 @@
                             ?>
                             <td>
                                 <label>Contraseña: </label>
-                                <input type="password" name="pass" value="<?php echo $datos[2]; ?>">
+                                <input type="password" name="contrasenya" value="<?php echo $datos[2]; ?>">
                                 <label>Para cambiar la contraseña, por favor, introduzca su contraseña actual</label>
                             </td>
                         <?php } ?>
