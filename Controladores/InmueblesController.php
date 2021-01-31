@@ -88,7 +88,7 @@ if (isset($_POST["btonInsertar"])) {
         $ruta = '../img/Inmueble/' . $direccion;
 
         $file = fopen($ruta, "w");
-        print_r(sizeof($_FILES['fileFotos']['name']));
+        print_r(($_FILES['fileFotos']));
         if (sizeof($_FILES['fileFotos']['name']) > 0) {
             for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
                 echo 'aaa';
