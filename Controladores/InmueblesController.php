@@ -165,7 +165,7 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["txtTipo_Inmueble"])) {
+    if (empty($_POST["tipo_inmueble"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtTipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
@@ -188,7 +188,7 @@ if (isset($_POST["btonModificar"])) {
         $inmueble2->setNumero_plantas($_POST["txtNum_Planta"]);
         $inmueble2->setPlanta($_POST["txtPlanta"]);
         $inmueble2->setMetros($_POST["txtMetros"]);
-        $inmueble2->setTipo_inmueble($_POST["txtTipo_Inmueble"]);
+        $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
         $inmueble2->setFotos($_POST["fileFotos"]);
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
