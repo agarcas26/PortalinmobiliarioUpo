@@ -42,23 +42,29 @@ if (isset($_POST['eliminar'])) {
     $daoUsuario = new daoUsuarios();
     $usuarios = $daoUsuario->eliminar_usuario($_POST['nombre_usuario']);
     $daoUsuario->destruct();
-    
+
     header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 
 if (isset($_POST['guardar'])) {
-    $usuario = new Usuario($_POST['nombre_apellidos'],$_POST['nombre_usuario'],$_POST['contrasenya'],$_POST['moroso']);
-
+    $usuario = new Usuario($_POST['nombre_apellidos'], $_POST['nombre_usuario'], $_POST['contrasenya'], $_POST['moroso']);
+    $usuario->set_moroso($_POST['moroso']);
     $usuario->setTipo($_POST['tipo']);
-    
+    $usuario->set_contrasenya_user($_POST['contrasenya']);
+    $usuario->set_nombre_apellidos($_POST['nombre_apellidos']);
+    $usuario->set_nombre_usuario($_POST['nombre_usuario']);
+
     $daoUsuario = new daoUsuarios();
     $daoUsuario->modificar_usuario($usuario);
     $daoUsuario->destruct();
 
+    print_r($_SESSION);
+    print_r($_POST);
+
     unset($_SESSION['searchuser']);
     unset($_POST['guardar']);
-    header("Location: ../Vistas/busqueda_usuario_admin.php");
+    //header("Location: ../Vistas/busqueda_usuario_admin.php");
 }
 
 function listar_usuarios() {
