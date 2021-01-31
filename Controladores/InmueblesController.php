@@ -60,9 +60,9 @@ if (isset($_POST["btonInsertar"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["tipo_Inmueble"])) {
+    if (empty($_POST["tipo_inmueble"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["tipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
+        $_SESSION["errores"]["tipo_inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
     if (empty($_FILE["fileFotos"])) {
         $_SESSION["validacion"] = false;
