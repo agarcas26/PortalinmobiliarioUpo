@@ -76,7 +76,7 @@ function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $desc
     $dao = new daoResenyas();
     $objResenyas->setCp($direccion_inmueble[0]);
     $objResenyas->setDescripcion($descripcion);
-    $objResenyas->setFecha_resenya(date('d/m/Y', time()));
+    $objResenyas->setFecha_resenya("CURRENT_DATE");
     $objResenyas->setId_resenya(null);
     $objResenyas->setNombre_usuario($nombre_usuario);
     $objResenyas->setNombre_via($direccion_inmueble[1]);
