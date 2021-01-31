@@ -54,7 +54,7 @@ if (isset($_POST["btonInsertar"])) {
     }
     if (empty($_POST["txtPlanta"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
+        //$_SESSION["errores"]["txtPlanta"] = "Debe de completar el campo planta.";
     }
     if (empty($_POST["txtMetros"])) {
         $_SESSION["validacion"] = false;
@@ -82,18 +82,16 @@ if (isset($_POST["btonInsertar"])) {
     $inmueble1->setPlanta($_POST["txtPlanta"]);
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
-    $ruta = '../../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
+    $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
     
-    $file = fopen($ruta, "w+");
+    $file = opendir($ruta);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
-            echo 'aaa';
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            fwrite($file, $_FILES['fileFotos']['name'][$i]);
+            copy($_FILES['fileFotos']['name'][$i], $ruta);
         }
     }
-    fwrite($file, PHP_EOL);
-    fclose($file);
+    closedir($file);
 
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
