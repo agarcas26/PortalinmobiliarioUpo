@@ -103,7 +103,7 @@ if (isset($_POST["btonInsertar"])) {
     }
    
     if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/detalles_inmueble.php');
+        header('Location: ../Vistas/inmueble.php');
     } else {
         header('Location: ../Vistas/alta_inmueble.php');
     }
