@@ -58,17 +58,16 @@ if (isset($_POST["btonInsertar"])) {
     }
     if (empty($_POST["txtMetros"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
+        //$_SESSION["errores"]["txtMetros"] = "Debe de completar el campo metros.";
     }
-    if (empty($_POST["tipo_Inmueble"])) {
+    if (empty($_POST["tipo_inmueble"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["tipo_Inmueble"] = "Debe de completar el campo tipo de inmueble.";
+        $_SESSION["errores"]["tipo_inmueble"] = "Debe de completar el campo tipo de inmueble.";
     }
     if (empty($_FILE["fileFotos"])) {
         $_SESSION["validacion"] = false;
-        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
+        //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
-
     if ($_SESSION["validacion"]) {
         echo '$_POST</br>';
         print_r($_POST);
@@ -88,10 +87,12 @@ if (isset($_POST["btonInsertar"])) {
         $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
         $ruta = '../img/Inmueble/' . $direccion;
 
+        print_r(($_FILES));
         $file = fopen($ruta, "w");
         if (sizeof($_FILES['fileFotos']['name']) > 0) {
             for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
-                $inmueble1->setFotos($_FILE["fileFotos"]['name'][$i]);
+                echo 'aaa';
+                $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
                 fwrite($file, $_FILES['fileFotos']['name'][$i]);
             }
         }

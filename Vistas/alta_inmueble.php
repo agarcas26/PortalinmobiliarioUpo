@@ -29,7 +29,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                 <article>
                     <section id="alta_i">
                         <h3>Rellene el formulario para dar de alta un nuevo inmueble</h3>
-                        <form  action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
+                        <form  enctype="multipart/form-data" action='../Controladores/InmueblesController.php' method='POST' style="margin-left:10px;">
                             <table id="alta_inm" class="display table-bordered" style="overflow-x:auto;">
                                
                                 <tr>
@@ -153,7 +153,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 <?php } ?>
                                 <tr>
                                     <td><label>Metros cuadrados</label></td>
-                                    <td><input type="number" name="txtMetros" /></td>
+                                    <td><input type="number" name="txtMetros" id="txtMetros" /></td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["txtMetros"])) { ?>
                                     <tr>
@@ -162,7 +162,7 @@ if (isset($_SESSION['usuario_particular']) || isset($_SESSION['usuario_profesion
                                 <?php } ?>
                                 <tr>
                                     <td><label>Suba imágenes del inmueble:</label></td>
-                                    <td><input type="file" name="fileFotos[]" accept="image/png, image/jpeg" ></td>
+                                    <td><input type="file" name="fileFotos[]" id="fileFotos[]" accept="image/png, image/jpeg" ></td>
                                 </tr>
                                 <?php if (isset($_SESSION["validacion"]) && $_SESSION["validacion"] === false && isset($_SESSION["errores"]["fileFotos"])) { ?>
                                     <tr>
