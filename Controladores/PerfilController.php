@@ -17,7 +17,7 @@ if (isset($_POST['guardar'])) {
     header("Location: ../Vistas/perfil.php");
 }
 
-function getDatosPerfil_admin() {
+function getDatosPerfil() {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
     } else {
