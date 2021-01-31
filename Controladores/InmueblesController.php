@@ -83,12 +83,13 @@ if (isset($_POST["btonInsertar"])) {
     $inmueble1->setMetros($_POST["txtMetros"]);
     $inmueble1->setTipo_inmueble($_POST["tipo_inmueble"]);
     $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
-    
+
+    mkdir($ruta);
     $file = opendir($ruta);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            move_uploaded_file($_FILES['fileFotos']['tmpname'][$i],$_FILES['fileFotos']['name'][$i], $ruta);
+            move_uploaded_file($_FILES['fileFotos']['tmpname'][$i], $_FILES['fileFotos']['name'][$i], $file);
         }
     }
     closedir($file);
@@ -104,11 +105,7 @@ if (isset($_POST["btonInsertar"])) {
 
     $insertOk = $daoInmueble->insertar($inmueble1);
 
-    if ($_SESSION["validacion"]) {
-        header('Location: ../Vistas/detalles_inmueble.php');
-    } else {
-        header('Location: ../Vistas/alta_inmueble.php');
-    }
+    header('Location: ../Vistas/inmueble.php');
 }
 if (isset($_POST["btonModificar"])) {
     if (empty($_POST["txtNumero"])) {
