@@ -87,9 +87,8 @@ if (isset($_POST["btonInsertar"])) {
     $file = opendir($ruta);
     if (sizeof($_FILES['fileFotos']['name']) > 0) {
         for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
-            print_r($_FILES);
             $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
-            move_uploaded_file($_FILES['fileFotos']['name'][$i], $ruta);
+            move_uploaded_file($_FILES['fileFotos']['tmpname'][$i],$_FILES['fileFotos']['name'][$i], $ruta);
         }
     }
     closedir($file);
@@ -108,7 +107,7 @@ if (isset($_POST["btonInsertar"])) {
     if ($_SESSION["validacion"]) {
         header('Location: ../Vistas/detalles_inmueble.php');
     } else {
-        //header('Location: ../Vistas/alta_inmueble.php');
+        header('Location: ../Vistas/alta_inmueble.php');
     }
 }
 if (isset($_POST["btonModificar"])) {
