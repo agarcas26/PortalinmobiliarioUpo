@@ -239,7 +239,7 @@ function hayAlerta($id_anuncio) {
     $anuncio = readAnuncio($id_anuncio);
     while ($fila = mysqli_fetch_array($alertas)) {
         $filtros[0] = $fila[2];
-        $filtros[1] = $fila[1];
+        $filtros[1] = "notset";
         $filtros[2] = $anuncio->getTitulo();
         $filtros[3] = $anuncio->getPrecio();
         $filtros[4] = $fila[7];
