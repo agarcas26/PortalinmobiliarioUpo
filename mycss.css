@@ -52,11 +52,11 @@ main{
 }
 
 .campana{
-    width: 3% !important;
+    width: 4% !important;
     margin: 0.1%;
 }
 .corazon{
-    width: 3% !important;
+    width: 5% !important;
     margin: 0.1%;
 }
 #alta_inm{
@@ -66,7 +66,7 @@ main{
     margin-right: 15%;
     margin-top: 2%;
     width: 80%;
-   
+
 
 }
 
@@ -86,4 +86,8 @@ main{
 
 .favorito, .alerta{
     float: left;
+}
+
+#alerta_favorito{
+    display: inline-flex;
 }

@@ -43,6 +43,7 @@
                             mostrar_detalle_anuncio($_GET["id_anuncio"]);
                             ?>
                         </table>
+                        <div id="alerta_favorito">
                         <form action="../Vistas/detalle_anuncio.php?id_anuncio=<?php echo $_GET["id_anuncio"]; ?>" id="formValoracionInmueble" class="" method="POST">
                             <input name="id_anuncio" value="<?php echo $_GET["id_anuncio"]; ?>" hidden>
                             <span class="favorito" val="<?php
@@ -69,6 +70,7 @@
                                 <input name="campana" type="image"  class="campana" src="../img/noalerta.png">
                             </span>
                         </form>  
+                            </div>
                     </section>
                     <section>
                         <?php
