@@ -71,12 +71,12 @@ function get_valoraciones_inmueble($direccion_inmueble) {
     return $media_valoraciones;
 }
 
-function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion) {
+function set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion) {
     $objResenyas = new Resenya();
     $dao = new daoResenyas();
     $objResenyas->setCp($direccion_inmueble[0]);
-    $objResenyas->setDescripcion("l");
-    $objResenyas->setFecha_resenya($fecha_resenya);
+    $objResenyas->setDescripcion($descripcion);
+    $objResenyas->setFecha_resenya(date('d/m/Y', time()));
     $objResenyas->setId_resenya(null);
     $objResenyas->setNombre_usuario($nombre_usuario);
     $objResenyas->setNombre_via($direccion_inmueble[1]);
@@ -198,4 +198,25 @@ function leerResenyasbyUsuarios() {
     $resenyas_usuario = $daoResenyas->read_by_user($user);
     $daoResenya->destruct();
     return $resenyas_usuario;
+}
+
+if(isset($_POST["enviarValoracion"])){
+    if (isset($_SESSION['usuario_particular'])) {
+        $nombre_usuario = $_SESSION['usuario_particular'];
+    } else {
+        $nombre_usuario = $_SESSION['usuario_profesional'];
+    }
+    $puntuacion=$_POST["puntuacion"];
+    $descripcion=$_POST["valoracion"];
+    
+    $anuncio= readAnuncio($_POST["id_anuncio"]);
+    
+    $direccion_inmueble[] = $anuncio->getNumero();
+    $direccion_inmueble[] = $anuncio->getCp();
+    $direccion_inmueble[] = $anuncio->getNombre_via();
+    $direccion_inmueble[] = $anuncio->getTipo_via();
+    
+    set_valoracion($nombre_usuario, $direccion_inmueble, $puntuacion, $descripcion);
+    
+    header("Location: ../Vistas/detalle_anuncio.php?id_anuncio=".$_POST["id_anuncio"]);
 }
