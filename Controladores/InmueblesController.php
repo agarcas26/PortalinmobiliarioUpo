@@ -514,12 +514,11 @@ if (isset($_POST['btonEliminar'])) {
     $daoInmueble = new daoInmuebles();
     $deleteOk = $daoInmueble->eliminar($datos[0]);
     $daoInmueble->destruct();
-//    if (!$deleteOk) {
-//        $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
-//        header('Location: ../Vistas/inmueble.php');
-//    } else {
-//        header('Location: ../Vistas/inmueble.php');
-//    }
-    
-    var_dump($deleteOk);
+    if (!$deleteOk) {
+        $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
+        header('Location: ../Vistas/inmueble.php');
+    } else {
+        header('Location: ../Vistas/inmueble.php');
+    }
+
 }
