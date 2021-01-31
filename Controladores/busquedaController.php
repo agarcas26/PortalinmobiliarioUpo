@@ -238,10 +238,10 @@ function get_filtros_by_id($id_anuncio) {
     $direccion = "";
     $daoanuncio = new daoAnuncios();
     $anuncio = $daoanuncio->read($id_anuncio);
-    $direccion .= $anuncio->getNumero()." ";
-    $direccion .= $anuncio->getCp()." ";
-    $direccion .= $anuncio->getNombre_via()." ";
-    $direccion .= $anuncio->getTipo_via()." ";
+    $direccion .= $anuncio->getNumero()."-";
+    $direccion .= $anuncio->getCp()."-";
+    $direccion .= $anuncio->getNombre_via()."-";
+    $direccion .= $anuncio->getTipo_via();
     $inmueble = getInmuebleByDireccion($direccion);
     $filtros[]=$inmueble->getNum_banyos();
     $filtros[]=$inmueble->getTipo_inmueble();
@@ -283,19 +283,8 @@ if (isset($_POST["campana"])) {
     } else {
         $usuario = $_SESSION['usuario_profesional'];
     }
+    echo $_GET["id_anuncio"];
     toggle_alerta($_GET["id_anuncio"]);
 
     unset($_POST["campana"]);
 }
-
-if (isset($_POST["campana"])) {
-    if (isset($_SESSION['usuario_particular'])) {
-        $usuario = $_SESSION['usuario_particular'];
-    } else {
-        $usuario = $_SESSION['usuario_profesional'];
-    }
-
-    toggle_favorito($_POST["id_anuncio"], $usuario);
-
-    unset($_POST["corazon"]);
-} 
