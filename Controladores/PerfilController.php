@@ -32,8 +32,8 @@ function getDatosPerfil() {
 }
 
 function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
-    $usuario_datos = getUsuarioByUsuario($datos[0]);
-    $usuario_datos = mysqli_fetch_row($usuario_datos);
+    $aux = getUsuarioByUsuario($datos[0]);
+    $usuario_datos = mysqli_fetch_row($aux);
     $usuario = new Usuario($usuario_datos[2], $usuario_datos[0], $usuario_datos[1], $usuario_datos[3]);
 
     if ($usuario->get_contrasenya() == $pass) {
