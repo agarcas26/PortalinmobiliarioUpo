@@ -178,6 +178,18 @@ if (isset($_POST["btonModificar"])) {
         $inmueble2->setMetros($_POST["txtMetros"]);
         $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
         $inmueble2->setFotos($_POST["fileFotos"]);
+        $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
+
+        mkdir($ruta);
+        $file = opendir($ruta);
+        if (sizeof($_FILES['fileFotos']['name']) > 0) {
+            for ($i = 0; $i < sizeof($_FILES['fileFotos']['name']); $i++) {
+                $inmueble1->setFotos($_FILES["fileFotos"]['name'][$i]);
+                move_uploaded_file($_FILES['fileFotos']['tmp_name'][$i], $ruta . "/" . $_FILES['fileFotos']['name'][$i]);
+            }
+        }
+        closedir($file);
+        
         if (isset($_SESSION['usuario_particular'])) {
             $nombre_usuario_duenyos = $_SESSION['usuario_particular'];
         } elseif (isset($_SESSION['usuario_profesional'])) {
