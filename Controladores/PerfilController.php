@@ -32,7 +32,7 @@ function getDatosPerfil() {
 }
 
 function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
-    $usuario = getUsuarioByUsuario($datos[0]);
+    $usuario = getUsuarioByUsuario($datos[1]);
     if ($usuario->get_contrasenya() == $pass) {
         if ($nueva_pass != NULL && $nueva_pass == $conf_nueva_pass) {
             $usuario->set_contrasenya($nueva_pass);
