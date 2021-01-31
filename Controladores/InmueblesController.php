@@ -506,18 +506,22 @@ function getInmuebleByAnuncio($anuncio) {
 
 if (isset($_POST['btonEliminar'])) {
     $traer= new daoInmuebles();
-    $datos = $traer->get_inmueble_by_direccion($_POST['direccion'][1],$_POST['direccion'][2],$_POST['direccion'][3],$_POST['direccion'][4]);
+    
+    $direccion_array = preg_split("/-/", $_POST["direccion"]);
+
+    $numero = $direccion_array[0];
+    $cp = $direccion_array[1];
+    $nombre_via = $direccion_array[2];
+    $tipo_via = $direccion_array[3];
+    
+    $datos = $traer->get_inmueble_by_direccion($numero,$cp,$nombre_via,$tipo_via);
     $daoInmueble = new daoInmuebles();
-    $deleteOk = $daoInmueble->eliminar($datos);
+    $deleteOk = $daoInmueble->eliminar($datos[0]);
     $daoInmueble->destruct();
     if (!$deleteOk) {
         $_SESSION["errores"]["deleteOk"] = "No se ha eliminado correctamente";
+        header('Location: ../Vistas/inmueble.php');
+    }else{
+        header('Location: ../Vistas/inmueble.php');
     }
-    var_dump($deleteOk);
-    var_dump($inmueble1);
-//    if ($_SESSION["validacion"]) {
-//        header('Location: ../Vistas/inmueble.php');
-//    } else {
-//        header('Location: ../Vistas/modificar_inmueble.php');
-//    }
 }
