@@ -180,7 +180,7 @@ if (isset($_POST["btonModificar"])) {
       
 
         $inmueble2->setFotos($_POST["fileFotos"]);
-        $ruta = '../img/Inmueble/' . $inmueble1->getNumero() . "-" . $inmueble1->getCp() . "-" . $inmueble1->getNombre_via() . "-" . $inmueble1->getTipo_via();
+        $ruta = '../img/Inmueble/' . $inmueble2->getNumero() . "-" . $inmueble2->getCp() . "-" . $inmueble2->getNombre_via() . "-" . $inmueble2->getTipo_via();
 
         mkdir($ruta);
         $file = opendir($ruta);
