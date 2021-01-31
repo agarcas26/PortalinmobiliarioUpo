@@ -26,14 +26,14 @@ class daoResenyas {
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
         $nombre_via = '"' . $objResenyas->getNombre_via() . '"';
-        $tipo_via = ' "' . $objResenyas->getTipo_via() . '" ';
+        $tipo_via = '"' . $objResenyas->getTipo_via() . '"';
         $numero = $objResenyas->getNumero();
         $descripcion = '"' . $objResenyas->getDescripcion() . '"';
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
-print_r($sql);
+        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp',$nombre_via,$tipo_via,'$numero',$descripcion,CURRENT_DATE,'$valoracion')";
+
         if (!$this->conexion->query($sql)) {
             $salida = false;
         }
@@ -102,7 +102,7 @@ print_r($sql);
     function read_by_user($nombre_usuario_duenyos) {
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` WHERE u.`nombre_usuario_duenyos` = '" . $id_resenya . "'";
-     
+
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
@@ -125,7 +125,7 @@ print_r($sql);
         $sql = "SELECT * FROM `resenya` r WHERE r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
         $objMySqlLi = $this->conexion->query($sql);
         $arrayAux = [];
-     
+
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while ($aux = mysqli_fetch_assoc($objMySqlLi)) {
@@ -148,7 +148,7 @@ print_r($sql);
         $objMySqlLi = $this->conexion->query($sql);
         $sql = "SELECT * FROM `resenya` r WHERE r.`nombre_usuario`='$nombre_usuario' r.`numero`='$numero' and r.`cp` = '$cp' and r.`nombre_via`='$nombre_via' and r.`tipo_via` = '$tipo_via'";
         $arrayAux = [];
-     
+
         if ($objMySqlLi->num_rows > 0) {
             $objResenya = new Resenya();
             while (mysqli_fetch_assoc($objMySqlLi)) {
