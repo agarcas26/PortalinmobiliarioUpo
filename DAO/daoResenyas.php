@@ -25,14 +25,14 @@ class daoResenyas {
         $salida = true;
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
-        $nombre_via = $objResenyas->getNombre_via();
-        $tipo_via = $objResenyas->getTipo_via();
+        $nombre_via = '"' . $objResenyas->getNombre_via() . '"';
+        $tipo_via = '"' . $objResenyas->getTipo_via() . '"';
         $numero = $objResenyas->getNumero();
-        $descripcion = $objResenyas->getDescripcion();
+        $descripcion = '"' . $objResenyas->getDescripcion() . '"';
         $fecha_resenya = $objResenyas->getFecha_resenya();
         $valoracion = $objResenyas->getValoracion();
 
-        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp'," . $nombre_via . ",$tipo_via','$numero'," . $descripcion . ",CURRENT_DATE,'$valoracion')";
+        $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) VALUES (NULL,'$nombre_usuario','$cp','$nombre_via',$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
         print_r($sql);
         if (!$this->conexion->query($sql)) {
             $salida = false;
