@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_POST['guardar'])) {
-    $datos = getDatosPerfil();
+    $datos = getDatosPerfil_admin();
     if (isset($_SESSION['admin'])) {
         salvarCambiosController_admin();
     } else {
@@ -17,7 +17,7 @@ if (isset($_POST['guardar'])) {
     header("Location: ../Vistas/perfil.php");
 }
 
-function getDatosPerfil() {
+function getDatosPerfil_admin() {
     if (isset($_SESSION['usuario_particular'])) {
         $nombre_usuario = $_SESSION['usuario_particular'];
     } else {
@@ -32,14 +32,13 @@ function getDatosPerfil() {
 }
 
 function salvarCambiosController($datos, $pass, $nueva_pass, $conf_nueva_pass) {
-
-    if ($datos[sizeof($datos) - 1] == $pass) {
-        if ($nueva_pass != NULL) {
-            if ($nueva_pass == $conf_nueva_pass) {
-
-                $datos[sizeof($datos) - 1] = $nueva_pass;
-                salvarCambios($datos);
-            }
+    $usuario = getUsuarioByUsuario($datos[0]);
+    if ($usuario->get_contrasenya() == $pass) {
+        if ($nueva_pass != NULL && $nueva_pass == $conf_nueva_pass) {
+            $usuario->set_contrasenya($nueva_pass);
+            $dao = new daoUsuarios();
+            $dao->modificar_usuario($usuario);
+            $dao->destruct();
         } else {
             return "Las contraseñas no coinciden";
         }

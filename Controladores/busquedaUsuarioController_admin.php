@@ -84,7 +84,7 @@ function listar_usuarios() {
     }
 }
 
-function getDatosPerfil($nombre_usuario) {
+function getDatosPerfil_admin($nombre_usuario) {
     $usuario = getUsuarioByUsuario($nombre_usuario);
     $datos = [];
     array_push($datos, $usuario->get_nombre_usuario());

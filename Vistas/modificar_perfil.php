@@ -41,7 +41,7 @@
                 <table id="datos_visa" class="display table-bordered" style="width:100%">
                     <h1>Datos del perfil</h1>
                     <?php
-                    $datos = getDatosPerfil();
+                    $datos = getDatosPerfil_admin();
                     ?>
                     <tr>
                         <td>
