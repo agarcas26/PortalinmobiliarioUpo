@@ -23,7 +23,6 @@ class daoResenyas {
 
     function escribirResenyas($objResenyas) {
         $salida = true;
-        //$id_resenyas = $objUsuario->getId_resenyas();
         $nombre_usuario = $objResenyas->getNombre_usuario();
         $cp = $objResenyas->getCp();
         $nombre_via = $objResenyas->getNombre_via();
@@ -34,7 +33,7 @@ class daoResenyas {
         $valoracion = $objResenyas->getValoracion();
 
         $sql = "INSERT INTO `resenya`(`id_resenya`, `nombre_usuario`, `cp`, `nombre_via`, `tipo_via`, `numero`, `descripcion`, `fecha_resenya`, `valoracion`) (null,'$nombre_usuario','$cp','$nombre_via','$tipo_via','$numero','$descripcion',CURRENT_DATE,'$valoracion')";
-        //he añadido currentdate pero no estoy muy segura de que sea asi, andrea
+
         if (!$this->conexion->query($sql)) {
             $salida = false;
         }
