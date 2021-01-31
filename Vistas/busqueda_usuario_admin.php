@@ -9,6 +9,7 @@
         <title></title>
         <?php
         include_once '../Vistas/header.php';
+            include_once '../Controladores/busquedaUsuarioController_admin.php';
         ?>
     </head>
     <body>   
