@@ -24,7 +24,6 @@ if (isset($_GET['aplicar_filtros'])) {
     $anuncios = anuncios_busqueda($filtros);
 
     mostrarVistaLista($anuncios);
-
 }
 
 if (isset($_POST['lista'])) {
@@ -56,6 +55,18 @@ if (isset($_GET["id_busqueda"])) {
 }
 
 if (isset($_POST["campana"])) {
+
+    toggle_alerta($_GET["id_anuncio"]);
+
+    unset($_POST["campana"]);
+}
+
+if (isset($_POST["campana"])) {
+    if (isset($_SESSION['usuario_particular'])) {
+        $usuario = $_SESSION['usuario_particular'];
+    } else {
+        $usuario = $_SESSION['usuario_profesional'];
+    }
 
     toggle_alerta($_GET["id_anuncio"]);
 
@@ -223,17 +234,18 @@ function listar_alertas_usuario() {
 
 function hayAlerta($id_anuncio) {
     $r = false;
-    $filtros=[];
+    $filtros = [];
     $alertas = listar_alertas_usuario();
-    $anuncio=readAnuncio($id_anuncio);
+    $anuncio = readAnuncio($id_anuncio);
     while ($fila = mysqli_fetch_array($alertas)) {
-    $filtros[0]=$fila[2];
-    $filtros[2]=$anuncio->getTitulo();
-    $filtros[3]=$anuncio->getPrecio();
-    $filtros[4]=$fila[7];
-    $filtros[5]=$fila[8];
-    $filtros[6]=$anuncio->getFecha_anuncio();
-    
+        $filtros[0] = $fila[2];
+        $filtros[1] = $fila[1];
+        $filtros[2] = $anuncio->getTitulo();
+        $filtros[3] = $anuncio->getPrecio();
+        $filtros[4] = $fila[7];
+        $filtros[5] = $fila[8];
+        $filtros[6] = $anuncio->getFecha_anuncio();
+
         if (probarFiltros($filtros, readAnuncio($id_anuncio))) {
             $r = true;
         }
@@ -246,19 +258,19 @@ function get_filtros_by_id($id_anuncio) {
     $direccion = "";
     $daoanuncio = new daoAnuncios();
     $anuncio = $daoanuncio->read($id_anuncio);
-    $direccion .= $anuncio->getNumero()."-";
-    $direccion .= $anuncio->getCp()."-";
-    $direccion .= $anuncio->getNombre_via()."-";
+    $direccion .= $anuncio->getNumero() . "-";
+    $direccion .= $anuncio->getCp() . "-";
+    $direccion .= $anuncio->getNombre_via() . "-";
     $direccion .= $anuncio->getTipo_via();
     $inmueble = getInmuebleByDireccionnoprint($direccion);
-    $filtros[]=$inmueble->getNum_banyos();
-    $filtros[]=$inmueble->getTipo_inmueble();
-    $filtros[]=$anuncio->getPrecio();
-    $filtros[]=$inmueble->getNum_hab();
-    $filtros[]=$inmueble->getMetros();
-    $filtros[]=$anuncio->getFecha_anuncio();
+    $filtros[] = $inmueble->getNum_banyos();
+    $filtros[] = $inmueble->getTipo_inmueble();
+    $filtros[] = $anuncio->getPrecio();
+    $filtros[] = $inmueble->getNum_hab();
+    $filtros[] = $inmueble->getMetros();
+    $filtros[] = $anuncio->getFecha_anuncio();
     $daoanuncio->destruct();
-    
+
     return $filtros;
 }
 
@@ -270,29 +282,15 @@ function toggle_alerta($id_anuncio) {
     }
     $dao = new daoBusqueda();
     $busqueda = $dao->listar_busquedas_usuario($usuario);
-    $filtro= get_filtros_by_id($id_anuncio);
+    $filtro = get_filtros_by_id($id_anuncio);
     while ($fila = mysqli_fetch_array($busqueda)) {
-        if ($fila[2]==$filtro[0] && $fila[4]==$filtro[1] && $fila[6]<($filtro[2]+100) && $fila[7]==$filtro[3]
-                 && $fila[8]==$filtro[4]){
+        if ($fila[2] == $filtro[0] && $fila[4] == $filtro[1] && $fila[6] < ($filtro[2] + 100) && $fila[7] == $filtro[3] && $fila[8] == $filtro[4]) {
             //eliminarAlerta();
-        }
-        else{
-            
+        } else {
+
             //crearAlerta();
         }
     }
 
     $dao->destruct();
-}
-
-if (isset($_POST["campana"])) {
-    if (isset($_SESSION['usuario_particular'])) {
-        $usuario = $_SESSION['usuario_particular'];
-    } else {
-        $usuario = $_SESSION['usuario_profesional'];
-    }
-    
-    toggle_alerta($_GET["id_anuncio"]);
-
-    unset($_POST["campana"]);
 }
