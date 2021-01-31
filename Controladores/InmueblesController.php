@@ -159,7 +159,7 @@ if (isset($_POST["btonModificar"])) {
     }
     if (empty($_FILES["fileFotos"])) {
         $_SESSION["validacion"] = false;
-        //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
+        $_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
 
     if ($_SESSION["validacion"]) {

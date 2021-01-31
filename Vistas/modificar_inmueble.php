@@ -99,16 +99,17 @@
                                                <label for="no">No</label> 
                                     </td>
                                 </tr>
-                                <tr>
+                                   <tr>
+                                    <td><label>Tipo de inmueble</label></td>
                                     <td>
-                                        <label>Tipo de inmueble</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="alquiler" value="alquiler"/>
-                                        <label for="alquiler">Alquiler</label>
-                                        <input type="radio" name="txtTipo_Inmueble" id="compra" value="compra"/>
-                                        <label for="compra">Compra</label>
+                                        <select id="tipo_inmueble" name="tipo_inmueble">
+                                            <option value="piso">Piso</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="duplex">Dúplex</option>
+                                            <option value="chalet">Chalet</option>
+                                        </select>
                                     </td>
                                 </tr>
-                                <tr>
                                     <td>
                                         <label>Numero de plantas</label>
                                         <input type="number" name="txtNum_Planta" value="<?php echo $datos[11]; ?>"/>
@@ -141,7 +142,7 @@
                                         <td><?php echo $_SESSION["errores"]["txtMetros"]; ?></td>
                                     </tr>
                                 <?php } ?>
-                                <tr>
+                               <tr>
                                     <td><label>Suba imágenes del inmueble:</label></td>
                                     <td><input type="file" name="fileFotos[]" id="fileFotos[]" accept=".jpeg,.jpg,.png" multiple ></td>
                                 </tr>
