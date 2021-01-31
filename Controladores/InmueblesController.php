@@ -119,13 +119,16 @@ if (isset($_POST["btonModificar"])) {
     if (empty($_POST["txtNombre_via"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNombre_via"] = "Debe de completar el campo nombre via.";
-    }if (empty($_POST["txtTipo_via"])) {
+    }
+    if (empty($_POST["txtTipo_via"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtTipo_via"] = "Debe de completar el campo tipo de via.";
-    }if (empty($_POST["txtNombre_localidad"])) {
+    }
+    if (empty($_POST["txtNombre_localidad"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNombre_localidad"] = "Debe de completar el nombre de la localidad.";
-    }if (empty($_POST["txtNombre_provincia"])) {
+    }
+    if (empty($_POST["txtNombre_provincia"])) {
         $_SESSION["validacion"] = false;
         $_SESSION["errores"]["txtNombre_provincia"] = "Debe de completar el nombre de la provincia.";
     }
@@ -161,7 +164,6 @@ if (isset($_POST["btonModificar"])) {
         $_SESSION["validacion"] = false;
         //$_SESSION["errores"]["fileFotos"] = "Debe añadir una imagen del inmueble.";
     }
-
     $inmueble2 = new Inmueble();
     $inmueble2->setNumero($_POST["txtNumero"]);
     $inmueble2->setCp($_POST["txtCp"]);
@@ -176,7 +178,7 @@ if (isset($_POST["btonModificar"])) {
     $inmueble2->setPlanta($_POST["txtPlanta"]);
     $inmueble2->setMetros($_POST["txtMetros"]);
     $inmueble2->setTipo_inmueble($_POST["tipo_inmueble"]);
-    $inmueble2->setFotos($_POST["fileFotos"]);
+    
     $ruta = '../img/Inmueble/' . $inmueble2->getNumero() . "-" . $inmueble2->getCp() . "-" . $inmueble2->getNombre_via() . "-" . $inmueble2->getTipo_via();
     mkdir($ruta);
     $file = opendir($ruta);
